@@ -15,5 +15,6 @@ export type TEducationItem = {
 export type TEducationSection = {
   title: string;
   icon: IconType;
+  size?: number;
   items: TEducationItem[];
 };

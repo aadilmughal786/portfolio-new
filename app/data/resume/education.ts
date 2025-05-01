@@ -1,13 +1,19 @@
 import { TEducationSection } from "@/types/resume/education.types";
-import { FaUserGraduate, FaSchool, FaChalkboardUser } from "react-icons/fa6";
+import {
+  FaUserGraduate,
+  FaSchool,
+  FaChalkboardUser,
+  FaGraduationCap,
+} from "react-icons/fa6";
 
-export const EducationSectionData: TEducationSection = {
+export const educationSectionData: TEducationSection = {
   title: "Education",
   icon: FaUserGraduate,
+  size: 16,
   items: [
     {
       id: 1,
-      icon: FaUserGraduate,
+      icon: FaGraduationCap,
       educationLevel: "Undergraduate Education",
       institutionName: "University Of Engineering & Management",
       institutionLocation: "Jaipur",
