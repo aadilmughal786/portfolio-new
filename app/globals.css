@@ -52,7 +52,7 @@
     --bg-tertiary: theme("colors.gray.800");
 
     /* Border */
-    --border-primary: theme("colors.gray.600");
+    --border-primary: theme("colors.gray.800");
     --border-secondary: theme("colors.gray.700");
   }
 }
@@ -76,5 +76,9 @@
 @layer utilities {
   .icon {
     @apply inline-block w-5 h-5 cursor-pointer;
+  }
+
+  .link{
+    @apply font-medium hover:text-text-tertiary
   }
 }

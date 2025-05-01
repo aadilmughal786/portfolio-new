@@ -9,11 +9,12 @@ const Footer = () => {
   }
 
   return (
-    <div>
-      <div>
-        <div>
+    <div className="flex items-center px-4 border-t backdrop-blur sm:px-8 border-border-primary">
+      <div className="flex items-center py-3 w-full border-r border-border-primary sm:justify-center sm:gap-4">
+        <div className="flex gap-2">
           {footerData.copyrightYear}
           <a
+            className="link"
             href={footerData.developer.links.github}
             target="_blank"
             rel="noreferrer"
@@ -21,19 +22,24 @@ const Footer = () => {
             {footerData.developer.name}
           </a>
         </div>
-        <div>
+        <div className="hidden gap-2 items-center pl-4 border-l border-border-primary sm:flex">
           {" Made with "}
-          <IoHeart />
+          <IoHeart className="text-rose-400" />
           {" and "}
-          <a href={footerData.technology.url} target="_blank" rel="noreferrer">
+          <a
+            className="link"
+            href={footerData.technology.url}
+            target="_blank"
+            rel="noreferrer"
+          >
             {footerData.technology.name}
           </a>
         </div>
       </div>
 
       {/* go to top button */}
-      <div>
-        <button onClick={goToTop}>
+      <div className="flex justify-center items-center ml-4 h-full sm:ml-8">
+        <button onClick={goToTop} className="px-4 cursor-pointer sm:px-0 link">
           <FaArrowUpLong />
         </button>
       </div>

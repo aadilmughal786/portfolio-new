@@ -12,12 +12,12 @@ type DrawerProps = {
 const Drawer = ({ data, showDrawer }: DrawerProps) => {
   return (
     <div
-      className={`flex  flex-col pt-4 gap-4 md:hidden ${
+      className={`flex flex-col pt-4 gap-4 md:hidden ${
         showDrawer ? "block" : "hidden"
       }`}
     >
       {data.navigationItems.map(({ icon: Icon, id, to, label }) => (
-        <div key={id} className="flex gap-4 items-center px-4 sm:px-8">
+        <div key={id} className="flex gap-4 items-center px-4 link sm:px-8">
           <Icon className="icon" />
           <Link href={to}>{label}</Link>
         </div>
@@ -35,9 +35,9 @@ const Drawer = ({ data, showDrawer }: DrawerProps) => {
       {/* made with gatsby */}
       <div className="flex gap-1 items-center px-4 pt-3 border-t sm:hidden border-border-primary">
         {" Made with "}
-        <IoHeart />
+        <IoHeart className="text-rose-400" />
         {" and "}
-        <a href={footerData.technology.url} target="_blank" rel="noreferrer">
+        <a href={footerData.technology.url} target="_blank" rel="noreferrer" className="link">
           {footerData.technology.name}
         </a>
       </div>

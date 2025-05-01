@@ -27,9 +27,9 @@ const NavBar = () => {
         </Link>
 
         {/* mid-part */}
-        <div className="hidden gap-3 items-center font-medium md:flex">
+        <div className="hidden gap-3 items-center text-sm font-semibold md:flex">
           {navBarData.navigationItems.map((item) => (
-            <Link key={item.id} href={item.to}>
+            <Link key={item.id} href={item.to} className="hover:text-text-tertiary">
               {item.label}
             </Link>
           ))}
