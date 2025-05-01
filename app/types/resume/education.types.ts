@@ -1,19 +1,19 @@
-import { LucideIcon } from "lucide-react";
+import { IconType } from "react-icons";
 
-export type EducationItem = {
+export type TEducationItem = {
   id: number;
-  icon: LucideIcon;
-  educationType: string;
-  instituteName: string;
-  institutelocation?: string;
+  icon: IconType;
+  educationLevel: string;
+  institutionName: string;
+  institutionLocation?: string;
   description: string;
-  completionyear: number;
+  completionYear: number;
   status: "Completed" | "Ongoing";
   courses: string[];
 };
 
-export type EducationSection = {
+export type TEducationSection = {
   title: string;
-  icon: LucideIcon;
-  items: EducationItem[];
+  icon: IconType;
+  items: TEducationItem[];
 };

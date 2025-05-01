@@ -1,6 +1,61 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
+@theme {
+  --font-poppins: var(--font-poppins);
+}
 
+@theme {
+  /* Text */
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+
+  /* Background */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+
+  /* Borders */
+  --color-border-primary: var(--border-primary);
+  --color-border-secondary: var(--border-secondary);
+}
+
+/* --------------------- */
+
+@layer base {
+  :root {
+    /* Text */
+    --text-primary: theme("colors.slate.700");
+    --text-secondary: theme("colors.cyan.400");
+    --text-tertiary: theme("colors.cyan.700");
+
+    /* Background */
+    --bg-primary: theme("colors.white");
+    --bg-secondary: theme("colors.gray.50");
+    --bg-tertiary: theme("colors.gray.100");
+
+    /* Border */
+    --border-primary: theme("colors.gray.300");
+    --border-secondary: theme("colors.gray.200");
+  }
+
+  .dark {
+    /* Text */
+    --text-primary: theme("colors.gray.50");
+    --text-secondary: theme("colors.cyan.300");
+    --text-tertiary: theme("colors.cyan.400");
+
+    /* Background */
+    --bg-primary: theme("colors.gray.950");
+    --bg-secondary: theme("colors.gray.900");
+    --bg-tertiary: theme("colors.gray.800");
+
+    /* Border */
+    --border-primary: theme("colors.gray.600");
+    --border-secondary: theme("colors.gray.700");
+  }
+}
 
 /* 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -12,7 +67,6 @@
   background: red;
 }
 
-
 /* 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  Defines composite utility classes using `@apply` to combine 
@@ -20,7 +74,7 @@
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
  */
 @layer utilities {
-  .btn {
-    @apply px-4 py-2 rounded text-white bg-glow;
+  .icon {
+    @apply inline-block w-5 h-5 cursor-pointer;
   }
 }

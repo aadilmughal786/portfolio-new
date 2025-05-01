@@ -1,4 +1,4 @@
-import EducationSectionData from "./education";
+import { EducationSectionData } from "./education";
 
 const ResumeData = {
   EducationSectionData,

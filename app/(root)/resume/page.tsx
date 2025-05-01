@@ -1,11 +1,11 @@
-import Card from "@/app/componenets/resume/Card";
-import CardItem from "@/app/componenets/resume/CardItem";
-import Education from "@/app/componenets/resume/EductionItem";
-import ResumeData from "@/app/data/resume";
+import Card from "@/componenets/resume/Card";
+import CardItem from "@/componenets/resume/CardItem";
+import Education from "@/componenets/resume/EductionItem";
+import ResumeData from "@/data/resume";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Home - Resume",
+  title: "Resume - Aadil",
   description: "Portfolio Website",
 };
 
