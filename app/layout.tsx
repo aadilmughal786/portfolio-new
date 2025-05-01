@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
+import NextTopLoader from "nextjs-toploader";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -26,6 +27,7 @@ export default function RootLayout({
         className={`${poppins.variable} ${poppins.variable} antialiased font-poppins text-text-primary bg-bg-primary`}
       >
         {children}
+        <NextTopLoader showSpinner={false} />
       </body>
     </html>
   );
