@@ -1,10 +1,13 @@
 import Card from "@/components/resume/Card";
 import CardItem from "@/components/resume/CardItem";
+import Contact from "@/components/resume/Contact";
 import Course from "@/components/resume/CourseItem";
 import Education from "@/components/resume/EductionItem";
+import Experience from "@/components/resume/Experience";
 import GameOfTheDay from "@/components/resume/GameOfTheDay";
 import Hobby from "@/components/resume/HobbyItem";
 import Language from "@/components/resume/LanguageItem";
+import Skill from "@/components/resume/Skill";
 import Volunteering from "@/components/resume/Volunteering";
 import Youtube from "@/components/resume/Youtube";
 import resumeData from "@/data/resume";
@@ -20,6 +23,18 @@ export default function Home() {
     <div className="grid gap-x-8 gap-y-8 px-4 py-16 sm:px-8 lg:grid-cols-3 lg:px-16">
       {/* column-1 */}
       <div className="flex flex-col gap-y-8 lg:col-span-2">
+        {/* Experience */}
+        <Card
+          icon={resumeData.experienceSectionData.sectionIcon}
+          title={resumeData.experienceSectionData.sectionTitle}
+        >
+          {resumeData.experienceSectionData.experiences.map((item) => (
+            <CardItem key={item.id}>
+              <Experience data={item} />
+            </CardItem>
+          ))}
+        </Card>
+
         {/* Education */}
         <Card
           icon={resumeData.educationSectionData.icon}
@@ -61,6 +76,30 @@ export default function Home() {
 
       {/* column-2 */}
       <div className="flex flex-col gap-y-8">
+        {/* Skills */}
+        <Card
+          icon={resumeData.skillsData.icon}
+          title={resumeData.skillsData.title}
+        >
+          {resumeData.skillsData.items.map((item) => (
+            <CardItem key={item.id}>
+              <Skill key={item.id} data={item} />
+            </CardItem>
+          ))}
+        </Card>
+
+        {/* Contact */}
+        <Card
+          icon={resumeData.contactData.icon}
+          title={resumeData.contactData.title}
+        >
+          {resumeData.contactData.item.map((item) => (
+            <CardItem key={item.id}>
+              <Contact data={item} />
+            </CardItem>
+          ))}
+        </Card>
+
         {/* Hobbies */}
         <Card
           icon={resumeData.hobbySectionData.icon}

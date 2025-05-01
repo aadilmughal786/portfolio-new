@@ -40,7 +40,7 @@ export const navBarData: TNavBarData = {
       id: 5,
       label: "Blogs",
       icon: IoIosRocket,
-      to: "/blog",
+      to: "/blogs",
     },
   ],
 

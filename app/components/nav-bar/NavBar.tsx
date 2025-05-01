@@ -6,9 +6,11 @@ import { useState } from "react";
 import { IoHeart } from "react-icons/io5";
 import { HiMiniBars3, HiXMark } from "react-icons/hi2";
 import { GrClose } from "react-icons/gr";
+import { usePathname } from "next/navigation";
 
 const NavBar = () => {
   const [showDrawer, setShowDrawer] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div className="sticky top-0 py-3 w-full border-b backdrop-blur border-border-primary">
@@ -23,13 +25,19 @@ const NavBar = () => {
           href="/"
           className="flex gap-1 items-center text-xl font-bold text-text-tertiary"
         >
-          Aa <IoHeart className="icon" />
+          Aa <IoHeart className="icon flip" />
         </Link>
 
         {/* mid-part */}
         <div className="hidden gap-3 items-center text-sm font-semibold md:flex">
           {navBarData.navigationItems.map((item) => (
-            <Link key={item.id} href={item.to} className="hover:text-text-tertiary">
+            <Link
+              key={item.id}
+              href={item.to}
+              className={`hover:text-text-tertiary ${
+                pathname === item.to ? "text-text-tertiary" : ""
+              }`}
+            >
               {item.label}
             </Link>
           ))}

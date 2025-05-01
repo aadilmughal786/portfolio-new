@@ -22,7 +22,7 @@ export const courseSectionData: TCourseSection = {
       icon: HiLibrary,
       courseName: "Problem Solving Through Programming In C",
       certificateLink:
-        "https://drive.google.com/file/d/1wQ3fQXPxczvYPj1XTczrppbkAODDVuJD",
+        "https://drive.google.com/file/d/1rXepTEeaRCc39VIj0wbzaAiKCdPQ6cSO",
       instituteName: "IIT Kharagpur (NPTEL - 94% Topper)",
       completionYear: "Jan-Apr 2022",
     },

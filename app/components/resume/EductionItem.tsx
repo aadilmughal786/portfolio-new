@@ -19,7 +19,7 @@ const Education = ({ data }: EducationProps) => {
     <div>
       <div className="flex gap-6 items-center pb-2">
         <div>
-          <Icon size={40}/>
+          <Icon size={35}/>
         </div>
         <div className="w-full">
           <div className="flex flex-wrap gap-x-8 justify-between items-center">
