@@ -1,9 +1,7 @@
-`use client`;
-
 import React, { useEffect, useState } from "react";
 import { IoMoon, IoSunny } from "react-icons/io5";
 
-export default function ThemeToggleBtn() {
+const ThemeToggleBtn = () => {
   const [isDark, setIsDark] = useState(false);
 
   // Check if the user has a saved preference in localStorage
@@ -36,4 +34,6 @@ export default function ThemeToggleBtn() {
       {isDark ? <IoMoon className="icon" /> : <IoSunny className="icon" />}
     </div>
   );
-}
+};
+
+export default ThemeToggleBtn;

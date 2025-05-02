@@ -1,4 +1,4 @@
-import { FaDrum, FaGhost, FaPlay } from "react-icons/fa";
+import { FaDrum, FaGhost } from "react-icons/fa";
 import { TGameOfTheDay } from "@/types/resume/game-of-the-day.types";
 
 export const gameOfTheDayData: TGameOfTheDay = {

@@ -4,7 +4,7 @@ import Drawer from "./Drawer";
 import Link from "next/link";
 import { useState } from "react";
 import { IoHeart } from "react-icons/io5";
-import { HiMiniBars3, HiXMark } from "react-icons/hi2";
+import { HiMiniBars3 } from "react-icons/hi2";
 import { GrClose } from "react-icons/gr";
 import { usePathname } from "next/navigation";
 
@@ -60,11 +60,11 @@ const NavBar = () => {
           {/* drawer toggler btn */}
           <div className="flex gap-3 items-center pl-5 border-l md:hidden border-border-primary">
             {showDrawer ? (
-              <GrClose className="icon" onClick={(e) => setShowDrawer(false)} />
+              <GrClose className="icon" onClick={() => setShowDrawer(false)} />
             ) : (
               <HiMiniBars3
                 className="icon"
-                onClick={(e) => setShowDrawer(true)}
+                onClick={() => setShowDrawer(true)}
               />
             )}
           </div>

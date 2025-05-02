@@ -1,6 +1,6 @@
 import { TYouTubeSection } from "@/types/resume/youtube.types";
 import React from "react";
-import { FaBell, FaThumbsUp, FaYoutube } from "react-icons/fa6";
+import { FaBell, FaThumbsUp } from "react-icons/fa6";
 
 type YouTubeSectionProps = {
   data: TYouTubeSection;

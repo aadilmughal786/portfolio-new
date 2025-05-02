@@ -1,4 +1,3 @@
-import React from "react";
 import { BsPostcardHeartFill } from "react-icons/bs";
 import { CgOrganisation } from "react-icons/cg";
 import { TExperienceSection } from "@/types/resume/experience.types";

@@ -1,7 +1,7 @@
 // Return formatted string in terms of year and month
 const formateDate = (dateObj: Date): string => {
-  let year = dateObj.getFullYear();
-  let month = dateObj.toLocaleString("en-us", { month: "short" });
+  const year = dateObj.getFullYear();
+  const month = dateObj.toLocaleString("en-us", { month: "short" });
 
   return `${month} ${year}`;
 };
@@ -43,7 +43,7 @@ const getDiff = (first: Date, second: Date): string => {
   const utc1 = Date.UTC(first.getFullYear(), first.getMonth());
   const utc2 = Date.UTC(second.getFullYear(), second.getMonth());
 
-  let days = Math.floor((utc2 - utc1) / _MS_PER_DAY);
+  const days = Math.floor((utc2 - utc1) / _MS_PER_DAY);
   return getYearsAndMonthsFromDays(days);
 };
 

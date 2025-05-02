@@ -1,4 +1,3 @@
-import React from "react";
 import { FaClipboardCheck } from "react-icons/fa";
 import { HiLibrary } from "react-icons/hi";
 import { TCourseSection } from "@/types/resume/course.types";

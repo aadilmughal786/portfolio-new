@@ -1,7 +1,6 @@
 import { ContactSection } from "@/types/resume/contact.types";
 import {
   FaStaylinked,
-  FaPaperPlane,
   FaGithub,
   FaLinkedin,
   FaCodepen,

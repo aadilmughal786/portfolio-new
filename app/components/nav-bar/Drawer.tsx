@@ -6,7 +6,7 @@ import { IoHeart } from "react-icons/io5";
 
 type DrawerProps = {
   data: TNavBarData;
-  showDrawer: any;
+  showDrawer: boolean;
 };
 
 const Drawer = ({ data, showDrawer }: DrawerProps) => {
