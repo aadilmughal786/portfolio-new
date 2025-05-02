@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <body
-        className={`${poppins.variable} ${poppins.variable} antialiased font-poppins text-text-primary bg-bg-primary`}
+        className={`${poppins.variable} ${poppins.variable} antialiased font-poppins text-text-primary bg-bg-primary scrollbar-light`}
       >
         {children}
         <NextTopLoader showSpinner={false} />
