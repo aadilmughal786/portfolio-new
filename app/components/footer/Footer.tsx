@@ -24,7 +24,7 @@ const Footer = () => {
         </div>
         <div className="hidden gap-2 items-center pl-4 border-l border-border-primary sm:flex">
           {" Made with "}
-          <IoHeart className="text-rose-400" />
+          <IoHeart className="text-rose-400 flip" />
           {" and "}
           <a
             className="link"
