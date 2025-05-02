@@ -5,9 +5,9 @@ import { fetchUserRepositories, GitHubRepo } from "@/services/github.services";
 import LanguageColors, { LanguageName } from "@/utils/languageColors";
 import { getTimeAgo } from "@/utils/resume-date";
 import { TbExternalLink } from "react-icons/tb";
-import { PiGitForkBold, PiGitForkDuotone } from "react-icons/pi";
-import { FaCodeFork } from "react-icons/fa6";
+import { PiGitForkBold } from "react-icons/pi";
 import { IoStar } from "react-icons/io5";
+import { MdNearbyError } from "react-icons/md";
 
 export default function RecentRepositories() {
   const [repositories, setRepositories] = useState<GitHubRepo>([]);
@@ -33,6 +33,15 @@ export default function RecentRepositories() {
             <div className="w-1/4 h-4 rounded bg-border-primary"></div>
           </div>
         ))}
+      </div>
+    );
+  }
+
+  if (!repositories) {
+    return (
+      <div className="flex gap-2 items-center p-4 text-red-700 dark:text-red-400">
+        <MdNearbyError size={35} />
+        Failed to load GitHub repositories data
       </div>
     );
   }

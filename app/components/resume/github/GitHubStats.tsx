@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { fetchUserData, GitHubUser } from "../../../services/github.services";
+import { MdNearbyError } from "react-icons/md";
 
 const GitHubStats = () => {
   const [userData, setUserData] = useState<GitHubUser | null>(null);
@@ -35,7 +36,8 @@ const GitHubStats = () => {
 
   if (!userData) {
     return (
-      <div className="p-4 text-red-800 bg-red-100 rounded-lg">
+      <div className="flex gap-2 items-center p-4 text-red-700 dark:text-red-400">
+        <MdNearbyError size={35} />
         Failed to load GitHub data
       </div>
     );
