@@ -35,7 +35,7 @@ const Drawer = ({ data, showDrawer }: DrawerProps) => {
       {/* made with gatsby */}
       <div className="flex gap-1 items-center px-4 pt-3 border-t sm:hidden border-border-primary">
         {" Made with "}
-        <IoHeart className="text-rose-400 flip" />
+        <IoHeart className="text-rose-400 flip" size={18} />
         {" and "}
         <a href={footerData.technology.url} target="_blank" rel="noreferrer" className="link">
           {footerData.technology.name}
