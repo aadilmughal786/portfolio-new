@@ -47,4 +47,30 @@ const getDiff = (first: Date, second: Date): string => {
   return getYearsAndMonthsFromDays(days);
 };
 
-export { formateDate, getCurrentDateObject, getDiff };
+function getTimeAgo(dateString: string): string {
+  const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+  const now = new Date();
+  const then = new Date(dateString);
+  const seconds = Math.floor((now.getTime() - then.getTime()) / 1000);
+
+  const intervals: [number, Intl.RelativeTimeFormatUnit][] = [
+    [60, "second"],
+    [60, "minute"],
+    [24, "hour"],
+    [30, "day"],
+    [12, "month"],
+    [Infinity, "year"],
+  ];
+
+  let duration = seconds;
+  for (let i = 0; i < intervals.length; i++) {
+    if (duration < intervals[i][0]) {
+      return rtf.format(-duration, intervals[i][1]);
+    }
+    duration = Math.floor(duration / intervals[i][0]);
+  }
+
+  return rtf.format(-duration, "year");
+}
+
+export { formateDate, getCurrentDateObject, getDiff, getTimeAgo };

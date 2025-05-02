@@ -10,6 +10,7 @@
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-tertiary: var(--text-tertiary);
+  --color-text-mute: var(--text-mute);
 
   /* Background */
   --color-bg-primary: var(--bg-primary);
@@ -29,6 +30,7 @@
     --text-primary: theme("colors.slate.700");
     --text-secondary: theme("colors.cyan.400");
     --text-tertiary: theme("colors.cyan.700");
+    --text-mute: theme("colors.slate.500");
 
     /* Background */
     --bg-primary: theme("colors.white");
@@ -45,6 +47,7 @@
     --text-primary: theme("colors.gray.50");
     --text-secondary: theme("colors.cyan.300");
     --text-tertiary: theme("colors.cyan.400");
+    --text-mute: theme("colors.slate.500");
 
     /* Background */
     --bg-primary: theme("colors.gray.950");
@@ -93,5 +96,9 @@
 
   .link {
     @apply font-medium hover:text-text-tertiary;
+  }
+
+  .chip {
+    @apply inline-flex items-center px-2 py-0.5 text-[10px] font-medium text-cyan-800 bg-cyan-100 rounded-sm dark:bg-cyan-200/90 dark:text-black;
   }
 }

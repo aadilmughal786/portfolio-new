@@ -3,6 +3,7 @@ import { courseSectionData } from "./course";
 import { educationSectionData } from "./education";
 import { experienceSectionData } from "./experience";
 import { gameOfTheDayData } from "./game-of-the-day";
+import { githubSectionData } from "./github";
 import { hobbySectionData } from "./hobbies";
 import { languageSectionData } from "./languages";
 import skillsData from "./skill";
@@ -20,6 +21,7 @@ const resumeData = {
   experienceSectionData,
   contactData,
   skillsData,
+  githubSectionData,
 };
 
 export default resumeData;

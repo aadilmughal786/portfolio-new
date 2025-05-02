@@ -1,3 +1,4 @@
+import GitHubStats from "@/components/resume/github/GitHubStats";
 import Card from "@/components/resume/Card";
 import CardItem from "@/components/resume/CardItem";
 import Contact from "@/components/resume/Contact";
@@ -12,6 +13,7 @@ import Volunteering from "@/components/resume/Volunteering";
 import Youtube from "@/components/resume/Youtube";
 import resumeData from "@/data/resume";
 import type { Metadata } from "next";
+import RecentRepositories from "@/components/resume/github/Repositories";
 
 export const metadata: Metadata = {
   title: "Resume - Aadil",
@@ -33,6 +35,20 @@ export default function Home() {
               <Experience data={item} />
             </CardItem>
           ))}
+        </Card>
+
+        {/* Github  */}
+        <Card
+          icon={resumeData.githubSectionData.icon}
+          title={resumeData.githubSectionData.title}
+          size={resumeData.githubSectionData.size}
+        >
+          <CardItem>
+            <GitHubStats />
+          </CardItem>
+          <CardItem>
+            <RecentRepositories />
+          </CardItem>
         </Card>
 
         {/* Education */}

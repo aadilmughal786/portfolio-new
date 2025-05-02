@@ -124,7 +124,7 @@ const Experience = ({ data }: JobExperienceProps) => {
         {data.technologiesUsed.map((item, index) => (
           <span
             key={index}
-            className="rounded bg-sky-400/80 px-2 py-[2px] text-[10px] font-medium text-slate-800 dark:bg-sky-300 dark:text-black"
+            className="chip"
           >
             {item}
           </span>
