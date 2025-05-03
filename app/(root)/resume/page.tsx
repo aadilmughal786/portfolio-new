@@ -15,6 +15,7 @@ import resumeData from "@/data/resume";
 import type { Metadata } from "next";
 import RecentRepositories from "@/components/resume/github/Repositories";
 import ForRecruiter from "@/components/resume/ForRecruiter";
+import DownloadResume from "@/components/resume/DownloadResume";
 
 export const metadata: Metadata = {
   title: "Resume - Aadil",
@@ -98,10 +99,20 @@ export default function Home() {
           icon={resumeData.forRecruiterData.icon}
           title={resumeData.forRecruiterData.title}
         >
-          <ForRecruiter
-            faq={resumeData.forRecruiterData.faq}
-            downloadResume={resumeData.forRecruiterData.downloadResume}
-          />
+          <ForRecruiter faq={resumeData.forRecruiterData.faq} />
+        </Card>
+
+        {/* Download Resume */}
+
+        <Card
+          icon={resumeData.downloadResumeData.icon}
+          title={resumeData.downloadResumeData.title}
+        >
+          <CardItem>
+            <DownloadResume
+              downloadResume={resumeData.downloadResumeData.downloadResume}
+            />
+          </CardItem>
         </Card>
 
         {/* Skills */}

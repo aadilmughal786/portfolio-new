@@ -1,5 +1,6 @@
 import { contactData } from "./contact";
 import { courseSectionData } from "./course";
+import { downloadResumeData } from "./download-resume";
 import { educationSectionData } from "./education";
 import { experienceSectionData } from "./experience";
 import { forRecruiterData } from "./for-recruiter";
@@ -24,6 +25,7 @@ const resumeData = {
   skillsData,
   githubSectionData,
   forRecruiterData,
+  downloadResumeData,
 };
 
 export default resumeData;

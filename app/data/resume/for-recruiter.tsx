@@ -1,12 +1,6 @@
 import { ForRecruiterSection } from "@/types/resume/for-recruiter.types";
 import { BsFillPatchQuestionFill } from "react-icons/bs";
-import {
-  FaUserTie,
-  FaFilePdf,
-  FaFileWord,
-  FaFileCode,
-  FaFileAlt,
-} from "react-icons/fa";
+import { FaUserTie } from "react-icons/fa";
 
 export const forRecruiterData: ForRecruiterSection = {
   title: "For Recruiter",
@@ -66,33 +60,6 @@ export const forRecruiterData: ForRecruiterSection = {
         "Strong communicator who bridges the gap between tech and people.",
         "Detail-obsessed, quality-focused, and proud of my craft.",
       ],
-    },
-  ],
-
-  downloadResume: [
-    {
-      id: 1,
-      type: "PDF",
-      link: "..",
-      icon: <FaFilePdf size={35} />,
-    },
-    {
-      id: 2,
-      type: "DOC",
-      link: "..",
-      icon: <FaFileWord size={35} />,
-    },
-    {
-      id: 3,
-      type: "LaTeX",
-      link: "..",
-      icon: <FaFileCode size={35} />,
-    },
-    {
-      id: 4,
-      type: "TEXT",
-      link: "..",
-      icon: <FaFileAlt size={35} />,
     },
   ],
 };

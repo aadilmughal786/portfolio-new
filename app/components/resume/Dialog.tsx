@@ -69,7 +69,7 @@ const Dialog: React.FC<DialogProps> = ({
           aria-modal="true"
         >
           {/* Header with title and close button */}
-          <div className="flex justify-between items-center p-4 border-b border-border-primary">
+          <div className="flex justify-between items-center px-6 py-2 border-b border-border-primary">
             {title && (
               <h3 className="text-lg font-medium text-text-tertiary">
                 {title}
@@ -79,7 +79,7 @@ const Dialog: React.FC<DialogProps> = ({
           </div>
 
           {/* Dialog body content */}
-          <div className="p-4">{children}</div>
+          <div className="p-6">{children}</div>
         </div>
       </div>
     </div>

@@ -8,16 +8,8 @@ export type FAQItem = {
   answer: string[];
 };
 
-export type ResumeFormat = {
-  id: number;
-  type: "PDF" | "DOC" | "LaTeX" | "TEXT";
-  link: string;
-  icon: ReactNode;
-};
-
 export type ForRecruiterSection = {
   title: string;
   icon: IconType;
   faq: FAQItem[];
-  downloadResume: ResumeFormat[];
 };
