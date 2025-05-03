@@ -1,12 +1,4 @@
-{
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ],
-    "*.{json,css,md}": [
-      "prettier --write"
-    ],
-  
-      }
-}
+#!/usr/bin/env sh
+
+# Run lint-staged directly without the deprecated header
+npx lint-staged
