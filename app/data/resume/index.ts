@@ -2,6 +2,7 @@ import { contactData } from "./contact";
 import { courseSectionData } from "./course";
 import { educationSectionData } from "./education";
 import { experienceSectionData } from "./experience";
+import { forRecruiterData } from "./for-recruiter";
 import { gameOfTheDayData } from "./game-of-the-day";
 import { githubSectionData } from "./github";
 import { hobbySectionData } from "./hobbies";
@@ -22,6 +23,7 @@ const resumeData = {
   contactData,
   skillsData,
   githubSectionData,
+  forRecruiterData,
 };
 
 export default resumeData;

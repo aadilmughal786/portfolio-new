@@ -14,6 +14,7 @@ import Youtube from "@/components/resume/Youtube";
 import resumeData from "@/data/resume";
 import type { Metadata } from "next";
 import RecentRepositories from "@/components/resume/github/Repositories";
+import ForRecruiter from "@/components/resume/ForRecruiter";
 
 export const metadata: Metadata = {
   title: "Resume - Aadil",
@@ -92,6 +93,17 @@ export default function Home() {
 
       {/* column-2 */}
       <div className="flex flex-col gap-y-8">
+        {/* For Recruiter */}
+        <Card
+          icon={resumeData.forRecruiterData.icon}
+          title={resumeData.forRecruiterData.title}
+        >
+          <ForRecruiter
+            faq={resumeData.forRecruiterData.faq}
+            downloadResume={resumeData.forRecruiterData.downloadResume}
+          />
+        </Card>
+
         {/* Skills */}
         <Card
           icon={resumeData.skillsData.icon}
