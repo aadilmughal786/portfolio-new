@@ -1,6 +1,6 @@
-import { TCourseItem } from "@/types/resume/course.types";
-import React from "react";
-import { TbExternalLink } from "react-icons/tb";
+import { TCourseItem } from '@/types/resume/course.types';
+import React from 'react';
+import { TbExternalLink } from 'react-icons/tb';
 
 type EducationProps = {
   data: TCourseItem;
@@ -17,10 +17,7 @@ const Course = ({ data }: EducationProps) => {
           <a href={data.certificateLink} target="_blank" rel="noreferrer">
             {data.courseName}
           </a>
-          <TbExternalLink
-            className="-mt-[3px] ml-1 inline-block sm:ml-0"
-            size={16}
-          />
+          <TbExternalLink className="-mt-[3px] ml-1 inline-block sm:ml-0" size={16} />
         </div>
         <div className="flex-row flex-wrap gap-x-8 justify-between items-center sm:flex">
           <div>{data.instituteName}</div>

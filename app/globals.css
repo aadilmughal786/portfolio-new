@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "./styles/scrollbars.css";
-@import "./styles/animations.css";
+@import 'tailwindcss';
+@import './styles/scrollbars.css';
+@import './styles/animations.css';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
@@ -30,36 +30,36 @@
 @layer base {
   :root {
     /* Text */
-    --text-primary: theme("colors.slate.700");
-    --text-secondary: theme("colors.cyan.400");
-    --text-tertiary: theme("colors.cyan.700");
-    --text-mute: theme("colors.slate.500");
+    --text-primary: theme('colors.slate.700');
+    --text-secondary: theme('colors.cyan.400');
+    --text-tertiary: theme('colors.cyan.700');
+    --text-mute: theme('colors.slate.500');
 
     /* Background */
-    --bg-primary: theme("colors.white");
-    --bg-secondary: theme("colors.gray.50");
-    --bg-tertiary: theme("colors.gray.100");
+    --bg-primary: theme('colors.white');
+    --bg-secondary: theme('colors.gray.50');
+    --bg-tertiary: theme('colors.gray.100');
 
     /* Border */
-    --border-primary: theme("colors.gray.300");
-    --border-secondary: theme("colors.gray.200");
+    --border-primary: theme('colors.gray.300');
+    --border-secondary: theme('colors.gray.200');
   }
 
   .dark {
     /* Text */
-    --text-primary: theme("colors.gray.50");
-    --text-secondary: theme("colors.cyan.300");
-    --text-tertiary: theme("colors.cyan.400");
-    --text-mute: theme("colors.slate.500");
+    --text-primary: theme('colors.gray.50');
+    --text-secondary: theme('colors.cyan.300');
+    --text-tertiary: theme('colors.cyan.400');
+    --text-mute: theme('colors.slate.500');
 
     /* Background */
-    --bg-primary: theme("colors.gray.950");
-    --bg-secondary: theme("colors.gray.900");
-    --bg-tertiary: theme("colors.gray.800");
+    --bg-primary: theme('colors.gray.950');
+    --bg-secondary: theme('colors.gray.900');
+    --bg-tertiary: theme('colors.gray.800');
 
     /* Border */
-    --border-primary: theme("colors.gray.800");
-    --border-secondary: theme("colors.gray.700");
+    --border-primary: theme('colors.gray.800');
+    --border-secondary: theme('colors.gray.700');
   }
 }
 

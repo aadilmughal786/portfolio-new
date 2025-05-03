@@ -1,10 +1,6 @@
-import { TJobExperience } from "@/types/resume/experience.types";
-import {
-  formateDate,
-  getCurrentDateObject,
-  getDiff,
-} from "@/utils/resume-date";
-import React from "react";
+import { TJobExperience } from '@/types/resume/experience.types';
+import { formateDate, getCurrentDateObject, getDiff } from '@/utils/resume-date';
+import React from 'react';
 
 export type JobExperienceProps = {
   data: TJobExperience;
@@ -22,15 +18,15 @@ const Single = ({ data }: JobExperienceProps) => {
           <div className="text-text-tertiary">{data.companyName}</div>
 
           <div className="font-mono">
-            {data.positions[0].endDate === "present"
+            {data.positions[0].endDate === 'present'
               ? getDiff(data.positions[0].startDate, getCurrentDateObject())
               : getDiff(data.positions[0].startDate, data.positions[0].endDate)}
           </div>
         </div>
         <div>{data.positions[0].location}</div>
         <div>{`${formateDate(data.positions[0].startDate)} - ${
-          data.positions[0].endDate === "present"
-            ? "present"
+          data.positions[0].endDate === 'present'
+            ? 'present'
             : formateDate(data.positions[0].endDate)
         }`}</div>
       </div>
@@ -48,21 +44,17 @@ const Multiple = ({ data }: JobExperienceProps) => {
         <Logo size={35} />
 
         <div className="flex-1">
-          <div className="font-medium text-text-tertiary">
-            {data.companyName}
-          </div>
+          <div className="font-medium text-text-tertiary">{data.companyName}</div>
           <div className="flex flex-wrap gap-x-8 justify-between">
             <div>
               {`${formateDate(data.positions[0].startDate)} - ${
-                data.positions[data.positions.length - 1].endDate === "present"
-                  ? "present"
-                  : formateDate(
-                      data.positions[data.positions.length - 1].endDate as Date
-                    )
+                data.positions[data.positions.length - 1].endDate === 'present'
+                  ? 'present'
+                  : formateDate(data.positions[data.positions.length - 1].endDate as Date)
               }`}
             </div>
             <div className="font-mono">
-              {data.positions[data.positions.length - 1].endDate === "present"
+              {data.positions[data.positions.length - 1].endDate === 'present'
                 ? getDiff(data.positions[0].startDate, getCurrentDateObject())
                 : getDiff(
                     data.positions[0].startDate,
@@ -81,14 +73,12 @@ const Multiple = ({ data }: JobExperienceProps) => {
               <div className="flex flex-wrap gap-x-8 justify-between">
                 <div>
                   {`${formateDate(position.startDate)} - ${
-                    position.endDate === "present"
-                      ? "present"
-                      : formateDate(position.endDate)
+                    position.endDate === 'present' ? 'present' : formateDate(position.endDate)
                   }`}
                 </div>
 
                 <div className="font-mono">
-                  {position.endDate === "present"
+                  {position.endDate === 'present'
                     ? getDiff(position.startDate, getCurrentDateObject())
                     : getDiff(position.startDate, position.endDate)}
                 </div>
@@ -105,27 +95,17 @@ const Multiple = ({ data }: JobExperienceProps) => {
 const Experience = ({ data }: JobExperienceProps) => {
   return (
     <div>
-      {data.hasMultipleRoles ? (
-        <Multiple data={data} />
-      ) : (
-        <Single data={data} />
-      )}
+      {data.hasMultipleRoles ? <Multiple data={data} /> : <Single data={data} />}
       <div className="flex flex-col gap-1">
         {data.responsibilities.map((item, index) => (
           <div className="flex gap-3" key={index}>
-            <span className="hidden font-semibold sm:inline text-text-tertiary">
-              {"⤏"}
-            </span>{" "}
-            {item}
+            <span className="hidden font-semibold sm:inline text-text-tertiary">{'⤏'}</span> {item}
           </div>
         ))}
       </div>
       <div className="flex flex-row flex-wrap gap-2 pt-3">
         {data.technologiesUsed.map((item, index) => (
-          <span
-            key={index}
-            className="chip"
-          >
+          <span key={index} className="chip">
             {item}
           </span>
         ))}

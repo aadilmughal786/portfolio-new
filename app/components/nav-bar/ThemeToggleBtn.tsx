@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { IoMoon, IoSunny } from "react-icons/io5";
+import React, { useEffect, useState } from 'react';
+import { IoMoon, IoSunny } from 'react-icons/io5';
 
 const ThemeToggleBtn = () => {
   const [isDark, setIsDark] = useState(false);
 
   // Check if the user has a saved preference in localStorage
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme === "dark") {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
       setIsDark(true);
-      document.documentElement.classList.add("dark");
+      document.documentElement.classList.add('dark');
     } else {
       setIsDark(false);
-      document.documentElement.classList.remove("dark");
+      document.documentElement.classList.remove('dark');
     }
   }, []);
 
@@ -20,12 +20,12 @@ const ThemeToggleBtn = () => {
   const toggleTheme = () => {
     if (isDark) {
       setIsDark(false);
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
     } else {
       setIsDark(true);
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     }
   };
 

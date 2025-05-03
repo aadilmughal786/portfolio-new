@@ -1,8 +1,8 @@
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 
 export type ResumeFormat = {
   id: number;
-  type: "PDF" | "DOC" | "LaTeX" | "TEXT";
+  type: 'PDF' | 'DOC' | 'LaTeX' | 'TEXT';
   link: string;
   icon: IconType;
 };

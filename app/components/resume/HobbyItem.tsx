@@ -1,5 +1,5 @@
-import { THobbyItem } from "@/types/resume/hobbies.types";
-import React from "react";
+import { THobbyItem } from '@/types/resume/hobbies.types';
+import React from 'react';
 
 type EducationProps = {
   data: THobbyItem;

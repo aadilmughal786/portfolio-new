@@ -1,49 +1,49 @@
-import { BsPostcardHeartFill } from "react-icons/bs";
-import { CgOrganisation } from "react-icons/cg";
-import { TExperienceSection } from "@/types/resume/experience.types";
+import { BsPostcardHeartFill } from 'react-icons/bs';
+import { CgOrganisation } from 'react-icons/cg';
+import { TExperienceSection } from '@/types/resume/experience.types';
 
 export const experienceSectionData: TExperienceSection = {
-  sectionTitle: "Experience",
+  sectionTitle: 'Experience',
   sectionIcon: BsPostcardHeartFill,
   experiences: [
     {
       id: 1,
       hasMultipleRoles: true,
       companyLogo: CgOrganisation,
-      companyName: "Jalan Technology Consulting",
+      companyName: 'Jalan Technology Consulting',
       positions: [
         {
-          title: "FullStack Web Developer Intern",
+          title: 'FullStack Web Developer Intern',
           startDate: new Date(2022, 10 - 1), // October 2022
           endDate: new Date(2023, 4 - 1), // April 2023
-          location: "Remote",
+          location: 'Remote',
         },
         {
-          title: "FullStack Web Developer",
+          title: 'FullStack Web Developer',
           startDate: new Date(2023, 5 - 1), // May 2023
           endDate: new Date(2023, 10 - 1),
-          location: "Remote",
+          location: 'Remote',
         },
       ],
       responsibilities: [
-        "Developed, improved, and operated web-based software.",
-        "Created responsive web apps.",
-        "Collaborated with team members to implement feature updates.",
-        "Wrote clean code, drove technical design, and took responsibility for technical delivery.",
-        "Technologies used include Gatsby, Strapi, React, JavaScript, HTML, Git, CSS, etc.",
+        'Developed, improved, and operated web-based software.',
+        'Created responsive web apps.',
+        'Collaborated with team members to implement feature updates.',
+        'Wrote clean code, drove technical design, and took responsibility for technical delivery.',
+        'Technologies used include Gatsby, Strapi, React, JavaScript, HTML, Git, CSS, etc.',
       ],
       technologiesUsed: [
-        "TypeScript",
-        "JavaScript",
-        "BaseWeb",
-        "Gatsby",
-        "ReactJS",
-        "NodeJS",
-        "MongoDB",
-        "Postman",
-        "Mocha",
-        "Express",
-        "REST APIs",
+        'TypeScript',
+        'JavaScript',
+        'BaseWeb',
+        'Gatsby',
+        'ReactJS',
+        'NodeJS',
+        'MongoDB',
+        'Postman',
+        'Mocha',
+        'Express',
+        'REST APIs',
       ],
     },
   ],

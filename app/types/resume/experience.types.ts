@@ -1,6 +1,6 @@
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 
-type TDateOrPresent = Date | "present";
+type TDateOrPresent = Date | 'present';
 
 type TJobPosition = {
   title: string;

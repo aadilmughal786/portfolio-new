@@ -1,7 +1,7 @@
 // Return formatted string in terms of year and month
 const formateDate = (dateObj: Date): string => {
   const year = dateObj.getFullYear();
-  const month = dateObj.toLocaleString("en-us", { month: "short" });
+  const month = dateObj.toLocaleString('en-us', { month: 'short' });
 
   return `${month} ${year}`;
 };
@@ -30,8 +30,8 @@ const getYearsAndMonthsFromDays = (days: number): string => {
     years += 1;
   }
 
-  years = years === 0 ? "" : years === 1 ? `one year` : `${years} years`;
-  months = months === 0 ? "" : months === 1 ? `one month` : `${months} months`;
+  years = years === 0 ? '' : years === 1 ? `one year` : `${years} years`;
+  months = months === 0 ? '' : months === 1 ? `one month` : `${months} months`;
 
   return `${years} ${months}`;
 };
@@ -48,18 +48,18 @@ const getDiff = (first: Date, second: Date): string => {
 };
 
 function getTimeAgo(dateString: string): string {
-  const rtf = new Intl.RelativeTimeFormat("en", { numeric: "auto" });
+  const rtf = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
   const now = new Date();
   const then = new Date(dateString);
   const seconds = Math.floor((now.getTime() - then.getTime()) / 1000);
 
   const intervals: [number, Intl.RelativeTimeFormatUnit][] = [
-    [60, "second"],
-    [60, "minute"],
-    [24, "hour"],
-    [30, "day"],
-    [12, "month"],
-    [Infinity, "year"],
+    [60, 'second'],
+    [60, 'minute'],
+    [24, 'hour'],
+    [30, 'day'],
+    [12, 'month'],
+    [Infinity, 'year'],
   ];
 
   let duration = seconds;
@@ -70,7 +70,7 @@ function getTimeAgo(dateString: string): string {
     duration = Math.floor(duration / intervals[i][0]);
   }
 
-  return rtf.format(-duration, "year");
+  return rtf.format(-duration, 'year');
 }
 
 export { formateDate, getCurrentDateObject, getDiff, getTimeAgo };

@@ -1,5 +1,5 @@
-import { TLanguageItem } from "@/types/resume/languages.types";
-import React from "react";
+import { TLanguageItem } from '@/types/resume/languages.types';
+import React from 'react';
 
 type EducationItemProps = {
   data: TLanguageItem;

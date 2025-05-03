@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 
 export type TCourseItem = {
   id: number;
@@ -15,4 +15,3 @@ export type TCourseSection = {
   size?: number;
   items: TCourseItem[];
 };
-

@@ -1,8 +1,8 @@
-import { FaYoutube } from "react-icons/fa";
-import { TYouTubeSection } from "@/types/resume/youtube.types";
+import { FaYoutube } from 'react-icons/fa';
+import { TYouTubeSection } from '@/types/resume/youtube.types';
 
 export const youTubeSectionData: TYouTubeSection = {
-  title: "YouTube",
+  title: 'YouTube',
   icon: FaYoutube,
-  videoLink: "https://www.youtube.com/embed/_Vgsjz5d3ow",
+  videoLink: 'https://www.youtube.com/embed/_Vgsjz5d3ow',
 };

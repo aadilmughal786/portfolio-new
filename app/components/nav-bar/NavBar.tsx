@@ -1,12 +1,12 @@
-import { navBarData } from "@/data/nav-bar";
-import ThemeToggleBtn from "./ThemeToggleBtn";
-import Drawer from "./Drawer";
-import Link from "next/link";
-import { useState } from "react";
-import { IoHeart } from "react-icons/io5";
-import { HiMiniBars3 } from "react-icons/hi2";
-import { GrClose } from "react-icons/gr";
-import { usePathname } from "next/navigation";
+import { navBarData } from '@/data/nav-bar';
+import ThemeToggleBtn from './ThemeToggleBtn';
+import Drawer from './Drawer';
+import Link from 'next/link';
+import { useState } from 'react';
+import { IoHeart } from 'react-icons/io5';
+import { HiMiniBars3 } from 'react-icons/hi2';
+import { GrClose } from 'react-icons/gr';
+import { usePathname } from 'next/navigation';
 
 const NavBar = () => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -16,26 +16,22 @@ const NavBar = () => {
     <div className="sticky top-0 py-3 w-full border-b backdrop-blur border-border-primary">
       <div
         className={` flex items-center justify-between px-4 sm:px-8 lg:px-16 ${
-          showDrawer &&
-          " border-b pb-3 md:border-b-0 md:pb-0 border-border-primary "
+          showDrawer && ' border-b pb-3 md:border-b-0 md:pb-0 border-border-primary '
         }`}
       >
         {/* left-part :: site logo */}
-        <Link
-          href="/"
-          className="flex gap-1 items-center text-xl font-bold text-text-tertiary"
-        >
+        <Link href="/" className="flex gap-1 items-center text-xl font-bold text-text-tertiary">
           Aa <IoHeart className="icon flip" />
         </Link>
 
         {/* mid-part */}
         <div className="hidden gap-3 items-center text-sm font-semibold md:flex">
-          {navBarData.navigationItems.map((item) => (
+          {navBarData.navigationItems.map(item => (
             <Link
               key={item.id}
               href={item.to}
               className={`hover:text-text-tertiary ${
-                pathname === item.to ? "text-text-tertiary" : ""
+                pathname === item.to ? 'text-text-tertiary' : ''
               }`}
             >
               {item.label}
@@ -62,10 +58,7 @@ const NavBar = () => {
             {showDrawer ? (
               <GrClose className="icon" onClick={() => setShowDrawer(false)} />
             ) : (
-              <HiMiniBars3
-                className="icon"
-                onClick={() => setShowDrawer(true)}
-              />
+              <HiMiniBars3 className="icon" onClick={() => setShowDrawer(true)} />
             )}
           </div>
         </div>

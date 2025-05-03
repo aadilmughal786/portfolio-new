@@ -1,4 +1,4 @@
-import { IconType } from "react-icons";
+import { IconType } from 'react-icons';
 
 export type TEducationItem = {
   id: number;
@@ -8,7 +8,7 @@ export type TEducationItem = {
   institutionLocation?: string;
   description: string;
   completionYear: number;
-  status: "Completed" | "Ongoing";
+  status: 'Completed' | 'Ongoing';
   courses: string[];
 };
 

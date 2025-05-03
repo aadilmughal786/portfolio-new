@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { IconType } from "react-icons";
+import { ReactNode } from 'react';
+import { IconType } from 'react-icons';
 
 export type FAQItem = {
   id: number;

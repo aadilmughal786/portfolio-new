@@ -1,8 +1,8 @@
-import React from "react";
-import Link from "next/link";
-import { TNavBarData } from "@/types/nav-bar/nav-bar.types";
-import { footerData } from "@/data/footer/index";
-import { IoHeart } from "react-icons/io5";
+import React from 'react';
+import Link from 'next/link';
+import { TNavBarData } from '@/types/nav-bar/nav-bar.types';
+import { footerData } from '@/data/footer/index';
+import { IoHeart } from 'react-icons/io5';
 
 type DrawerProps = {
   data: TNavBarData;
@@ -11,11 +11,7 @@ type DrawerProps = {
 
 const Drawer = ({ data, showDrawer }: DrawerProps) => {
   return (
-    <div
-      className={`flex flex-col pt-4 gap-4 md:hidden ${
-        showDrawer ? "block" : "hidden"
-      }`}
-    >
+    <div className={`flex flex-col pt-4 gap-4 md:hidden ${showDrawer ? 'block' : 'hidden'}`}>
       {data.navigationItems.map(({ icon: Icon, id, to, label }) => (
         <div key={id} className="flex gap-4 items-center px-4 link sm:px-8">
           <Icon className="icon" />
@@ -34,9 +30,9 @@ const Drawer = ({ data, showDrawer }: DrawerProps) => {
 
       {/* made with gatsby */}
       <div className="flex gap-1 items-center px-4 pt-3 border-t sm:hidden border-border-primary">
-        {" Made with "}
+        {' Made with '}
         <IoHeart className="text-rose-400 flip" size={18} />
-        {" and "}
+        {' and '}
         <a href={footerData.technology.url} target="_blank" rel="noreferrer" className="link">
           {footerData.technology.name}
         </a>

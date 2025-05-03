@@ -1,6 +1,6 @@
-import { TGameOfTheDay } from "@/types/resume/game-of-the-day.types";
-import React from "react";
-import { FaPlay } from "react-icons/fa6";
+import { TGameOfTheDay } from '@/types/resume/game-of-the-day.types';
+import React from 'react';
+import { FaPlay } from 'react-icons/fa6';
 
 type GameOfTheDayProps = {
   data: TGameOfTheDay;

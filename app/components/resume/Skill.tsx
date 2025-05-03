@@ -1,5 +1,5 @@
-import { SkillCategory } from "@/types/resume/skill.types";
-import React from "react";
+import { SkillCategory } from '@/types/resume/skill.types';
+import React from 'react';
 
 type SkillProps = {
   data: SkillCategory;

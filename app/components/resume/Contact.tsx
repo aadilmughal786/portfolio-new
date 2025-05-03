@@ -1,6 +1,6 @@
-import { ContactItem } from "@/types/resume/contact.types";
-import React from "react";
-import { TbExternalLink } from "react-icons/tb";
+import { ContactItem } from '@/types/resume/contact.types';
+import React from 'react';
+import { TbExternalLink } from 'react-icons/tb';
 
 type ContactProps = {
   data: ContactItem;

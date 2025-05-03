@@ -1,4 +1,4 @@
-import { ResumeFormat } from "@/types/resume/download-resume.types";
+import { ResumeFormat } from '@/types/resume/download-resume.types';
 
 type DownloadResumeProps = {
   downloadResume: ResumeFormat[];

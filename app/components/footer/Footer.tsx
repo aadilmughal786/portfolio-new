@@ -1,6 +1,6 @@
-import { footerData } from "@/data/footer/index";
-import { FaArrowUpLong } from "react-icons/fa6";
-import { IoHeart } from "react-icons/io5";
+import { footerData } from '@/data/footer/index';
+import { FaArrowUpLong } from 'react-icons/fa6';
+import { IoHeart } from 'react-icons/io5';
 
 const Footer = () => {
   function goToTop() {
@@ -23,15 +23,10 @@ const Footer = () => {
           </a>
         </div>
         <div className="hidden gap-2 items-center pl-4 border-l border-border-primary sm:flex">
-          {" Made with "}
+          {' Made with '}
           <IoHeart className="text-rose-400 flip" size={18} />
-          {" and "}
-          <a
-            className="link"
-            href={footerData.technology.url}
-            target="_blank"
-            rel="noreferrer"
-          >
+          {' and '}
+          <a className="link" href={footerData.technology.url} target="_blank" rel="noreferrer">
             {footerData.technology.name}
           </a>
         </div>

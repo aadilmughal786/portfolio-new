@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { FAQItem } from "@/types/resume/for-recruiter.types";
-import CardItem from "./CardItem";
-import { FaAngleRight } from "react-icons/fa6";
-import { useState } from "react";
+import { FAQItem } from '@/types/resume/for-recruiter.types';
+import CardItem from './CardItem';
+import { FaAngleRight } from 'react-icons/fa6';
+import { useState } from 'react';
 
 type ForRecruiterProps = {
   faq: FAQItem[];
@@ -25,7 +25,7 @@ const ForRecruiter = ({ faq }: ForRecruiterProps) => {
           <button
             onClick={() => toggleFaq(String(id))} // Convert id to string to match openFaqId type
             className={`flex gap-4 items-center w-full font-medium text-left cursor-pointer hover:text-text-tertiary ${
-              openFaqId === String(id) ? "text-text-tertiary" : ""
+              openFaqId === String(id) ? 'text-text-tertiary' : ''
             }`}
             aria-expanded={openFaqId === String(id)}
             aria-controls={`faq-answer-${id}`}
@@ -34,7 +34,7 @@ const ForRecruiter = ({ faq }: ForRecruiterProps) => {
             <span className={`flex-1`}>{label}</span>
             <FaAngleRight
               className={`transition-transform duration-300 ${
-                openFaqId === String(id) ? "rotate-90" : ""
+                openFaqId === String(id) ? 'rotate-90' : ''
               }`}
               aria-hidden="true"
             />
@@ -44,8 +44,8 @@ const ForRecruiter = ({ faq }: ForRecruiterProps) => {
             id={`faq-answer-${id}`}
             className={`transition-all duration-300 ease-in-out ${
               openFaqId === String(id)
-                ? "max-h-96 opacity-100 mt-2"
-                : "max-h-0 opacity-0 overflow-hidden"
+                ? 'max-h-96 opacity-100 mt-2'
+                : 'max-h-0 opacity-0 overflow-hidden'
             }`}
           >
             <ul className="pl-6 space-y-2 list-disc marker:text-text-tertiary">
