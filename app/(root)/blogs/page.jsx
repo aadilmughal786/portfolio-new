@@ -1,4 +1,3 @@
-// app/github/page.js
 import GitHubStats from '../../components/resume/github/GitHubStats';
 
 export default function GitHubDashboard() {
