@@ -3,10 +3,10 @@ import { IconType } from 'react-icons';
 export type TCourseItem = {
   id: number;
   icon: IconType;
-  courseName: string;
-  certificateLink: string;
-  instituteName: string;
-  completionYear: string;
+  name: string;
+  certificateUrl: string;
+  institute: string;
+  issuedOn: Date;
 };
 
 export type TCourseSection = {

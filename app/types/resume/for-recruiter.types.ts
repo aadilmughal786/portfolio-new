@@ -1,15 +1,15 @@
 import { ReactNode } from 'react';
 import { IconType } from 'react-icons';
 
-export type FAQItem = {
+export type TFAQItem = {
   id: number;
   icon: ReactNode;
-  label: string;
+  question: string;
   answer: string[];
 };
 
-export type ForRecruiterSection = {
+export type TForRecruiterSection = {
   title: string;
   icon: IconType;
-  faq: FAQItem[];
+  faqs: TFAQItem[];
 };

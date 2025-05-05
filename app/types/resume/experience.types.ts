@@ -2,7 +2,7 @@ import { IconType } from 'react-icons';
 
 type TDateOrPresent = Date | 'present';
 
-type TJobPosition = {
+export type TJobPosition = {
   title: string;
   startDate: Date;
   endDate: TDateOrPresent;
@@ -11,16 +11,18 @@ type TJobPosition = {
 
 export type TJobExperience = {
   id: number;
+  company: {
+    name: string;
+    logo: IconType;
+  };
   hasMultipleRoles: boolean;
-  companyLogo: IconType;
-  companyName: string;
   positions: TJobPosition[];
   responsibilities: string[];
-  technologiesUsed: string[];
+  technologies: string[];
 };
 
 export type TExperienceSection = {
-  sectionTitle: string;
-  sectionIcon: IconType;
-  experiences: TJobExperience[];
+  title: string;
+  icon: IconType;
+  items: TJobExperience[];
 };

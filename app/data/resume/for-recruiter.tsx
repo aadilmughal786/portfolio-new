@@ -1,15 +1,15 @@
-import { ForRecruiterSection } from '@/types/resume/for-recruiter.types';
+import { TForRecruiterSection } from '@/types/resume/for-recruiter.types';
 import { BsFillPatchQuestionFill } from 'react-icons/bs';
 import { FaUserTie } from 'react-icons/fa';
 
-export const forRecruiterData: ForRecruiterSection = {
+export const forRecruiterData: TForRecruiterSection = {
   title: 'For Recruiter',
   icon: FaUserTie, // Represents professional or recruiter
-  faq: [
+  faqs: [
     {
       id: 1,
       icon: <BsFillPatchQuestionFill size={20} />,
-      label: 'Why should you hire me?',
+      question: 'Why should you hire me?',
       answer: [
         'I don’t just write code—I solve problems with purpose and clarity.',
         'I adapt fast, learn faster, and deliver results that speak for themselves.',
@@ -20,7 +20,7 @@ export const forRecruiterData: ForRecruiterSection = {
     {
       id: 2,
       icon: <BsFillPatchQuestionFill size={20} />,
-      label: 'What makes me a good team player?',
+      question: 'What makes me a good team player?',
       answer: [
         'I believe great communication is just as important as great code.',
         'I value every perspective—diverse minds build better solutions.',
@@ -31,7 +31,7 @@ export const forRecruiterData: ForRecruiterSection = {
     {
       id: 3,
       icon: <BsFillPatchQuestionFill size={20} />,
-      label: 'How do I stay current in my field?',
+      question: 'How do I stay current in my field?',
       answer: [
         'I treat learning like a habit, not a chore.',
         'From bleeding-edge tech blogs to online deep dives—I’m always exploring.',
@@ -42,7 +42,7 @@ export const forRecruiterData: ForRecruiterSection = {
     {
       id: 4,
       icon: <BsFillPatchQuestionFill size={20} />,
-      label: 'How do I handle challenges at work?',
+      question: 'How do I handle challenges at work?',
       answer: [
         'I break down roadblocks, not just tasks.',
         'When things get tough, I stay calm and focused—not flustered.',
@@ -53,7 +53,7 @@ export const forRecruiterData: ForRecruiterSection = {
     {
       id: 5,
       icon: <BsFillPatchQuestionFill size={20} />,
-      label: 'What are my core strengths?',
+      question: 'What are my core strengths?',
       answer: [
         'Sharp problem-solving instincts and a love for clean, scalable code.',
         'A quick learner with a hunger for improving every day.',

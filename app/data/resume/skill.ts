@@ -24,15 +24,15 @@ import { RiReactjsLine } from 'react-icons/ri';
 import { TbBrandCpp, TbBrandNextjs } from 'react-icons/tb';
 import { FaChrome } from 'react-icons/fa6';
 import { BiLogoMongodb } from 'react-icons/bi';
-import { SkillsSection } from '@/types/resume/skill.types';
+import { TSkillsSection } from '@/types/resume/skill.types';
 
-const skillsData: SkillsSection = {
+const skillsData: TSkillsSection = {
   title: 'Skills',
   icon: FaBalanceScaleRight,
   items: [
     {
       id: 1,
-      label: 'Languages',
+      name: 'Languages',
       items: [
         { id: 1, icon: FaHtml5, title: 'HTML5' },
         { id: 2, icon: FaCss3Alt, title: 'CSS3' },
@@ -44,7 +44,7 @@ const skillsData: SkillsSection = {
     },
     {
       id: 2,
-      label: 'Frameworks & Libraries',
+      name: 'Frameworks & Libraries',
       items: [
         { id: 1, icon: FaBootstrap, title: 'Bootstrap' },
         { id: 2, icon: RiReactjsLine, title: 'ReactJS' },
@@ -56,7 +56,7 @@ const skillsData: SkillsSection = {
     },
     {
       id: 3,
-      label: 'Tools & Databases',
+      name: 'Tools & Databases',
       items: [
         { id: 1, icon: FaNodeJs, title: 'Node.js' },
         { id: 2, icon: FaFigma, title: 'Figma' },

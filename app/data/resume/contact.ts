@@ -1,11 +1,11 @@
-import { ContactSection } from '@/types/resume/contact.types';
+import { TContactSection } from '@/types/resume/contact.types';
 import { FaStaylinked, FaGithub, FaLinkedin, FaCodepen, FaYoutube } from 'react-icons/fa';
 import { IoIosPaperPlane } from 'react-icons/io';
 
-export const contactData: ContactSection = {
+export const contactData: TContactSection = {
   title: 'Contact',
   icon: FaStaylinked,
-  item: [
+  items: [
     {
       id: 1,
       icon: IoIosPaperPlane,

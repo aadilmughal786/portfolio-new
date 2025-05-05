@@ -1,26 +1,26 @@
 import { contactData } from './contact';
-import { courseSectionData } from './course';
+import { courseData } from './course';
 import { downloadResumeData } from './download-resume';
-import { educationSectionData } from './education';
-import { experienceSectionData } from './experience';
+import { educationData } from './education';
+import { experienceData } from './experience';
 import { forRecruiterData } from './for-recruiter';
 import { gameOfTheDayData } from './game-of-the-day';
 import { githubSectionData } from './github';
-import { hobbySectionData } from './hobbies';
-import { languageSectionData } from './languages';
+import { hobbyData } from './hobbies';
+import { languageData } from './languages';
 import skillsData from './skill';
-import { volunteeringSectionData } from './volunteering';
-import { youTubeSectionData } from './youtube';
+import { volunteeringData } from './volunteering';
+import { youTubeData } from './youtube';
 
 const resumeData = {
-  educationSectionData,
-  courseSectionData,
-  hobbySectionData,
-  languageSectionData,
-  volunteeringSectionData,
+  educationSectionData: educationData,
+  courseSectionData: courseData,
+  hobbySectionData: hobbyData,
+  languageSectionData: languageData,
+  volunteeringSectionData: volunteeringData,
   gameOfTheDayData,
-  youTubeSectionData,
-  experienceSectionData,
+  youTubeSectionData: youTubeData,
+  experienceSectionData: experienceData,
   contactData,
   skillsData,
   githubSectionData,

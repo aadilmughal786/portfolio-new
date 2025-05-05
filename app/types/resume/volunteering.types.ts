@@ -13,6 +13,6 @@ export type TVolunteeringItem = {
 export type TVolunteeringSection = {
   title: string;
   icon: IconType;
-  size?: number;
+  iconSize?: number;
   items: TVolunteeringItem[];
 };

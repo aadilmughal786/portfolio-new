@@ -1,30 +1,44 @@
 import { TEducationSection } from '@/types/resume/education.types';
 import { FaUserGraduate, FaSchool, FaChalkboardUser, FaGraduationCap } from 'react-icons/fa6';
 
-export const educationSectionData: TEducationSection = {
+export const educationData: TEducationSection = {
   title: 'Education',
   icon: FaUserGraduate,
-  size: 16,
+  iconSize: 16,
   items: [
     {
       id: 1,
       icon: FaGraduationCap,
-      educationLevel: 'Undergraduate Education',
-      institutionName: 'University Of Engineering & Management',
-      institutionLocation: 'Jaipur',
-      description: 'Currently, I am in 4th year. My average score is 8 GPA.',
+      level: 'Undergraduate Education',
+      institution: 'University Of Engineering & Management',
+      location: 'Jaipur',
+      description: 'I have completed my B.Tech in Computer Science. My average score was 8 GPA.',
       status: 'Completed',
       completionYear: 2023,
-      courses: [],
+      courses: [
+        'Data Structures and Algorithms',
+        'Computer Networks',
+        'Operating Systems',
+        'Database Management Systems',
+        'Discrete Mathematics',
+        'Theory of Computation',
+        'Object-Oriented Programming',
+        'Software Engineering',
+        'Artificial Intelligence',
+        'Computer Graphics',
+        'Compiler Design',
+        'Machine Learning',
+        'Digital Logic Design',
+      ],
     },
     {
       id: 2,
       icon: FaSchool,
-      educationLevel: 'Secondary Education',
-      institutionName: 'Tagore Children Academy',
-      institutionLocation: 'Surajgarh',
+      level: 'Secondary Education',
+      institution: 'Tagore Children Academy',
+      location: 'Surajgarh',
       description:
-        'I scored 94/100 marks in Mathematics and 96/100 marks in Physics. My over roll score was 83.80 percentage.',
+        'I scored 94/100 marks in Mathematics and 96/100 marks in Physics. My overall score was 83.80 percentage.',
       status: 'Completed',
       completionYear: 2017,
       courses: [],
@@ -32,11 +46,11 @@ export const educationSectionData: TEducationSection = {
     {
       id: 3,
       icon: FaChalkboardUser,
-      educationLevel: 'Primary Education',
-      institutionName: 'Vikas Public Sr. Sec. School',
-      institutionLocation: 'Surajgarh',
+      level: 'Primary Education',
+      institution: 'Vikas Public Sr. Sec. School',
+      location: 'Surajgarh',
       description:
-        'I scored 100/100 marks in Mathematics and 98/100 marks in Science. My over roll score was 82.83 percentage.',
+        'I scored 100/100 marks in Mathematics and 98/100 marks in Science. My overall score was 82.83 percentage.',
       status: 'Completed',
       completionYear: 2015,
       courses: [],

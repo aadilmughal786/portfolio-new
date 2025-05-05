@@ -1,24 +1,24 @@
 import { FaLanguage } from 'react-icons/fa';
 import { TLanguageSection } from '@/types/resume/languages.types';
 
-export const languageSectionData: TLanguageSection = {
+export const languageData: TLanguageSection = {
   title: 'Language',
   icon: FaLanguage,
-  size: 25,
+  iconSize: 25,
   items: [
     {
       id: 1,
-      language: 'English',
+      name: 'English',
       proficiency: 'Professional working proficiency',
     },
     {
       id: 2,
-      language: 'Hindi',
+      name: 'Hindi',
       proficiency: 'Native or bilingual proficiency',
     },
     {
       id: 3,
-      language: 'Rajasthani',
+      name: 'Rajasthani',
       proficiency: 'Native or bilingual proficiency',
     },
   ],

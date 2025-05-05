@@ -3,35 +3,35 @@ import { MdSportsCricket, MdToys } from 'react-icons/md';
 import { BiMoviePlay } from 'react-icons/bi';
 import { THobbySection } from '@/types/resume/hobbies.types';
 
-export const hobbySectionData: THobbySection = {
+export const hobbyData: THobbySection = {
   title: 'Hobbies and Interest',
   icon: FaCalendarCheck,
-  size: 16,
+  iconSize: 16,
   items: [
     {
       id: 1,
       icon: MdSportsCricket,
-      hobby: 'Cricket',
+      name: 'Cricket',
     },
     {
       id: 2,
       icon: FaLaptopCode,
-      hobby: 'Coding and Problem Solving',
+      name: 'Coding and Problem Solving',
     },
     {
       id: 3,
       icon: MdToys,
-      hobby: 'Building Toy Projects',
+      name: 'Building Toy Projects',
     },
     {
       id: 4,
       icon: BiMoviePlay,
-      hobby: 'Watching Movies',
+      name: 'Watching Movies',
     },
     {
       id: 5,
       icon: FaPuzzlePiece,
-      hobby: 'Puzzles solving',
+      name: 'Puzzles solving',
     },
   ],
 };

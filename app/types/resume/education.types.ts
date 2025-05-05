@@ -3,9 +3,9 @@ import { IconType } from 'react-icons';
 export type TEducationItem = {
   id: number;
   icon: IconType;
-  educationLevel: string;
-  institutionName: string;
-  institutionLocation?: string;
+  level: string;
+  institution: string;
+  location?: string;
   description: string;
   completionYear: number;
   status: 'Completed' | 'Ongoing';
@@ -15,6 +15,6 @@ export type TEducationItem = {
 export type TEducationSection = {
   title: string;
   icon: IconType;
-  size?: number;
+  iconSize?: number;
   items: TEducationItem[];
 };

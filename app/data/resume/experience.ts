@@ -2,15 +2,18 @@ import { BsPostcardHeartFill } from 'react-icons/bs';
 import { CgOrganisation } from 'react-icons/cg';
 import { TExperienceSection } from '@/types/resume/experience.types';
 
-export const experienceSectionData: TExperienceSection = {
-  sectionTitle: 'Experience',
-  sectionIcon: BsPostcardHeartFill,
-  experiences: [
+export const experienceData: TExperienceSection = {
+  title: 'Experience',
+  icon: BsPostcardHeartFill,
+  items: [
     {
       id: 1,
       hasMultipleRoles: true,
-      companyLogo: CgOrganisation,
-      companyName: 'Jalan Technology Consulting',
+      company: {
+        name: 'Jalan Technology Consulting',
+        logo: CgOrganisation,
+      },
+
       positions: [
         {
           title: 'FullStack Web Developer Intern',
@@ -32,7 +35,7 @@ export const experienceSectionData: TExperienceSection = {
         'Wrote clean code, drove technical design, and took responsibility for technical delivery.',
         'Technologies used include Gatsby, Strapi, React, JavaScript, HTML, Git, CSS, etc.',
       ],
-      technologiesUsed: [
+      technologies: [
         'TypeScript',
         'JavaScript',
         'BaseWeb',

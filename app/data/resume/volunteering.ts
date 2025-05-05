@@ -2,10 +2,10 @@ import { MdVolunteerActivism } from 'react-icons/md';
 import { CgOrganisation } from 'react-icons/cg';
 import { TVolunteeringSection } from '@/types/resume/volunteering.types';
 
-export const volunteeringSectionData: TVolunteeringSection = {
+export const volunteeringData: TVolunteeringSection = {
   title: 'Volunteering',
   icon: MdVolunteerActivism,
-  size: 19,
+  iconSize: 19,
   items: [
     {
       id: 1,

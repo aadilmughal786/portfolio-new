@@ -3,9 +3,11 @@ import { IconType } from 'react-icons';
 export type TGameOfTheDay = {
   title: string;
   icon: IconType;
-  size?: number;
+  iconSize?: number;
 
-  gameName: string;
-  gameIcon: IconType;
-  gameLink: string;
+  game: {
+    name: string;
+    icon: IconType;
+    link: string;
+  };
 };

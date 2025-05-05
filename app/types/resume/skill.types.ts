@@ -1,19 +1,19 @@
 import { IconType } from 'react-icons';
 
-export type SkillItem = {
+export type TSkillItem = {
   id: number;
   icon: IconType;
   title: string;
 };
 
-export type SkillCategory = {
+export type TSkillCategory = {
   id: number;
-  label: string;
-  items: SkillItem[];
+  name: string;
+  items: TSkillItem[];
 };
 
-export type SkillsSection = {
+export type TSkillsSection = {
   title: string;
   icon: IconType;
-  items: SkillCategory[];
+  items: TSkillCategory[];
 };

@@ -1,14 +1,14 @@
 import { IconType } from 'react-icons';
 
-export type ContactItem = {
+export type TContactItem = {
   id: number;
   icon: IconType;
   label: string;
   href: string;
 };
 
-export type ContactSection = {
+export type TContactSection = {
   title: string;
   icon: IconType;
-  item: ContactItem[];
+  items: TContactItem[];
 };
