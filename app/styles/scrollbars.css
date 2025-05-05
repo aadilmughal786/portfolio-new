@@ -1,0 +1,30 @@
+/* Modern browsers - Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-tertiary) var(--bg-primary);
+}
+
+/* WebKit browsers (Chrome, Safari, Opera) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--text-tertiary);
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-tertiary);
+  opacity: 0.8;
+}
+
+/* For horizontal scrollbars */
+::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
