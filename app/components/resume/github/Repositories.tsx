@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchUserRepositories, GitHubRepo } from '@/services/github.services';
-import LanguageColors, { LanguageName } from '@/utils/languageColors';
+import { fetchGitHubRepositories, GitHubRepos } from '@/services/github.services';
+import { LanguageName, languageColors } from '@/utils/language-colors';
 import { getTimeAgo } from '@/utils/resume-date';
 import { TbExternalLink } from 'react-icons/tb';
 import { PiGitForkBold } from 'react-icons/pi';
@@ -10,12 +10,12 @@ import { IoStar } from 'react-icons/io5';
 import { MdNearbyError } from 'react-icons/md';
 
 export default function RecentRepositories() {
-  const [repositories, setRepositories] = useState<GitHubRepo>([]);
+  const [repositories, setRepositories] = useState<GitHubRepos>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadRepositories = async () => {
-      const repos = await fetchUserRepositories();
+      const repos = await fetchGitHubRepositories();
       setRepositories(repos);
       setLoading(false);
     };
@@ -73,7 +73,7 @@ export default function RecentRepositories() {
                     <div
                       className="mr-1 w-3 h-3 rounded-full"
                       style={{
-                        backgroundColor: LanguageColors[repo.language as LanguageName] || '#ccc',
+                        backgroundColor: languageColors[repo.language as LanguageName] || '#ccc',
                       }}
                     ></div>
                     {repo.language}

@@ -13,12 +13,7 @@ const Footer = () => {
       <div className="flex items-center py-3 w-full border-r border-border-primary sm:justify-center sm:gap-4">
         <div className="flex gap-2">
           {footerData.copyrightYear}
-          <a
-            className="link"
-            href={footerData.developer.links.github}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a className="link" href={footerData.developer.website} target="_blank" rel="noreferrer">
             {footerData.developer.name}
           </a>
         </div>

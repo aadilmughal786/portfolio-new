@@ -18,12 +18,12 @@ export const experienceData: TExperienceSection = {
         {
           title: 'FullStack Web Developer Intern',
           startDate: new Date(2022, 10 - 1), // October 2022
-          endDate: new Date(2023, 4 - 1), // April 2023
+          endDate: new Date(2023, 4 - 1),
           location: 'Remote',
         },
         {
           title: 'FullStack Web Developer',
-          startDate: new Date(2023, 5 - 1), // May 2023
+          startDate: new Date(2023, 5 - 1),
           endDate: new Date(2023, 10 - 1),
           location: 'Remote',
         },

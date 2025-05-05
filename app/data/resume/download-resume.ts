@@ -6,7 +6,7 @@ export const downloadResumeData: TDownloadResumeSection = {
   title: 'Download Resume',
   icon: FaGoogleDrive,
 
-  formats: [
+  items: [
     {
       id: 1,
       type: 'PDF',

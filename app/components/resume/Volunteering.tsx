@@ -1,12 +1,15 @@
+import { volunteeringData as data } from '@/data/resume/volunteering';
 import { TVolunteeringItem } from '@/types/resume/volunteering.types';
 import React from 'react';
 import { TbExternalLink } from 'react-icons/tb';
+import Card from './Card';
+import CardItem from './CardItem';
 
 type VolunteeringItemProps = {
   data: TVolunteeringItem;
 };
 
-const Volunteering = ({ data }: VolunteeringItemProps) => {
+const VolunteeringItem = ({ data }: VolunteeringItemProps) => {
   const { icon: Icon } = data;
   return (
     <div>
@@ -32,6 +35,18 @@ const Volunteering = ({ data }: VolunteeringItemProps) => {
         ))}
       </div>
     </div>
+  );
+};
+
+const Volunteering = () => {
+  return (
+    <Card icon={data.icon} title={data.title} size={data.iconSize}>
+      {data.items.map(item => (
+        <CardItem key={item.id}>
+          <VolunteeringItem data={item} />
+        </CardItem>
+      ))}
+    </Card>
   );
 };
 

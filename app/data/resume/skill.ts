@@ -7,6 +7,7 @@ import {
   FaHtml5,
   FaLinux,
   FaNodeJs,
+  FaDocker,
 } from 'react-icons/fa';
 import { IoLogoJavascript } from 'react-icons/io';
 import {
@@ -19,14 +20,20 @@ import {
   SiSqlite,
   SiTailwindcss,
   SiTypescript,
+  SiRedis,
+  SiPostgresql,
+  SiVuedotjs,
+  SiSass,
+  SiAdobe,
+  SiGooglecloud,
 } from 'react-icons/si';
 import { RiReactjsLine } from 'react-icons/ri';
 import { TbBrandCpp, TbBrandNextjs } from 'react-icons/tb';
-import { FaChrome } from 'react-icons/fa6';
+import { FaAws, FaChrome, FaJava, FaRust, FaSketch } from 'react-icons/fa6';
 import { BiLogoMongodb } from 'react-icons/bi';
 import { TSkillsSection } from '@/types/resume/skill.types';
 
-const skillsData: TSkillsSection = {
+export const skillsData: TSkillsSection = {
   title: 'Skills',
   icon: FaBalanceScaleRight,
   items: [
@@ -40,6 +47,8 @@ const skillsData: TSkillsSection = {
         { id: 4, icon: SiTypescript, title: 'TypeScript' },
         { id: 5, icon: SiPython, title: 'Python' },
         { id: 6, icon: TbBrandCpp, title: 'C++' },
+        { id: 7, icon: FaJava, title: 'Java' },
+        { id: 8, icon: FaRust, title: 'Rust' },
       ],
     },
     {
@@ -52,6 +61,8 @@ const skillsData: TSkillsSection = {
         { id: 4, icon: SiTailwindcss, title: 'TailwindCSS' },
         { id: 5, icon: SiNumpy, title: 'NumPy' },
         { id: 6, icon: TbBrandNextjs, title: 'NextJS' },
+        { id: 7, icon: SiVuedotjs, title: 'Vue.js' },
+        { id: 8, icon: SiSass, title: 'Sass' },
       ],
     },
     {
@@ -68,9 +79,29 @@ const skillsData: TSkillsSection = {
         { id: 8, icon: SiMariadbfoundation, title: 'MariaDB' },
         { id: 9, icon: SiJira, title: 'Jira' },
         { id: 10, icon: FaChrome, title: 'Chrome DevTools' },
+        { id: 11, icon: SiRedis, title: 'Redis' }, // New addition
+        { id: 12, icon: SiPostgresql, title: 'PostgreSQL' }, // New addition
+        { id: 13, icon: FaAws, title: 'AWS' }, // New addition
+        { id: 14, icon: FaDocker, title: 'Docker' }, // New addition
+      ],
+    },
+    {
+      id: 4,
+      name: 'Cloud & DevOps',
+      items: [
+        { id: 1, icon: FaDocker, title: 'Docker' },
+        { id: 2, icon: FaAws, title: 'AWS' },
+        { id: 4, icon: SiGooglecloud, title: 'Google Cloud' },
+      ],
+    },
+    {
+      id: 5,
+      name: 'UI/UX Design',
+      items: [
+        { id: 1, icon: FaFigma, title: 'Figma' },
+        { id: 2, icon: FaSketch, title: 'Sketch' },
+        { id: 3, icon: SiAdobe, title: 'Adobe XD' },
       ],
     },
   ],
 };
-
-export default skillsData;

@@ -1,6 +1,14 @@
 import { TJobExperience } from '@/types/resume/experience.types';
-import { formateDate, getCurrentDateObject, getDiff } from '@/utils/resume-date';
+import {
+  formatDate,
+  formatDurationFromDays,
+  getCurrentDate,
+  getDateDifferenceInDays,
+} from '@/utils/resume-date';
 import React from 'react';
+import Card from './Card';
+import CardItem from './CardItem';
+import { experienceData as data } from '@/data/resume/experience';
 
 export type JobExperienceProps = {
   data: TJobExperience;
@@ -8,26 +16,26 @@ export type JobExperienceProps = {
 
 // For single role/position
 const Single = ({ data }: JobExperienceProps) => {
-  const { companyLogo: Logo } = data;
+  const { logo: Logo } = data.company;
   return (
     <div className="flex gap-4 items-center mb-2">
       <Logo size={35} />
       <div className="flex-1">
         <div className="font-medium">{data.positions[0].title}</div>
         <div className="flex flex-wrap gap-x-8 justify-between font-medium">
-          <div className="text-text-tertiary">{data.companyName}</div>
+          <div className="text-text-tertiary">{data.company.name}</div>
 
           <div className="font-mono">
             {data.positions[0].endDate === 'present'
-              ? getDiff(data.positions[0].startDate, getCurrentDateObject())
-              : getDiff(data.positions[0].startDate, data.positions[0].endDate)}
+              ? getDateDifferenceInDays(data.positions[0].startDate, getCurrentDate())
+              : getDateDifferenceInDays(data.positions[0].startDate, data.positions[0].endDate)}
           </div>
         </div>
         <div>{data.positions[0].location}</div>
-        <div>{`${formateDate(data.positions[0].startDate)} - ${
+        <div>{`${formatDate(data.positions[0].startDate)} - ${
           data.positions[0].endDate === 'present'
             ? 'present'
-            : formateDate(data.positions[0].endDate)
+            : formatDate(data.positions[0].endDate)
         }`}</div>
       </div>
     </div>
@@ -36,7 +44,7 @@ const Single = ({ data }: JobExperienceProps) => {
 
 // for multiple role/position
 const Multiple = ({ data }: JobExperienceProps) => {
-  const { companyLogo: Logo } = data;
+  const { logo: Logo } = data.company;
 
   return (
     <>
@@ -44,22 +52,26 @@ const Multiple = ({ data }: JobExperienceProps) => {
         <Logo size={35} />
 
         <div className="flex-1">
-          <div className="font-medium text-text-tertiary">{data.companyName}</div>
+          <div className="font-medium text-text-tertiary">{data.company.name}</div>
           <div className="flex flex-wrap gap-x-8 justify-between">
             <div>
-              {`${formateDate(data.positions[0].startDate)} - ${
+              {`${formatDate(data.positions[0].startDate)} - ${
                 data.positions[data.positions.length - 1].endDate === 'present'
                   ? 'present'
-                  : formateDate(data.positions[data.positions.length - 1].endDate as Date)
+                  : formatDate(data.positions[data.positions.length - 1].endDate as Date)
               }`}
             </div>
 
             <div className="font-mono">
               {data.positions[data.positions.length - 1].endDate === 'present'
-                ? getDiff(data.positions[0].startDate, getCurrentDateObject())
-                : getDiff(
-                    data.positions[0].startDate,
-                    data.positions[data.positions.length - 1].endDate as Date
+                ? formatDurationFromDays(
+                    getDateDifferenceInDays(data.positions[0].startDate, getCurrentDate())
+                  )
+                : formatDurationFromDays(
+                    getDateDifferenceInDays(
+                      data.positions[0].startDate,
+                      data.positions[data.positions.length - 1].endDate as Date
+                    )
                   )}
             </div>
           </div>
@@ -73,15 +85,19 @@ const Multiple = ({ data }: JobExperienceProps) => {
             <div className="ml-[2px] border-l pl-6 border-border-primary">
               <div className="flex flex-wrap gap-x-8 justify-between">
                 <div>
-                  {`${formateDate(position.startDate)} - ${
-                    position.endDate === 'present' ? 'present' : formateDate(position.endDate)
+                  {`${formatDate(position.startDate)} - ${
+                    position.endDate === 'present' ? 'present' : formatDate(position.endDate)
                   }`}
                 </div>
 
                 <div className="font-mono">
                   {position.endDate === 'present'
-                    ? getDiff(position.startDate, getCurrentDateObject())
-                    : getDiff(position.startDate, position.endDate)}
+                    ? formatDurationFromDays(
+                        getDateDifferenceInDays(position.startDate, getCurrentDate())
+                      )
+                    : formatDurationFromDays(
+                        getDateDifferenceInDays(position.startDate, position.endDate)
+                      )}
                 </div>
               </div>
               <div>{position.location}</div>
@@ -93,7 +109,7 @@ const Multiple = ({ data }: JobExperienceProps) => {
   );
 };
 
-const Experience = ({ data }: JobExperienceProps) => {
+const ExperienceItem = ({ data }: JobExperienceProps) => {
   return (
     <div>
       {data.hasMultipleRoles ? <Multiple data={data} /> : <Single data={data} />}
@@ -105,13 +121,25 @@ const Experience = ({ data }: JobExperienceProps) => {
         ))}
       </div>
       <div className="flex flex-row flex-wrap gap-2 pt-3">
-        {data.technologiesUsed.map((item, index) => (
+        {data.technologies.map((item, index) => (
           <span key={index} className="chip">
             {item}
           </span>
         ))}
       </div>
     </div>
+  );
+};
+
+const Experience = () => {
+  return (
+    <Card icon={data.icon} title={data.title}>
+      {data.items.map(item => (
+        <CardItem key={item.id}>
+          <ExperienceItem data={item} />
+        </CardItem>
+      ))}
+    </Card>
   );
 };
 

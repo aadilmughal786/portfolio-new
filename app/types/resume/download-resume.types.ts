@@ -1,6 +1,6 @@
 import { IconType } from 'react-icons';
 
-export type TResumeFormat = {
+export type TResumeItem = {
   id: number;
   type: 'PDF' | 'DOC' | 'LaTeX' | 'TEXT';
   link: string;
@@ -10,5 +10,5 @@ export type TResumeFormat = {
 export type TDownloadResumeSection = {
   title: string;
   icon: IconType;
-  formats: TResumeFormat[]; // renamed for clarity
+  items: TResumeItem[];
 };

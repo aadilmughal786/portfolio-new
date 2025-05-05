@@ -1,11 +1,11 @@
-import { TNavBarData } from '@/types/nav-bar/nav-bar.types';
+import { TNavBar } from '@/types/nav-bar/nav-bar.types';
 import { FaHouseChimney, FaGithub, FaCodepen, FaLinkedin } from 'react-icons/fa6';
 import { HiMiniBeaker } from 'react-icons/hi2';
 import { IoIosRocket } from 'react-icons/io';
 import { IoDocument } from 'react-icons/io5';
 import { MdPeopleAlt } from 'react-icons/md';
 
-export const navBarData: TNavBarData = {
+export const navBarData: TNavBar = {
   navigationItems: [
     {
       id: 1,
@@ -15,15 +15,15 @@ export const navBarData: TNavBarData = {
     },
     {
       id: 2,
-      label: 'Contact',
-      icon: MdPeopleAlt,
-      to: '/contact',
-    },
-    {
-      id: 3,
       label: 'Resume',
       icon: IoDocument,
       to: '/resume',
+    },
+    {
+      id: 3,
+      label: 'Contact',
+      icon: MdPeopleAlt,
+      to: '/contact',
     },
     {
       id: 4,

@@ -1,10 +1,6 @@
 export type TDeveloperInfo = {
   name: string;
-  links: {
-    github: string;
-    linkedin?: string;
-    website?: string;
-  };
+  website: string;
 };
 
 export type TTechnologyInfo = {

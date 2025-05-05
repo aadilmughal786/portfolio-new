@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { fetchUserData, GitHubUser } from '../../../services/github.services';
+import { fetchGitHubUserData, GitHubUser } from '../../../services/github.services';
 import { MdNearbyError } from 'react-icons/md';
 
 const GitHubStats = () => {
@@ -10,7 +10,7 @@ const GitHubStats = () => {
 
   useEffect(() => {
     const loadUserData = async () => {
-      const data = await fetchUserData();
+      const data = await fetchGitHubUserData();
       setUserData(data);
       setLoading(false);
     };

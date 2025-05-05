@@ -21,7 +21,7 @@ export const courseData: TCourseSection = {
       name: 'Problem Solving Through Programming In C',
       certificateUrl: 'https://drive.google.com/file/d/1rXepTEeaRCc39VIj0wbzaAiKCdPQ6cSO',
       institute: 'IIT Kharagpur (NPTEL - 94% Topper)',
-      issuedOn: new Date('January 1, 2022'), // Adjusted to a valid date
+      issuedOn: new Date('January 1, 2022'),
     },
     {
       id: 3,

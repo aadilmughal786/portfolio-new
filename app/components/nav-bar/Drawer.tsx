@@ -1,11 +1,11 @@
 import React from 'react';
 import Link from 'next/link';
-import { TNavBarData } from '@/types/nav-bar/nav-bar.types';
+import { TNavBar } from '@/types/nav-bar/nav-bar.types';
 import { footerData } from '@/data/footer/index';
 import { IoHeart } from 'react-icons/io5';
 
 type DrawerProps = {
-  data: TNavBarData;
+  data: TNavBar;
   showDrawer: boolean;
 };
 
@@ -28,7 +28,6 @@ const Drawer = ({ data, showDrawer }: DrawerProps) => {
         ))}
       </div>
 
-      {/* made with gatsby */}
       <div className="flex gap-1 items-center px-4 pt-3 border-t sm:hidden border-border-primary">
         {' Made with '}
         <IoHeart className="text-rose-400 flip" size={18} />

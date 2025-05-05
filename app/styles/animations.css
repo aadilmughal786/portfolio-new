@@ -1,6 +1,6 @@
 .flip {
   display: inline-block;
-  transform-style: preserve-3d; /* Essential for 3D transformations */
+  transform-style: preserve-3d;
   animation: flip 1s infinite alternate ease-in-out;
   perspective: 1000px; /* Adds depth for 3D effect */
 }

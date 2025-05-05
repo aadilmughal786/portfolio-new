@@ -1,19 +1,19 @@
 import { TAchievement } from '@/types/resume/achievement.types';
-import { FaSquareWebAwesomeStroke } from 'react-icons/fa6';
+import { FaTrophy } from 'react-icons/fa';
 
 export const achievementData: TAchievement = {
   title: 'Achievements',
-  icon: FaSquareWebAwesomeStroke,
+  icon: FaTrophy,
   items: [
     {
       id: 1,
-      icon: FaSquareWebAwesomeStroke,
-      title: 'Gate',
-      link: '',
-      institute: 'Gate',
-      issuedOn: new Date('June 1, 2021'),
+      icon: FaTrophy,
+      title: 'GATE 2025 - Computer Science',
+      link: 'https://drive.google.com/file/d/1QL4DvcRzD9sr9P-41U10cITrc0dO644Y/view',
+      institute: 'IISc / IITs',
+      issuedOn: new Date('March 16, 2025'),
       description:
-        'This course teaches the basics of HTML, CSS, and JavaScript, which are essential for web development. It covers how to create web pages and add interactivity using JavaScript.',
+        'Secured All India Rank (AIR) 1566 in the GATE 2025 exam (Computer Science & Information Technology), conducted jointly by IISc and IITs.',
     },
   ],
 };

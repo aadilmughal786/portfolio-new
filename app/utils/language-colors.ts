@@ -1,5 +1,3 @@
-// types/languageColors.ts
-
 export type LanguageName =
   | 'JavaScript'
   | 'TypeScript'
@@ -21,7 +19,7 @@ export type LanguageName =
   | 'Haskell';
 // Add more languages here as needed
 
-const LanguageColors: Record<LanguageName, string> = {
+export const languageColors: Record<LanguageName, string> = {
   JavaScript: '#f1e05a',
   TypeScript: '#3178c6',
   Python: '#3572A5',
@@ -41,5 +39,3 @@ const LanguageColors: Record<LanguageName, string> = {
   Scala: '#c22d40',
   Haskell: '#5e5086',
 };
-
-export default LanguageColors;
