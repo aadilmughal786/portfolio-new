@@ -48,18 +48,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
           eslint_flags: '--ext .js,.jsx,.ts,.tsx .'
-
-      # Optional: Add a summary comment to Pull Requests
-      - name: Comment on PR
-        if: github.event_name == 'pull_request'
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const { owner, repo, number } = context.issue;
-            github.rest.issues.createComment({
-              owner,
-              repo,
-              issue_number: number,
-              body: '✅ Code quality checks completed successfully!'
-            });
