@@ -1,0 +1,34 @@
+---
+title: Creating API Routes in Next.js
+excerpt: Learn how to build API endpoints in Next.js for dynamic data.
+publishedAt: 2025-04-15
+tags: [nextjs, api, backend]
+coverImageUrl: /portfolio-new/images/cover8.jpg
+---
+
+# Creating API Routes in Next.js
+
+Next.js supports API routes for building backend functionality.
+
+## Setup
+
+Create a file in `pages/api/` or `app/api/`:
+
+```tsx
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  res.status(200).json({ message: 'Hello, API!' });
+}
+```
+
+## Use Cases
+
+- Fetch data for static sites.
+- Handle form submissions.
+
+## Limitations
+
+API routes are not available in static exports, so use external services for GitHub Pages.
+
+<Link href="/blogs">Back to Blogs</Link>

@@ -1,0 +1,34 @@
+---
+title: Deploying Static Sites to GitHub Pages
+excerpt: A step-by-step guide to deploying a Next.js static site to GitHub Pages.
+publishedAt: 2025-02-01
+tags: [nextjs, github, deployment]
+coverImageUrl: /portfolio-new/images/cover3.jpg
+---
+
+# Deploying Static Sites to GitHub Pages
+
+GitHub Pages is a free hosting solution for static sites. Here's how to deploy a Next.js site.
+
+## Steps
+
+1. Configure `next.config.js` with `output: 'export'`.
+2. Set `basePath` and `assetPrefix` for subdirectories.
+3. Run `npm run build` to generate the `out/` directory.
+4. Deploy `out/` to the `gh-pages` branch using `gh-pages`.
+
+## Example Config
+
+```js
+const nextConfig = {
+  output: 'export',
+  basePath: '/portfolio-new',
+  assetPrefix: '/portfolio-new',
+};
+```
+
+## Troubleshooting
+
+Ensure all asset paths include the `basePath`.
+
+<Link href="/blogs">Back to Blogs</Link>

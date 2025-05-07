@@ -1,0 +1,38 @@
+---
+title: Building Reusable React Components
+excerpt: Tips for creating modular and reusable React components in Next.js.
+publishedAt: 2025-02-15
+tags: [react, nextjs, components]
+coverImageUrl: /portfolio-new/images/cover4.jpg
+---
+
+# Building Reusable React Components
+
+Reusable components improve maintainability and scalability in React apps.
+
+## Best Practices
+
+- **Single Responsibility**: Each component should have one job.
+- **Props for Flexibility**: Use props to customize behavior.
+- **TypeScript**: Add types for better developer experience.
+
+## Example: Button Component
+
+```tsx
+interface ButtonProps {
+  label: string;
+  onClick: () => void;
+}
+
+export function Button({ label, onClick }: ButtonProps) {
+  return <button onClick={onClick}>{label}</button>;
+}
+```
+
+## Usage
+
+```tsx
+<Button label="Click Me" onClick={() => alert('Clicked!')} />
+```
+
+<Link href="/blogs">Back to Blogs</Link>
