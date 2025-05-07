@@ -14,18 +14,18 @@ export const MDXComponents = {
     <h3 className="mt-4 mb-2 text-xl font-semibold">{children}</h3>
   ),
   p: ({ children }: { children: React.ReactNode }) => (
-    <p className="my-4 leading-relaxed text-gray-700">{children}</p>
+    <p className="my-4 leading-relaxed">{children}</p>
   ),
   a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
-    <Link href={href || '#'} className="text-blue-600 underline hover:text-blue-800">
+    <Link href={href || '#'} className="underline text-text-tertiary">
       {children}
     </Link>
   ),
   ul: ({ children }: { children: React.ReactNode }) => (
-    <ul className="my-4 ml-6 list-disc text-gray-700">{children}</ul>
+    <ul className="my-4 ml-6 list-disc">{children}</ul>
   ),
   ol: ({ children }: { children: React.ReactNode }) => (
-    <ol className="my-4 ml-6 list-decimal text-gray-700">{children}</ol>
+    <ol className="my-4 ml-6 list-decimal">{children}</ol>
   ),
   li: ({ children }: { children: React.ReactNode }) => <li className="mt-2">{children}</li>,
   blockquote: ({ children }: { children: React.ReactNode }) => (
@@ -37,7 +37,7 @@ export const MDXComponents = {
     // For inline code
     if (!className) {
       return (
-        <code className="bg-gray-100 text-red-500 rounded px-1 py-0.5 font-mono text-sm">
+        <code className="bg-text-tertiary/30 text-text-tertiary rounded px-1 py-0.5 font-mono text-sm">
           {children}
         </code>
       );
@@ -45,7 +45,7 @@ export const MDXComponents = {
     // For code blocks
     return (
       <code
-        className={`block overflow-x-auto p-4 my-4 font-mono text-sm text-gray-100 bg-gray-800 rounded ${className}`}
+        className={`!bg-slate-800 dark:!bg-slate-900 rounded border-1 border-text-tertiary ${className}`}
       >
         {children}
       </code>

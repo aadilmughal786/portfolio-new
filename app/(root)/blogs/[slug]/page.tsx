@@ -8,6 +8,8 @@ import { getAllPostSlugs, getPostBySlug } from '@/lib/mdx';
 import { MDXComponents } from '@/components/blogs/MdxComponents';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import 'highlight.js/styles/atom-one-dark.css';
+import ScrollProgressBar from '@/components/blogs/ScrollProgressBar';
 
 // Define a proper type that matches only what we need
 interface PageParams {
@@ -42,32 +44,25 @@ export default async function BlogPostPage({ params }: PageParams) {
       <div className="px-4 py-10 mx-auto max-w-3xl">
         <article>
           <header className="mb-8">
-            <h1 className="text-4xl font-bold text-gray-900">{post.title}</h1>
-            <time className="block mt-2 text-gray-500">{post.publishedAt}</time>
+            <h1 className="text-4xl font-bold">{post.title}</h1>
+            <time className="block mt-2 text-text-tertiary">{post.publishedAt}</time>
             {post.tags && post.tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-4">
                 {post.tags.map(tag => (
-                  <span
-                    key={tag}
-                    className="px-2 py-1 text-sm text-blue-700 bg-blue-100 rounded-full"
-                  >
+                  <span key={tag} className="chip">
                     {tag}
                   </span>
                 ))}
               </div>
             )}
-            {post.coverImageUrl && (
-              <div className="mt-6">
-                <Image
-                  src={post.coverImageUrl}
-                  alt={post.title}
-                  className="w-full h-auto rounded-lg"
-                  width={800}
-                  height={400}
-                  priority
-                />
-              </div>
-            )}
+            <Image
+              src={post.coverImageUrl}
+              alt={post.title}
+              className="mt-4 w-full h-auto rounded-lg"
+              width={800}
+              height={400}
+              priority
+            />
           </header>
 
           <div className="max-w-none prose prose-lg">
@@ -83,6 +78,7 @@ export default async function BlogPostPage({ params }: PageParams) {
             />
           </div>
         </article>
+        <ScrollProgressBar />
       </div>
     );
   } catch (error) {

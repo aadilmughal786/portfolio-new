@@ -3,9 +3,9 @@ export type BlogPost = {
   slug: string; // for routing: e.g., /blog/[slug]
   excerpt: string; // short description or preview
   tags: string[];
-  coverImageUrl?: string;
+  coverImageUrl: string;
   publishedAt: string; // ISO string format
-  author?: string;
+  author: string;
   content: string;
 };
 
@@ -13,6 +13,6 @@ export type BlogPostFrontmatter = {
   title: string;
   publishedAt: string;
   excerpt: string;
-  tags?: string[];
-  coverImageUrl?: string;
+  tags: string[];
+  coverImageUrl: string;
 };

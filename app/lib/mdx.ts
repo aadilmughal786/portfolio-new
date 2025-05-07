@@ -21,6 +21,7 @@ export function getPostBySlug(slug: string): BlogPost {
   return {
     slug,
     content,
+    author: 'Aadil Mugal',
     title: frontmatter.title,
     publishedAt: frontmatter.publishedAt,
     excerpt: frontmatter.excerpt,
