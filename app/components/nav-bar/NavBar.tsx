@@ -13,7 +13,7 @@ const NavBar = () => {
   const pathname = usePathname();
 
   return (
-    <div className="sticky top-0 z-10 py-3 w-full border-b backdrop-blur border-border-primary">
+    <div className="sticky top-0 z-10 py-3 w-full border-b glass border-border-primary">
       <div
         className={` flex items-center justify-between px-4 sm:px-8 lg:px-16 ${
           showDrawer && ' border-b pb-3 md:border-b-0 md:pb-0 border-border-primary '

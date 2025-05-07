@@ -17,8 +17,8 @@ export const experienceData: TExperienceSection = {
       positions: [
         {
           title: 'FullStack Web Developer Intern',
-          startDate: new Date(2022, 10 - 1), // October 2022
-          endDate: new Date(2023, 4 - 1),
+          startDate: new Date('2022-10-01'),
+          endDate: new Date('2023-04-01'),
           location: 'Remote',
         },
         {

@@ -1,8 +1,9 @@
-import Service from '@/components/home/Service';
+import ProjectSearch from '@/components/projects/ProjectSearch';
+import { projectsData } from '@/data/projects';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Home - Aadil',
+  title: 'Resume - Projects',
   description: 'Portfolio Website',
 };
 
@@ -20,7 +21,7 @@ export default function Home() {
           contribute — I'd love to hear your ideas and collaborate on making them even better.`}
         </p>
       </div>
-      <Service />
+      <ProjectSearch projects={projectsData} />
     </div>
   );
 }

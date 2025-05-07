@@ -15,15 +15,15 @@ export const navBarData: TNavBar = {
     },
     {
       id: 2,
-      label: 'Resume',
-      icon: IoDocument,
-      to: '/resume',
-    },
-    {
-      id: 3,
       label: 'Contact',
       icon: MdPeopleAlt,
       to: '/contact',
+    },
+    {
+      id: 3,
+      label: 'Resume',
+      icon: IoDocument,
+      to: '/resume',
     },
     {
       id: 4,
