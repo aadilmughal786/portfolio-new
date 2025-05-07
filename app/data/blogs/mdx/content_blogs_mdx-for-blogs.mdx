@@ -1,0 +1,31 @@
+---
+title: Using MDX for Dynamic Blog Content
+excerpt: Discover how MDX combines Markdown and JSX to create rich blog posts.
+publishedAt: 2025-01-15
+tags: [mdx, nextjs, blogging]
+coverImageUrl: /portfolio-new/images/cover2.jpg
+---
+
+# Using MDX for Dynamic Blog Content
+
+MDX allows you to write Markdown with embedded React components, making it ideal for blogs.
+
+## Benefits of MDX
+
+- **Rich Formatting**: Use Markdown for text and JSX for interactivity.
+- **Custom Components**: Style links, headings, and code blocks.
+- **Static-Friendly**: Pre-render content for fast static sites.
+
+## Example: Custom Link
+
+```mdx
+<Link href="/about">About Me</Link>
+```
+
+This renders as a styled Next.js `<Link>` component.
+
+## Tips
+
+Use `rehype-highlight` for code syntax highlighting and `remark-gfm` for GitHub-flavored Markdown.
+
+<Link href="/blogs">Back to Blogs</Link>

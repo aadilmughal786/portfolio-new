@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { fetchGitHubRepositories, GitHubRepos } from '@/services/github.services';
-import { LanguageName, languageColors } from '@/utils/language-colors';
+import { LanguageName, languageColors } from '@/utils/colors';
 import { getTimeAgo } from '@/utils/resume-date';
 import { TbExternalLink } from 'react-icons/tb';
 import { PiGitForkBold } from 'react-icons/pi';

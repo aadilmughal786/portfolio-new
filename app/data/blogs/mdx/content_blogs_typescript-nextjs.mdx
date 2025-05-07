@@ -1,0 +1,42 @@
+---
+title: Using TypeScript in Next.js
+excerpt: Enhance your Next.js projects with TypeScript for type safety.
+publishedAt: 2025-03-15
+tags: [typescript, nextjs, react]
+coverImageUrl: /portfolio-new/images/cover6.jpg
+---
+
+# Using TypeScript in Next.js
+
+TypeScript adds static types to JavaScript, improving code reliability.
+
+## Setup
+
+1. Create a `tsconfig.json` with `npx create-next-app`.
+2. Use `.tsx` files for React components.
+3. Define interfaces for props and state.
+
+## Example: Typed Component
+
+```tsx
+interface PostProps {
+  title: string;
+  content: string;
+}
+
+export function Post({ title, content }: PostProps) {
+  return (
+    <div>
+      <h1>{title}</h1>
+      <p>{content}</p>
+    </div>
+  );
+}
+```
+
+## Benefits
+
+- Catch errors during development.
+- Improve IDE autocompletion.
+
+<Link href="/blogs">Back to Blogs</Link>

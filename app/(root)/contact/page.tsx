@@ -1,8 +1,7 @@
-import Service from '@/components/home/Service';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Home - Aadil',
+  title: 'Contact - Aadil',
   description: 'Portfolio Website',
 };
 
@@ -20,7 +19,6 @@ export default function Home() {
           contribute — I'd love to hear your ideas and collaborate on making them even better.`}
         </p>
       </div>
-      <Service />
     </div>
   );
 }

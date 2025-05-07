@@ -14,13 +14,21 @@
   },
   "dependencies": {
     "@octokit/rest": "^21.1.1",
+    "@tailwindcss/typography": "^0.5.16",
     "axios": "^1.9.0",
     "canvas-confetti": "^1.9.3",
+    "fuse.js": "^7.1.0",
+    "gray-matter": "^4.0.3",
     "next": "15.3.1",
+    "next-mdx-remote": "^5.0.0",
     "nextjs-toploader": "^3.8.16",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
+    "recharts": "^2.15.3",
+    "rehype-highlight": "^7.0.2",
+    "rehype-slug": "^6.0.0",
+    "remark-gfm": "^4.0.1",
     "rimraf": "^6.0.1"
   },
   "devDependencies": {

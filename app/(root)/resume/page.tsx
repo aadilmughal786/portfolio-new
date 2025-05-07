@@ -21,28 +21,31 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <div className="grid gap-x-8 gap-y-8 px-4 py-16 sm:px-8 lg:grid-cols-3 lg:px-16">
-      {/* column-1 */}
-      <div className="flex flex-col gap-y-8 lg:col-span-2">
-        <Experience />
-        <Github />
-        <Achievement />
-        <Education />
-        <Course />
-        <Volunteering />
-      </div>
+    <div className="relative px-4 pt-16 sm:px-8 lg:px-16">
+      <div className="h-screen">Hi guys i am here for Youtube lore</div>
+      <div className="grid gap-x-8 gap-y-8 py-16 lg:grid-cols-3">
+        {/* column-1 */}
+        <div className="flex flex-col gap-y-8 lg:col-span-2">
+          <Experience />
+          <Github />
+          <Achievement />
+          <Education />
+          <Course />
+          <Volunteering />
+        </div>
 
-      {/* column-2 */}
-      <div className="flex flex-col gap-y-8">
-        <ForRecruiter />
+        {/* column-2 */}
+        <div className="flex flex-col gap-y-8">
+          <ForRecruiter />
 
-        <DownloadResume />
-        <Skill />
-        <Contact />
-        <Hobby />
-        <GameOfTheDay />
-        <Language />
-        <Youtube />
+          <DownloadResume />
+          <Skill />
+          <Contact />
+          <Hobby />
+          <GameOfTheDay />
+          <Language />
+          <Youtube />
+        </div>
       </div>
     </div>
   );
