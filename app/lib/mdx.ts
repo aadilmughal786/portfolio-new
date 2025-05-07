@@ -22,10 +22,10 @@ export function getPostBySlug(slug: string): BlogPost {
     slug,
     content,
     title: frontmatter.title,
-    publishedAt: frontmatter.date,
+    publishedAt: frontmatter.publishedAt,
     excerpt: frontmatter.excerpt,
     tags: frontmatter.tags || [],
-    coverImageUrl: frontmatter.coverImage,
+    coverImageUrl: frontmatter.coverImageUrl,
   };
 }
 

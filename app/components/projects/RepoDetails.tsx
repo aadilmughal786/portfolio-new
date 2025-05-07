@@ -10,14 +10,12 @@ import {
 import {
   FiExternalLink,
   FiCalendar,
-  FiEye,
   FiAlertCircle,
   FiGitCommit,
   FiClock,
   FiPieChart,
   FiRefreshCw,
 } from 'react-icons/fi';
-import { FaStar, FaCodeFork } from 'react-icons/fa6';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, TooltipProps } from 'recharts';
 import Card from '../resume/Card';
 import { PiHashFill } from 'react-icons/pi';
@@ -212,7 +210,7 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
 
   return (
     <div>
-      <div className="flex flex-col gap-2 py-2 mb-4 font-mono font-semibold">
+      <div className="flex flex-col gap-2 py-2 mb-4 font-semibold">
         <div className="flex items-center">
           <FiCalendar className="mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" />
           <span className="pr-1 font-medium text-text-tertiary">Created: </span>{' '}
@@ -223,28 +221,6 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
           <span className="text-sm">
             <span className="pr-1 font-medium text-text-tertiary">Last updated: </span>{' '}
             {formatDate(repoDetails.updated_at)}
-          </span>
-        </div>
-
-        <div className="flex items-center">
-          <FaStar className="mr-2 w-5 h-5 text-yellow-500" />
-          <span className="text-sm">
-            <span className="pr-1 font-medium text-text-tertiary">Stars: </span>{' '}
-            {repoDetails.stargazers_count}
-          </span>
-        </div>
-        <div className="flex items-center">
-          <FaCodeFork className="mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" />
-          <span className="text-sm">
-            <span className="pr-1 font-medium text-text-tertiary">Forks: </span>{' '}
-            {repoDetails.forks_count}
-          </span>
-        </div>
-        <div className="flex items-center">
-          <FiEye className="mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" />
-          <span className="text-sm">
-            <span className="pr-1 font-medium text-text-tertiary">Watchers: </span>{' '}
-            {repoDetails.watchers_count}
           </span>
         </div>
       </div>
@@ -318,7 +294,7 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
           <div className="relative pl-4 ml-2 border-l-2 border-text-tertiary">
             {commits.map(commit => (
               <div key={commit.sha} className="mb-4">
-                <div className="absolute w-3.5 h-3.5 bg-text-tertiary rounded-full -left-2 mt-3 border-2 border-bg-primary"></div>
+                <div className="absolute -left-[9px] mt-3 w-4 h-4 rounded-full border-3 bg-text-tertiary border-bg-primary"></div>
                 <Card icon={PiHashFill} title={`${commit.sha.slice(0, 5)}...`}>
                   <div className="p-3 border-t border-border-primary">
                     <div className="flex flex-col gap-2">

@@ -18,7 +18,6 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
 
   useEffect(() => {
     setRepoName(project.repoName);
-    console.log(project.title);
   }, [project]);
 
   return (

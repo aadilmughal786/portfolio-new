@@ -11,8 +11,8 @@ export type BlogPost = {
 
 export type BlogPostFrontmatter = {
   title: string;
-  date: string;
+  publishedAt: string;
   excerpt: string;
   tags?: string[];
-  coverImage?: string;
+  coverImageUrl?: string;
 };
