@@ -1,3 +1,4 @@
+import ContactForm from '@/components/contact/ContactForm';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -19,6 +20,7 @@ export default function Home() {
           contribute — I'd love to hear your ideas and collaborate on making them even better.`}
         </p>
       </div>
+      <ContactForm />
     </div>
   );
 }
