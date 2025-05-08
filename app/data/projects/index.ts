@@ -22,7 +22,7 @@ export const projectsData: Project[] = [
     liveUrl: 'https://nextcommerce.dev',
     repoUrl: 'https://github.com/yourusername/nextcommerce',
     imageUrl: '/portfolio-new/images/projects/temp.png',
-    caseStudySlug: 'nextcommerce',
+    caseStudySlug: 'projects/content_blogs_mdx-for-blogs',
     repoName: 'random-quote-ajax',
     status: 'active',
   },

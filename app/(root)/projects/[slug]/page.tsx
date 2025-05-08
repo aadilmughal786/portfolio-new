@@ -1,5 +1,3 @@
-// app/(root)/blogs/[slug]/page.tsx
-
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeSlug from 'rehype-slug';
@@ -17,16 +15,16 @@ interface PageParams {
   params: Promise<{ slug: string }>;
 }
 
-const BLOGS_DIRECTORY = path.join(process.cwd(), '/app/data/blogs/mdx/');
+const CASE_STUDY_DIRECTORY = path.join(process.cwd(), '/app/data/projects/case-study/');
 
 export async function generateStaticParams() {
-  const slugs = getAllPostSlugs(BLOGS_DIRECTORY);
+  const slugs = getAllPostSlugs(CASE_STUDY_DIRECTORY);
   return slugs.map(slug => ({ slug }));
 }
 
 export async function generateMetadata({ params }: PageParams) {
   const resolvedParams = await params;
-  const post = getPostBySlug(resolvedParams.slug, BLOGS_DIRECTORY);
+  const post = getPostBySlug(resolvedParams.slug, CASE_STUDY_DIRECTORY);
 
   return {
     title: post.title,
@@ -34,10 +32,10 @@ export async function generateMetadata({ params }: PageParams) {
   };
 }
 
-export default async function BlogPostPage({ params }: PageParams) {
+export default async function CastStudyPage({ params }: PageParams) {
   try {
     const resolvedParams = await params;
-    const post = getPostBySlug(resolvedParams.slug, BLOGS_DIRECTORY);
+    const post = getPostBySlug(resolvedParams.slug, CASE_STUDY_DIRECTORY);
 
     if (!post) {
       return notFound();
@@ -85,7 +83,7 @@ export default async function BlogPostPage({ params }: PageParams) {
       </div>
     );
   } catch (error) {
-    console.error('Error rendering blog post:', error);
+    console.error('Error rendering case study:', error);
     return notFound();
   }
 }

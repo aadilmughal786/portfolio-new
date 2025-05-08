@@ -4,7 +4,7 @@ import { TbExternalLink } from 'react-icons/tb';
 import Card from './Card';
 import CardItem from './CardItem';
 import { courseData as data } from '@/data/resume/course';
-import { formatDate } from '@/utils/resume-date';
+import { formatDate } from '@/utils/date';
 
 type CourseItemProps = {
   data: TCourseItem;

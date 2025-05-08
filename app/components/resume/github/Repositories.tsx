@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { fetchGitHubRepositories, GitHubRepos } from '@/services/github.services';
 import { LanguageName, languageColors } from '@/utils/colors';
-import { getTimeAgo } from '@/utils/resume-date';
+import { getTimeAgo } from '@/utils/date';
 import { TbExternalLink } from 'react-icons/tb';
 import { PiGitForkBold } from 'react-icons/pi';
 import { IoStar } from 'react-icons/io5';
