@@ -3,7 +3,7 @@ import { projectsData } from '@/data/projects';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Resume - Projects',
+  title: 'Projects - Aadil',
   description: 'Portfolio Website',
 };
 

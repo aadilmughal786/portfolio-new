@@ -228,7 +228,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={state.submitting || !isButtonEnabled}
-        className="w-full flex justify-center items-center px-4 py-2.5 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
+        className="w-full cursor-pointer flex justify-center items-center px-4 py-2.5 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700 focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50"
       >
         {state.submitting ? (
           <div className="flex gap-2 items-center">
