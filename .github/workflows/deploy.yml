@@ -32,6 +32,9 @@ jobs:
 
       - name: Build with Next.js
         run: yarn build
+        env:
+          NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_FORMSPREE_FORM_ID }}
+          NEXT_PUBLIC_ANALYTICS_ID: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
