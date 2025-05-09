@@ -1,6 +1,11 @@
+import AboutMe from '@/components/home/AboutMe';
 import FeaturedBlogs from '@/components/home/FeaturedBlogs';
 import FeaturedProjects from '@/components/home/FeaturedProjects';
+import Hero from '@/components/home/Hero';
 import Service from '@/components/home/Service';
+import Stats from '@/components/home/Stats';
+import TechStack from '@/components/home/TechCategory';
+import Testimonials from '@/components/home/Testimonials';
 import { projectsData } from '@/data/projects';
 import { getAllPosts } from '@/lib/mdx';
 import type { Metadata } from 'next';
@@ -19,26 +24,24 @@ export default function Home() {
   return (
     <>
       <div className="relative px-4 pt-16 sm:px-8 lg:px-16">
-        <div>
-          <h1 className="text-4xl font-semibold text-center text-text-tertiary">
-            {"Things I've made trying to put my dent in the universe."}
-          </h1>
-          <p className="py-4">
-            {`I've built a variety of projects over the years — some experimental, some practical — each
-          one a step forward in my journey as a creator. Below are a few that I'm especially proud
-          of. Many are open-source, so if something sparks your interest, dive into the code or
-          contribute — I'd love to hear your ideas and collaborate on making them even better.`}
-          </p>
-        </div>
+        <Hero />
       </div>
-      <div>
+      <div className="relative pt-16 sm:px-8 lg:px-16">
+        <AboutMe />
+      </div>
+      <div className="relative pt-16 sm:px-8 lg:px-16">
+        <TechStack />
+      </div>
+      <div className="relative pt-16 sm:px-8 lg:px-16">
         <FeaturedProjects projects={projectsData} />
       </div>
       <div className="relative pt-16 sm:px-8 lg:px-16">
         <Service />
       </div>
-      <div>
+      <div className="relative pt-16 sm:px-8 lg:px-16">
+        <Testimonials />
         <FeaturedBlogs blogs={posts} />
+        <Stats />
       </div>
     </>
   );

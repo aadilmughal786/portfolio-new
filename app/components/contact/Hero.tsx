@@ -2,14 +2,14 @@
 
 import { motion } from 'framer-motion';
 
-const ProjectsHero: React.FC = () => {
+const ContactHero: React.FC = () => {
   return (
     <section className="overflow-hidden relative py-24 bg-gray-50 dark:bg-gray-900">
       {/* Background elements */}
       <div className="absolute top-0 left-0 w-full h-full -z-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-bl from-blue-100/20 to-purple-100/20 dark:from-blue-900/20 dark:to-purple-900/20" />
-        <div className="absolute top-1/4 right-1/3 w-72 h-72 rounded-full blur-3xl bg-blue-300/10 dark:bg-blue-600/10" />
-        <div className="absolute bottom-1/3 left-1/3 w-80 h-80 rounded-full blur-3xl bg-purple-300/10 dark:bg-purple-600/10" />
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-indigo-100/20 to-purple-100/20 dark:from-indigo-900/20 dark:to-purple-900/20" />
+        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl bg-indigo-300/10 dark:bg-indigo-600/10" />
+        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full blur-3xl bg-purple-300/10 dark:bg-purple-600/10" />
       </div>
 
       <div className="container px-4 mx-auto">
@@ -19,16 +19,14 @@ const ProjectsHero: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="mx-auto max-w-4xl text-center"
         >
-          <motion.div
+          <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="flex justify-center mb-3"
+            className="inline-block px-4 py-1 mb-3 text-sm font-medium tracking-wider text-indigo-700 bg-indigo-100 rounded-full dark:text-indigo-300 dark:bg-indigo-900/50"
           >
-            <span className="inline-block px-4 py-1 text-sm font-medium tracking-wider text-indigo-700 bg-indigo-100 rounded-full dark:text-indigo-300 dark:bg-indigo-900/50">
-              MY WORK
-            </span>
-          </motion.div>
+            GET IN TOUCH
+          </motion.span>
 
           <motion.h1
             initial={{ opacity: 0 }}
@@ -36,8 +34,8 @@ const ProjectsHero: React.FC = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
           >
-            Explore My <span className="text-indigo-600 dark:text-indigo-400">Projects</span>{' '}
-            Portfolio
+            {`Let's`} <span className="text-indigo-600 dark:text-indigo-400">Connect</span> and
+            Create Something Amazing
           </motion.h1>
 
           <motion.p
@@ -46,8 +44,9 @@ const ProjectsHero: React.FC = () => {
             transition={{ delay: 0.7, duration: 0.8 }}
             className="mb-12 text-lg text-gray-600 dark:text-gray-300"
           >
-            Browse through a collection of my most significant projects, showcasing technical
-            skills, problem-solving abilities, and creative solutions across different domains.
+            {`Have a project in mind or want to discuss potential opportunities? I'm always interested
+            in hearing about new ideas and challenges. Reach out using any of the methods below, and
+            I'll get back to you as soon as possible.`}
           </motion.p>
         </motion.div>
       </div>
@@ -60,9 +59,7 @@ const ProjectsHero: React.FC = () => {
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <div className="flex flex-col items-center">
-          <span className="mb-2 text-sm text-gray-600 dark:text-gray-400">
-            Projects Gallery Below
-          </span>
+          <span className="mb-2 text-sm text-gray-600 dark:text-gray-400">Contact Form Below</span>
           <svg
             width="24"
             height="24"
@@ -85,4 +82,4 @@ const ProjectsHero: React.FC = () => {
   );
 };
 
-export default ProjectsHero;
+export default ContactHero;

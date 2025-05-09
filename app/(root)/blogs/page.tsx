@@ -1,4 +1,5 @@
 import BlogSearch from '@/components/blogs/BlogSearch';
+import BlogHero from '@/components/blogs/Helo';
 import { getAllPosts } from '@/lib/mdx';
 import { Metadata } from 'next';
 import path from 'path';
@@ -15,6 +16,7 @@ export default function GitHubDashboard() {
 
   return (
     <main className="container px-4 py-8 mx-auto">
+      <BlogHero />
       <div className="grid grid-cols-1 gap-8">
         <BlogSearch blogs={posts} />
       </div>
