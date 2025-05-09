@@ -8,6 +8,7 @@ import { FaGithub } from 'react-icons/fa6';
 import { TbExternalLink } from 'react-icons/tb';
 import { navBarData } from '@/data/nav-bar';
 import RepoDetails from './RepoDetails';
+import Link from 'next/link';
 
 interface ProjectDetailsProps {
   project: Project;
@@ -53,10 +54,10 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
               </a>
             )}
             {project.caseStudySlug && (
-              <a href={project.caseStudySlug} className="flex gap-1 items-center link chip">
+              <Link href={project.caseStudySlug} className="flex gap-1 items-center link chip">
                 Case Study
                 <TbExternalLink className="-mt-[3px] ml-1 inline-block sm:ml-0" size={16} />
-              </a>
+              </Link>
             )}
           </div>
         )}

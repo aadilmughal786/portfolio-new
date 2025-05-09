@@ -13,6 +13,7 @@ import DownloadResume from '@/components/resume/DownloadResume';
 import Education from '@/components/resume/Eduction';
 import Github from '@/components/resume/github/Github';
 import Achievement from '@/components/resume/Achievement';
+import ResumeHero from '@/components/resume/Hero';
 
 export const metadata: Metadata = {
   title: 'Resume - Aadil',
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div className="relative px-4 pt-16 sm:px-8 lg:px-16">
-      <div className="h-screen">Hi guys i am here for Youtube lore</div>
+      <ResumeHero />
       <div className="grid gap-x-8 gap-y-8 py-16 lg:grid-cols-3">
         {/* column-1 */}
         <div className="flex flex-col gap-y-8 lg:col-span-2">

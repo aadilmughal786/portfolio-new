@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { TbExternalLink } from 'react-icons/tb';
 import Card from './Card';
 import CardItem from './CardItem';
-import { formatDate } from '@/utils/resume-date';
+import { formatDate } from '@/utils/date';
 import { TAchievementItem } from '@/types/resume/achievement.types';
 import { achievementData as data } from '@/data/resume/achievement';
 import confetti from 'canvas-confetti';

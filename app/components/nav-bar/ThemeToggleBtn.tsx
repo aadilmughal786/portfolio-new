@@ -1,8 +1,12 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import { IoMoon, IoSunny } from 'react-icons/io5';
 
 const ThemeToggleBtn = () => {
   const [isDark, setIsDark] = useState(false);
+  const controls = useAnimation();
 
   // Check if the user has a saved preference in localStorage
   useEffect(() => {
@@ -14,7 +18,14 @@ const ThemeToggleBtn = () => {
       setIsDark(false);
       document.documentElement.classList.remove('dark');
     }
-  }, []);
+    // Initial animation on mount
+    controls.start({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { duration: 0.5, type: 'spring', stiffness: 100 },
+    });
+  }, [controls]);
 
   // Function to toggle the theme
   const toggleTheme = () => {
@@ -27,12 +38,26 @@ const ThemeToggleBtn = () => {
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
     }
+    // Trigger click animation
+    controls.start({
+      rotate: [0, -360],
+      transition: { duration: 1 },
+    });
   };
 
   return (
-    <div onClick={toggleTheme}>
-      {isDark ? <IoMoon className="icon" /> : <IoSunny className="icon" />}
-    </div>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={controls}
+      onClick={toggleTheme}
+      className="flex justify-center items-center p-2 rounded-full transition-colors duration-300 cursor-pointer"
+    >
+      <motion.div
+        key={isDark ? 'moon' : 'sunny'} // Key to trigger re-render for icon transition
+      >
+        {isDark ? <IoMoon className="w-5 h-5" /> : <IoSunny className="w-5 h-5" />}
+      </motion.div>
+    </motion.div>
   );
 };
 

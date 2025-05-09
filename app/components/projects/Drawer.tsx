@@ -106,7 +106,7 @@ const Drawer: React.FC<DrawerProps> = ({
         role="dialog"
       >
         {/* Header */}
-        <div className="flex sticky top-0 z-10 justify-between items-center p-3 px-4 border-b border-border-primary">
+        <div className="flex sticky top-0 z-10 justify-between items-center pt-3 pb-[11px] px-4 border-b border-border-primary">
           <div className="flex gap-3 items-center font-mono text-xl font-bold text-text-tertiary">
             <IoHeart className="flip" /> {title}
           </div>

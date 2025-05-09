@@ -21,6 +21,7 @@ import Card from '../resume/Card';
 import { PiHashFill } from 'react-icons/pi';
 import { FaUserAlt } from 'react-icons/fa';
 import { MdNearbyError } from 'react-icons/md';
+import { getTimeAgo } from '@/utils/date';
 
 interface RepoDetailsProps {
   repoName: string;
@@ -111,33 +112,6 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
     }
   };
 
-  // Format date with relative time if recent
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    const now = new Date();
-    const diffTime = Math.abs(now.getTime() - date.getTime());
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
-    if (diffDays < 1) {
-      const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
-      if (diffHours < 1) {
-        const diffMinutes = Math.floor(diffTime / (1000 * 60));
-        return `${diffMinutes} minute${diffMinutes !== 1 ? 's' : ''} ago`;
-      }
-      return `${diffHours} hour${diffHours !== 1 ? 's' : ''} ago`;
-    }
-
-    if (diffDays < 7) {
-      return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
-    }
-
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
-  };
-
   // Format commit message
   const formatCommitMessage = (message: string) => {
     // Truncate if longer than 50 characters
@@ -214,13 +188,13 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
         <div className="flex items-center">
           <FiCalendar className="mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" />
           <span className="pr-1 font-medium text-text-tertiary">Created: </span>{' '}
-          <span className="text-sm"> {formatDate(repoDetails.created_at)}</span>
+          <span className="text-sm"> {getTimeAgo(repoDetails.created_at)}</span>
         </div>
         <div className="flex items-center">
           <FiCalendar className="mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" />
           <span className="text-sm">
             <span className="pr-1 font-medium text-text-tertiary">Last updated: </span>{' '}
-            {formatDate(repoDetails.updated_at)}
+            {getTimeAgo(repoDetails.updated_at)}
           </span>
         </div>
       </div>
@@ -308,7 +282,7 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
                       </a>
                       <div className="flex items-center text-text-mute">
                         <FiClock className="mr-1 w-3 h-3" />
-                        {formatDate(
+                        {getTimeAgo(
                           commit.commit.author?.date || commit.commit.committer?.date || ''
                         )}
                       </div>

@@ -1,18 +1,15 @@
-// lib/mdx.ts
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { BlogPost, BlogPostFrontmatter } from '@/types/blogs/blogs.types';
 
-const POSTS_DIRECTORY = path.join(process.cwd(), '/app/data/blogs/mdx/');
-
-export function getAllPostSlugs(): string[] {
-  const fileNames = fs.readdirSync(POSTS_DIRECTORY);
+export function getAllPostSlugs(postsDir: string): string[] {
+  const fileNames = fs.readdirSync(postsDir);
   return fileNames.map(fileName => fileName.replace(/\.mdx$/, ''));
 }
 
-export function getPostBySlug(slug: string): BlogPost {
-  const fullPath = path.join(POSTS_DIRECTORY, `${slug}.mdx`);
+export function getPostBySlug(slug: string, postsDir: string): BlogPost {
+  const fullPath = path.join(postsDir, `${slug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
@@ -30,11 +27,10 @@ export function getPostBySlug(slug: string): BlogPost {
   };
 }
 
-export function getAllPosts(): BlogPost[] {
-  const slugs = getAllPostSlugs();
-  const posts = slugs.map(slug => getPostBySlug(slug));
+export function getAllPosts(postsDir: string): BlogPost[] {
+  const slugs = getAllPostSlugs(postsDir);
+  const posts = slugs.map(slug => getPostBySlug(slug, postsDir));
 
-  // Sort posts by date (newest first)
   return posts.sort((a, b) => {
     return new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
   });

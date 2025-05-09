@@ -3,10 +3,9 @@
 import { useState, useMemo, useEffect } from 'react';
 import Fuse from 'fuse.js';
 import { Project } from '@/types/projects/projects.types';
-import { TiStarburst } from 'react-icons/ti';
-import { statusStyles } from '@/utils/colors';
 import Drawer from './Drawer';
 import ProjectDetails from './ProjectDetails';
+import ProjectCard from '@/components/projects/ProjectCard';
 
 interface ProjectSearchProps {
   projects: Project[];
@@ -114,47 +113,12 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
           <div className="p-4 text-center text-gray-500">No projects found</div>
         ) : (
           paginatedProjects.map(project => (
-            <div
+            <ProjectCard
               key={project.id}
-              onClick={() => handleSelectProject(project)}
-              className="p-4 rounded border transition-shadow duration-200 cursor-pointer border-border-primary hover:shadow-md"
-            >
-              <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
-                <div className="relative md:w-auto">
-                  <div
-                    className={`w-full h-40 rounded border md:w-full sm:w-80 border-border-primary`}
-                    style={{
-                      background: `url(${project.imageUrl})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                    }}
-                  />
-                  <span
-                    className={`px-2 py-1 rounded text-xs font-medium flex gap-1 items-center absolute top-3 right-3 ${
-                      statusStyles[project.status]
-                    }`}
-                  >
-                    <TiStarburst /> {project.status}
-                  </span>
-                </div>
-                <div>
-                  <div className="pb-2 font-semibold text-text-tertiary">{project.title}</div>
-                  <div className="text-sm line-clamp-2">{project.description}</div>
-                  <div className="pt-2">
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.slice(0, 3).map((tag, index) => (
-                        <span key={index} className="chip">
-                          {tag}
-                        </span>
-                      ))}
-                      {project.tags.length > 3 && (
-                        <span className="chip">+{project.tags.length - 3}</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+              project={project}
+              index={project.id}
+              handleSelectProject={handleSelectProject}
+            />
           ))
         )}
       </div>

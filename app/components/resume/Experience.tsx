@@ -4,7 +4,7 @@ import {
   formatDurationFromDays,
   getCurrentDate,
   getDateDifferenceInDays,
-} from '@/utils/resume-date';
+} from '@/utils/date';
 import React from 'react';
 import Card from './Card';
 import CardItem from './CardItem';
