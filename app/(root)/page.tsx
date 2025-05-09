@@ -1,7 +1,12 @@
+import FeaturedBlogs from '@/components/home/FeaturedBlogs';
 import FeaturedProjects from '@/components/home/FeaturedProjects';
 import Service from '@/components/home/Service';
 import { projectsData } from '@/data/projects';
+import { getAllPosts } from '@/lib/mdx';
 import type { Metadata } from 'next';
+import path from 'path';
+
+const BLOGS_DIRECTORY = path.join(process.cwd(), '/app/data/blogs/mdx/');
 
 export const metadata: Metadata = {
   title: 'Home - Aadil',
@@ -9,6 +14,8 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
+  const posts = getAllPosts(BLOGS_DIRECTORY);
+
   return (
     <>
       <div className="relative px-4 pt-16 sm:px-8 lg:px-16">
@@ -23,13 +30,15 @@ export default function Home() {
           contribute — I'd love to hear your ideas and collaborate on making them even better.`}
           </p>
         </div>
-
-        <div>
-          <FeaturedProjects projects={projectsData} />
-        </div>
+      </div>
+      <div>
+        <FeaturedProjects projects={projectsData} />
       </div>
       <div className="relative pt-16 sm:px-8 lg:px-16">
         <Service />
+      </div>
+      <div>
+        <FeaturedBlogs blogs={posts} />
       </div>
     </>
   );

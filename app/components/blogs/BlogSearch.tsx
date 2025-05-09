@@ -4,6 +4,7 @@ import { useState, useMemo, useEffect } from 'react';
 import Fuse from 'fuse.js';
 import { BlogPost } from '@/types/blogs/blogs.types';
 import Link from 'next/link';
+import BlogCard from './BlogCard';
 
 interface BlogSearchProps {
   blogs: BlogPost[];
@@ -87,39 +88,8 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ blogs, itemsPerPage = 6 }) => {
           <div className="p-4 text-center text-gray-500">No blogs found</div>
         ) : (
           paginatedBlogs.map((blog, index) => (
-            <Link
-              href={`/blogs/${blog.slug}`}
-              key={index}
-              className="p-4 rounded border transition-shadow duration-200 cursor-pointer border-border-primary hover:shadow-md"
-            >
-              <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
-                <div className="relative md:w-auto">
-                  <div
-                    className={`w-full h-40 rounded border md:w-full sm:w-80 border-border-primary`}
-                    style={{
-                      background: `url(${blog.coverImageUrl})`,
-                      backgroundSize: 'cover',
-                      backgroundPosition: 'center',
-                    }}
-                  />
-                </div>
-                <div>
-                  <div className="pb-2 font-semibold text-text-tertiary">{blog.title}</div>
-                  <div className="text-sm line-clamp-2">{blog.excerpt}</div>
-                  <div className="pt-2">
-                    <div className="flex flex-wrap gap-2">
-                      {blog.tags.slice(0, 3).map((tag, index) => (
-                        <span key={index} className="chip">
-                          {tag}
-                        </span>
-                      ))}
-                      {blog.tags.length > 3 && (
-                        <span className="chip">+{blog.tags.length - 3}</span>
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <Link href={`/blogs/${blog.slug}`} key={index}>
+              <BlogCard blog={blog} index={index} />
             </Link>
           ))
         )}
