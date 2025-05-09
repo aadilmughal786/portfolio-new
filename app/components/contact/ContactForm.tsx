@@ -7,7 +7,7 @@ import confetti from 'canvas-confetti';
 
 export default function ContactForm() {
   // Form state management
-  const [state, handleSubmit, reset] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID as string);
+  const [state, handleSubmit, reset] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || '');
   const [honeypot, setHoneypot] = useState(''); // Anti-spam hidden field
   const [message, setMessage] = useState('');
   const [subject, setSubject] = useState('');
