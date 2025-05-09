@@ -31,10 +31,10 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Build with Next.js
-        run: yarn build
         env:
           NEXT_PUBLIC_FORMSPREE_FORM_ID: ${{ secrets.NEXT_PUBLIC_FORMSPREE_FORM_ID }}
           NEXT_PUBLIC_RECAPTCHA_SITE_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_SITE_KEY }}
+        run: yarn build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
