@@ -9,5 +9,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-console.log('FORMSPREE_FORM_ID:', process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID);
