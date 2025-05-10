@@ -87,7 +87,7 @@ const Stats: React.FC = () => {
   const stats = [
     {
       icon: <FaCalendarAlt />,
-      value: 1,
+      value: 3,
       label: 'Years of Experience',
       suffix: '+',
     },
@@ -112,7 +112,7 @@ const Stats: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-50 dark:bg-gray-900">
+    <section className="py-20">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -142,43 +142,6 @@ const Stats: React.FC = () => {
             />
           ))}
         </div>
-
-        {/* Highlight section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="p-8 mt-16 bg-white rounded-xl shadow-lg dark:bg-gray-800"
-        >
-          <h3 className="mb-6 text-2xl font-bold text-center text-gray-900 dark:text-white">
-            Career Highlights
-          </h3>
-
-          <div className="space-y-4">
-            {[
-              'Led development of a SaaS platform that increased client revenues by 35%',
-              'Published 3 popular open-source libraries with over 1,000 combined GitHub stars',
-              'Reduced application load times by 60% through performance optimization',
-              'Speaker at 5 web development conferences across Europe and North America',
-              'Mentored 20+ junior developers who have gone on to successful careers',
-            ].map((highlight, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 + 0.2 }}
-                viewport={{ once: true }}
-                className="flex items-start"
-              >
-                <div className="flex flex-shrink-0 justify-center items-center mt-1 w-5 h-5 bg-indigo-100 rounded-full dark:bg-indigo-900">
-                  <div className="w-2 h-2 bg-indigo-600 rounded-full dark:bg-indigo-400"></div>
-                </div>
-                <p className="ml-4 text-gray-700 dark:text-gray-300">{highlight}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

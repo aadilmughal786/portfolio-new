@@ -7,7 +7,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className="flex flex-col justify-between min-h-screen duration-150 ease-in">
       <NavBar />
-      <div>
+      <div className="bg-[linear-gradient(rgba(59,130,246,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.06)_1px,transparent_1px)] bg-[size:2rem_2rem]">
         <main className="overflow-hidden">{children}</main>
       </div>
       <Footer />

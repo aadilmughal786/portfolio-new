@@ -1,82 +1,153 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { FaPaperPlane, FaFileAlt, FaCalendarAlt } from 'react-icons/fa';
+import { GrContact } from 'react-icons/gr';
+import Link from 'next/link';
 
-const ContactHero: React.FC = () => {
+const ContactHero = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <section className="overflow-hidden relative py-24 bg-gray-50 dark:bg-gray-900">
-      {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-full -z-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-indigo-100/20 to-purple-100/20 dark:from-indigo-900/20 dark:to-purple-900/20" />
-        <div className="absolute top-1/4 right-1/4 w-64 h-64 rounded-full blur-3xl bg-indigo-300/10 dark:bg-indigo-600/10" />
-        <div className="absolute bottom-1/4 left-1/4 w-80 h-80 rounded-full blur-3xl bg-purple-300/10 dark:bg-purple-600/10" />
-      </div>
-
-      <div className="container px-4 mx-auto">
+    <section className="relative min-h-[80vh] py-16 sm:py-24 overflow-hidden">
+      <div className="container relative z-10 px-4 mx-auto max-w-7xl pb-15">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
           transition={{ duration: 0.8 }}
           className="mx-auto max-w-4xl text-center"
         >
           <motion.span
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="inline-block px-4 py-1 mb-3 text-sm font-medium tracking-wider text-indigo-700 bg-indigo-100 rounded-full dark:text-indigo-300 dark:bg-indigo-900/50"
+            className="inline-flex gap-2 items-center px-4 py-2 mb-4 text-sm font-semibold tracking-wider rounded-full bg-text-tertiary/5 text-text-tertiary"
           >
+            <GrContact size={18} />
             GET IN TOUCH
           </motion.span>
 
           <motion.h1
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="mb-6 text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white"
+            className="mb-6 text-4xl font-extrabold md:text-5xl lg:text-6xl"
           >
-            {`Let's`} <span className="text-indigo-600 dark:text-indigo-400">Connect</span> and
-            Create Something Amazing
+            Let&apos;s <span className="text-text-tertiary">Connect</span> and Create Something
+            Amazing
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ delay: 0.7, duration: 0.8 }}
-            className="mb-12 text-lg text-gray-600 dark:text-gray-300"
+            className="mb-6 text-lg"
           >
-            {`Have a project in mind or want to discuss potential opportunities? I'm always interested
-            in hearing about new ideas and challenges. Reach out using any of the methods below, and
-            I'll get back to you as soon as possible.`}
+            Have a project in mind or want to discuss potential opportunities? I&apos;m always
+            interested in hearing about new ideas and challenges. Choose your preferred way to
+            connect below.
           </motion.p>
+        </motion.div>
+
+        {/* Contact cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
+          transition={{ delay: 0.9, duration: 0.8 }}
+          className="grid grid-cols-1 gap-8 pt-10 mx-auto mt-12 max-w-5xl sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {/* Email Card */}
+          <motion.div
+            whileHover={{
+              y: -5,
+              transition: { type: 'spring', stiffness: 400, damping: 10 },
+            }}
+            className="flex flex-col p-6 rounded-lg border shadow-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border-white/30 dark:border-gray-700/30 group"
+          >
+            <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
+              <FaPaperPlane className="w-6 h-6 text-text-tertiary" />
+            </div>
+            <h3 className="mb-2 text-xl font-bold text-text-primary">Email Me</h3>
+            <p className="mb-4 text-text-primary">
+              Drop me a line anytime to discuss your project needs
+            </p>
+            <Link
+              href="mailto:aadil.mugal.dev@gmail.com
+"
+              className="flex gap-2 justify-center items-center px-4 py-2 mt-auto font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
+            >
+              aadil.mugal.dev@gmail.com
+            </Link>
+          </motion.div>
+
+          {/* Form Card */}
+          <motion.div
+            whileHover={{
+              y: -5,
+              transition: { type: 'spring', stiffness: 400, damping: 10 },
+            }}
+            className="flex flex-col p-6 rounded-lg border shadow-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border-white/30 dark:border-gray-700/30 group"
+          >
+            <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
+              <FaFileAlt className="w-6 h-6 text-text-tertiary" />
+            </div>
+            <h3 className="mb-2 text-xl font-bold text-text-primary">Fill the Form</h3>
+            <p className="mb-4 text-text-primary">
+              Share your details and ideas through our contact form
+            </p>
+            <Link
+              href="#contact-form"
+              className="flex gap-2 justify-center items-center px-4 py-2 mt-auto font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
+            >
+              Go to Form
+            </Link>
+          </motion.div>
+
+          {/* Book a Slot Card */}
+          <motion.div
+            whileHover={{
+              y: -5,
+              transition: { type: 'spring', stiffness: 400, damping: 10 },
+            }}
+            className="flex flex-col p-6 rounded-lg border-2 border-dashed shadow-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border-white/30 dark:border-gray-700/30 group sm:col-span-2 lg:col-span-1"
+          >
+            <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
+              <FaCalendarAlt className="w-6 h-6 text-text-tertiary" />
+            </div>
+            <h3 className="mb-2 text-xl font-bold text-text-primary">Book a Slot</h3>
+            <p className="mb-4 text-text-primary">Schedule a meeting at your convenience</p>
+            <Link
+              href="https://cal.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex gap-2 justify-center items-center px-4 py-2 mt-auto font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
+            >
+              Book via Cal.com
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5, duration: 0.8, repeat: Infinity, repeatType: 'reverse' }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -10 }}
+        transition={{ delay: 1.6, duration: 0.8 }}
+        className="flex flex-col items-center mb-15"
       >
-        <div className="flex flex-col items-center">
-          <span className="mb-2 text-sm text-gray-600 dark:text-gray-400">Contact Form Below</span>
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 5V19M12 19L5 12M12 19L19 12"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-gray-600 dark:text-gray-400"
-            />
-          </svg>
-        </div>
+        <span className="mb-2 text-sm text-gray-700 dark:text-gray-400">Scroll to explore</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5 }}
+          className="flex justify-center pt-1 w-5 h-10 rounded-full border-2 border-gray-400"
+        >
+          <motion.div className="w-1 h-2 bg-gray-400 rounded-full" />
+        </motion.div>
       </motion.div>
     </section>
   );

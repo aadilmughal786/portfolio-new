@@ -2,6 +2,7 @@ import { Poppins } from 'next/font/google';
 import type { Metadata } from 'next';
 import './globals.css';
 import NextTopLoader from 'nextjs-toploader';
+import BackgroundMask from './components/home/BackgroundMask';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -26,6 +27,8 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${poppins.variable} antialiased font-poppins text-text-primary bg-bg-primary scrollbar-light`}
       >
+        <BackgroundMask />
+
         {children}
         <NextTopLoader showSpinner={false} />
       </body>

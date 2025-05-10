@@ -100,7 +100,7 @@ const Testimonials: React.FC = () => {
   };
 
   return (
-    <section id="testimonials" className="py-20 bg-gray-100 dark:bg-gray-900">
+    <section id="testimonials" className="py-20">
       <div className="container px-4 mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
