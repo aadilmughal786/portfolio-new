@@ -47,7 +47,6 @@ const ThemeToggleBtn = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
       animate={controls}
       onClick={toggleTheme}
       className="flex justify-center items-center p-2 rounded-full transition-colors duration-300 cursor-pointer"

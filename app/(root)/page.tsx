@@ -23,14 +23,15 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative px-4 pt-16 sm:px-8 lg:px-16">
+      <div className="relative px-4 sm:px-8 lg:px-16">
         <Hero />
       </div>
-      <div className="relative pt-16 sm:px-8 lg:px-16">
+      <div className="relative sm:px-8 lg:px-16">
         <AboutMe />
       </div>
       <div className="relative pt-16 sm:px-8 lg:px-16">
         <TechStack />
+        <Stats />
       </div>
       <div className="relative pt-16 sm:px-8 lg:px-16">
         <FeaturedProjects projects={projectsData} />
@@ -41,7 +42,6 @@ export default function Home() {
       <div className="relative pt-16 sm:px-8 lg:px-16">
         <Testimonials />
         <FeaturedBlogs blogs={posts} />
-        <Stats />
       </div>
     </>
   );

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { FaGithub, FaExternalLinkAlt, FaBookOpen } from 'react-icons/fa';
 import { Project } from '@/types/projects/projects.types';
+import { FaAnglesRight } from 'react-icons/fa6';
 
 interface FeaturedProjectsProps {
   projects: Project[];
@@ -33,22 +34,39 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
   }, [projects]);
 
   return (
-    <section id="featured-projects" className="py-12 bg-gray-50 md:py-20 dark:bg-gray-900">
+    <section id="featured-projects" className="pb-12">
       <div className="container px-4 mx-auto">
+        {/* Animated section heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="mb-12 text-center"
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="mb-16 text-center"
         >
-          <h2 className="mb-4 text-3xl font-bold text-gray-900 md:text-4xl dark:text-white">
-            Featured <span className="text-indigo-600 dark:text-indigo-400">Projects</span>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex gap-2 items-center px-4 py-2 mb-4 text-sm font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
+          >
+            <span className="flex relative mr-1 w-3 h-3">
+              <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
+              <span className="inline-flex relative w-3 h-3 rounded-full bg-text-tertiary"></span>
+            </span>
+            My Work
+          </motion.div>
+          <h2 className="text-4xl font-bold md:text-5xl">
+            Featured <span className="text-text-tertiary">Projects</span>
           </h2>
-          <p className="mx-auto max-w-3xl text-base text-gray-600 dark:text-gray-300 md:text-lg">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="mx-auto mt-4 max-w-3xl text-base text-text-primary/80 md:text-lg"
+          >
             Explore my latest projects that demonstrate innovative solutions and technical
             expertise.
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -59,28 +77,16 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          viewport={{ once: true }}
           className="mt-12 text-center"
         >
           <Link
             href="/projects"
-            className="inline-flex items-center px-6 py-3 font-medium text-white bg-indigo-600 rounded-lg transition-colors duration-300 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+            className="inline-flex gap-2 items-center px-6 py-2 font-medium rounded-lg transition-all duration-300 bg-text-tertiary/10 text-text-tertiary hover:bg-text-tertiary/20"
           >
             View All Projects
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="ml-2 w-5 h-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <FaAnglesRight />
           </Link>
         </motion.div>
       </div>
