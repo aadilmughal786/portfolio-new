@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, JSX } from 'react';
 import { motion } from 'framer-motion';
 import { FaReact, FaNodeJs, FaDocker, FaAws, FaGit } from 'react-icons/fa';
 import {
@@ -14,6 +14,16 @@ import {
   SiGithubactions,
   SiVercel,
 } from 'react-icons/si';
+
+export type TechItem = {
+  name: string;
+  icon: JSX.Element;
+  proficiency: number;
+};
+
+export type TechCategory = {
+  [category: string]: TechItem[];
+};
 
 const TechStack = () => {
   const [activeTab, setActiveTab] = useState('Frontend');
@@ -48,7 +58,7 @@ const TechStack = () => {
   }, []);
 
   // Tech data
-  const techData = {
+  const techData: TechCategory = {
     Frontend: [
       { name: 'React', icon: <FaReact />, proficiency: 95 },
       { name: 'Next.js', icon: <SiNextdotjs />, proficiency: 90 },
