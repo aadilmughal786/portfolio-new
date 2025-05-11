@@ -73,7 +73,7 @@ const AboutMe = () => {
   ];
 
   return (
-    <section ref={sectionRef} className="overflow-hidden relative pt-24 px-4 sm:px-8 lg:px-16">
+    <section ref={sectionRef} className="overflow-hidden relative px-4 pt-24 sm:px-8 lg:px-16">
       <div className="container relative z-10">
         {/* Animated section heading */}
         <motion.div

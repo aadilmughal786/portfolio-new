@@ -34,7 +34,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
   }, [projects]);
 
   return (
-    <section id="featured-projects" className="pb-24 pt-12">
+    <section id="featured-projects" className="pt-12 pb-24">
       <div className="container px-4 mx-auto">
         {/* Animated section heading */}
         <motion.div
@@ -69,7 +69,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto ">
+        <div className="grid grid-cols-1 gap-6 mx-auto max-w-4xl md:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -157,15 +157,15 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex space-x-4"
+              className="flex gap-4"
             >
               <Link
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex justify-center items-center p-3 text-white rounded-full transition-all bg-text-tertiary/80 hover:bg-text-tertiary"
+                className="flex justify-center items-center p-1 rounded-full transition-all text-white/80 hover:text-white"
               >
-                <FaGithub className="w-5 h-5" />
+                <FaGithub size={28} />
               </Link>
 
               {project.liveUrl && (
@@ -173,7 +173,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex justify-center items-center p-3 text-white rounded-full transition-all bg-text-tertiary/80 hover:bg-text-tertiary"
+                  className="flex justify-center items-center p-3 rounded-full transition-all text-white/80 hover:text-white"
                 >
                   <FaExternalLinkAlt className="w-5 h-5" />
                 </Link>
@@ -182,7 +182,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
               {project.caseStudySlug && (
                 <Link
                   href={`/${project.caseStudySlug}`}
-                  className="flex justify-center items-center p-3 text-white rounded-full transition-all bg-text-tertiary/80 hover:bg-text-tertiary"
+                  className="flex justify-center items-center p-3 rounded-full transition-all text-white/80 hover:text-white"
                 >
                   <FaBookOpen className="w-5 h-5" />
                 </Link>

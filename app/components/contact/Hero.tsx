@@ -59,7 +59,7 @@ const ContactHero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
           transition={{ delay: 0.9, duration: 0.8 }}
-          className="grid grid-cols-1 gap-8 pt-10 mx-auto mt-12 max-w-5xl sm:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 gap-8 pt-10 mx-auto mt-12 max-w-4xl sm:grid-cols-2 lg:grid-cols-3"
         >
           {/* Email Card */}
           <motion.div
@@ -67,7 +67,7 @@ const ContactHero = () => {
               y: -5,
               transition: { type: 'spring', stiffness: 400, damping: 10 },
             }}
-            className="flex flex-col p-6 rounded-lg border shadow-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border-white/30 dark:border-gray-700/30 group"
+            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group border-text-tertiary/10 bg-white/5 hover:bg-text-tertiary/5"
           >
             <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
               <FaPaperPlane className="w-6 h-6 text-text-tertiary" />
@@ -81,7 +81,7 @@ const ContactHero = () => {
 "
               className="flex gap-2 justify-center items-center px-4 py-2 mt-auto font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
             >
-              aadil.mugal.dev@gmail.com
+              Email
             </Link>
           </motion.div>
 
@@ -91,7 +91,7 @@ const ContactHero = () => {
               y: -5,
               transition: { type: 'spring', stiffness: 400, damping: 10 },
             }}
-            className="flex flex-col p-6 rounded-lg border shadow-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border-white/30 dark:border-gray-700/30 group"
+            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group border-text-tertiary/10 bg-white/5 hover:bg-text-tertiary/5"
           >
             <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
               <FaFileAlt className="w-6 h-6 text-text-tertiary" />
@@ -114,7 +114,7 @@ const ContactHero = () => {
               y: -5,
               transition: { type: 'spring', stiffness: 400, damping: 10 },
             }}
-            className="flex flex-col p-6 rounded-lg border-2 border-dashed shadow-lg backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border-white/30 dark:border-gray-700/30 group sm:col-span-2 lg:col-span-1"
+            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group border-text-tertiary/10 bg-white/5 hover:bg-text-tertiary/5"
           >
             <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
               <FaCalendarAlt className="w-6 h-6 text-text-tertiary" />
@@ -127,7 +127,7 @@ const ContactHero = () => {
               rel="noopener noreferrer"
               className="flex gap-2 justify-center items-center px-4 py-2 mt-auto font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
             >
-              Book via Cal.com
+              Book
             </Link>
           </motion.div>
         </motion.div>

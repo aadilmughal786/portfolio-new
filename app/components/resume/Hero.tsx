@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaDownload } from 'react-icons/fa';
-import { FaAnglesRight, FaWpforms } from 'react-icons/fa6';
+import { FaAnglesRight } from 'react-icons/fa6';
 
 const ResumeHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
