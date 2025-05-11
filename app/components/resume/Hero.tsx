@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { FaDownload } from 'react-icons/fa';
-import { FaWpforms } from 'react-icons/fa6';
+import { FaAnglesRight, FaWpforms } from 'react-icons/fa6';
 
 const ResumeHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -95,7 +95,7 @@ const ResumeHero = () => {
             <a
               href="/resume.pdf"
               download
-              className="inline-flex items-center px-6 py-3 font-medium text-white rounded-lg transition-colors duration-300 bg-text-tertiary/80 hover:bg-text-tertiary"
+              className="inline-flex items-center px-6 py-2 font-medium text-white rounded-lg transition-colors duration-300 bg-text-tertiary/80 hover:bg-text-tertiary"
             >
               <FaDownload className="mr-2" />
               Download Resume
@@ -103,10 +103,9 @@ const ResumeHero = () => {
 
             <Link
               href="/contact"
-              className="inline-flex items-center px-6 py-3 font-medium rounded-lg border transition-colors duration-300 border-border-primary hover:bg-gray-100 dark:hover:bg-gray-800 text-text-primary"
+              className="inline-flex gap-2 items-center px-6 py-2 font-medium rounded-lg transition-all duration-300 bg-text-tertiary/10 text-text-tertiary hover:bg-text-tertiary/20"
             >
-              <FaWpforms className="mr-2" />
-              Contact Me
+              Contact Me <FaAnglesRight />
             </Link>
           </motion.div>
         </motion.div>

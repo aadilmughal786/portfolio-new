@@ -15,8 +15,8 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="overflow-hidden relative min-h-screen">
-      <div className="container grid relative z-10 gap-12 items-center py-20 mx-auto lg:grid-cols-2 lg:gap-16">
+    <section className="overflow-hidden relative min-h-screen px-4 sm:px-8 lg:px-16">
+      <div className="container grid relative z-10 gap-6 sm:gap-12 items-center py-10 sm:py-20 mx-auto lg:grid-cols-2 lg:gap-16">
         {/* Content section */}
         <div className="flex flex-col order-2 lg:order-1">
           <motion.div
@@ -317,7 +317,7 @@ const Hero = () => {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -10 }}
         transition={{ delay: 1.6, duration: 0.8 }}
-        className="flex flex-col items-center mb-15"
+        className="flex flex-col items-center mb-5"
       >
         <span className="mb-2 text-sm text-gray-700 dark:text-gray-400">Scroll to explore</span>
         <motion.div

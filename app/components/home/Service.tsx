@@ -4,6 +4,7 @@ import { useRef, useState, useEffect } from 'react';
 import { FaCode, FaServer, FaPaintBrush, FaCloud, FaSearch, FaMobileAlt } from 'react-icons/fa';
 import { motion, useInView } from 'framer-motion';
 import Link from 'next/link';
+import { FaAnglesRight } from 'react-icons/fa6';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -124,7 +125,7 @@ const Services: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-4xl mx-auto">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -145,21 +146,10 @@ const Services: React.FC = () => {
         >
           <Link
             href="/contact"
-            className="inline-flex gap-2 items-center px-8 py-3 font-medium text-white rounded-lg transition-all duration-300 bg-text-tertiary hover:bg-text-tertiary/90"
+            className="inline-flex gap-2 items-center px-8 py-2 font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
           >
             Discuss Your Project
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="w-5 h-5"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                clipRule="evenodd"
-              />
-            </svg>
+            <FaAnglesRight />
           </Link>
         </motion.div>
       </div>

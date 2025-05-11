@@ -33,7 +33,7 @@ const FeaturedBlogs: React.FC<FeaturedBlogsProps> = ({ blogs }) => {
   }, [blogs]);
 
   return (
-    <section id="featured-blogs" className="py-12">
+    <section id="featured-blogs" className="pt-12 pb-40">
       <div className="container px-4 mx-auto">
         {/* Animated section heading */}
         <motion.div
@@ -67,7 +67,7 @@ const FeaturedBlogs: React.FC<FeaturedBlogsProps> = ({ blogs }) => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
           {visibleBlogs.map((blog, index) => (
             <BlogCard key={blog.slug} blog={blog} index={index} />
           ))}
