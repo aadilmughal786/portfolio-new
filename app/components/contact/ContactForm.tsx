@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { useForm } from '@formspree/react';
-import ReCAPTCHA from 'react-google-recaptcha';
 import confetti from 'canvas-confetti';
 import { FaEnvelope, FaUser } from 'react-icons/fa';
 import { FiTarget } from 'react-icons/fi';
@@ -19,7 +18,6 @@ export default function ContactSection() {
     email: '',
     subject: '',
     message: '',
-    recaptchaCompleted: false,
   });
 
   // Track if each field has been touched (for validation)
@@ -30,9 +28,6 @@ export default function ContactSection() {
     subject: false,
     message: false,
   });
-
-  // Dark mode detection
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   // FormSpree hook - simplified usage
   const [submissionState, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || '');
@@ -55,14 +50,6 @@ export default function ContactSection() {
     }));
   };
 
-  // Handle recaptcha completion
-  const handleRecaptchaChange = token => {
-    setFormState(prev => ({
-      ...prev,
-      recaptchaCompleted: !!token,
-    }));
-  };
-
   // Check if all fields are valid
   const areAllFieldsValid = () => {
     return (
@@ -75,61 +62,34 @@ export default function ContactSection() {
   };
 
   // Is form ready to submit
-  const isFormValid = areAllFieldsValid() && formState.recaptchaCompleted;
+  const isFormValid = areAllFieldsValid();
 
   // Reset form after successful submission
   useEffect(() => {
-    if (submissionState.succeeded) {
-      setFormState({
-        name: '',
-        email: '',
-        subject: '',
-        message: '',
-        recaptchaCompleted: false,
-      });
-      setTouched({
-        name: false,
-        email: false,
-        subject: false,
-        message: false,
-      });
-      runConfetti();
-    }
-  }, [submissionState.succeeded]);
-
-  // Theme detection
-  useEffect(() => {
-    const isDark =
-      document.documentElement.classList.contains('dark') ||
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    setIsDarkMode(isDark);
-
-    const observer = new MutationObserver(mutations => {
-      mutations.forEach(mutation => {
-        if (mutation.attributeName === 'class') {
-          const isDarkNow = document.documentElement.classList.contains('dark');
-          setIsDarkMode(isDarkNow);
-        }
-      });
-    });
-
-    observer.observe(document.documentElement, { attributes: true });
-    return () => observer.disconnect();
+    // if (submissionState.succeeded) {
+    runConfetti();
+    // }
   }, []);
 
-  // Confetti animation function
   const runConfetti = () => {
-    const duration = 4000;
+    const duration = 3 * 1000; // 3 seconds
     const end = Date.now() + duration;
-    const colors = ['#00d5f6', '#007397', '#ffffff'];
+
+    const colors = ['#00d5f6', '#007397', '#ffffff']; // You can customize the colors
 
     (function frame() {
       confetti({
         particleCount: 2,
         angle: 60,
         spread: 55,
-        origin: { y: 0.6 },
+        origin: { x: 0 },
+        colors,
+      });
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
         colors,
       });
 
@@ -326,16 +286,6 @@ export default function ContactSection() {
                   className={`block px-4 py-2 w-full rounded-md border text-text-primary bg-bg-primary/15 border-text-primary/20 placeholder-text-primary/50 sm:text-sm ${getMessageBorderClass()}`}
                 />
               </div>
-            </div>
-
-            {/* reCAPTCHA - only shown when all fields are filled correctly */}
-            <div className="captcha-container">
-              <ReCAPTCHA
-                sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''}
-                theme={isDarkMode ? 'dark' : 'light'}
-                size="normal"
-                onChange={handleRecaptchaChange}
-              />
             </div>
 
             {/* Submit button - only enabled when all validations pass */}
