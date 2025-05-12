@@ -67,7 +67,7 @@ const ContactHero = () => {
               y: -5,
               transition: { type: 'spring', stiffness: 400, damping: 10 },
             }}
-            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group border-text-tertiary/10 bg-white/5 hover:bg-text-tertiary/5"
+            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group hover:bg-text-tertiary/5 border-text-tertiary/10 bg-bg-primary/5"
           >
             <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
               <FaPaperPlane className="w-6 h-6 text-text-tertiary" />
@@ -91,7 +91,7 @@ const ContactHero = () => {
               y: -5,
               transition: { type: 'spring', stiffness: 400, damping: 10 },
             }}
-            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group border-text-tertiary/10 bg-white/5 hover:bg-text-tertiary/5"
+            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group hover:bg-text-tertiary/5 border-text-tertiary/10 bg-bg-primary/5"
           >
             <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
               <FaFileAlt className="w-6 h-6 text-text-tertiary" />
@@ -100,12 +100,12 @@ const ContactHero = () => {
             <p className="mb-4 text-text-primary">
               Share your details and ideas through our contact form
             </p>
-            <Link
+            <a
               href="#contact-form"
               className="flex gap-2 justify-center items-center px-4 py-2 mt-auto font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
             >
               Go to Form
-            </Link>
+            </a>
           </motion.div>
 
           {/* Book a Slot Card */}
@@ -114,7 +114,7 @@ const ContactHero = () => {
               y: -5,
               transition: { type: 'spring', stiffness: 400, damping: 10 },
             }}
-            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group border-text-tertiary/10 bg-white/5 hover:bg-text-tertiary/5"
+            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group hover:bg-text-tertiary/5 border-text-tertiary/10 bg-bg-primary/5"
           >
             <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
               <FaCalendarAlt className="w-6 h-6 text-text-tertiary" />

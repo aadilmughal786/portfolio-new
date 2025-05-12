@@ -33,7 +33,7 @@ export default function ContactSection() {
   const [submissionState, handleSubmit] = useForm(process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID || '');
 
   // Handle input changes with minimal re-renders
-  const handleInputChange = e => {
+  const handleInputChange = (e: { target: { name: string; value: string } }) => {
     const { name, value } = e.target;
     setFormState(prev => ({
       ...prev,
@@ -42,7 +42,7 @@ export default function ContactSection() {
   };
 
   // Mark field as touched on blur
-  const handleBlur = e => {
+  const handleBlur = (e: { target: { name: string } }) => {
     const { name } = e.target;
     setTouched(prev => ({
       ...prev,
@@ -64,12 +64,11 @@ export default function ContactSection() {
   // Is form ready to submit
   const isFormValid = areAllFieldsValid();
 
-  // Reset form after successful submission
   useEffect(() => {
-    // if (submissionState.succeeded) {
-    runConfetti();
-    // }
-  }, []);
+    if (submissionState.succeeded) {
+      runConfetti();
+    }
+  }, [submissionState.succeeded]);
 
   const runConfetti = () => {
     const duration = 3 * 1000; // 3 seconds
@@ -159,7 +158,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="overflow-hidden relative px-4 pb-30 sm:px-6 lg:px-8">
+    <section className="overflow-hidden relative px-4 pb-30 sm:px-6 lg:px-8" id="contact-form">
       <div className="container mx-auto">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
@@ -174,8 +173,7 @@ export default function ContactSection() {
         <div className="mx-auto max-w-4xl">
           <form
             onSubmit={handleSubmit}
-            className="p-6 space-y-5 rounded-xl border backdrop-blur-sm border-text-tertiary/10 dark:bg-bg-primary/5"
-            id="contact-form"
+            className="p-6 space-y-5 rounded-xl border backdrop-blur-sm border-text-tertiary/10 bg-bg-primary/5"
           >
             <div>
               <h2 className="mb-1 text-2xl font-bold text-text-primary">Send a Message</h2>
@@ -292,7 +290,7 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={submissionState.submitting || !isFormValid}
-              className="flex justify-center items-center px-4 py-3 w-full text-sm font-medium text-white rounded-md cursor-pointer bg-text-tertiary/80 hover:bg-text-tertiary focus:ring-2 focus:ring-offset-2 focus:ring-text-tertiary disabled:opacity-50"
+              className="flex justify-center items-center px-4 py-3 w-full text-sm font-medium text-white rounded-md cursor-pointer bg-text-tertiary/80 hover:bg-text-tertiary disabled:opacity-50"
             >
               {submissionState.submitting ? (
                 <div className="flex gap-2 items-center">

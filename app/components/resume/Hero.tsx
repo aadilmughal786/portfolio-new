@@ -47,7 +47,7 @@ const ResumeHero = () => {
         >
           {/* Title Section */}
           <motion.div variants={itemVariants} className="text-center">
-            <span className="inline-flex gap-2 items-center px-4 py-1 mb-3 text-sm font-medium tracking-wider rounded-full bg-text-tertiary/5 text-text-tertiary">
+            <span className="inline-flex gap-2 items-center px-4 py-2 mb-3 text-sm font-medium tracking-wider rounded-full bg-text-tertiary/5 text-text-tertiary">
               <span className="flex relative w-2 h-2">
                 <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
                 <span className="inline-flex relative w-2 h-2 rounded-full bg-text-tertiary"></span>
@@ -66,35 +66,39 @@ const ResumeHero = () => {
             </p>
           </motion.div>
 
-          {/* Experience Stats */}
+          {/* Experience Stats - Completely Redesigned */}
           <motion.div
             variants={itemVariants}
-            className="grid grid-cols-3 gap-6 mb-10 w-full max-w-lg"
+            className="overflow-hidden mb-12 w-full max-w-2xl rounded-xl border backdrop-blur-sm border-text-tertiary/10 bg-bg-primary/5"
           >
-            {experienceItems.map((item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -5 }}
-                className="flex flex-col items-center p-4 rounded-xl border backdrop-blur-sm transition-all duration-300 border-border-primary bg-white/50 dark:bg-gray-800/50"
-              >
-                <motion.span
-                  initial={{ scale: 0.8 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.6 + index * 0.2, duration: 0.5, type: 'spring' }}
-                  className="text-3xl font-bold text-text-tertiary"
+            <div className="flex flex-col sm:flex-row">
+              {experienceItems.map((item, index) => (
+                <div
+                  key={index}
+                  className={`flex-1 py-5 px-4 text-center relative ${
+                    index !== experienceItems.length - 1 ? 'sm:border-r border-border-primary' : ''
+                  } ${index !== 0 ? 'border-t sm:border-t-0 border-border-primary' : ''}`}
                 >
-                  {item.value}
-                </motion.span>
-                <span className="text-sm text-text-primary">{item.label}</span>
-              </motion.div>
-            ))}
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 + index * 0.15 }}
+                    className="relative z-10"
+                  >
+                    <span className="block mb-1 text-3xl font-bold md:text-4xl text-text-tertiary">
+                      {item.value}
+                    </span>
+                    <span className="text-sm text-text-primary/80">{item.label}</span>
+                  </motion.div>
+                </div>
+              ))}
+            </div>
           </motion.div>
 
           {/* CTA Buttons */}
           <motion.div variants={itemVariants} className="flex flex-wrap gap-4 justify-center mb-12">
             <a
-              href="/resume.pdf"
-              download
+              href="#download-resume"
               className="inline-flex items-center px-6 py-2 font-medium text-white rounded-lg transition-colors duration-300 bg-text-tertiary/80 hover:bg-text-tertiary"
             >
               <FaDownload className="mr-2" />
@@ -117,13 +121,13 @@ const ResumeHero = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
           className="flex flex-col items-center mb-15"
         >
-          <span className="mb-2 text-sm text-text-primary"> Resume Details Below</span>
+          <span className="mb-2 text-sm text-gray-700 dark:text-gray-400">Scroll to explore</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
-            className="flex justify-center pt-1 w-5 h-10 rounded-full border-2 border-border-primary"
+            className="flex justify-center pt-1 w-5 h-10 rounded-full border-2 border-gray-400"
           >
-            <motion.div className="w-1 h-2 rounded-full bg-text-primary" />
+            <motion.div className="w-1 h-2 bg-gray-400 rounded-full" />
           </motion.div>
         </motion.div>
       </div>
