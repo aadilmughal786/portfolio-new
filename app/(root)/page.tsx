@@ -23,26 +23,14 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative px-4 sm:px-8 lg:px-16">
-        <Hero />
-      </div>
-      <div className="relative sm:px-8 lg:px-16">
-        <AboutMe />
-      </div>
-      <div className="relative pt-16 sm:px-8 lg:px-16">
-        <TechStack />
-        <Stats />
-      </div>
-      <div className="relative pt-16 sm:px-8 lg:px-16">
-        <FeaturedProjects projects={projectsData} />
-      </div>
-      <div className="relative pt-16 sm:px-8 lg:px-16">
-        <Service />
-      </div>
-      <div className="relative pt-16 sm:px-8 lg:px-16">
-        <Testimonials />
-        <FeaturedBlogs blogs={posts} />
-      </div>
+      <Hero />
+      <AboutMe />
+      <Stats />
+      <FeaturedProjects projects={projectsData} />
+      <TechStack />
+      <Service />
+      <Testimonials />
+      <FeaturedBlogs blogs={posts} />
     </>
   );
 }

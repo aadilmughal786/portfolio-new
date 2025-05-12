@@ -11,7 +11,7 @@ import confetti from 'canvas-confetti';
 
 // Confetti function moved outside
 const runConfetti = () => {
-  const duration = 15 * 1000; // 15 seconds
+  const duration = 5 * 1000; // 5 seconds
   const end = Date.now() + duration;
 
   const colors = ['#00d5f6', '#007397', '#ffffff']; // You can customize the colors
@@ -50,7 +50,7 @@ const AchievementItem = ({ data }: AchievementProps) => {
     if (isRunning) return; // Prevent multiple clicks
     setIsRunning(true);
     runConfetti();
-    setTimeout(() => setIsRunning(false), 15 * 1000); // Unlock after 15 seconds
+    setTimeout(() => setIsRunning(false), 5 * 1000); // Unlock after 15 seconds
   };
 
   return (

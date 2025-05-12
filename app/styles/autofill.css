@@ -1,0 +1,24 @@
+/* Override browser autofill styles */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--bg-input, rgba(255, 255, 255, 0.15)) inset !important;
+  -webkit-text-fill-color: var(--text-primary, #000) !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Ensure dropdown text is visible */
+input:-webkit-autofill option {
+  background-color: var(--bg-dropdown, #f9f9f9);
+  color: #333;
+}
+
+/* Dark mode overrides */
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px rgba(30, 30, 30, 0.5) inset !important;
+  -webkit-text-fill-color: var(--text-primary-dark, #fff) !important;
+}

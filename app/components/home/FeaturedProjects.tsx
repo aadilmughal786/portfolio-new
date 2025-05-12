@@ -34,7 +34,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
   }, [projects]);
 
   return (
-    <section id="featured-projects" className="pb-12">
+    <section id="featured-projects" className="pt-12 pb-24">
       <div className="container px-4 mx-auto">
         {/* Animated section heading */}
         <motion.div
@@ -69,7 +69,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 mx-auto max-w-4xl md:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
@@ -127,11 +127,11 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
     });
   };
 
-  // Status badge styling
+  // Status badge styling - using the tertiary color scheme consistently
   const statusStyles = {
-    active: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    archived: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-    'in-progress': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+    active: 'bg-text-tertiary/10 text-text-tertiary',
+    archived: 'bg-text-tertiary/5 text-text-primary/70',
+    'in-progress': 'bg-text-tertiary/15 text-text-tertiary/90',
   };
 
   return (
@@ -157,15 +157,15 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex space-x-4"
+              className="flex gap-4"
             >
               <Link
                 href={project.repoUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex justify-center items-center p-3 text-white bg-indigo-600 rounded-full transition-all hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+                className="flex justify-center items-center p-1 rounded-full transition-all text-white/80 hover:text-white"
               >
-                <FaGithub className="w-5 h-5" />
+                <FaGithub size={28} />
               </Link>
 
               {project.liveUrl && (
@@ -173,7 +173,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex justify-center items-center p-3 text-white bg-indigo-600 rounded-full transition-all hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+                  className="flex justify-center items-center p-3 rounded-full transition-all text-white/80 hover:text-white"
                 >
                   <FaExternalLinkAlt className="w-5 h-5" />
                 </Link>
@@ -182,7 +182,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
               {project.caseStudySlug && (
                 <Link
                   href={`/${project.caseStudySlug}`}
-                  className="flex justify-center items-center p-3 text-white bg-indigo-600 rounded-full transition-all hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600"
+                  className="flex justify-center items-center p-3 rounded-full transition-all text-white/80 hover:text-white"
                 >
                   <FaBookOpen className="w-5 h-5" />
                 </Link>
@@ -212,9 +212,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
 
       <div className="p-5">
         <div className="flex justify-between items-center mb-3">
-          <h3 className="text-lg font-bold text-gray-900 md:text-xl dark:text-white">
-            {project.title}
-          </h3>
+          <h3 className="text-lg font-bold text-text-primary md:text-xl">{project.title}</h3>
           <span
             className={`text-xs px-2 py-1 rounded-full capitalize ${statusStyles[project.status]}`}
           >
@@ -222,7 +220,7 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
           </span>
         </div>
 
-        <p className="mb-4 text-sm text-gray-600 dark:text-gray-300 md:text-base line-clamp-2">
+        <p className="mb-4 text-sm text-text-primary/70 md:text-base line-clamp-2">
           {project.description}
         </p>
 
@@ -230,13 +228,13 @@ const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, i
           {project.tags.slice(0, 4).map((tag, i) => (
             <span
               key={i}
-              className="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300"
+              className="px-2 py-1 text-xs font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
             >
               {tag}
             </span>
           ))}
           {project.tags.length > 4 && (
-            <span className="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
+            <span className="px-2 py-1 text-xs font-medium rounded-full bg-text-tertiary/5 text-text-tertiary">
               +{project.tags.length - 4}
             </span>
           )}

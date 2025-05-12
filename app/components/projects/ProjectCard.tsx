@@ -22,7 +22,7 @@ const ProjectCard: React.FC<{
 
   return (
     <motion.div
-      className="overflow-hidden rounded-xl border shadow-lg bg-bg-primary border-border-primary"
+      className="overflow-hidden rounded-xl border shadow-xs bg-bg-primary border-border-primary"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
