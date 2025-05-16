@@ -20,7 +20,7 @@ const TechStack = () => {
         <div className="mx-auto mb-20 max-w-xl">
           <div className="flex gap-4 p-3 mx-auto mb-10 max-w-2xl rounded-xl border transition-all duration-300 border-text-tertiary/10 bg-text-tertiary/5 hover:bg-text-tertiary/10">
             <Image
-              src={'./portfolio-new/images/home/popcorn.gif'}
+              src={'/portfolio-new/images/home/popcorn.gif'}
               alt="popcorn-gif"
               width={100}
               height={200}
