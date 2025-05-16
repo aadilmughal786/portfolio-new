@@ -55,7 +55,16 @@ const Testimonials: React.FC = () => {
   const [isPaused, setIsPaused] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
+  const sliderRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: false, amount: 0.3 });
+
+  // Touch handling variables
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [isSwiping, setIsSwiping] = useState(false);
+
+  // Minimum swipe distance threshold (in pixels)
+  const minSwipeDistance = 50;
 
   useEffect(() => {
     if (isInView) {
@@ -82,6 +91,50 @@ const Testimonials: React.FC = () => {
     setTimeout(() => setIsPaused(false), 10000);
   };
 
+  // Handle touch start event
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+    setIsSwiping(true);
+    setIsPaused(true);
+  };
+
+  // Handle touch move event
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (isSwiping) {
+      setTouchEnd(e.targetTouches[0].clientX);
+    }
+  };
+
+  // Handle touch end event
+  const handleTouchEnd = () => {
+    if (!isSwiping) return;
+
+    // Calculate swipe distance
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    // Handle left swipe (go to next testimonial)
+    if (isLeftSwipe) {
+      const nextIndex = (activeIndex + 1) % testimonials.length;
+      setActiveIndex(nextIndex);
+    }
+
+    // Handle right swipe (go to previous testimonial)
+    if (isRightSwipe) {
+      const prevIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
+      setActiveIndex(prevIndex);
+    }
+
+    // Reset touch values and swipe state
+    setTouchStart(0);
+    setTouchEnd(0);
+    setIsSwiping(false);
+
+    // Resume auto-rotation after a delay
+    setTimeout(() => setIsPaused(false), 10000);
+  };
+
   // Simple opacity transition with no movement
   const simpleTransition = {
     enter: {
@@ -101,20 +154,15 @@ const Testimonials: React.FC = () => {
     },
   };
 
-  // Removed direction state as it's no longer needed
-
-  // No longer need direction for the fade animation
-  // Removed direction-based animation code
-
   return (
-    <section ref={sectionRef} id="testimonials" className="overflow-hidden relative py-24">
-      <div className="container relative z-10 px-6 mx-auto">
+    <section ref={sectionRef} id="testimonials" className="overflow-hidden relative py-16 md:py-24">
+      <div className="container relative z-10 px-4 mx-auto md:px-6">
         {/* Animated section heading */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
           transition={{ duration: 0.7 }}
-          className="mb-16 text-center"
+          className="mb-10 text-center md:mb-16"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -128,15 +176,21 @@ const Testimonials: React.FC = () => {
             </span>
             What Others Say
           </motion.div>
-          <h2 className="text-4xl font-bold md:text-5xl">
+          <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">
             Client <span className="text-text-tertiary">Testimonials</span>
           </h2>
         </motion.div>
 
         <div className="mx-auto max-w-4xl">
-          {/* Testimonial Slider with smoother animation */}
-          <div className="overflow-hidden relative p-1">
-            <div className="relative min-h-[400px]  sm:min-h-[260px]">
+          {/* Testimonial Slider with touch functionality */}
+          <div
+            className="overflow-hidden relative p-1"
+            ref={sliderRef}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+          >
+            <div className="relative w-full cursor-grab active:cursor-grabbing">
               <AnimatePresence initial={false} mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -144,36 +198,38 @@ const Testimonials: React.FC = () => {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  className="flex absolute flex-col gap-10 p-8 w-full rounded-xl border backdrop-blur-sm sm:flex-row sm:gap-15 border-border-primary bg-bg-primary/5"
+                  className="flex flex-col p-8 w-full rounded-xl border backdrop-blur-sm border-border-primary bg-bg-primary/5"
                 >
-                  <motion.div className="relative" variants={variants.fadeZoom}>
-                    <div className="overflow-hidden relative z-10 w-40 h-40 rounded-2xl border-4 shadow-lg md:w-48 md:h-48 border-text-tertiary/20">
-                      <Image
-                        src="/portfolio-new/images/aadil.png"
-                        alt="Professional Developer Portrait"
-                        height={100}
-                        width={100}
-                        className="flex justify-center items-center w-full h-full text-4xl font-bold text-white bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
-                      />
-                    </div>
+                  <div className="flex flex-col gap-6 items-center lg:flex-row lg:items-start md:gap-8 lg:gap-10">
+                    <motion.div className="relative flex-shrink-0" variants={variants.fadeZoom}>
+                      <div className="overflow-hidden relative z-10 w-44 h-44 rounded-2xl border-4 shadow-lg border-text-tertiary/20">
+                        <Image
+                          src="/portfolio-new/images/aadil.png"
+                          alt="Professional Developer Portrait"
+                          height={100}
+                          width={100}
+                          className="flex justify-center items-center w-full h-full text-4xl font-bold text-white bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
+                        />
+                      </div>
 
-                    {/* Decorative Elements */}
-                    <div className="absolute -right-3 -bottom-3 z-0 w-full h-full rounded-2xl border-2 border-text-tertiary" />
-                    <button className="flex absolute -top-3 -left-3 z-20 justify-center items-center w-10 h-10 text-white rounded-full cursor-pointer bg-text-tertiary">
-                      <FaQuoteLeft />
-                    </button>
-                  </motion.div>
+                      {/* Decorative Elements */}
+                      <div className="absolute -right-3 -bottom-3 z-0 w-full h-full rounded-2xl border-2 border-text-tertiary" />
+                      <div className="flex absolute -top-3 -left-3 z-20 justify-center items-center w-8 h-8 text-white rounded-full sm:w-10 sm:h-10 bg-text-tertiary">
+                        <FaQuoteLeft className="text-xs sm:text-sm" />
+                      </div>
+                    </motion.div>
 
-                  <div className="flex items-center">
-                    <div>
-                      <div className="flex items-start mb-6">
-                        <p className="text-lg italic leading-relaxed text-text-primary/80">
+                    <div className="flex-1">
+                      <div className="mb-4 md:mb-6">
+                        <p className="text-base italic leading-relaxed sm:text-lg text-text-primary/80">
                           {testimonials[activeIndex].text}
                         </p>
                       </div>
 
-                      <h3 className="text-xl font-bold">{testimonials[activeIndex].name}</h3>
-                      <p className="text-text-primary/70">
+                      <h3 className="text-lg font-bold sm:text-xl">
+                        {testimonials[activeIndex].name}
+                      </h3>
+                      <p className="text-sm sm:text-base text-text-primary/70">
                         {testimonials[activeIndex].role} at{' '}
                         <span className="text-text-tertiary">
                           {testimonials[activeIndex].company}
@@ -190,7 +246,7 @@ const Testimonials: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
               transition={{ delay: 0.5, duration: 0.5 }}
-              className="flex justify-center mt-8 space-x-3"
+              className="flex justify-center mt-6 space-x-3 sm:mt-8"
             >
               {testimonials.map((_, index) => (
                 <button
@@ -200,10 +256,10 @@ const Testimonials: React.FC = () => {
                   aria-label={`Go to testimonial ${index + 1}`}
                 >
                   <div
-                    className={`w-2 h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                    className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                       index === activeIndex
                         ? 'bg-text-tertiary w-6'
-                        : 'bg-text-tertiary/30 group-hover:bg-text-tertiary/50'
+                        : 'bg-text-tertiary/30 w-2 group-hover:bg-text-tertiary/50'
                     }`}
                   ></div>
                   {index === activeIndex && (
