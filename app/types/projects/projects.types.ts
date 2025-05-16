@@ -1,12 +1,15 @@
-export type Project = {
+// types/projects/projects.types.ts
+export type ProjectStatus = 'active' | 'archived' | 'in-progress';
+
+export interface Project {
   id: number;
   title: string;
   description: string;
-  tags: string[];
-  liveUrl?: string;
-  repoUrl: string;
   imageUrl: string;
-  caseStudySlug?: string;
-  status: 'active' | 'archived' | 'in-progress';
+  tags: string[];
+  status: ProjectStatus;
+  repoUrl?: string;
   repoName?: string;
-};
+  liveUrl?: string;
+  caseStudySlug?: string;
+}

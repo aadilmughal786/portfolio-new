@@ -3,7 +3,6 @@
 import { useState, useMemo, useEffect } from 'react';
 import Fuse from 'fuse.js';
 import { BlogPost } from '@/types/blogs/blogs.types';
-import Link from 'next/link';
 import BlogCard from './BlogCard';
 import SearchBar from '../projects/SearchBar';
 import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
@@ -95,10 +94,8 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ blogs, itemsPerPage = 6 }) => {
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-8 gap-y-15 lg:grid-cols-3 md:grid-cols-2">
-            {paginatedBlogs.map((blog, index) => (
-              <Link href={`/blogs/${blog.slug}`} key={index}>
-                <BlogCard blog={blog} index={index} />
-              </Link>
+            {paginatedBlogs.map(blog => (
+              <BlogCard blog={blog} key={blog.slug} />
             ))}
           </div>
         )}

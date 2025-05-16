@@ -7,36 +7,7 @@ import CardItem from './CardItem';
 import { formatDate } from '@/utils/date';
 import { TAchievementItem } from '@/types/resume/achievement.types';
 import { achievementData as data } from '@/data/resume/achievement';
-import confetti from 'canvas-confetti';
-
-// Confetti function moved outside
-const runConfetti = () => {
-  const duration = 5 * 1000; // 5 seconds
-  const end = Date.now() + duration;
-
-  const colors = ['#00d5f6', '#007397', '#ffffff']; // You can customize the colors
-
-  (function frame() {
-    confetti({
-      particleCount: 2,
-      angle: 60,
-      spread: 55,
-      origin: { x: 0 },
-      colors,
-    });
-    confetti({
-      particleCount: 2,
-      angle: 120,
-      spread: 55,
-      origin: { x: 1 },
-      colors,
-    });
-
-    if (Date.now() < end) {
-      requestAnimationFrame(frame);
-    }
-  })();
-};
+import { runConfetti } from '@/utils/confetti';
 
 type AchievementProps = {
   data: TAchievementItem;

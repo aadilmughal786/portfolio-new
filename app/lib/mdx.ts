@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { BlogPost, BlogPostFrontmatter } from '@/types/blogs/blogs.types';
+import { BlogPost } from '@/types/blogs/blogs.types';
 
 export function getAllPostSlugs(postsDir: string): string[] {
   const fileNames = fs.readdirSync(postsDir);
@@ -13,17 +13,20 @@ export function getPostBySlug(slug: string, postsDir: string): BlogPost {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
-  const frontmatter = data as BlogPostFrontmatter;
+  const frontmatter = data as BlogPost;
 
   return {
     slug,
     content,
-    author: 'Aadil Mugal',
+    author: frontmatter.author || 'Aadil Mugal',
     title: frontmatter.title,
     publishedAt: frontmatter.publishedAt,
     excerpt: frontmatter.excerpt,
     tags: frontmatter.tags || [],
     coverImageUrl: frontmatter.coverImageUrl,
+    authorImage: frontmatter.authorImage || '/portfolio-new/images/aadil.png',
+    readingTime: frontmatter.readingTime || '1 min',
+    category: frontmatter.category || 'Web Dev',
   };
 }
 
