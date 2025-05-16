@@ -1,26 +1,13 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { FaCode, FaUserFriends, FaStar, FaCalendarAlt } from 'react-icons/fa';
 import { useEffect, useState, useRef } from 'react';
+import variants from '@/utils/motionVariants'; // Import the variants
+import { TStatBox } from '@/types/home/stats.types';
+import { statsData } from '@/data/home/stats';
+import SectionHeading from './SectionHeading';
 
-interface StatBoxProps {
-  icon: React.ReactNode;
-  value: number;
-  label: string;
-  duration?: number;
-  suffix?: string;
-  delay: number;
-}
-
-const StatBox: React.FC<StatBoxProps> = ({
-  icon,
-  value,
-  label,
-  duration = 2000,
-  suffix = '',
-  delay,
-}) => {
+const StatBox: React.FC<TStatBox> = ({ icon, value, label, suffix = '' }) => {
   const [count, setCount] = useState(0);
   const countRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(countRef, { once: false, amount: 0.3 });
@@ -37,7 +24,7 @@ const StatBox: React.FC<StatBoxProps> = ({
 
     let start = 0;
     const end = value;
-    const incrementTime = Math.floor(duration / end);
+    const incrementTime = Math.floor(2000 / end);
     const timer = setTimeout(() => {
       const counter = setInterval(() => {
         start += 1;
@@ -46,18 +33,19 @@ const StatBox: React.FC<StatBoxProps> = ({
       }, incrementTime);
 
       return () => clearInterval(counter);
-    }, delay);
+    });
 
     return () => clearTimeout(timer);
-  }, [value, duration, isVisible, delay]);
+  }, [value, isVisible]);
 
   return (
     <motion.div
       ref={countRef}
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
-      transition={{ duration: 0.5, delay: delay / 1000 }}
-      className="p-5 rounded-xl border backdrop-blur-sm transition-all duration-300 border-text-tertiary/10 bg-white/5 hover:bg-text-tertiary/5"
+      variants={variants.fadeIn}
+      initial="hidden"
+      animate={isVisible ? 'visible' : 'hidden'}
+      transition={{ duration: 0.5, delay: 1 }}
+      className="p-5 rounded-xl border backdrop-blur-sm transition-all duration-300 border-text-tertiary/10 bg-bg-primary/5 hover:bg-text-tertiary/5"
     >
       <div className="flex flex-col items-center">
         <div className="p-2 mb-3 text-xl rounded-lg bg-text-tertiary/10 text-text-tertiary">
@@ -84,111 +72,52 @@ const Stats: React.FC = () => {
     }
   }, [isInView]);
 
-  const stats = [
-    {
-      icon: <FaCalendarAlt />,
-      value: 3,
-      label: 'Years of Experience',
-      suffix: '+',
-      delay: 0,
-    },
-    {
-      icon: <FaUserFriends />,
-      value: 48,
-      label: 'Happy Clients',
-      suffix: '',
-      delay: 200,
-    },
-    {
-      icon: <FaCode />,
-      value: 30,
-      label: 'Projects Completed',
-      suffix: '+',
-      delay: 400,
-    },
-    {
-      icon: <FaStar />,
-      value: 1250,
-      label: 'GitHub Stars',
-      suffix: '+',
-      delay: 600,
-    },
-  ];
-
   return (
     <section
       ref={sectionRef}
       id="stats"
-      className="overflow-hidden relative py-24 px-4 sm:px-8 lg:px-16"
+      className="overflow-hidden relative px-4 py-12 mx-auto max-w-5xl sm:py-24 sm:px-8 lg:px-16"
     >
-      <div className="container relative z-10">
+      <div className="relative z-10">
         {/* Animated section heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ duration: 0.7 }}
-          className="mb-16 text-center"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex gap-2 items-center px-4 py-2 mb-4 text-sm font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
-          >
-            <span className="flex relative mr-1 w-3 h-3">
-              <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
-              <span className="inline-flex relative w-3 h-3 rounded-full bg-text-tertiary"></span>
-            </span>
-            Track Record
-          </motion.div>
-          <h2 className="text-4xl font-bold md:text-5xl">
-            My Impact <span className="text-text-tertiary">By Numbers</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-text-primary/80">
-            Key metrics highlighting my journey and achievements in web development.
-          </p>
-        </motion.div>
 
-        {/* Introduction text before stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          className="mx-auto mb-8 max-w-3xl text-center"
-        >
-          <p className="text-text-primary/90">
-            These numbers represent milestones throughout my professional journey, reflecting my
-            commitment to <span className="font-medium text-text-tertiary">quality</span> and{' '}
-            <span className="font-medium text-text-tertiary">excellence</span>.
-          </p>
-        </motion.div>
+        <SectionHeading badge="Track Record" title="My Impact" highlightedTitle="By Numbers">
+          These numbers represent milestones throughout my professional journey, reflecting my
+          commitment to <span className="font-medium text-text-tertiary">quality</span> and{' '}
+          <span className="font-medium text-text-tertiary">excellence</span>.
+        </SectionHeading>
 
         {/* Additional context */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          variants={variants.fadeInUp}
+          initial="hidden"
+          animate={isVisible ? 'visible' : 'hidden'}
           transition={{ delay: 0.8, duration: 0.7 }}
-          className="mx-auto mt-8 max-w-3xl text-center mb-5"
+          className="mx-auto mt-8 mb-5 max-w-3xl text-center"
         >
-          <div className="flex flex-wrap justify-center gap-2 py-2">
+          <div className="flex flex-wrap gap-2 justify-center py-2">
+            {/* Using slideInFromLeft variant */}
             <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }}
+              variants={variants.slideInFromLeft}
+              initial="hidden"
+              animate={isVisible ? 'visible' : 'hidden'}
               transition={{ delay: 0.9, duration: 0.7 }}
-              className="inline-flex gap-1 items-center px-3 py-1 text-xs font-medium rounded-full border bg-text-tertiary/5 text-text-tertiary border-text-tertiary/10"
+              className="inline-flex gap-1 items-center px-3 py-1 text-sm font-medium rounded-full border bg-text-tertiary/5 text-text-tertiary border-text-tertiary/10"
             >
               <span className="flex relative w-2 h-2">
                 <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
                 <span className="inline-flex relative w-2 h-2 rounded-full bg-text-tertiary"></span>
               </span>
-              Continuously Growing
+              Continuously Learning
             </motion.span>
 
+            {/* Using slideInFromRight variant */}
             <motion.span
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
+              variants={variants.slideInFromRight}
+              initial="hidden"
+              animate={isVisible ? 'visible' : 'hidden'}
               transition={{ delay: 1.0, duration: 0.7 }}
-              className="inline-flex gap-1 items-center px-3 py-1 text-xs font-medium rounded-full border bg-text-tertiary/5 text-text-tertiary border-text-tertiary/10"
+              className="inline-flex gap-1 items-center px-3 py-1 text-sm font-medium rounded-full border bg-text-tertiary/5 text-text-tertiary border-text-tertiary/10"
             >
               <span className="flex relative w-2 h-2">
                 <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
@@ -199,19 +128,23 @@ const Stats: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Stats grid with improved spacing */}
-        <div className="grid grid-cols-2 gap-6 mx-auto max-w-4xl sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat, index) => (
+        {/* Stats grid with improved spacing - using the staggerChildren pattern for parent */}
+        <motion.div
+          variants={variants.staggerChildren}
+          initial="hidden"
+          animate={isVisible ? 'visible' : 'hidden'}
+          className="grid grid-cols-2 gap-6 mx-auto max-w-4xl sm:grid-cols-2 lg:grid-cols-4"
+        >
+          {statsData.map((stat, index) => (
             <StatBox
               key={index}
               icon={stat.icon}
               value={stat.value}
               label={stat.label}
               suffix={stat.suffix}
-              delay={stat.delay}
             />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

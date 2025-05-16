@@ -3,8 +3,7 @@
 import { useRef, useState, useEffect } from 'react';
 import { FaCode, FaServer, FaPaintBrush, FaCloud, FaSearch, FaMobileAlt } from 'react-icons/fa';
 import { motion, useInView } from 'framer-motion';
-import Link from 'next/link';
-import { FaAnglesRight } from 'react-icons/fa6';
+import { Button } from './Hero';
 
 interface ServiceCardProps {
   icon: React.ReactNode;
@@ -26,7 +25,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
       transition={{ duration: 0.5, delay: 0.2 + delay * 0.1 }}
-      className="p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 border-text-tertiary/10 bg-white/5 hover:bg-text-tertiary/5"
+      className="p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 border-text-tertiary/10 bg-bg-primary/5 hover:bg-text-tertiary/5"
     >
       <div className="flex gap-4 items-start">
         <div className="p-3 rounded-lg bg-text-tertiary/10 text-text-tertiary">{icon}</div>
@@ -90,7 +89,7 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <section ref={sectionRef} id="services" className="overflow-hidden relative py-24">
+    <section ref={sectionRef} id="services" className="overflow-hidden relative py-12">
       <div className="container relative z-10 px-6 mx-auto">
         {/* Animated section heading */}
         <motion.div
@@ -125,7 +124,7 @@ const Services: React.FC = () => {
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 gap-6 mx-auto max-w-4xl md:grid-cols-2">
           {services.map((service, index) => (
             <ServiceCard
               key={index}
@@ -142,15 +141,9 @@ const Services: React.FC = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
           transition={{ duration: 0.5, delay: 0.6 }}
-          className="mt-16 text-center"
+          className="flex justify-center mt-16"
         >
-          <Link
-            href="/contact"
-            className="inline-flex gap-2 items-center px-8 py-2 font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
-          >
-            Discuss Your Project
-            <FaAnglesRight />
-          </Link>
+          <Button href="/portfolio">Discuss Your Project</Button>
         </motion.div>
       </div>
     </section>

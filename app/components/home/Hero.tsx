@@ -6,43 +6,78 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { LiaSlackHash } from 'react-icons/lia';
+import variants from '@/utils/motionVariants';
+import { aboutMeData } from '@/data/home/about-me';
+import ScrollIndicator from '../ui/ScrollIndicator';
 
-const Hero = () => {
-  const [isVisible, setIsVisible] = useState(false);
+export const Button = ({
+  primary = true,
+  children,
+  href,
+}: {
+  primary?: boolean;
+  children: React.ReactNode;
+  href: string;
+}) => {
+  return (
+    <Link
+      href={href}
+      className={`flex gap-2 items-center px-6 py-2 font-medium  rounded-md transition-colors duration-300  
+        ${
+          primary
+            ? 'text-white bg-text-tertiary/80 hover:bg-text-tertiary'
+            : 'bg-text-tertiary/10 text-text-tertiary hover:bg-text-tertiary/20'
+        }`}
+    >
+      {children}
+      <FaAnglesRight />
+    </Link>
+  );
+};
 
+const HeroSection = () => {
+  const [animationsActive, setAnimationsActive] = useState(false);
+
+  // Trigger animations on component mount
   useEffect(() => {
-    setIsVisible(true);
+    setAnimationsActive(true);
   }, []);
 
   return (
-    <section className="overflow-hidden relative min-h-screen px-4 sm:px-8 lg:px-16">
-      <div className="container grid relative z-10 gap-6 sm:gap-12 items-center py-10 sm:py-20 mx-auto lg:grid-cols-2 lg:gap-16">
-        {/* Content section */}
+    <section className="overflow-hidden relative px-4 min-h-screen sm:px-8 lg:px-16">
+      <div className="grid relative z-10 gap-6 items-center py-10 mx-auto sm:gap-12 sm:py-20 lg:grid-cols-2 lg:gap-16">
+        {/* Left content area with heading and CTAs */}
         <div className="flex flex-col order-2 lg:order-1">
+          {/* Developer role badge */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
-            transition={{ duration: 0.7 }}
+            initial="hidden"
+            animate={animationsActive ? 'visible' : 'hidden'}
+            variants={variants.fadeInUp}
+            transition={{ duration: 0.5 }}
             className="mb-4"
           >
             <span className="inline-flex gap-2 items-center px-4 py-2 mb-4 text-sm font-medium rounded-full bg-text-tertiary/5 text-text-tertiary">
               <LiaSlackHash size={18} />
               Full-Stack Developer & Problem Solver
             </span>
-
-            <motion.h1
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5, duration: 0.8 }}
-              className="mb-4 text-4xl font-extrabold text-text-primary md:text-5xl lg:text-6xl"
-            >
-              Crafting Digital <span className="text-text-tertiary">Experiences</span> That Matter
-            </motion.h1>
           </motion.div>
 
+          {/* Main heading */}
+          <motion.h1
+            initial="hidden"
+            animate="visible"
+            variants={variants.fadeInUp}
+            transition={{ delay: 0.5, duration: 0.4 }}
+            className="mb-4 text-4xl font-extrabold text-text-primary md:text-5xl lg:text-6xl"
+          >
+            Crafting Digital <span className="text-text-tertiary">Experiences</span> That Matter
+          </motion.h1>
+
+          {/* Descriptive text */}
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isVisible ? 1 : 0 }}
+            initial="hidden"
+            animate={animationsActive ? 'visible' : 'hidden'}
+            variants={variants.fadeIn}
             transition={{ delay: 0.4, duration: 0.7 }}
             className="mb-6 text-lg text-text-primary"
           >
@@ -51,109 +86,66 @@ const Hero = () => {
             clean, maintainable code.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* Call to action buttons */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ delay: 1.2, duration: 0.7 }}
+            initial="hidden"
+            animate={animationsActive ? 'visible' : 'hidden'}
+            variants={variants.fadeInUp}
+            transition={{ delay: 1.6, duration: 0.5 }}
             className="flex flex-wrap gap-4"
           >
-            <Link
-              href="/contact"
-              className="flex gap-2 items-center px-4 py-2 font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
-            >
-              Start a Project
-              <FaAnglesRight />
-            </Link>
-            <Link
-              href="/blogs"
-              className="inline-flex gap-2 items-center px-6 py-2 font-medium rounded-lg transition-all duration-300 bg-text-tertiary/10 text-text-tertiary hover:bg-text-tertiary/20"
-            >
+            <Button href="/contact">Start a Project</Button>
+            <Button href="/portfolio" primary={false}>
               View Portfolio
-              <FaAnglesRight />
-            </Link>
+            </Button>
           </motion.div>
         </div>
 
-        {/* Image and floating elements */}
+        {/* Right section with profile image and animated elements */}
         <div className="relative order-1 mb-10 sm:mb-20 lg:order-2 lg:mb-0">
+          {/* Core profile visualization with orbital animations */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
+            initial="hidden"
+            animate={animationsActive ? 'visible' : 'hidden'}
+            variants={variants.fadeZoom}
             transition={{ duration: 0.8 }}
             className="relative z-10 mx-auto lg:mr-0"
           >
             <div className="relative mx-auto w-80 h-80 md:w-96 md:h-96">
-              {/* Animated concentric circles with smoother rotation */}
+              {/* Animated concentric circles - outermost */}
               <motion.div
                 animate={{
                   rotate: 360,
-                  scale: [1, 1.05, 1],
                 }}
                 transition={{
                   rotate: { repeat: Infinity, duration: 20, ease: 'linear' },
-                  scale: { repeat: Infinity, duration: 8, ease: 'easeInOut' },
                 }}
                 className="absolute inset-0 rounded-full border-2 border-dashed border-text-tertiary/20"
                 style={{ transformOrigin: 'center' }}
               />
 
-              <motion.div
-                animate={{
-                  rotate: -360,
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 25,
-                  ease: 'linear',
-                }}
+              {/* Second orbital ring */}
+              <div
                 className="absolute inset-4 rounded-full border border-text-tertiary/30"
                 style={{ transformOrigin: 'center' }}
               />
 
-              <motion.div
-                animate={{
-                  rotate: 360,
-                  scale: [1, 1.03, 1],
-                }}
-                transition={{
-                  rotate: { repeat: Infinity, duration: 30, ease: 'linear' },
-                  scale: { repeat: Infinity, duration: 6, ease: 'easeInOut', delay: 1 },
-                }}
+              {/* Third orbital ring */}
+              <div
                 className="absolute inset-8 rounded-full border-2 border-text-tertiary/20"
                 style={{ transformOrigin: 'center' }}
               />
 
-              <motion.div
-                animate={{
-                  rotate: -360,
-                  scale: [1, 1.02, 1],
-                }}
-                transition={{
-                  rotate: { repeat: Infinity, duration: 40, ease: 'linear' },
-                  scale: { repeat: Infinity, duration: 4, ease: 'easeInOut', delay: 2 },
-                }}
+              {/* Fourth orbital ring - Innermost */}
+              <div
                 className="absolute inset-12 rounded-full border border-text-tertiary/30"
                 style={{ transformOrigin: 'center' }}
               />
 
-              <motion.div
-                animate={{
-                  rotate: 360,
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 35,
-                  ease: 'linear',
-                }}
-                className="absolute inset-16 rounded-full border-2 border-dashed border-text-tertiary/20"
-                style={{ transformOrigin: 'center' }}
-              />
+              {/* Ambient glow effect behind profile */}
+              <div className="absolute inset-16 rounded-full blur-3xl bg-text-tertiary/15"></div>
 
-              {/* Glowing background effect */}
-              <div className="absolute inset-16 bg-gradient-to-br rounded-full blur-3xl from-text-tertiary/15 to-blue-500/10"></div>
-
-              {/* Orbit elements with fixed positions */}
+              {/* Orbiting tech icon - JavaScript */}
               <motion.div
                 animate={{
                   rotate: 360,
@@ -176,6 +168,7 @@ const Hero = () => {
                 </div>
               </motion.div>
 
+              {/* Orbiting tech icon - TS */}
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
@@ -187,11 +180,12 @@ const Hero = () => {
                   style={{ transformOrigin: 'center right' }}
                 >
                   <div className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary">
-                    <span className="text-xs font-bold text-white">PY</span>
+                    <span className="text-xs font-bold text-white">TS</span>
                   </div>
                 </div>
               </motion.div>
 
+              {/* Orbiting tech icon - UI */}
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
@@ -203,12 +197,29 @@ const Hero = () => {
                   style={{ transformOrigin: 'bottom center' }}
                 >
                   <div className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary">
-                    <span className="text-xs font-bold text-white">TS</span>
+                    <span className="text-xs font-bold text-white">UI</span>
                   </div>
                 </div>
               </motion.div>
 
-              {/* Circular mask with animated arrow border for the image */}
+              {/* Orbiting tech icon - UX */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 16, ease: 'linear' }}
+                className="absolute inset-0 z-10"
+                style={{ transformOrigin: 'center' }}
+              >
+                <div
+                  className="absolute top-6 left-1/2 w-8 h-8 -translate-x-1/2"
+                  style={{ transformOrigin: 'bottom center' }}
+                >
+                  <div className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary">
+                    <span className="text-xs font-bold text-white">UX</span>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Profile image */}
               <div className="overflow-hidden absolute inset-16 z-20 rounded-full border-4 shadow-lg border-white/80">
                 <Image
                   src="/portfolio-new/images/aadil.png"
@@ -217,65 +228,54 @@ const Hero = () => {
                   className="object-cover"
                   priority
                 />
-
-                {/* Animated arrow border */}
-                <motion.div
-                  initial={{ opacity: 0.8 }}
-                  animate={{ opacity: [0.8, 1, 0.8] }}
-                  transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
-                  className="absolute inset-0 z-30 rounded-full"
-                  style={{
-                    background: 'none',
-                    border: '2px dashed transparent',
-                    backgroundImage: `conic-gradient(from 0deg, transparent, rgba(var(--text-tertiary-rgb), 0.7), transparent)`,
-                  }}
-                >
-                  <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ repeat: Infinity, duration: 15, ease: 'linear' }}
-                    style={{ width: '100%', height: '100%' }}
-                  />
-                </motion.div>
               </div>
             </div>
           </motion.div>
 
-          {/* Decorative code element */}
+          {/* Code snippet badge */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
-            transition={{ delay: 1, duration: 0.8 }}
+            initial="hidden"
+            animate={animationsActive ? 'visible' : 'hidden'}
+            variants={variants.slideInFromRight}
+            transition={{ delay: 1, duration: 0.8, type: 'spring', stiffness: 100, damping: 10 }}
             className="hidden absolute top-1/4 z-30 sm:block lg:-left-10 md:block"
           >
             <div className="p-3 rounded-lg border shadow backdrop-blur-md bg-white/20 dark:bg-gray-800/20 border-white/30 dark:border-gray-700/30">
               <pre className="text-xs text-gray-800 dark:text-gray-200">
-                <code>{`function solve() {
+                <code>{`function createSolution() {
   return "elegant";
 }`}</code>
               </pre>
             </div>
           </motion.div>
 
-          {/* Project counter badge with improved glass effect */}
+          {/* Projects counter badge */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-            transition={{ delay: 1.2, duration: 0.8 }}
+            initial="hidden"
+            animate={animationsActive ? 'visible' : 'hidden'}
+            variants={variants.slideInFromLeft}
+            transition={{ delay: 1.2, duration: 0.8, type: 'spring', stiffness: 100, damping: 10 }}
             className="hidden absolute -bottom-5 z-30 p-4 rounded-xl border shadow backdrop-blur-md sm:block right-25 bg-white/50 dark:bg-gray-800/50 border-white/30 dark:border-gray-700/30"
           >
-            <span className="block text-sm text-gray-700 dark:text-gray-300">Completed</span>
-            <span className="block text-2xl font-bold text-gray-900 dark:text-white">30+</span>
-            <span className="block text-sm font-medium text-text-tertiary">Projects</span>
+            <span className="block text-2xl font-bold text-text-tertiary">
+              {aboutMeData.totalProjectsCompleted}+
+            </span>
+            <span className="block text-sm font-medium">
+              Completed <br />
+              Projects
+            </span>
           </motion.div>
 
-          {/* Availability badge with improved glass effect */}
+          {/* Availability badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
-            transition={{ delay: 1.4, duration: 0.8 }}
-            className="absolute top-10 z-30 p-3 rounded-lg border shadow backdrop-blur-md sm:right-0 md:right-10 bg-white/50 dark:bg-gray-800/40 border-white/30 dark:border-gray-700/30"
+            initial="hidden"
+            animate={animationsActive ? 'visible' : 'hidden'}
+            variants={variants.slideInFromLeft}
+            transition={{ delay: 1.4, duration: 0.8, type: 'spring', stiffness: 100, damping: 10 }}
+            className="absolute top-0 z-30 p-3 rounded-lg border shadow backdrop-blur-md sm:top-10 sm:right-0 md:right-10 bg-white/50 dark:bg-gray-800/40 border-white/30 dark:border-gray-700/30"
           >
             <div className="flex gap-2 items-center">
+              {/* Pulsing availability indicator */}
               <span className="flex relative w-3 h-3">
                 <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
                 <span className="inline-flex relative w-3 h-3 rounded-full bg-text-tertiary"></span>
@@ -284,12 +284,13 @@ const Hero = () => {
             </div>
           </motion.div>
 
-          {/* Extra tech badge with improved glass effect */}
+          {/* Experience badge */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.8 }}
-            transition={{ delay: 1.5, duration: 0.8 }}
-            className="absolute right-0 bottom-4 z-30 p-2 rounded-lg border shadow backdrop-blur-md w-50 sm:bottom-28 sm:left-0 md:left-10 bg-white/50 dark:bg-gray-800/40 border-white/30 dark:border-gray-700/30"
+            initial="hidden"
+            animate={animationsActive ? 'visible' : 'hidden'}
+            variants={variants.slideInFromRight}
+            transition={{ delay: 1.6, duration: 0.8, type: 'spring', stiffness: 100, damping: 10 }}
+            className="absolute bottom-4 right-10 z-30 p-2 rounded-lg border shadow backdrop-blur-md sm:right-0 w-50 sm:bottom-28 sm:left-0 md:left-10 bg-white/50 dark:bg-gray-800/40 border-white/30 dark:border-gray-700/30"
           >
             <div className="flex gap-2 items-center">
               <svg
@@ -305,31 +306,17 @@ const Hero = () => {
                 />
               </svg>
               <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
-                3+ Years Experience
+                {aboutMeData.yearsOfExperience}+ Years Experience
               </span>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -10 }}
-        transition={{ delay: 1.6, duration: 0.8 }}
-        className="flex flex-col items-center mb-5"
-      >
-        <span className="mb-2 text-sm text-gray-700 dark:text-gray-400">Scroll to explore</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="flex justify-center pt-1 w-5 h-10 rounded-full border-2 border-gray-400"
-        >
-          <motion.div className="w-1 h-2 bg-gray-400 rounded-full" />
-        </motion.div>
-      </motion.div>
+      {/* Scroll indicator at the bottom */}
+      <ScrollIndicator isActive={animationsActive} label="Scroll to explore" />
     </section>
   );
 };
 
-export default Hero;
+export default HeroSection;

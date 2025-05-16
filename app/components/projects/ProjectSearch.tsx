@@ -102,7 +102,7 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
       <SearchBar onSearchChange={setSearchTerm} />
 
       {/* Project list */}
-      <div className="pb-10 min-h-3/4">
+      <div className="container pb-10 mx-auto min-h-3/4">
         {paginatedProjects.length === 0 ? (
           <div className="flex flex-col items-center text-text-tertiary/30">
             <WiStars size={300} />
@@ -114,7 +114,6 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
               <ProjectCard
                 key={project.id}
                 project={project}
-                index={project.id}
                 handleSelectProject={handleSelectProject}
               />
             ))}

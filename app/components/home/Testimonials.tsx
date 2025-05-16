@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { FaQuoteLeft } from 'react-icons/fa';
+import variants from '@/utils/motionVariants';
 
 interface Testimonial {
   id: number;
@@ -135,7 +136,7 @@ const Testimonials: React.FC = () => {
         <div className="mx-auto max-w-4xl">
           {/* Testimonial Slider with smoother animation */}
           <div className="overflow-hidden relative p-1">
-            <div className="relative min-h-[300px]">
+            <div className="relative min-h-[400px]  sm:min-h-[260px]">
               <AnimatePresence initial={false} mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -143,26 +144,34 @@ const Testimonials: React.FC = () => {
                   initial="enter"
                   animate="center"
                   exit="exit"
-                  className="absolute p-8 w-full rounded-xl border backdrop-blur-sm border-text-tertiary/10 bg-white/5"
+                  className="flex absolute flex-col gap-10 p-8 w-full rounded-xl border backdrop-blur-sm sm:flex-row sm:gap-15 border-border-primary bg-bg-primary/5"
                 >
-                  <div className="flex items-start mb-6">
-                    <FaQuoteLeft className="mr-4 text-4xl text-text-tertiary/30" />
-                    <p className="text-lg italic leading-relaxed text-text-primary/80">
-                      {testimonials[activeIndex].text}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center">
-                    <div className="overflow-hidden relative mr-4 w-16 h-16 rounded-full border-2 border-text-tertiary/20">
+                  <motion.div className="relative" variants={variants.fadeZoom}>
+                    <div className="overflow-hidden relative z-10 w-40 h-40 rounded-2xl border-4 shadow-lg md:w-48 md:h-48 border-text-tertiary/20">
                       <Image
-                        src={testimonials[activeIndex].image}
-                        alt={testimonials[activeIndex].name}
-                        fill
-                        sizes="64px"
-                        className="object-cover"
+                        src="/portfolio-new/images/aadil.png"
+                        alt="Professional Developer Portrait"
+                        height={100}
+                        width={100}
+                        className="flex justify-center items-center w-full h-full text-4xl font-bold text-white bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
                       />
                     </div>
+
+                    {/* Decorative Elements */}
+                    <div className="absolute -right-3 -bottom-3 z-0 w-full h-full rounded-2xl border-2 border-text-tertiary" />
+                    <button className="flex absolute -top-3 -left-3 z-20 justify-center items-center w-10 h-10 text-white rounded-full cursor-pointer bg-text-tertiary">
+                      <FaQuoteLeft />
+                    </button>
+                  </motion.div>
+
+                  <div className="flex items-center">
                     <div>
+                      <div className="flex items-start mb-6">
+                        <p className="text-lg italic leading-relaxed text-text-primary/80">
+                          {testimonials[activeIndex].text}
+                        </p>
+                      </div>
+
                       <h3 className="text-xl font-bold">{testimonials[activeIndex].name}</h3>
                       <p className="text-text-primary/70">
                         {testimonials[activeIndex].role} at{' '}
