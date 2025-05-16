@@ -1,7 +1,7 @@
 'use client';
 
-import NavBar from '@/components/nav-bar/NavBar';
-import Footer from '@/components/footer/Footer';
+import NavBar from '@/components/layout/nav-bar/NavBar';
+import Footer from '@/components/layout/footer/Footer';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

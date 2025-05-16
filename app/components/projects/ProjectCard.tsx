@@ -1,80 +1,88 @@
-import { Project } from '@/types/projects/projects.types';
-import { motion } from 'framer-motion';
+'use client';
+
+// ProjectCard.tsx
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
-import { FaExternalLinkAlt } from 'react-icons/fa';
-import { FaBookOpen, FaGithub, FaInfo } from 'react-icons/fa6';
+import { motion } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt, FaBookOpen } from 'react-icons/fa';
+import { Project } from '@/types/projects/projects.types';
+import ProjectStatusBadge from './ProjectStatusBadge';
+import { FaInfo } from 'react-icons/fa6';
 
-const ProjectCard: React.FC<{
+interface ProjectCardProps {
   project: Project;
-  index: number;
-  handleSelectProject: (project: Project) => void;
-}> = ({ project, index, handleSelectProject }) => {
+  handleSelectProject?: (project: Project) => void;
+}
+
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, handleSelectProject }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  // Status badge styling
-  const statusStyles = {
-    active: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300',
-    archived: 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300',
-    'in-progress': 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300',
+  const handleHoverStart = () => {
+    setIsHovered(true);
+  };
+
+  const handleHoverEnd = () => {
+    setIsHovered(false);
   };
 
   return (
     <motion.div
-      className="overflow-hidden rounded-xl border shadow-xs bg-bg-primary border-border-primary"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className="overflow-hidden h-full rounded-xl border shadow-xs bg-bg-primary border-border-primary"
+      onMouseEnter={handleHoverStart}
+      onMouseLeave={handleHoverEnd}
     >
       <div className="overflow-hidden relative aspect-video">
-        {/* Project image with overlay */}
+        {/* Status badge positioned absolutely on the image */}
+        <div className="absolute top-3 right-3 z-20">
+          <ProjectStatusBadge status={project.status} />
+        </div>
+
+        {/* Overlay on hover */}
         <motion.div
           className="flex absolute inset-0 z-10 justify-center items-center bg-opacity-0 transition-all duration-300"
           animate={{
-            backgroundColor: isHovered ? 'rgba(0, 0, 0, 0.6)' : 'rgba(0, 0, 0, 0)',
+            backgroundColor: isHovered ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0)',
           }}
         >
-          {/* Links that appear on hover */}
           {isHovered && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex space-x-4"
+              className="flex gap-4"
             >
-              <button
-                onClick={() => handleSelectProject(project)}
-                className="flex justify-center items-center p-3 text-white rounded-full transition-all cursor-pointer bg-text-tertiary hover:bg-opacity-90"
-              >
-                <FaInfo className="w-5 h-5" />
-              </button>
+              {handleSelectProject && (
+                <button
+                  onClick={() => handleSelectProject(project)}
+                  className="flex justify-center items-center p-3 w-10 h-10 rounded-full transition-all cursor-pointer bg-white/10 text-white/80 hover:bg-white/20 hover:text-white hover:scale-110"
+                >
+                  <FaInfo className="w-5 h-5" />
+                </button>
+              )}
 
-              <Link
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex justify-center items-center p-3 text-white rounded-full transition-all bg-text-tertiary hover:bg-opacity-90"
-              >
-                <FaGithub className="w-5 h-5" />
-              </Link>
+              {project.repoUrl && (
+                <ProjectLink
+                  href={project.repoUrl}
+                  ariaLabel={`View ${project.title} source code on GitHub`}
+                >
+                  <FaGithub size={24} />
+                </ProjectLink>
+              )}
 
               {project.liveUrl && (
-                <Link
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex justify-center items-center p-3 text-white rounded-full transition-all bg-text-tertiary hover:bg-opacity-90"
-                >
-                  <FaExternalLinkAlt className="w-5 h-5" />
-                </Link>
+                <ProjectLink href={project.liveUrl} ariaLabel={`Visit ${project.title} live site`}>
+                  <FaExternalLinkAlt size={18} />
+                </ProjectLink>
               )}
 
               {project.caseStudySlug && (
-                <Link
-                  href={`/${project.caseStudySlug}`}
-                  className="flex justify-center items-center p-3 text-white rounded-full transition-all bg-text-tertiary hover:bg-opacity-90"
+                <ProjectLink
+                  href={`/case-study/${project.caseStudySlug}`}
+                  ariaLabel={`Read ${project.title} case study`}
+                  isInternal
                 >
-                  <FaBookOpen className="w-5 h-5" />
-                </Link>
+                  <FaBookOpen size={20} />
+                </ProjectLink>
               )}
             </motion.div>
           )}
@@ -92,41 +100,67 @@ const ProjectCard: React.FC<{
             src={project.imageUrl}
             alt={project.title}
             fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             className="object-cover"
-            priority={index < 2}
+            priority={false}
           />
         </motion.div>
       </div>
 
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-3">
-          <h3 className="text-xl font-bold">{project.title}</h3>
-          <span className={`text-xs px-2 py-1 rounded-full ${statusStyles[project.status]}`}>
-            {project.status.replace('-', ' ')}
-          </span>
-        </div>
+      <div className="p-5">
+        <h3 className="mb-3 text-lg font-bold text-text-primary md:text-xl">{project.title}</h3>
 
-        <p className="mb-4 text-gray-600 dark:text-gray-300 line-clamp-2">{project.description}</p>
+        <p className="mb-4 text-sm text-text-primary/70 md:text-base line-clamp-2">
+          {project.description}
+        </p>
 
-        <div className="flex flex-wrap gap-2 mt-3">
-          {project.tags.slice(0, 4).map((tag, i) => (
-            <span
-              key={i}
-              className="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-gray-300"
-            >
-              {tag}
-            </span>
-          ))}
-          {project.tags.length > 4 && (
-            <span className="px-3 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-gray-300">
-              +{project.tags.length - 4}
-            </span>
-          )}
-        </div>
+        <Tags tags={project.tags} />
       </div>
     </motion.div>
   );
 };
+
+// Helper component for project links
+interface ProjectLinkProps {
+  href: string;
+  children: React.ReactNode;
+  ariaLabel: string;
+  isInternal?: boolean;
+}
+
+const ProjectLink: React.FC<ProjectLinkProps> = ({
+  href,
+  children,
+  ariaLabel,
+  isInternal = false,
+}) => (
+  <Link
+    href={href}
+    target={isInternal ? undefined : '_blank'}
+    rel={isInternal ? undefined : 'noopener noreferrer'}
+    className="flex justify-center items-center p-3 w-10 h-10 rounded-full transition-all bg-white/10 text-white/80 hover:bg-white/20 hover:text-white hover:scale-110"
+    aria-label={ariaLabel}
+  >
+    {children}
+  </Link>
+);
+
+const Tags = ({ tags }: { tags: string[] }) => (
+  <div className="flex flex-wrap gap-2">
+    {tags.slice(0, 4).map((tag, i) => (
+      <span
+        key={i}
+        className="px-2 py-1 text-xs font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
+      >
+        {tag}
+      </span>
+    ))}
+    {tags.length > 4 && (
+      <span className="px-2 py-1 text-xs font-medium rounded-full bg-text-tertiary/5 text-text-tertiary">
+        +{tags.length - 4}
+      </span>
+    )}
+  </div>
+);
 
 export default ProjectCard;

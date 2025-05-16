@@ -6,13 +6,8 @@ export type BlogPost = {
   coverImageUrl: string;
   publishedAt: string; // ISO string format
   author: string;
+  authorImage: string;
   content: string;
-};
-
-export type BlogPostFrontmatter = {
-  title: string;
-  publishedAt: string;
-  excerpt: string;
-  tags: string[];
-  coverImageUrl: string;
+  category: string;
+  readingTime: string;
 };

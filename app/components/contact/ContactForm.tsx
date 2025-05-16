@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { useForm } from '@formspree/react';
-import confetti from 'canvas-confetti';
 import { FaEnvelope, FaUser } from 'react-icons/fa';
 import { FiTarget } from 'react-icons/fi';
+import { runConfetti } from '@/utils/confetti';
+import { NumberSortingGame } from './NumberSortingGame';
 
 export default function ContactSection() {
+  const [isVerified, SetIsVerified] = useState<boolean>(false);
   // Message length validation constants
   const MAX_MESSAGE_LENGTH = 500;
   const MIN_MESSAGE_LENGTH = 20;
@@ -66,37 +68,14 @@ export default function ContactSection() {
 
   useEffect(() => {
     if (submissionState.succeeded) {
-      runConfetti();
     }
   }, [submissionState.succeeded]);
 
-  const runConfetti = () => {
-    const duration = 3 * 1000; // 3 seconds
-    const end = Date.now() + duration;
-
-    const colors = ['#00d5f6', '#007397', '#ffffff']; // You can customize the colors
-
-    (function frame() {
-      confetti({
-        particleCount: 2,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-        colors,
-      });
-      confetti({
-        particleCount: 2,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-        colors,
-      });
-
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
-  };
+  useEffect(() => {
+    if (isVerified) {
+      runConfetti();
+    }
+  }, [isVerified]);
 
   // Helper functions for styling - minimized calculations
   const getCharCounterClass = () => {
@@ -286,10 +265,12 @@ export default function ContactSection() {
               </div>
             </div>
 
+            <NumberSortingGame onVerificationComplete={SetIsVerified} />
+
             {/* Submit button - only enabled when all validations pass */}
             <button
               type="submit"
-              disabled={submissionState.submitting || !isFormValid}
+              disabled={!isVerified || submissionState.submitting || !isFormValid}
               className="flex justify-center items-center px-4 py-3 w-full text-sm font-medium text-white rounded-md cursor-pointer bg-text-tertiary/80 hover:bg-text-tertiary disabled:opacity-50"
             >
               {submissionState.submitting ? (
