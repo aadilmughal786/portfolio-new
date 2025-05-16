@@ -30,7 +30,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearchChange, popularTags = nul
             value={searchTerm}
             onChange={handleSearchChange}
             placeholder="Search projects..."
-            className="py-2 pr-10 pl-5 w-full rounded-full border-2 backdrop-blur-sm transition-all duration-300 bg-bg-primary/10 border-text-tertiary/50 text-text-primary placeholder:text-text-mute focus:outline-none focus:ring-2 focus:ring-text-tertiary/20"
+            className="py-2 pr-10 pl-5 w-full rounded-full border-2 backdrop-blur-sm transition-all duration-300 bg-bg-primary/10 border-text-tertiary/70 text-text-primary placeholder:text-text-mute focus:outline-none focus:ring-2 focus:ring-text-tertiary/20"
             aria-label="Search projects"
             id="search-bar"
           />

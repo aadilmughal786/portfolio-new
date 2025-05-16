@@ -1,3 +1,4 @@
+import AuthorBio from '@/components/blogs/AuthorBio';
 import BlogSearch from '@/components/blogs/BlogSearch';
 import BlogHero from '@/components/blogs/Hero';
 import { getAllPosts } from '@/lib/mdx';
@@ -18,6 +19,7 @@ export default function GitHubDashboard() {
     <main className="container px-4 py-8 mx-auto">
       <BlogHero />
       <BlogSearch blogs={posts} />
+      <AuthorBio />
     </main>
   );
 }
