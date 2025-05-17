@@ -3,7 +3,7 @@ import FeaturedBlogs from '@/components/home/FeaturedBlogs';
 import FeaturedProjects from '@/components/home/FeaturedProjects';
 import Hero from '@/components/home/Hero';
 import Service from '@/components/home/Service';
-import Spider from '@/components/home/Spider';
+import EndPage from '@/components/home/EndPage';
 import Stats from '@/components/home/Stats';
 import TechStack from '@/components/home/TechCategory';
 import Testimonials from '@/components/home/Testimonials';
@@ -32,7 +32,7 @@ export default function Home() {
       <Service />
       <Testimonials />
       <FeaturedBlogs blogs={posts} />
-      {/* <Spider /> */}
+      <EndPage />
     </>
   );
 }

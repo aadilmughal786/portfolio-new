@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
+import { Bird } from '../home/EndPage';
 
 interface NumberSortingGameProps {
   onVerificationComplete?: (status: boolean) => void;
@@ -97,13 +97,9 @@ export function NumberSortingGame({
     <div className="p-6 rounded-md border backdrop-blur-sm border-border-primary bg-text-tertiary/5">
       <div className="flex flex-col items-center mb-6">
         <h2 className="mb-4 text-xl font-bold text-text-primary">Human Verification</h2>
-        <Image
-          src="/portfolio-new/images/home/popcorn.gif"
-          alt="are you a human"
-          width={100}
-          height={100}
-          className="mb-4 rounded-md"
-        />
+        <div className="mb-6">
+          <Bird />
+        </div>
         <p className="mt-2 text-text-primary/80">
           Ok, so you think you are human? Prove it by arranging these numbers in ascending order.
         </p>

@@ -32,7 +32,7 @@ const FeaturedBlogs: React.FC<FeaturedBlogsProps> = ({ blogs }) => {
   }, [blogs]);
 
   return (
-    <section id="featured-blogs" className="pt-12 pb-40">
+    <section id="featured-blogs" className="py-12">
       <div className="container px-4 mx-auto">
         {/* Animated section heading */}
         <motion.div

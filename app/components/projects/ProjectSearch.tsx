@@ -7,8 +7,8 @@ import Drawer from './Drawer';
 import ProjectDetails from './ProjectDetails';
 import ProjectCard from '@/components/projects/ProjectCard';
 import SearchBar from './SearchBar';
-import { WiStars } from 'react-icons/wi';
 import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
+import { Bird } from '../home/EndPage';
 
 interface ProjectSearchProps {
   projects: Project[];
@@ -104,9 +104,9 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
       {/* Project list */}
       <div className="container pb-10 mx-auto min-h-3/4">
         {paginatedProjects.length === 0 ? (
-          <div className="flex flex-col items-center text-text-tertiary/30">
-            <WiStars size={300} />
-            <div className="p-4 -mt-10 text-3xl text-center">No projects found</div>
+          <div className="flex flex-col items-center opacity-50">
+            <Bird />
+            <div className="p-4 mt-10 text-3xl text-center">No projects found</div>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-8 gap-y-15 lg:grid-cols-3 md:grid-cols-2">

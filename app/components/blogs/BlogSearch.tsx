@@ -6,7 +6,7 @@ import { BlogPost } from '@/types/blogs/blogs.types';
 import BlogCard from './BlogCard';
 import SearchBar from '../projects/SearchBar';
 import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
-import { WiStars } from 'react-icons/wi';
+import { Bird } from '../home/EndPage';
 
 interface BlogSearchProps {
   blogs: BlogPost[];
@@ -88,9 +88,9 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ blogs, itemsPerPage = 6 }) => {
       {/* Blogs list */}
       <div className="pb-10 min-h-3/4">
         {paginatedBlogs.length === 0 ? (
-          <div className="flex flex-col items-center text-text-tertiary/30">
-            <WiStars size={300} />
-            <div className="p-4 -mt-10 text-3xl text-center">No projects found</div>
+          <div className="flex flex-col items-center opacity-50">
+            <Bird />
+            <div className="p-4 mt-10 text-3xl text-center">No projects found</div>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-8 gap-y-15 lg:grid-cols-3 md:grid-cols-2">
