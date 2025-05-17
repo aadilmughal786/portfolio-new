@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import Fuse from 'fuse.js';
-import { Project } from '@/types/projects/projects.types';
+import { TProject } from '@/types/projects/projects.types';
 import Drawer from './Drawer';
 import ProjectDetails from './ProjectDetails';
 import ProjectCard from '@/components/projects/ProjectCard';
@@ -11,9 +11,9 @@ import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
 import { Bird } from '../home/EndPage';
 
 interface ProjectSearchProps {
-  projects: Project[];
+  projects: TProject[];
   itemsPerPage?: number;
-  onSelectProject?: (project: Project) => void;
+  onSelectProject?: (project: TProject) => void;
 }
 
 const ProjectSearch: React.FC<ProjectSearchProps> = ({
@@ -23,7 +23,7 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   // Reset to first page when search term changes
@@ -67,7 +67,7 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
   }, [filteredProjects, currentPage, itemsPerPage]);
 
   // Handle project selection
-  const handleSelectProject = (project: Project) => {
+  const handleSelectProject = (project: TProject) => {
     setSelectedProject(project);
     setIsDrawerOpen(true);
 

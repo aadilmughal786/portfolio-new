@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useEffect, useRef, ReactNode } from 'react';
-import { IoClose, IoHeart } from 'react-icons/io5';
+import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
+import { IoClose } from 'react-icons/io5';
 
 interface DrawerProps {
   isOpen: boolean;
@@ -106,9 +107,9 @@ const Drawer: React.FC<DrawerProps> = ({
         role="dialog"
       >
         {/* Header */}
-        <div className="flex sticky top-0 z-10 justify-between items-center pt-3 pb-[11px] px-4 border-b border-border-primary">
-          <div className="flex gap-3 items-center font-mono text-xl font-bold text-text-tertiary">
-            <IoHeart className="flip" /> {title}
+        <div className="flex sticky top-0 z-10 justify-between items-center pt-3 pb-[11px] px-5 border-b border-border-primary">
+          <div className="flex gap-3 items-center font-semibold text-text-tertiary">
+            <AiOutlineFundProjectionScreen size={22} /> {title}
           </div>
           <IoClose
             size={24}

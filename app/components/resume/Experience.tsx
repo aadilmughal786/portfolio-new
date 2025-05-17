@@ -122,7 +122,10 @@ const ExperienceItem = ({ data }: JobExperienceProps) => {
       </div>
       <div className="flex flex-row flex-wrap gap-2 pt-3">
         {data.technologies.map((item, index) => (
-          <span key={index} className="chip">
+          <span
+            key={index}
+            className="px-2 py-1 text-xs rounded bg-text-tertiary/5 text-text-tertiary"
+          >
             {item}
           </span>
         ))}

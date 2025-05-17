@@ -6,13 +6,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaBookOpen } from 'react-icons/fa';
-import { Project } from '@/types/projects/projects.types';
+import { TProject } from '@/types/projects/projects.types';
 import ProjectStatusBadge from './ProjectStatusBadge';
 import { FaInfo } from 'react-icons/fa6';
 
 interface ProjectCardProps {
-  project: Project;
-  handleSelectProject?: (project: Project) => void;
+  project: TProject;
+  handleSelectProject?: (project: TProject) => void;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, handleSelectProject }) => {
@@ -138,7 +138,7 @@ const ProjectLink: React.FC<ProjectLinkProps> = ({
     href={href}
     target={isInternal ? undefined : '_blank'}
     rel={isInternal ? undefined : 'noopener noreferrer'}
-    className="flex justify-center items-center p-3 w-10 h-10 rounded-full transition-all bg-white/10 text-white/80 hover:bg-white/20 hover:text-white hover:scale-110"
+    className="flex justify-center items-center p-3 w-10 h-10 rounded-full bg-gray-300/5 text-white/80 hover:bg-white/20 hover:text-white hover:scale-110"
     aria-label={ariaLabel}
   >
     {children}
@@ -150,7 +150,7 @@ const Tags = ({ tags }: { tags: string[] }) => (
     {tags.slice(0, 4).map((tag, i) => (
       <span
         key={i}
-        className="px-2 py-1 text-xs font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
+        className="px-2 py-1 text-xs rounded-full bg-text-tertiary/5 text-text-tertiary"
       >
         {tag}
       </span>

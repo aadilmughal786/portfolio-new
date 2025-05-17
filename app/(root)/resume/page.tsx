@@ -14,6 +14,8 @@ import Education from '@/components/resume/Eduction';
 import Github from '@/components/resume/github/Github';
 import Achievement from '@/components/resume/Achievement';
 import ResumeHero from '@/components/resume/Hero';
+import Project from '@/components/resume/Project';
+import EndPage from '@/components/home/EndPage';
 
 export const metadata: Metadata = {
   title: 'Resume - Aadil',
@@ -29,7 +31,7 @@ export default function Home() {
         <div className="flex flex-col gap-y-8 lg:col-span-2">
           <Experience />
           <Github />
-          <Achievement />
+          <Project />
           <Education />
           <Course />
           <Volunteering />
@@ -38,7 +40,7 @@ export default function Home() {
         {/* column-2 */}
         <div className="flex flex-col gap-y-8">
           <ForRecruiter />
-
+          <Achievement />
           <DownloadResume />
           <Skill />
           <Contact />
@@ -48,6 +50,7 @@ export default function Home() {
           <Youtube />
         </div>
       </div>
+      <EndPage />
     </div>
   );
 }

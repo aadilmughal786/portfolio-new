@@ -7,21 +7,15 @@ import {
   GitHubCommit,
 } from '@/services/github.services';
 
-import {
-  FiExternalLink,
-  FiCalendar,
-  FiAlertCircle,
-  FiGitCommit,
-  FiClock,
-  FiPieChart,
-  FiRefreshCw,
-} from 'react-icons/fi';
+import { FiExternalLink, FiAlertCircle, FiGitCommit, FiClock, FiPieChart } from 'react-icons/fi';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, TooltipProps } from 'recharts';
 import Card from '../resume/Card';
 import { PiHashFill } from 'react-icons/pi';
-import { FaUserAlt } from 'react-icons/fa';
-import { MdNearbyError } from 'react-icons/md';
 import { getTimeAgo } from '@/utils/date';
+import { GrView } from 'react-icons/gr';
+import { FaRegClock } from 'react-icons/fa6';
+import { TbLicense } from 'react-icons/tb';
+import { BsFillPersonFill } from 'react-icons/bs';
 
 interface RepoDetailsProps {
   repoName: string;
@@ -145,18 +139,15 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
 
   if (!dataFetched) {
     return (
-      <div className={`p-6 text-center`}>
-        <p className="mb-6">
-          Click the button below to fetch and display details for: <strong>{repoName}</strong>
-        </p>
+      <div className="py-4">
         <button
           onClick={loadRepoData}
-          className="inline-flex gap-2 items-center px-4 py-2 text-sm text-white cursor-pointer bg-text-tertiary"
+          className="inline-flex gap-2 items-center px-4 py-2 text-sm text-white rounded-md cursor-pointer bg-text-tertiary/80 hover:bg-text-tertiary"
         >
           {isLoading ? (
             <div className={`w-5 h-5 rounded-full border-2 animate-spin border-t-transparent`} />
           ) : (
-            <FiRefreshCw className="w-5 h-5" />
+            <GrView className="w-5 h-5" />
           )}
           Load Repository Data
         </button>
@@ -169,14 +160,9 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
       <div
         className={`p-6 bg-red-50 rounded-lg border border-red-200 dark:bg-red-900/20 dark:border-red-800 ${className}`}
       >
-        <div className="flex items-center mb-4 text-red-600 dark:text-red-400">
+        <div className="flex items-center text-red-600 dark:text-red-400">
           <FiAlertCircle className="mr-2 w-5 h-5" />
           <h3 className="font-medium">{error || 'Repository not found'}</h3>
-        </div>
-
-        <div className="flex gap-2 items-center p-4 text-red-700 dark:text-red-400">
-          <MdNearbyError size={35} />
-          Failed to load GitHub repositories data
         </div>
       </div>
     );
@@ -184,19 +170,20 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
 
   return (
     <div>
-      <div className="flex flex-col gap-2 py-2 mb-4 font-semibold">
-        <div className="flex items-center">
-          <FiCalendar className="mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" />
-          <span className="pr-1 font-medium text-text-tertiary">Created: </span>{' '}
-          <span className="text-sm"> {getTimeAgo(repoDetails.created_at)}</span>
+      <div className="flex flex-col gap-2 py-2 mb-4">
+        <div className="flex gap-3 items-center">
+          <FaRegClock className="text-text-tertiary" />
+          Created {getTimeAgo(repoDetails.created_at)}
         </div>
-        <div className="flex items-center">
-          <FiCalendar className="mr-2 w-5 h-5 text-gray-500 dark:text-gray-400" />
-          <span className="text-sm">
-            <span className="pr-1 font-medium text-text-tertiary">Last updated: </span>{' '}
-            {getTimeAgo(repoDetails.updated_at)}
-          </span>
+        <div className="flex gap-3 items-center">
+          <FaRegClock className="text-text-tertiary" />
+          Last updated {getTimeAgo(repoDetails.updated_at)}
         </div>
+        {repoDetails.license && (
+          <div className="flex gap-2 items-center">
+            <TbLicense size={20} className="text-text-tertiary" /> {repoDetails.license.name}
+          </div>
+        )}
       </div>
 
       <Card icon={FiPieChart} title="Languages Distribution">
@@ -260,7 +247,7 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
       {/* Recent Commits Timeline */}
       {commits.length > 0 && (
         <div className="py-6">
-          <div className="flex items-center mb-3 text-text-tertiary">
+          <div className="flex items-center mb-3">
             <FiGitCommit className="mr-2 w-5 h-5" />
             <h3 className="font-medium">Recent Commits</h3>
           </div>
@@ -270,26 +257,26 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
               <div key={commit.sha} className="mb-4">
                 <div className="absolute -left-[9px] mt-3 w-4 h-4 rounded-full border-3 bg-text-tertiary border-bg-primary"></div>
                 <Card icon={PiHashFill} title={`${commit.sha.slice(0, 5)}...`}>
-                  <div className="p-3 border-t border-border-primary">
+                  <div className="p-3 border-t border-border-primary group">
                     <div className="flex flex-col gap-2">
                       <a
                         href={commit.html_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-medium transition-colors hover:text-text-tertiary"
+                        className="font-medium transition-colors text-text-tertiary/80 hover:group:text-text-tertiary"
                       >
                         {formatCommitMessage(commit.commit.message)}
                       </a>
                       <div className="flex items-center text-text-mute">
-                        <FiClock className="mr-1 w-3 h-3" />
+                        <FiClock className="mr-2" />
                         {getTimeAgo(
                           commit.commit.author?.date || commit.commit.committer?.date || ''
                         )}
                       </div>
-                      <span className="flex gap-1 items-center text-sm">
-                        <FaUserAlt />
+                      <div className="flex items-center">
+                        <BsFillPersonFill className="mr-2" />
                         by {commit.author?.login || commit.commit.author?.name || 'Unknown'}
-                      </span>
+                      </div>
                     </div>
                   </div>
                 </Card>
@@ -310,14 +297,6 @@ const RepoDetails: React.FC<RepoDetailsProps> = ({ repoName, className = '' }) =
               </div>
             )}
           </div>
-        </div>
-      )}
-
-      {/* License */}
-      {repoDetails.license && (
-        <div className="text-sm text-gray-600 dark:text-gray-400">
-          <strong className="font-semibold text-text-tertiary">License:</strong>{' '}
-          {repoDetails.license.name}
         </div>
       )}
     </div>

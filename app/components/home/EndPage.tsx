@@ -189,8 +189,10 @@ export const Bird = () => {
 export const EndPage = () => {
   return (
     <div className="flex flex-col justify-center items-center py-16 w-full">
-      <Bird />
-      <div className="px-6 mt-20 max-w-xl text-center">
+      <div className="flex justify-center items-center mb-10 animate-bounce">
+        <Bird />
+      </div>
+      <div className="px-6 max-w-xl text-center mt-15">
         <p className="mb-4 text-lg font-medium text-text-tertiary">
           You&apos;ve reached the end — thanks for scrolling!
         </p>

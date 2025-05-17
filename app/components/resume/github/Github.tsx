@@ -4,6 +4,7 @@ import CardItem from '../CardItem';
 import GitHubStats from './GitHubStats';
 import RecentRepositories from './Repositories';
 import { githubData as data } from '@/data/resume/github';
+import Image from 'next/image';
 
 const Github = () => {
   return (
@@ -13,6 +14,15 @@ const Github = () => {
       </CardItem>
       <CardItem>
         <RecentRepositories />
+      </CardItem>
+      <CardItem>
+        <Image
+          src="https://github.com/aadilmughal786/aadilmughal786/raw/output/github-contribution-grid-snake.svg"
+          alt="contribution graph"
+          width={100}
+          height={100}
+          className="w-full"
+        />
       </CardItem>
     </Card>
   );

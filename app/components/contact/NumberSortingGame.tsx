@@ -14,6 +14,7 @@ export function NumberSortingGame({
   const [sorted, setSorted] = useState(false);
   const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
+  const [touchStartIndex, setTouchStartIndex] = useState<number | null>(null);
 
   const generateRandomNumbers = () => {
     const newNumbers = Array.from({ length: 8 }, () => Math.floor(Math.random() * 100) + 1);
@@ -40,6 +41,7 @@ export function NumberSortingGame({
     }
   }, [sorted, onVerificationComplete]);
 
+  // Mouse events
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>, index: number) => {
     if (isDisabled) return;
 
@@ -76,15 +78,42 @@ export function NumberSortingGame({
     const dragIndex = parseInt(e.dataTransfer.getData('index'));
     if (isNaN(dragIndex)) return;
 
-    const newNumbers = [...numbers];
-    const temp = newNumbers[dragIndex];
-    newNumbers[dragIndex] = newNumbers[dropIndex];
-    newNumbers[dropIndex] = temp;
+    swapNumbers(dragIndex, dropIndex);
+  };
 
-    setNumbers(newNumbers);
+  // Touch events
+  const handleTouchStart = (index: number) => {
+    if (isDisabled) return;
+    setTouchStartIndex(index);
+    setDraggedIndex(index);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>, index: number) => {
+    if (isDisabled || touchStartIndex === null) return;
+    e.preventDefault();
+    setDragOverIndex(index);
+  };
+
+  const handleTouchEnd = (dropIndex: number) => {
+    if (isDisabled || touchStartIndex === null) return;
+
+    if (touchStartIndex !== dropIndex) {
+      swapNumbers(touchStartIndex, dropIndex);
+    }
+
+    setTouchStartIndex(null);
     setDraggedIndex(null);
     setDragOverIndex(null);
+  };
 
+  // Common function to swap numbers and check sorting
+  const swapNumbers = (fromIndex: number, toIndex: number) => {
+    const newNumbers = [...numbers];
+    const temp = newNumbers[fromIndex];
+    newNumbers[fromIndex] = newNumbers[toIndex];
+    newNumbers[toIndex] = temp;
+
+    setNumbers(newNumbers);
     checkSortOrder(newNumbers);
   };
 
@@ -115,6 +144,9 @@ export function NumberSortingGame({
             onDragOver={e => handleDragOver(e, index)}
             onDragLeave={handleDragLeave}
             onDrop={e => handleDrop(e, index)}
+            onTouchStart={() => handleTouchStart(index)}
+            onTouchMove={e => handleTouchMove(e, index)}
+            onTouchEnd={() => handleTouchEnd(index)}
             className={`w-10 h-10 flex items-center justify-center text-xl font-medium rounded-md ${
               !isDisabled ? 'cursor-move' : 'cursor-not-allowed'
             } shadow transition duration-200 

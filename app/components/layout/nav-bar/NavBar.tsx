@@ -37,7 +37,7 @@ const NavBar = () => {
   }, [showDrawer]);
 
   return (
-    <div className="sticky top-0 z-20 glass">
+    <div className="sticky top-0 z-30 glass">
       <div className="py-2 w-full border-b navbar-container border-border-primary">
         <div className={`flex justify-between items-center px-4 sm:px-8 lg:px-16`}>
           {/* left-part :: site logo */}

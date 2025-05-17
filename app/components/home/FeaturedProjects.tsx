@@ -5,17 +5,17 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
-import { Project } from '@/types/projects/projects.types';
+import { TProject } from '@/types/projects/projects.types';
 import ProjectCard from '../projects/ProjectCard';
 import SectionHeading from './SectionHeading';
 
 interface FeaturedProjectsProps {
-  projects: Project[];
+  projects: TProject[];
 }
 
 const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
   // Filter active projects and limit based on screen size
-  const [visibleProjects, setVisibleProjects] = useState<Project[]>([]);
+  const [visibleProjects, setVisibleProjects] = useState<TProject[]>([]);
 
   useEffect(() => {
     const updateVisibleProjects = () => {

@@ -60,7 +60,9 @@ export default function RecentRepositories() {
               {repo.name}{' '}
               <TbExternalLink className="-mt-[3px] ml-1 inline-block sm:ml-0" size={16} />
             </a>
-            <span className="chip">{repo.private ? 'Private' : 'Public'}</span>
+            <span className="px-2 py-1 text-xs rounded bg-text-tertiary/5 text-text-tertiary">
+              {repo.private ? 'Private' : 'Public'}
+            </span>
           </div>
 
           <p className="mt-1 line-clamp-2">{repo.description || 'No description provided'}</p>
