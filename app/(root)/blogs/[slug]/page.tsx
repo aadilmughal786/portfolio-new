@@ -12,6 +12,8 @@ import ScrollProgressBar from '@/components/blogs/ScrollProgressBar';
 import path from 'path';
 import Link from 'next/link';
 import BlogCard from '@/components/blogs/BlogCard';
+import { FaAnglesLeft } from 'react-icons/fa6';
+import { LiaSlackHash } from 'react-icons/lia';
 
 // Define a proper type that matches only what we need
 interface PageParams {
@@ -65,8 +67,9 @@ export default async function BlogPostPage({ params }: PageParams) {
                   post.tags.map(tag => (
                     <span
                       key={tag}
-                      className="inline-block px-3 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full dark:bg-gray-800 dark:text-gray-300"
+                      className="inline-flex gap-2 items-center px-4 py-1 mb-4 text-sm font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
                     >
+                      <LiaSlackHash size={18} />
                       {tag}
                     </span>
                   ))}
@@ -78,7 +81,12 @@ export default async function BlogPostPage({ params }: PageParams) {
 
               <div className="flex items-center mb-8">
                 <div className="overflow-hidden relative mr-3 w-10 h-10 rounded-full">
-                  <Image src={post.authorImage} alt={post.author} className="object-cover" fill />
+                  <Image
+                    src={post.authorImage}
+                    alt={post.author}
+                    className="object-cover bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
+                    fill
+                  />
                 </div>
                 <div>
                   <p className="font-medium">{post.author}</p>
@@ -97,7 +105,7 @@ export default async function BlogPostPage({ params }: PageParams) {
               </div>
             </div>
 
-            <div className="relative w-full h-[400px] md:h-[500px] mb-10 rounded-lg overflow-hidden">
+            <div className="relative w-full h-[400px] md:h-[500px] mb-10 rounded-lg overflow-hidden ">
               <Image
                 src={post.coverImageUrl}
                 alt={post.title}
@@ -123,8 +131,18 @@ export default async function BlogPostPage({ params }: PageParams) {
             <div className="pt-6 mt-10 border-t border-gray-200 dark:border-gray-800">
               <div className="flex items-center">
                 <div className="flex-shrink-0 mr-4">
-                  <div className="overflow-hidden relative w-14 h-14 rounded-full">
-                    <Image src={post.authorImage} alt={post.author} className="object-cover" fill />
+                  {/* Author Image */}
+                  <div className="relative">
+                    <div className="overflow-hidden relative z-10 rounded-full w-15 h-15">
+                      {/* Replace with your actual image */}
+                      <Image
+                        src={post.authorImage}
+                        alt={post.author}
+                        height={100}
+                        width={100}
+                        className="flex justify-center items-center w-full h-full text-4xl font-bold text-white bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
+                      />
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -155,10 +173,10 @@ export default async function BlogPostPage({ params }: PageParams) {
 
           <div className="flex justify-between mt-10">
             <Link
-              href="/blogs"
-              className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md border border-gray-300 transition dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
+              href={'/blogs'}
+              className={`flex gap-2 items-center px-4 py-1 font-medium text-white rounded-md transition-colors duration-300 bg-text-tertiary/80 hover:bg-text-tertiary`}
             >
-              ← All Articles
+              <FaAnglesLeft /> All Articles
             </Link>
           </div>
         </div>

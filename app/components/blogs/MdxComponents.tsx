@@ -37,18 +37,14 @@ export const MDXComponents = {
     // For inline code
     if (!className) {
       return (
-        <code className="bg-text-tertiary/30 text-text-tertiary rounded px-1 py-0.5 font-mono text-sm">
+        <code className="bg-text-tertiary/5 text-text-tertiary rounded px-1 py-0.5 font-mono text-sm">
           {children}
         </code>
       );
     }
     // For code blocks
     return (
-      <code
-        className={`!bg-slate-800 dark:!bg-slate-900 rounded border-1 border-text-tertiary ${className}`}
-      >
-        {children}
-      </code>
+      <code className={`!bg-slate-800 dark:!bg-slate-900 rounded ${className}`}>{children}</code>
     );
   },
   img: ({ src, alt }: { src?: string; alt?: string }) => (

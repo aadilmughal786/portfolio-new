@@ -107,9 +107,11 @@ const AuthorBio = () => {
               <FaQuoteLeft size={20} />
 
               <p className="ml-4">
-                I believe multitasking is a myth. The human brain is not made like that. Do one
-                thing at a time and do it best. If a problem is big, break it down into manageable
-                pieces.
+                I believe multitasking is a myth. The human brain isn’t designed to juggle multiple
+                tasks effectively. Focus is our true superpower. Do one thing at a time — and do it
+                with intent and excellence. If a problem feels too big, don’t get overwhelmed. Break
+                it down into smaller, manageable parts. Solve each piece with clarity, and the
+                bigger picture will fall into place.
               </p>
             </blockquote>
           </motion.div>

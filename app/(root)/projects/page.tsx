@@ -1,3 +1,4 @@
+import DonationSection from '@/components/projects/Donation';
 import ProjectsHero from '@/components/projects/Hero';
 import ProjectSearch from '@/components/projects/ProjectSearch';
 import { projectsData } from '@/data/projects';
@@ -13,6 +14,7 @@ export default function Home() {
     <div>
       <ProjectsHero />
       <ProjectSearch projects={projectsData} />
+      <DonationSection />
     </div>
   );
 }
