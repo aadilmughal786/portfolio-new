@@ -10,7 +10,7 @@ import SectionHeading from './SectionHeading';
 const StatBox: React.FC<TStatBox> = ({ icon, value, label, suffix = '' }) => {
   const [count, setCount] = useState(0);
   const countRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(countRef, { once: false, amount: 0.3 });
+  const isInView = useInView(countRef, { once: false, amount: 0.1 });
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -44,7 +44,7 @@ const StatBox: React.FC<TStatBox> = ({ icon, value, label, suffix = '' }) => {
       variants={variants.fadeIn}
       initial="hidden"
       animate={isVisible ? 'visible' : 'hidden'}
-      transition={{ duration: 0.5, delay: 1 }}
+      transition={{ duration: 0.5 }}
       className="p-5 rounded-xl border backdrop-blur-sm transition-all duration-300 border-text-tertiary/10 bg-bg-primary/5 hover:bg-text-tertiary/5"
     >
       <div className="flex flex-col items-center">

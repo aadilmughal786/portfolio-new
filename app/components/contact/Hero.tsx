@@ -1,10 +1,64 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { FaPaperPlane, FaFileAlt, FaCalendarAlt } from 'react-icons/fa';
 import { GrContact } from 'react-icons/gr';
 import Link from 'next/link';
+import variants from '@/utils/motionVariants';
+import { Variants } from 'framer-motion';
+
+type ContactCardProps = {
+  icon: ReactNode;
+  title: string;
+  description: string;
+  linkText: string;
+  linkHref: string;
+  linkTarget?: string;
+  variants: {
+    fadeInUp: Variants;
+    swingAnimation: Variants;
+  };
+};
+
+export const ContactCard = ({
+  icon,
+  title,
+  description,
+  linkText,
+  linkHref,
+  linkTarget = '_self',
+  variants,
+}: ContactCardProps) => {
+  return (
+    <motion.div
+      variants={variants.fadeInUp}
+      className="flex flex-col p-6 h-full rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group hover:bg-text-tertiary/5 border-text-tertiary/10 bg-bg-primary/5"
+    >
+      <motion.div
+        whileHover={{ scale: 1.1, rotate: 5 }}
+        transition={{ type: 'spring', stiffness: 300 }}
+        className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20"
+      >
+        <motion.div variants={variants.swingAnimation}>{icon}</motion.div>
+      </motion.div>
+
+      <h3 className="mb-2 text-xl font-bold text-text-primary">{title}</h3>
+      <p className="mb-4 text-text-primary">{description}</p>
+
+      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="mt-auto">
+        <Link
+          href={linkHref}
+          target={linkTarget}
+          rel={linkTarget === '_blank' ? 'noopener noreferrer' : ''}
+          className="flex gap-2 justify-center items-center px-4 py-2 w-full font-medium text-white rounded-md transition-all duration-300 bg-text-tertiary/80 hover:bg-text-tertiary"
+        >
+          {linkText}
+        </Link>
+      </motion.div>
+    </motion.div>
+  );
+};
 
 const ContactHero = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -13,18 +67,47 @@ const ContactHero = () => {
     setIsVisible(true);
   }, []);
 
+  const contactOptions = [
+    {
+      icon: <FaPaperPlane className="w-6 h-6 text-text-tertiary" />,
+      title: 'Email Me',
+      description: 'Drop me a line anytime to discuss your project needs',
+      linkText: 'Email',
+      linkHref: 'mailto:aadil.mugal.dev@gmail.com',
+      linkTarget: '_self',
+    },
+    {
+      icon: <FaFileAlt className="w-6 h-6 text-text-tertiary" />,
+      title: 'Fill the Form',
+      description: 'Share your details and ideas through our contact form',
+      linkText: 'Go to Form',
+      linkHref: '#contact-form',
+      linkTarget: '_self',
+    },
+    {
+      icon: <FaCalendarAlt className="w-6 h-6 text-text-tertiary" />,
+      title: 'Book a Slot',
+      description: 'Schedule a meeting at your convenience',
+      linkText: 'Book',
+      linkHref: 'https://cal.com/',
+      linkTarget: '_blank',
+    },
+  ];
+
   return (
     <section className="relative min-h-[80vh] py-16 sm:py-24 overflow-hidden">
       <div className="container relative z-10 px-4 mx-auto max-w-7xl pb-15">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
+          variants={variants.fadeInUp}
+          initial="hidden"
+          animate={isVisible ? 'visible' : 'hidden'}
           transition={{ duration: 0.8 }}
           className="mx-auto max-w-4xl text-center"
         >
           <motion.span
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isVisible ? 1 : 0 }}
+            variants={variants.fadeInUp}
+            initial="hidden"
+            animate={isVisible ? 'visible' : 'hidden'}
             transition={{ delay: 0.3, duration: 0.8 }}
             className="inline-flex gap-2 items-center px-4 py-2 mb-4 text-sm font-semibold tracking-wider rounded-full bg-text-tertiary/5 text-text-tertiary"
           >
@@ -33,8 +116,9 @@ const ContactHero = () => {
           </motion.span>
 
           <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isVisible ? 1 : 0 }}
+            variants={variants.fadeInUp}
+            initial="hidden"
+            animate={isVisible ? 'visible' : 'hidden'}
             transition={{ delay: 0.5, duration: 0.8 }}
             className="mb-6 text-4xl font-extrabold md:text-5xl lg:text-6xl"
           >
@@ -43,8 +127,9 @@ const ContactHero = () => {
           </motion.h1>
 
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isVisible ? 1 : 0 }}
+            variants={variants.fadeInUp}
+            initial="hidden"
+            animate={isVisible ? 'visible' : 'hidden'}
             transition={{ delay: 0.7, duration: 0.8 }}
             className="mb-6 text-lg"
           >
@@ -54,89 +139,37 @@ const ContactHero = () => {
           </motion.p>
         </motion.div>
 
-        {/* Contact cards */}
+        {/* Contact cards - Enhanced with better responsive design */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
-          transition={{ delay: 0.9, duration: 0.8 }}
-          className="grid grid-cols-1 gap-8 pt-10 mx-auto mt-12 max-w-4xl sm:grid-cols-2 lg:grid-cols-3"
+          variants={variants.staggerChildren}
+          initial="hidden"
+          animate={isVisible ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 gap-5 pt-10 mx-auto mt-12 max-w-5xl md:gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {/* Email Card */}
-          <motion.div
-            whileHover={{
-              y: -5,
-              transition: { type: 'spring', stiffness: 400, damping: 10 },
-            }}
-            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group hover:bg-text-tertiary/5 border-text-tertiary/10 bg-bg-primary/5"
-          >
-            <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
-              <FaPaperPlane className="w-6 h-6 text-text-tertiary" />
-            </div>
-            <h3 className="mb-2 text-xl font-bold text-text-primary">Email Me</h3>
-            <p className="mb-4 text-text-primary">
-              Drop me a line anytime to discuss your project needs
-            </p>
-            <Link
-              href="mailto:aadil.mugal.dev@gmail.com
-"
-              className="flex gap-2 justify-center items-center px-4 py-2 mt-auto font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
+          {contactOptions.map((option, index) => (
+            <div
+              key={index}
+              className={`${index === 2 ? 'sm:col-span-2 lg:col-span-1' : ''} h-full`}
             >
-              Email
-            </Link>
-          </motion.div>
-
-          {/* Form Card */}
-          <motion.div
-            whileHover={{
-              y: -5,
-              transition: { type: 'spring', stiffness: 400, damping: 10 },
-            }}
-            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group hover:bg-text-tertiary/5 border-text-tertiary/10 bg-bg-primary/5"
-          >
-            <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
-              <FaFileAlt className="w-6 h-6 text-text-tertiary" />
+              <ContactCard
+                icon={option.icon}
+                title={option.title}
+                description={option.description}
+                linkText={option.linkText}
+                linkHref={option.linkHref}
+                linkTarget={option.linkTarget}
+                variants={variants}
+              />
             </div>
-            <h3 className="mb-2 text-xl font-bold text-text-primary">Fill the Form</h3>
-            <p className="mb-4 text-text-primary">
-              Share your details and ideas through our contact form
-            </p>
-            <a
-              href="#contact-form"
-              className="flex gap-2 justify-center items-center px-4 py-2 mt-auto font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
-            >
-              Go to Form
-            </a>
-          </motion.div>
-
-          {/* Book a Slot Card */}
-          <motion.div
-            whileHover={{
-              y: -5,
-              transition: { type: 'spring', stiffness: 400, damping: 10 },
-            }}
-            className="flex flex-col p-6 rounded-xl border backdrop-blur-sm transition-all duration-300 dark:bg-gray-800/20 dark:border-gray-700/30 group hover:bg-text-tertiary/5 border-text-tertiary/10 bg-bg-primary/5"
-          >
-            <div className="flex justify-center items-center mb-5 w-14 h-14 rounded-full transition-colors duration-300 bg-text-tertiary/10 group-hover:bg-text-tertiary/20">
-              <FaCalendarAlt className="w-6 h-6 text-text-tertiary" />
-            </div>
-            <h3 className="mb-2 text-xl font-bold text-text-primary">Book a Slot</h3>
-            <p className="mb-4 text-text-primary">Schedule a meeting at your convenience</p>
-            <Link
-              href="https://cal.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex gap-2 justify-center items-center px-4 py-2 mt-auto font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary"
-            >
-              Book
-            </Link>
-          </motion.div>
+          ))}
         </motion.div>
       </div>
 
       {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -10 }}
+        variants={variants.fadeInUp}
+        initial="hidden"
+        animate={isVisible ? 'visible' : 'hidden'}
         transition={{ delay: 1.6, duration: 0.8 }}
         className="flex flex-col items-center mb-15"
       >

@@ -12,9 +12,7 @@ export function NumberSortingGame({
 }: NumberSortingGameProps) {
   const [numbers, setNumbers] = useState<number[]>([]);
   const [sorted, setSorted] = useState(false);
-  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
-  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
-  const [touchStartIndex, setTouchStartIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const generateRandomNumbers = () => {
     const newNumbers = Array.from({ length: 8 }, () => Math.floor(Math.random() * 100) + 1);
@@ -41,80 +39,29 @@ export function NumberSortingGame({
     }
   }, [sorted, onVerificationComplete]);
 
-  // Mouse events
-  const handleDragStart = (e: React.DragEvent<HTMLDivElement>, index: number) => {
-    if (isDisabled) return;
+  // Handle clicking on a number tile
+  const handleNumberClick = (index: number) => {
+    // Prevent clicks if disabled or if numbers are already sorted correctly
+    if (isDisabled || sorted) return;
 
-    e.dataTransfer.setData('index', index.toString());
-    setDraggedIndex(index);
+    if (selectedIndex === null) {
+      // First selection
+      setSelectedIndex(index);
+    } else {
+      // Second selection - perform the swap
+      if (selectedIndex !== index) {
+        const newNumbers = [...numbers];
+        const temp = newNumbers[selectedIndex];
+        newNumbers[selectedIndex] = newNumbers[index];
+        newNumbers[index] = temp;
 
-    const target = e.currentTarget.cloneNode(true) as HTMLElement;
-    target.style.opacity = '0.5';
-    document.body.appendChild(target);
-    e.dataTransfer.setDragImage(target, 25, 25);
-    setTimeout(() => {
-      document.body.removeChild(target);
-    }, 0);
-  };
+        setNumbers(newNumbers);
+        checkSortOrder(newNumbers);
+      }
 
-  const handleDragEnd = () => {
-    setDraggedIndex(null);
-    setDragOverIndex(null);
-  };
-
-  const handleDragOver = (e: React.DragEvent<HTMLDivElement>, index: number) => {
-    if (isDisabled) return;
-    e.preventDefault();
-    setDragOverIndex(index);
-  };
-
-  const handleDragLeave = () => {
-    setDragOverIndex(null);
-  };
-
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>, dropIndex: number) => {
-    if (isDisabled) return;
-
-    const dragIndex = parseInt(e.dataTransfer.getData('index'));
-    if (isNaN(dragIndex)) return;
-
-    swapNumbers(dragIndex, dropIndex);
-  };
-
-  // Touch events
-  const handleTouchStart = (index: number) => {
-    if (isDisabled) return;
-    setTouchStartIndex(index);
-    setDraggedIndex(index);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>, index: number) => {
-    if (isDisabled || touchStartIndex === null) return;
-    e.preventDefault();
-    setDragOverIndex(index);
-  };
-
-  const handleTouchEnd = (dropIndex: number) => {
-    if (isDisabled || touchStartIndex === null) return;
-
-    if (touchStartIndex !== dropIndex) {
-      swapNumbers(touchStartIndex, dropIndex);
+      // Reset selection after swap
+      setSelectedIndex(null);
     }
-
-    setTouchStartIndex(null);
-    setDraggedIndex(null);
-    setDragOverIndex(null);
-  };
-
-  // Common function to swap numbers and check sorting
-  const swapNumbers = (fromIndex: number, toIndex: number) => {
-    const newNumbers = [...numbers];
-    const temp = newNumbers[fromIndex];
-    newNumbers[fromIndex] = newNumbers[toIndex];
-    newNumbers[toIndex] = temp;
-
-    setNumbers(newNumbers);
-    checkSortOrder(newNumbers);
   };
 
   const checkSortOrder = (nums: number[]) => {
@@ -138,25 +85,15 @@ export function NumberSortingGame({
         {numbers.map((number, index) => (
           <div
             key={index}
-            draggable={!isDisabled}
-            onDragStart={e => handleDragStart(e, index)}
-            onDragEnd={handleDragEnd}
-            onDragOver={e => handleDragOver(e, index)}
-            onDragLeave={handleDragLeave}
-            onDrop={e => handleDrop(e, index)}
-            onTouchStart={() => handleTouchStart(index)}
-            onTouchMove={e => handleTouchMove(e, index)}
-            onTouchEnd={() => handleTouchEnd(index)}
-            className={`w-10 h-10 flex items-center justify-center text-xl font-medium rounded-md ${
-              !isDisabled ? 'cursor-move' : 'cursor-not-allowed'
-            } shadow transition duration-200 
-              ${draggedIndex === index ? 'opacity-50' : 'opacity-100'}
+            onClick={() => handleNumberClick(index)}
+            className={`w-10 h-10 flex items-center justify-center text-xl font-medium rounded-md 
+              ${!isDisabled && !sorted ? 'cursor-pointer' : ''} 
+              shadow transition duration-200 
+              ${selectedIndex === index ? 'ring-2 ring-text-tertiary' : ''}
               ${
-                dragOverIndex === index
-                  ? 'bg-bg-tertiary/20 border-2 border-text-tertiary'
-                  : sorted
-                    ? 'bg-emerald-400 text-white'
-                    : 'bg-bg-primary/15 text-text-primary border border-text-primary/20'
+                sorted
+                  ? 'bg-emerald-400 text-white'
+                  : 'bg-bg-primary/15 text-text-primary border border-text-primary/20'
               }
               ${isDisabled ? 'opacity-70' : ''}`}
           >
@@ -171,6 +108,14 @@ export function NumberSortingGame({
           humanity.
         </div>
       )}
+
+      <div className="text-sm text-center text-text-primary/70">
+        {sorted ? (
+          <p>Numbers are correctly sorted!</p>
+        ) : (
+          <p>Click on two numbers to swap their positions.</p>
+        )}
+      </div>
     </div>
   );
 }

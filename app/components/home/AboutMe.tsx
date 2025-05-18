@@ -9,7 +9,7 @@ import SectionHeading from './SectionHeading';
 const AboutMe = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.15 });
+  const isInView = useInView(sectionRef, { once: false, amount: 0.1 });
 
   useEffect(() => {
     if (isInView) {
