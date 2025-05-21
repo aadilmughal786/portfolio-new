@@ -36,7 +36,7 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
 
   return (
     <section id="featured-projects" className="py-12">
-      <div className="container px-4 mx-auto">
+      <div className="container px-8 mx-auto sm:px-16">
         <SectionHeading badge="My Work" title="Featured" highlightedTitle="Projects">
           Explore my latest projects that demonstrate innovative solutions and technical expertise.
         </SectionHeading>

@@ -1,0 +1,52 @@
+---
+title: AI and ML in Web Apps
+excerpt: Integrate AI and ML into your web applications for smarter user experiences.
+publishedAt: '2025-05-30'
+tags: [ai, machine-learning, webdev]
+coverImageUrl: '/portfolio-new/images/blogs/ai-and-ml-in-web-apps/cover.svg'
+---
+
+# AI and ML in Web Apps
+
+Artificial Intelligence (AI) and Machine Learning (ML) are transforming web applications, enabling features like personalized recommendations and chatbots. This article explores how to integrate AI/ML into web apps.
+
+## Why AI/ML in Web Apps?
+
+AI enhances user experiences by analyzing data and predicting behavior. Examples include Netflix’s recommendation engine and Grammarly’s text suggestions.
+
+## Tools and Libraries
+
+- **TensorFlow.js**: Run ML models in the browser.
+- **Brain.js**: Simple neural networks for JavaScript.
+- **APIs**: Use pre-trained models from Google Cloud or AWS.
+
+## Example: Sentiment Analysis
+
+Use TensorFlow.js for sentiment analysis:
+
+```javascript
+import * as tf from '@tensorflow/tfjs';
+
+async function analyzeSentiment(text) {
+  const model = await tf.loadLayersModel('path/to/model.json');
+  const input = preprocess(text);
+  const prediction = model.predict(input);
+  return prediction.dataSync();
+}
+```
+
+## Best Practices
+
+- **Optimize Models**: Use quantized models to reduce load times.
+- **Handle Errors**: Provide fallbacks for unsupported browsers.
+- **Privacy**: Avoid sending sensitive data to external APIs.
+
+## Real-World Applications
+
+- **E-commerce**: Recommend products based on user behavior.
+- **Chatbots**: Use NLP models for customer support.
+- **Analytics**: Predict user churn with ML models.
+
+## Conclusion
+
+AI and ML open new possibilities for web apps. Start with simple models, leverage APIs, and scale as needed to create intelligent applications.

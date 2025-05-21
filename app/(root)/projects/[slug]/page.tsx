@@ -42,7 +42,7 @@ export default async function CastStudyPage({ params }: PageParams) {
     }
 
     return (
-      <div className="px-4 py-10 mx-auto max-w-3xl">
+      <div className="container px-6 py-10 mx-auto max-w-3xl sm:px-16">
         <article>
           <header className="mb-8">
             <h1 className="text-4xl font-bold">{post.title}</h1>

@@ -1,0 +1,47 @@
+---
+title: Discrete Mathematics for Coders
+excerpt: Learn discrete math concepts to enhance your programming and problem-solving skills.
+publishedAt: '2025-08-25'
+tags: [discrete-math, algorithms, coding]
+coverImageUrl: '/portfolio-new/images/blogs/discrete-mathematics-for-coders/cover.svg'
+---
+
+# Discrete Mathematics for Coders
+
+Discrete mathematics deals with distinct, countable structures, making it essential for programming and algorithms. This article covers its key concepts.
+
+## Core Topics
+
+- **Set Theory**: Understand unions, intersections, and subsets.
+- **Graph Theory**: Model networks, like social media connections.
+- **Logic**: Use propositions for conditionals in code.
+- **Combinatorics**: Calculate permutations and combinations.
+
+## Example: Graph Traversal
+
+Implement a depth-first search (DFS) in Python:
+
+```python
+def dfs(graph, node, visited):
+    if node not in visited:
+        visited.add(node)
+        for neighbor in graph[node]:
+            dfs(graph, neighbor, visited)
+    return visited
+```
+
+## Applications in Coding
+
+- **Databases**: Use set theory for query optimization.
+- **Cryptography**: Apply number theory for encryption.
+- **AI**: Leverage graphs for recommendation systems.
+
+## Learning Tips
+
+- Study _Discrete Mathematics and Its Applications_ by Kenneth Rosen.
+- Practice problems on Brilliant.org.
+- Apply concepts in coding projects, like building a maze solver.
+
+## Conclusion
+
+Discrete math strengthens your ability to tackle complex problems. Start with one topic, like graphs, and apply it to a project to see its impact.

@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: PageParams) {
     return (
       <>
         <ScrollProgressBar />
-        <div className="px-4 py-10 mx-auto max-w-3xl">
+        <div className="container px-6 py-10 mx-auto max-w-3xl sm:px-16">
           <article className="mb-12">
             <div className="mb-8">
               <div className="flex flex-wrap gap-2 mb-4">
@@ -67,7 +67,7 @@ export default async function BlogPostPage({ params }: PageParams) {
                   post.tags.map(tag => (
                     <span
                       key={tag}
-                      className="inline-flex gap-2 items-center px-4 py-1 mb-4 text-sm font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
+                      className="inline-flex gap-2 items-center px-4 py-1 text-sm font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
                     >
                       <LiaSlackHash size={18} />
                       {tag}
@@ -105,7 +105,7 @@ export default async function BlogPostPage({ params }: PageParams) {
               </div>
             </div>
 
-            <div className="relative w-full h-[400px] md:h-[500px] mb-10 rounded-lg overflow-hidden ">
+            <div className="overflow-hidden relative mb-10 w-full rounded-lg h-50">
               <Image
                 src={post.coverImageUrl}
                 alt={post.title}

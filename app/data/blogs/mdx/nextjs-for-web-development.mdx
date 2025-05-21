@@ -1,0 +1,70 @@
+---
+title: Next.js for Web Development
+excerpt: Build fast, SEO-friendly web apps with Next.js and its powerful features.
+publishedAt: '2025-04-25'
+tags: [nextjs, webdev, react]
+coverImageUrl: '/portfolio-new/images/blogs/nextjs-for-web-development/cover.png'
+---
+
+# Next.js for Web Development
+
+Next.js is a React framework that simplifies building fast, scalable web applications. This article covers its core features and how to use them in 2025.
+
+## Why Next.js?
+
+Next.js offers server-side rendering (SSR), static site generation (SSG), and API routes, making it ideal for SEO and performance.
+
+## Setting Up a Project
+
+Create a Next.js app:
+
+```bash
+npx create-next-app@latest my-app
+cd my-app
+npm run dev
+```
+
+## Key Features
+
+- **Pages and Routing**: Create files in the `pages` directory for automatic routing. For example, `pages/about.js` becomes `/about`.
+- **Static Generation**: Use `getStaticProps` for pre-rendered pages:
+
+```javascript
+export async function getStaticProps() {
+  const data = await fetchData();
+  return { props: { data } };
+}
+```
+
+- **API Routes**: Create serverless APIs in `pages/api`:
+
+```javascript
+export default function handler(req, res) {
+  res.status(200).json({ message: 'Hello, API!' });
+}
+```
+
+## Optimizing Performance
+
+- Use `next/image` for automatic image optimization.
+- Enable Incremental Static Regeneration (ISR) for dynamic static pages.
+
+## Example: Dynamic Page
+
+Create a dynamic route in `pages/posts/[id].js`:
+
+```javascript
+export async function getStaticPaths() {
+  const paths = [{ params: { id: '1' } }, { params: { id: '2' } }];
+  return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+  const post = await fetchPost(params.id);
+  return { props: { post } };
+}
+```
+
+## Conclusion
+
+Next.js is a versatile framework for modern web development. Experiment with its rendering options and deploy on Vercel for a seamless experience.

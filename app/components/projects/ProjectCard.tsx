@@ -77,7 +77,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, handleSelectProject 
 
               {project.caseStudySlug && (
                 <ProjectLink
-                  href={`/case-study/${project.caseStudySlug}`}
+                  href={`/${project.caseStudySlug}`}
                   ariaLabel={`Read ${project.title} case study`}
                   isInternal
                 >

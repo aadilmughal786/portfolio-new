@@ -22,7 +22,7 @@ export const Button = ({
   return (
     <Link
       href={href}
-      className={`flex gap-2 items-center px-6 py-2 font-medium  rounded-md transition-colors duration-300  
+      className={`flex gap-2 items-center px-4 py-1.5 font-medium  rounded-md transition-colors duration-300  
         ${
           primary
             ? 'text-white bg-text-tertiary/80 hover:bg-text-tertiary'
