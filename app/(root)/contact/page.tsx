@@ -3,8 +3,9 @@ import ContactHero from '@/components/contact/Hero';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Contact - Aadil',
-  description: 'Portfolio Website',
+  title: 'Contact',
+  description:
+    'Get in touch with Aadil Mughal. Find contact information and a simple form to reach out for collaborations, job opportunities, or questions.',
 };
 
 export default function Home() {

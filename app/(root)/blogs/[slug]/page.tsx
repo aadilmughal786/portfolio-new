@@ -34,6 +34,26 @@ export async function generateMetadata({ params }: PageParams) {
   return {
     title: post.title,
     description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      type: 'article',
+      url: `https://aadilmughal786.github.io/portfolio-new/blogs/${post.title}`,
+      images: [
+        {
+          url: `https://aadilmughal786.github.io/${post.coverImageUrl}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [`https://aadilmughal786.github.io/${post.coverImageUrl}`],
+    },
   };
 }
 

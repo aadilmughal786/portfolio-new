@@ -9,15 +9,9 @@ import TechStack from '@/components/home/TechCategory';
 import Testimonials from '@/components/home/Testimonials';
 import { projectsData } from '@/data/projects';
 import { getAllPosts } from '@/lib/mdx';
-import type { Metadata } from 'next';
 import path from 'path';
 
 const BLOGS_DIRECTORY = path.join(process.cwd(), '/app/data/blogs/mdx/');
-
-export const metadata: Metadata = {
-  title: 'Home - Aadil',
-  description: 'Portfolio Website',
-};
 
 export default function Home() {
   const posts = getAllPosts(BLOGS_DIRECTORY);

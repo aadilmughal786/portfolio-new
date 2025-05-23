@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { FaDownload } from 'react-icons/fa';
 import { FaAnglesRight } from 'react-icons/fa6';
 import variants from '@/utils/motionVariants'; // Import our variants
+import { aboutMeData } from '@/data/home/about-me';
 
 const ResumeHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -15,9 +16,9 @@ const ResumeHero = () => {
   }, []);
 
   const experienceItems = [
-    { value: '3+', label: 'Years Experience' },
-    { value: '30+', label: 'Projects Completed' },
-    { value: '15+', label: 'Tech Stack' },
+    { value: `${aboutMeData.yearsOfExperience}+`, label: 'Years Experience' },
+    { value: `${aboutMeData.totalProjectsCompleted}+`, label: 'Projects Completed' },
+    { value: `${aboutMeData.technologiesUsed}+`, label: 'Tech Stack' },
   ];
 
   return (

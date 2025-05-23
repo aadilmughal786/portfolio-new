@@ -177,7 +177,7 @@ const Testimonials: React.FC = () => {
             What Others Say
           </motion.div>
           <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">
-            Client <span className="text-text-tertiary">Testimonials</span>
+            <span className="text-text-tertiary">Endorsements</span>
           </h2>
         </motion.div>
 

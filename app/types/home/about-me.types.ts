@@ -15,6 +15,7 @@ export type ExplorationArea = {
 export type AboutMeData = {
   yearsOfExperience: number;
   totalProjectsCompleted: number;
+  technologiesUsed: number;
   coreValuePropositions: ValueProposition[];
   currentExplorations: ExplorationArea[];
 };

@@ -8,8 +8,9 @@ import path from 'path';
 const BLOGS_DIRECTORY = path.join(process.cwd(), '/app/data/blogs/mdx/');
 
 export const metadata: Metadata = {
-  title: 'Blogs - Aadil',
-  description: 'Portfolio Website',
+  title: 'Blogs',
+  description:
+    'Read insightful articles, tutorials, and updates from Aadil Mughal’s blog on technology, programming, and the web development industry.',
 };
 
 export default function GitHubDashboard() {

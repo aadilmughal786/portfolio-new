@@ -18,8 +18,9 @@ import Project from '@/components/resume/Project';
 import EndPage from '@/components/home/EndPage';
 
 export const metadata: Metadata = {
-  title: 'Resume - Aadil',
-  description: 'Portfolio Website',
+  title: 'Resume',
+  description:
+    'Discover the professional resume of Aadil Mughal, highlighting skills, experience, education, and achievements in web development and software engineering.',
 };
 
 export default function Home() {

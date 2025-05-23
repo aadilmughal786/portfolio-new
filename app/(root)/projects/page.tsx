@@ -5,8 +5,9 @@ import { projectsData } from '@/data/projects';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Projects - Aadil',
-  description: 'Portfolio Website',
+  title: 'Projects',
+  description:
+    'Explore a portfolio of projects by Aadil Mughal, showcasing expertise in web development, programming, and creative problem-solving.',
 };
 
 export default function Home() {

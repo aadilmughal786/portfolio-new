@@ -12,9 +12,35 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  title: {
+    default: 'Home | Aadil Mughal Portfolio',
+    template: '%s | Aadil Mughal Portfolio',
+  },
   icons: {
     icon: '/portfolio-new/favicon.png',
   },
+  description: 'Welcome to the portfolio site of Aadil Mughal.',
+  openGraph: {
+    title: 'Aadil Mughal Portfolio',
+    description: 'Showcasing projects and skills of Aadil Mughal.',
+    url: 'https://aadilmughal786.github.io/portfolio-new/',
+    type: 'website',
+    images: [
+      {
+        url: 'https://aadilmughal786.github.io/portfolio-new/images/aadil.png',
+        width: 1200,
+        height: 630,
+        alt: 'Aadil Mughal Portfolio',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Aadil Mughal Portfolio',
+    description: 'Showcasing projects and skills of Aadil Mughal.',
+    images: ['https://aadilmughal786.github.io/portfolio-new/images/aadil.png'],
+  },
+  // ...other meta fields
 };
 
 export default function RootLayout({
