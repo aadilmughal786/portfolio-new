@@ -21,6 +21,16 @@ export const metadata: Metadata = {
   title: 'Resume',
   description:
     'Discover the professional resume of Aadil Mughal, highlighting skills, experience, education, and achievements in web development and software engineering.',
+  openGraph: {
+    title: 'Resume | Aadil Mughal Portfolio',
+    description:
+      'Discover the professional resume of Aadil Mughal, highlighting skills, experience, education, and achievements in web development and software engineering.',
+  },
+  twitter: {
+    title: 'Resume | Aadil Mughal Portfolio',
+    description:
+      'Discover the professional resume of Aadil Mughal, highlighting skills, experience, education, and achievements in web development and software engineering.',
+  },
 };
 
 export default function Home() {

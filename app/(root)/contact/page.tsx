@@ -6,6 +6,16 @@ export const metadata: Metadata = {
   title: 'Contact',
   description:
     'Get in touch with Aadil Mughal. Find contact information and a simple form to reach out for collaborations, job opportunities, or questions.',
+  openGraph: {
+    title: 'Contact | Aadil Mughal Portfolio',
+    description:
+      'Get in touch with Aadil Mughal. Find contact information and a simple form to reach out for collaborations, job opportunities, or questions.',
+  },
+  twitter: {
+    title: 'Contact | Aadil Mughal Portfolio',
+    description:
+      'Get in touch with Aadil Mughal. Find contact information and a simple form to reach out for collaborations, job opportunities, or questions.',
+  },
 };
 
 export default function Home() {

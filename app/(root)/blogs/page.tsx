@@ -11,6 +11,17 @@ export const metadata: Metadata = {
   title: 'Blogs',
   description:
     'Read insightful articles, tutorials, and updates from Aadil Mughal’s blog on technology, programming, and the web development industry.',
+
+  openGraph: {
+    title: 'Blogs | Aadil Mughal Portfolio',
+    description:
+      'Read insightful articles, tutorials, and updates from Aadil Mughal’s blog on technology, programming, and the web development industry.',
+  },
+  twitter: {
+    title: 'Blogs | Aadil Mughal Portfolio',
+    description:
+      'Read insightful articles, tutorials, and updates from Aadil Mughal’s blog on technology, programming, and the web development industry.',
+  },
 };
 
 export default function GitHubDashboard() {

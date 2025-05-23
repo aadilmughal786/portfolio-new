@@ -8,6 +8,17 @@ export const metadata: Metadata = {
   title: 'Projects',
   description:
     'Explore a portfolio of projects by Aadil Mughal, showcasing expertise in web development, programming, and creative problem-solving.',
+
+  openGraph: {
+    title: 'Projects | Aadil Mughal Portfolio',
+    description:
+      'Explore a portfolio of projects by Aadil Mughal, showcasing expertise in web development, programming, and creative problem-solving.',
+  },
+  twitter: {
+    title: 'Projects | Aadil Mughal Portfolio',
+    description:
+      'Explore a portfolio of projects by Aadil Mughal, showcasing expertise in web development, programming, and creative problem-solving.',
+  },
 };
 
 export default function Home() {
