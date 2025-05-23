@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: 'https://aadilmughal786.github.io/portfolio-new/images/aadil.png',
+        url: 'https://aadilmughal786.github.io/portfolio-new/images/card.png',
         width: 1200,
         height: 630,
         alt: 'Aadil Mughal Portfolio',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Aadil Mughal Portfolio',
     description: 'Showcasing projects and skills of Aadil Mughal.',
-    images: ['https://aadilmughal786.github.io/portfolio-new/images/aadil.png'],
+    images: ['https://aadilmughal786.github.io/portfolio-new/images/card.png'],
   },
   // ...other meta fields
 };
