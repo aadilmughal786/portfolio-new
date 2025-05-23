@@ -56,14 +56,15 @@ export default async function CastStudyPage({ params }: PageParams) {
                 ))}
               </div>
             )}
-            <Image
-              src={post.coverImageUrl}
-              alt={post.title}
-              className="mt-4 w-full h-auto rounded-lg"
-              width={800}
-              height={400}
-              priority
-            />
+            <div className="overflow-hidden relative mt-4 w-full rounded-lg aspect-video">
+              <Image
+                src={post.coverImageUrl}
+                alt={post.title}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </header>
 
           <div className="max-w-none prose prose-lg">

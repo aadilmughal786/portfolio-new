@@ -86,6 +86,7 @@ export default async function BlogPostPage({ params }: PageParams) {
                     alt={post.author}
                     className="object-cover bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
                     fill
+                    sizes="40px"
                   />
                 </div>
                 <div>
@@ -105,13 +106,15 @@ export default async function BlogPostPage({ params }: PageParams) {
               </div>
             </div>
 
-            <div className="overflow-hidden relative mb-10 w-full rounded-lg h-50">
+            {/* Main cover image with 16:9 aspect ratio */}
+            <div className="overflow-hidden relative mb-10 w-full rounded-lg aspect-video">
               <Image
                 src={post.coverImageUrl}
                 alt={post.title}
                 className="object-cover"
                 fill
                 priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 768px"
               />
             </div>
 
@@ -131,16 +134,16 @@ export default async function BlogPostPage({ params }: PageParams) {
             <div className="pt-6 mt-10 border-t border-gray-200 dark:border-gray-800">
               <div className="flex items-center">
                 <div className="flex-shrink-0 mr-4">
-                  {/* Author Image */}
+                  {/* Author Image - keeping this as circular profile image */}
                   <div className="relative">
                     <div className="overflow-hidden relative z-10 rounded-full w-15 h-15">
-                      {/* Replace with your actual image */}
                       <Image
                         src={post.authorImage}
                         alt={post.author}
-                        height={100}
-                        width={100}
-                        className="flex justify-center items-center w-full h-full text-4xl font-bold text-white bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
+                        height={60}
+                        width={60}
+                        className="object-cover bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
+                        sizes="60px"
                       />
                     </div>
                   </div>

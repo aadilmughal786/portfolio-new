@@ -8,6 +8,7 @@ import { navBarData } from '@/data/nav-bar';
 import RepoDetails from './RepoDetails';
 import Link from 'next/link';
 import ProjectStatusBadge from './ProjectStatusBadge';
+import Image from 'next/image';
 
 interface ProjectDetailsProps {
   project: TProject;
@@ -24,19 +25,20 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
     <div className="flex flex-col min-h-full">
       {/* Project content */}
       <div className="flex-1 p-6">
-        <div className="relative">
-          <div
-            className="mb-4 w-full h-48 bg-center bg-cover rounded"
-            style={{
-              background: `url(${project.imageUrl})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
-          />
+        <div className="flex-1">
+          <div className="overflow-hidden relative w-full rounded aspect-video">
+            <Image
+              src={project.imageUrl}
+              alt={project.title}
+              fill
+              className="object-cover"
+              priority
+            />
 
-          {/* Status badge positioned absolutely on the image */}
-          <div className="absolute top-3 right-3 z-20">
-            <ProjectStatusBadge status={project.status} />
+            {/* Status badge positioned absolutely on the image */}
+            <div className="absolute top-3 right-3 z-20">
+              <ProjectStatusBadge status={project.status} />
+            </div>
           </div>
         </div>
 
