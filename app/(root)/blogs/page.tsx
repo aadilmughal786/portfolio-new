@@ -10,17 +10,17 @@ const BLOGS_DIRECTORY = path.join(process.cwd(), '/app/data/blogs/mdx/');
 export const metadata: Metadata = {
   title: 'Blogs',
   description:
-    'Read insightful articles, tutorials, and updates from Aadil Mughal’s blog on technology, programming, and the web development industry.',
+    'Read insightful articles, tutorials, and updates from Aadil Mugal’s blog on technology, programming, and the web development industry.',
 
   openGraph: {
-    title: 'Blogs | Aadil Mughal Portfolio',
+    title: 'Blogs | Aadil Mugal Portfolio',
     description:
-      'Read insightful articles, tutorials, and updates from Aadil Mughal’s blog on technology, programming, and the web development industry.',
+      'Read insightful articles, tutorials, and updates from Aadil Mugal’s blog on technology, programming, and the web development industry.',
   },
   twitter: {
-    title: 'Blogs | Aadil Mughal Portfolio',
+    title: 'Blogs | Aadil Mugal Portfolio',
     description:
-      'Read insightful articles, tutorials, and updates from Aadil Mughal’s blog on technology, programming, and the web development industry.',
+      'Read insightful articles, tutorials, and updates from Aadil Mugal’s blog on technology, programming, and the web development industry.',
   },
 };
 

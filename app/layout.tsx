@@ -13,16 +13,16 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Home | Aadil Mughal Portfolio',
-    template: '%s | Aadil Mughal Portfolio',
+    default: 'Home | Aadil Mugal Portfolio',
+    template: '%s | Aadil Mugal Portfolio',
   },
   icons: {
     icon: '/portfolio-new/favicon.png',
   },
-  description: 'Welcome to the portfolio site of Aadil Mughal.',
+  description: 'Welcome to the portfolio site of Aadil Mugal.',
   openGraph: {
-    title: 'Aadil Mughal Portfolio',
-    description: 'Showcasing projects and skills of Aadil Mughal.',
+    title: 'Aadil Mugal Portfolio',
+    description: 'Showcasing projects and skills of Aadil Mugal.',
     url: 'https://aadilmughal786.github.io/portfolio-new/',
     type: 'website',
     images: [
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
         url: 'https://aadilmughal786.github.io/portfolio-new/images/card.png',
         width: 1200,
         height: 630,
-        alt: 'Aadil Mughal Portfolio',
+        alt: 'Aadil Mugal Portfolio',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Aadil Mughal Portfolio',
-    description: 'Showcasing projects and skills of Aadil Mughal.',
+    title: 'Aadil Mugal Portfolio',
+    description: 'Showcasing projects and skills of Aadil Mugal.',
     images: ['https://aadilmughal786.github.io/portfolio-new/images/card.png'],
   },
   // ...other meta fields

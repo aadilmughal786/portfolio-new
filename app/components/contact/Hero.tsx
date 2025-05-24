@@ -2,11 +2,11 @@
 
 import { useState, useEffect, ReactNode } from 'react';
 import { motion } from 'framer-motion';
-import { FaPaperPlane, FaFileAlt, FaCalendarAlt } from 'react-icons/fa';
 import { GrContact } from 'react-icons/gr';
 import Link from 'next/link';
 import variants from '@/utils/motionVariants';
 import { Variants } from 'framer-motion';
+import { contactOptionsData } from '@/data/contact/contact-options';
 
 type ContactCardProps = {
   icon: ReactNode;
@@ -67,33 +67,6 @@ const ContactHero = () => {
     setIsVisible(true);
   }, []);
 
-  const contactOptions = [
-    {
-      icon: <FaPaperPlane className="w-6 h-6 text-text-tertiary" />,
-      title: 'Email Me',
-      description: 'Drop me a line anytime to discuss your project needs',
-      linkText: 'Email',
-      linkHref: 'mailto:aadil.mugal.dev@gmail.com',
-      linkTarget: '_self',
-    },
-    {
-      icon: <FaFileAlt className="w-6 h-6 text-text-tertiary" />,
-      title: 'Fill the Form',
-      description: 'Share your details and ideas through our contact form',
-      linkText: 'Go to Form',
-      linkHref: '#contact-form',
-      linkTarget: '_self',
-    },
-    {
-      icon: <FaCalendarAlt className="w-6 h-6 text-text-tertiary" />,
-      title: 'Book a Slot',
-      description: 'Schedule a meeting at your convenience',
-      linkText: 'Book',
-      linkHref: 'https://cal.com/',
-      linkTarget: '_blank',
-    },
-  ];
-
   return (
     <section className="relative min-h-[80vh] py-16 sm:py-24 overflow-hidden">
       <div className="container relative z-10 px-4 mx-auto max-w-7xl pb-15">
@@ -146,7 +119,7 @@ const ContactHero = () => {
           animate={isVisible ? 'visible' : 'hidden'}
           className="grid grid-cols-1 gap-5 pt-10 mx-auto mt-12 max-w-5xl md:gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
-          {contactOptions.map((option, index) => (
+          {contactOptionsData.map((option, index) => (
             <div
               key={index}
               className={`${index === 2 ? 'sm:col-span-2 lg:col-span-1' : ''} h-full`}

@@ -77,7 +77,7 @@ const AuthorBio = () => {
                   variants={variants.fadeInUp}
                   className="mb-2 text-3xl font-bold text-text-primary"
                 >
-                  Aadil Mughal
+                  Aadil Mugal
                 </motion.h2>
                 <motion.h3 variants={variants.fadeInUp} className="mb-4 text-xl text-text-tertiary">
                   Full-Stack Developer
