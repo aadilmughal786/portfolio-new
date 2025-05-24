@@ -1,3 +1,4 @@
+import ASCIIDonut from '@/components/projects/ASCIIDonut';
 import DonationSection from '@/components/projects/Donation';
 import ProjectsHero from '@/components/projects/Hero';
 import ProjectSearch from '@/components/projects/ProjectSearch';
@@ -24,6 +25,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <div>
+      <ASCIIDonut />
       <ProjectsHero />
       <ProjectSearch projects={projectsData} />
       <DonationSection />

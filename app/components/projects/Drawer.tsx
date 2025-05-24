@@ -107,7 +107,7 @@ const Drawer: React.FC<DrawerProps> = ({
         role="dialog"
       >
         {/* Header */}
-        <div className="flex sticky top-0 z-10 justify-between items-center pt-3 pb-[11px] px-5 border-b border-border-primary">
+        <div className="flex sticky top-0 z-10 justify-between items-center px-5 pt-3 pb-4 border-b border-border-primary">
           <div className="flex gap-3 items-center font-semibold text-text-tertiary">
             <AiOutlineFundProjectionScreen size={22} /> {title}
           </div>

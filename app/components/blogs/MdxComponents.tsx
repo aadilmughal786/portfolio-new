@@ -51,5 +51,23 @@ export const MDXComponents = {
       {src && <Image src={src} alt={alt || ''} width={800} height={500} className="rounded-lg" />}
     </div>
   ),
-  // Add more components as needed
+  table: ({ children }: { children: React.ReactNode }) => (
+    <div className="overflow-x-auto my-6">
+      <table className="w-full text-left border-collapse">{children}</table>
+    </div>
+  ),
+  thead: ({ children }: { children: React.ReactNode }) => <thead className="">{children}</thead>,
+  tbody: ({ children }: { children: React.ReactNode }) => <tbody>{children}</tbody>,
+  tr: ({ children }: { children: React.ReactNode }) => (
+    <tr className="border-b border-border-primary">{children}</tr>
+  ),
+  th: ({ children }: { children: React.ReactNode }) => (
+    <th className="px-4 py-3 font-semibold border border-border-primary text-text-tertiary">
+      {children}
+    </th>
+  ),
+  td: ({ children }: { children: React.ReactNode }) => (
+    <td className="px-4 py-3 border border-border-primary">{children}</td>
+  ),
+  hr: () => <hr className="my-6 border-t border-border-primary/50" />,
 };
