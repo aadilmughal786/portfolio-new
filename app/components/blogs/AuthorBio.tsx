@@ -8,6 +8,7 @@ import Image from 'next/image';
 import { runConfetti } from '@/utils/confetti';
 import SectionHeading from '../home/SectionHeading';
 import { useState } from 'react';
+import { aboutMeData } from '@/data/home/about-me';
 
 const AuthorBio = () => {
   const [isRunning, setIsRunning] = useState(false); // State to lock the button
@@ -89,11 +90,8 @@ const AuthorBio = () => {
                 className="mb-6 text-center text-text-primary md:text-left"
               >
                 {`Coding isn't just a skill—it's a superpower that transforms ideas into reality. With
-                1+ years of experience in the MERN stack, I specialize in building scalable,
-                user-centric web applications that deliver exceptional digital experiences. I embrace
-                challenges and approach complex problems with a methodical mindset. My goal is to create
-                clean, efficient, and maintainable code that scales well and delivers value to users
-                and businesses alike.`}
+                ${aboutMeData.yearsOfExperience}+ years of experience in the MERN stack, I specialize in building scalable,
+                user-centric web applications that deliver exceptional digital experiences.`}
               </motion.p>
             </div>
           </div>
@@ -104,9 +102,11 @@ const AuthorBio = () => {
             variants={variants.fadeInUp}
           >
             <blockquote className="relative pl-6 italic text-text-primary/70">
-              <FaQuoteLeft size={20} />
+              <div className="flex justify-center items-center mb-3 text-text-tertiary">
+                <FaQuoteLeft size={20} />
+              </div>
 
-              <p className="ml-4">
+              <p>
                 I believe multitasking is a myth. The human brain isn’t designed to juggle multiple
                 tasks effectively. Focus is our true superpower. Do one thing at a time — and do it
                 with intent and excellence. If a problem feels too big, don’t get overwhelmed. Break
