@@ -11,7 +11,7 @@ import type { AboutMeData } from '@/types/home/about-me.types';
 
 export const aboutMeData: AboutMeData = {
   yearsOfExperience: 2,
-  totalProjectsCompleted: 39,
+  totalProjectsBuild: 39,
   technologiesUsed: 29,
 
   coreValuePropositions: [

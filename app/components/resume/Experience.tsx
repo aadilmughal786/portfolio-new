@@ -116,7 +116,9 @@ const ExperienceItem = ({ data }: JobExperienceProps) => {
       <div className="flex flex-col gap-1">
         {data.responsibilities.map((item, index) => (
           <div className="flex gap-3" key={index}>
-            <span className="hidden font-semibold sm:inline text-text-tertiary">{'⤏'}</span> {item}
+            <span className="hidden font-semibold text-text-tertiary sm:inline">{'⤏'}</span>{' '}
+            <span className="font-semibold sm:hidden text-text-tertiary">{'•'}</span>
+            {item}
           </div>
         ))}
       </div>

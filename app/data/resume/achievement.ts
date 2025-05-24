@@ -13,7 +13,7 @@ export const achievementData: TAchievement = {
       institute: 'IISc / IITs',
       issuedOn: new Date('March 16, 2025'),
       description:
-        'Secured All India Rank (AIR) 1566 in the GATE 2025 exam (Computer Science & Information Technology), conducted jointly by IISc and IITs.',
+        'Secured All India Rank (AIR) 1655 in the GATE 2025 exam (Computer Science & Information Technology), conducted jointly by IISc and IITs.',
     },
   ],
 };

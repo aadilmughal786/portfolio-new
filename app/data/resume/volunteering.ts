@@ -12,7 +12,7 @@ export const volunteeringData: TVolunteeringSection = {
       icon: CgOrganisation,
       role: 'Volunteer - Online Tutor & Awareness Campaigner',
       organization: 'Youth Empowerment Foundation',
-      organizationWebsite: 'https://yefindia.org',
+      organizationWebsite: 'https://www.linkedin.com/company/yefindiango',
       cause: 'Education and Awareness',
       descriptions: [
         'Provided online tutoring and educational support during the COVID-19 pandemic.',

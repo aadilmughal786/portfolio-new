@@ -146,7 +146,7 @@ const ContactHero = () => {
         transition={{ delay: 1.6, duration: 0.8 }}
         className="flex flex-col items-center mb-15"
       >
-        <span className="mb-2 text-sm text-gray-700 dark:text-gray-400">Scroll to explore</span>
+        <span className="mb-2 text-sm text-gray-700 dark:text-gray-400">Scroll to Explore</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}

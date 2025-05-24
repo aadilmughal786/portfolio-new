@@ -22,7 +22,7 @@ export const contactData: TContactSection = {
       id: 3,
       icon: FaLinkedin,
       label: 'Linkedin',
-      href: 'https://www.linkedin.com/in/aadil-mugal-146bb818a',
+      href: 'https://www.linkedin.com/in/dev-aadil',
     },
 
     {
@@ -35,7 +35,7 @@ export const contactData: TContactSection = {
       id: 5,
       icon: FaYoutube,
       label: 'YouTube',
-      href: 'https://www.youtube.com/channel/UCwu1NeYOe5r1La0A0VuCbIA',
+      href: 'https://www.youtube.com/@techfunwithaadil',
     },
   ],
 };

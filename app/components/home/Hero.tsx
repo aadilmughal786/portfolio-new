@@ -20,18 +20,25 @@ export const Button = ({
   href: string;
 }) => {
   return (
-    <Link
-      href={href}
-      className={`flex gap-2 items-center px-4 py-1.5 font-medium  rounded-md transition-colors duration-300  
+    <motion.div whileTap={{ scale: 0.95 }}>
+      <Link
+        href={href}
+        className={`flex gap-2 items-center px-4 py-1.5 font-medium  rounded-md transition-colors duration-300  
         ${
           primary
             ? 'text-white bg-text-tertiary/80 hover:bg-text-tertiary'
             : 'bg-text-tertiary/10 text-text-tertiary hover:bg-text-tertiary/20'
         }`}
-    >
-      {children}
-      <FaAnglesRight />
-    </Link>
+      >
+        {children}
+        <motion.span
+          animate={{ x: [0, 5, 0] }}
+          transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+        >
+          <FaAnglesRight />
+        </motion.span>
+      </Link>
+    </motion.div>
   );
 };
 
@@ -95,7 +102,7 @@ const HeroSection = () => {
             className="flex flex-wrap gap-4"
           >
             <Button href="/contact">Start a Project</Button>
-            <Button href="/portfolio" primary={false}>
+            <Button href="/projects" primary={false}>
               View Portfolio
             </Button>
           </motion.div>
@@ -258,7 +265,7 @@ const HeroSection = () => {
             className="hidden absolute -bottom-5 z-30 p-4 rounded-xl border shadow backdrop-blur-md sm:block right-25 bg-white/50 dark:bg-gray-800/50 border-white/30 dark:border-gray-700/30"
           >
             <span className="block text-2xl font-bold text-text-tertiary">
-              {aboutMeData.totalProjectsCompleted}+
+              {aboutMeData.totalProjectsBuild}+
             </span>
             <span className="block text-sm font-medium">
               Completed <br />
@@ -314,7 +321,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll indicator at the bottom */}
-      <ScrollIndicator isActive={animationsActive} label="Scroll to explore" />
+      <ScrollIndicator isActive={animationsActive} label="Scroll to Explore" />
     </section>
   );
 };

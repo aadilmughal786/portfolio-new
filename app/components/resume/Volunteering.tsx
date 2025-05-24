@@ -30,7 +30,7 @@ const VolunteeringItem = ({ data }: VolunteeringItemProps) => {
         {data.descriptions.map((description, index) => (
           <div key={index} className="flex gap-3">
             <span className="hidden font-semibold text-text-tertiary sm:inline">{'⤏'}</span>{' '}
-            {description}
+            <span className="font-semibold sm:hidden text-text-tertiary">{'•'}</span> {description}
           </div>
         ))}
       </div>

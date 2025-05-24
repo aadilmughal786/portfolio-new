@@ -3,8 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { FaDownload } from 'react-icons/fa';
-import { FaAnglesRight } from 'react-icons/fa6';
+import { FaAnglesRight, FaDownload } from 'react-icons/fa6';
 import variants from '@/utils/motionVariants'; // Import our variants
 import { aboutMeData } from '@/data/home/about-me';
 
@@ -17,7 +16,7 @@ const ResumeHero = () => {
 
   const experienceItems = [
     { value: `${aboutMeData.yearsOfExperience}+`, label: 'Years Experience' },
-    { value: `${aboutMeData.totalProjectsCompleted}+`, label: 'Projects Completed' },
+    { value: `${aboutMeData.totalProjectsBuild}+`, label: 'Projects Build' },
     { value: `${aboutMeData.technologiesUsed}+`, label: 'Tech Stack' },
   ];
 
@@ -85,7 +84,6 @@ const ResumeHero = () => {
                     className="relative z-10"
                   >
                     <motion.span
-                      whileHover={{ scale: 1.1 }}
                       transition={{ type: 'spring', stiffness: 300 }}
                       className="block mb-1 text-3xl font-bold md:text-4xl text-text-tertiary"
                     >
@@ -104,18 +102,17 @@ const ResumeHero = () => {
             className="flex flex-wrap gap-4 justify-center mb-12"
           >
             <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
               href="#download-resume"
+              whileTap={{ scale: 0.95 }}
               className="inline-flex items-center px-6 py-2 font-medium text-white rounded-lg transition-colors duration-300 bg-text-tertiary/80 hover:bg-text-tertiary"
             >
-              <motion.span variants={variants.swingAnimation} animate="swing" className="mr-2">
+              <motion.span className="mr-2">
                 <FaDownload />
               </motion.span>
               Download Resume
             </motion.a>
 
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div whileTap={{ scale: 0.95 }}>
               <Link
                 href="/contact"
                 className="inline-flex gap-2 items-center px-6 py-2 font-medium rounded-lg transition-all duration-300 bg-text-tertiary/10 text-text-tertiary hover:bg-text-tertiary/20"
@@ -140,7 +137,7 @@ const ResumeHero = () => {
           transition={{ delay: 1.6, duration: 0.8 }}
           className="flex flex-col items-center mb-15"
         >
-          <span className="mb-2 text-sm text-gray-700 dark:text-gray-400">Scroll to explore</span>
+          <span className="mb-2 text-sm text-gray-700 dark:text-gray-400">Scroll to Explore</span>
           <motion.div
             initial={{ y: 0 }}
             animate={{ y: [0, 8, 0] }}

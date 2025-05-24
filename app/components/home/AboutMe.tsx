@@ -85,7 +85,7 @@ const AboutMe = () => {
                   <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
                   <span className="inline-flex relative w-2 h-2 rounded-full bg-text-tertiary"></span>
                 </span>
-                {aboutMeData.totalProjectsCompleted}+ Projects Completed
+                {aboutMeData.totalProjectsBuild}+ Projects Completed
               </motion.span>
             </div>
           </motion.div>
