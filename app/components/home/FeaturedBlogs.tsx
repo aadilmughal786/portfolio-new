@@ -2,10 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
 import { BlogPost } from '@/types/blogs/blogs.types';
-import { FaAnglesRight } from 'react-icons/fa6';
 import BlogCard from '../blogs/BlogCard';
+import SectionHeading from './SectionHeading';
+import { Button } from './Hero';
 
 interface FeaturedBlogsProps {
   blogs: BlogPost[];
@@ -35,36 +35,14 @@ const FeaturedBlogs: React.FC<FeaturedBlogsProps> = ({ blogs }) => {
     <section id="featured-blogs" className="py-12">
       <div className="container px-8 mx-auto sm:px-16">
         {/* Animated section heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
-          className="mb-16 text-center"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex gap-2 items-center px-4 py-2 mb-4 text-sm font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
-          >
-            <span className="flex relative mr-1 w-3 h-3">
-              <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
-              <span className="inline-flex relative w-3 h-3 rounded-full bg-text-tertiary"></span>
-            </span>
-            My Articals
-          </motion.div>
-          <h2 className="text-4xl font-bold md:text-5xl">
-            Featured <span className="text-text-tertiary">Blogs</span>
-          </h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="mx-auto mt-4 max-w-3xl text-base text-text-primary/80 md:text-lg"
-          >
-            Discover my latest articles sharing insights, tutorials, and industry knowledge.
-          </motion.p>
-        </motion.div>
+        <SectionHeading badge="My Articles" title="Featured" highlightedTitle="Blogs">
+          Dive into my latest articles sharing{' '}
+          <span className="font-semibold text-text-tertiary">practical</span> insights and{' '}
+          <span className="font-semibold text-text-tertiary">expert</span> tips on web development.
+          Each piece reflects my commitment to{' '}
+          <span className="font-semibold text-text-tertiary">clear</span> guidance and industry
+          knowledge.
+        </SectionHeading>
 
         <div className="grid grid-cols-1 gap-6 mx-auto max-w-5xl md:grid-cols-2 lg:grid-cols-3">
           {visibleBlogs.map(blog => (
@@ -78,13 +56,9 @@ const FeaturedBlogs: React.FC<FeaturedBlogsProps> = ({ blogs }) => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-12 text-center"
         >
-          <Link
-            href="/blogs"
-            className="inline-flex gap-2 items-center px-6 py-2 font-medium rounded-lg transition-all duration-300 bg-text-tertiary/10 text-text-tertiary hover:bg-text-tertiary/20"
-          >
+          <Button href="/projects" primary={false}>
             View All Blogs
-            <FaAnglesRight />
-          </Link>
+          </Button>
         </motion.div>
       </div>
     </section>

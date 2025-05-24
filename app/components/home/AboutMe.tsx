@@ -22,7 +22,13 @@ const AboutMe = () => {
       ref={sectionRef}
       className="overflow-hidden relative px-4 pt-24 mx-auto max-w-5xl sm:px-8 lg:px-16"
     >
-      <SectionHeading badge="Who I Am" title="About" highlightedTitle="Me" />
+      <SectionHeading badge="Who I Am" title="About" highlightedTitle="Me">
+        I’m a dedicated web developer crafting{' '}
+        <span className="font-semibold text-text-tertiary">reliable</span> and{' '}
+        <span className="font-semibold text-text-tertiary">user-friendly</span> digital solutions.
+        With a passion for <span className="font-semibold text-text-tertiary">modern</span>{' '}
+        technology and clear design, I build experiences that connect and deliver value.
+      </SectionHeading>
 
       <div>
         {/* Introduction */}
@@ -85,7 +91,7 @@ const AboutMe = () => {
                   <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
                   <span className="inline-flex relative w-2 h-2 rounded-full bg-text-tertiary"></span>
                 </span>
-                {aboutMeData.totalProjectsBuild}+ Projects Completed
+                {aboutMeData.totalProjectsBuild}+ Projects Build
               </motion.span>
             </div>
           </motion.div>

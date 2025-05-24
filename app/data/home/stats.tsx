@@ -1,28 +1,29 @@
 import { TStatBox } from '@/types/home/stats.types';
 import { FaCode, FaUserFriends, FaStar, FaCalendarAlt } from 'react-icons/fa';
+import { aboutMeData } from './about-me';
 
 export const statsData: TStatBox[] = [
   {
     icon: <FaCalendarAlt />,
-    value: 2,
+    value: aboutMeData.yearsOfExperience,
     label: 'Years of Experience',
     suffix: '+',
   },
   {
     icon: <FaCode />,
-    value: 16,
-    label: 'Personal Projects',
+    value: aboutMeData.totalProjectsBuild,
+    label: 'Projects Build',
     suffix: '+',
   },
   {
     icon: <FaStar />,
-    value: 30,
-    label: 'Technologies',
+    value: aboutMeData.technologiesUsed,
+    label: 'Tech Stack',
     suffix: '+',
   },
   {
     icon: <FaUserFriends />,
-    value: 150,
+    value: 129,
     label: 'GitHub Contributions',
     suffix: '+',
   },

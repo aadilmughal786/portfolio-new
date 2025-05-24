@@ -23,7 +23,7 @@ export const Button = ({
     <motion.div whileTap={{ scale: 0.95 }}>
       <Link
         href={href}
-        className={`flex gap-2 items-center px-4 py-1.5 font-medium  rounded-md transition-colors duration-300  
+        className={`inline-flex gap-2 items-center px-4 py-1.5 font-medium  rounded-md transition-colors duration-300  
         ${
           primary
             ? 'text-white bg-text-tertiary/80 hover:bg-text-tertiary'
@@ -267,10 +267,7 @@ const HeroSection = () => {
             <span className="block text-2xl font-bold text-text-tertiary">
               {aboutMeData.totalProjectsBuild}+
             </span>
-            <span className="block text-sm font-medium">
-              Completed <br />
-              Projects
-            </span>
+            <span className="block text-sm font-medium">Projects Build</span>
           </motion.div>
 
           {/* Availability badge */}

@@ -5,52 +5,10 @@ import { motion, AnimatePresence, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { FaQuoteLeft } from 'react-icons/fa';
 import variants from '@/utils/motionVariants';
-
-interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  company: string;
-  image: string;
-  text: string;
-}
+import SectionHeading from './SectionHeading';
+import { testimonialsData } from '@/data/home/Testimonials';
 
 const Testimonials: React.FC = () => {
-  const testimonials: Testimonial[] = [
-    {
-      id: 1,
-      name: 'Sarah Johnson',
-      role: 'CEO',
-      company: 'InnovateX',
-      image: '/portfolio-new/images/aadil.png',
-      text: 'Working with this developer was a game-changer for our startup. They delivered a complex web application on time and within budget. Their attention to detail and ability to translate our vision into reality exceeded our expectations.',
-    },
-    {
-      id: 2,
-      name: 'Michael Chen',
-      role: 'Product Manager',
-      company: 'TechFlow',
-      image: '/portfolio-new/images/aadil.png',
-      text: "I've worked with many developers over my career, but few have the technical skills combined with the business acumen that this developer brings. They don't just write code—they solve problems and add value to the overall product strategy.",
-    },
-    {
-      id: 3,
-      name: 'Emily Rodriguez',
-      role: 'Marketing Director',
-      company: 'GrowthLabs',
-      image: '/portfolio-new/images/aadil.png',
-      text: 'Our website redesign project was seamless from start to finish. The developer was responsive, collaborative, and delivered a stunning website that perfectly captures our brand identity while driving higher conversion rates.',
-    },
-    {
-      id: 4,
-      name: 'David Okonkwo',
-      role: 'Founder',
-      company: 'LaunchPad',
-      image: '/portfolio-new/images/aadil.png',
-      text: 'An exceptional developer who brings both technical expertise and creative problem-solving to the table. They helped us build a scalable platform that has been crucial to our business growth. Highly recommended for any challenging web project.',
-    },
-  ];
-
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -77,11 +35,12 @@ const Testimonials: React.FC = () => {
     if (isPaused) return;
 
     const interval = setInterval(() => {
-      setActiveIndex(prevIndex => (prevIndex + 1) % testimonials.length);
+      setActiveIndex(prevIndex => (prevIndex + 1) % testimonialsData.length);
     }, 6000);
 
     return () => clearInterval(interval);
-  }, [testimonials.length, isPaused]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [testimonialsData.length, isPaused]);
 
   const goToTestimonial = (index: number) => {
     setActiveIndex(index);
@@ -116,13 +75,13 @@ const Testimonials: React.FC = () => {
 
     // Handle left swipe (go to next testimonial)
     if (isLeftSwipe) {
-      const nextIndex = (activeIndex + 1) % testimonials.length;
+      const nextIndex = (activeIndex + 1) % testimonialsData.length;
       setActiveIndex(nextIndex);
     }
 
     // Handle right swipe (go to previous testimonial)
     if (isRightSwipe) {
-      const prevIndex = activeIndex === 0 ? testimonials.length - 1 : activeIndex - 1;
+      const prevIndex = activeIndex === 0 ? testimonialsData.length - 1 : activeIndex - 1;
       setActiveIndex(prevIndex);
     }
 
@@ -157,29 +116,14 @@ const Testimonials: React.FC = () => {
   return (
     <section ref={sectionRef} id="testimonials" className="overflow-hidden relative py-16 md:py-24">
       <div className="container relative z-10 px-4 mx-auto md:px-6">
-        {/* Animated section heading */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-          transition={{ duration: 0.7 }}
-          className="mb-10 text-center md:mb-16"
-        >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0.9 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex gap-2 items-center px-4 py-2 mb-4 text-sm font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
-          >
-            <span className="flex relative mr-1 w-3 h-3">
-              <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
-              <span className="inline-flex relative w-3 h-3 rounded-full bg-text-tertiary"></span>
-            </span>
-            What Others Say
-          </motion.div>
-          <h2 className="text-3xl font-bold md:text-4xl lg:text-5xl">
-            <span className="text-text-tertiary">Endorsements</span>
-          </h2>
-        </motion.div>
+        <SectionHeading badge="Endorsements" title="What" highlightedTitle="Others Say">
+          My work is valued for creating{' '}
+          <span className="font-semibold text-text-tertiary">reliable</span>, well-crafted solutions
+          that enhance web development. With a focus on{' '}
+          <span className="font-semibold text-text-tertiary">user-friendly design</span> and modern
+          technology, I build <span className="font-semibold text-text-tertiary">effective</span>{' '}
+          digital experiences that gain respect and trust.
+        </SectionHeading>
 
         <div className="mx-auto max-w-4xl">
           {/* Testimonial Slider with touch functionality */}
@@ -204,7 +148,7 @@ const Testimonials: React.FC = () => {
                     <motion.div className="relative flex-shrink-0" variants={variants.fadeZoom}>
                       <div className="overflow-hidden relative z-10 w-44 h-44 rounded-2xl border-4 shadow-lg border-text-tertiary/20">
                         <Image
-                          src="/portfolio-new/images/aadil.png"
+                          src={testimonialsData[activeIndex].image}
                           alt="Professional Developer Portrait"
                           height={100}
                           width={100}
@@ -222,17 +166,17 @@ const Testimonials: React.FC = () => {
                     <div className="flex-1">
                       <div className="mb-4 md:mb-6">
                         <p className="text-base italic leading-relaxed sm:text-lg text-text-primary/80">
-                          {testimonials[activeIndex].text}
+                          {testimonialsData[activeIndex].text}
                         </p>
                       </div>
 
                       <h3 className="text-lg font-bold sm:text-xl">
-                        {testimonials[activeIndex].name}
+                        {testimonialsData[activeIndex].name}
                       </h3>
                       <p className="text-sm sm:text-base text-text-primary/70">
-                        {testimonials[activeIndex].role} at{' '}
+                        {testimonialsData[activeIndex].role} at{' '}
                         <span className="text-text-tertiary">
-                          {testimonials[activeIndex].company}
+                          {testimonialsData[activeIndex].company}
                         </span>
                       </p>
                     </div>
@@ -248,7 +192,7 @@ const Testimonials: React.FC = () => {
               transition={{ delay: 0.5, duration: 0.5 }}
               className="flex justify-center mt-6 space-x-3 sm:mt-8"
             >
-              {testimonials.map((_, index) => (
+              {testimonialsData.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToTestimonial(index)}

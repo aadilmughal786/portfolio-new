@@ -2,12 +2,11 @@
 
 // FeaturedProjects.tsx
 import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { FaAnglesRight } from 'react-icons/fa6';
 import { motion } from 'framer-motion';
 import { TProject } from '@/types/projects/projects.types';
 import ProjectCard from '../projects/ProjectCard';
 import SectionHeading from './SectionHeading';
+import { Button } from './Hero';
 
 interface FeaturedProjectsProps {
   projects: TProject[];
@@ -38,7 +37,12 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
     <section id="featured-projects" className="py-12">
       <div className="container px-8 mx-auto sm:px-16">
         <SectionHeading badge="My Work" title="Featured" highlightedTitle="Projects">
-          Explore my latest projects that demonstrate innovative solutions and technical expertise.
+          Discover my recent projects showcasing{' '}
+          <span className="font-semibold text-text-tertiary">creative</span> solutions and{' '}
+          <span className="font-semibold text-text-tertiary">technical</span> expertise. Each work
+          reflects a commitment to{' '}
+          <span className="font-semibold text-text-tertiary">user-friendly</span> design and
+          reliable performance.
         </SectionHeading>
 
         <div className="grid grid-cols-1 gap-6 mx-auto max-w-5xl md:grid-cols-2 lg:grid-cols-3">
@@ -53,14 +57,9 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-20 text-center"
         >
-          <Link
-            href="/projects"
-            className="inline-flex gap-2 items-center px-6 py-2 font-medium rounded-lg transition-all duration-300 bg-text-tertiary/10 text-text-tertiary hover:bg-text-tertiary/20"
-            aria-label="View all projects"
-          >
+          <Button href="/projects" primary={false}>
             View All Projects
-            <FaAnglesRight />
-          </Link>
+          </Button>
         </motion.div>
       </div>
     </section>
