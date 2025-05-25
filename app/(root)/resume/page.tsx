@@ -9,7 +9,6 @@ import Volunteering from '@/components/resume/Volunteering';
 import Youtube from '@/components/resume/Youtube';
 import type { Metadata } from 'next';
 import ForRecruiter from '@/components/resume/ForRecruiter';
-import DownloadResume from '@/components/resume/DownloadResume';
 import Education from '@/components/resume/Eduction';
 import Github from '@/components/resume/github/Github';
 import Achievement from '@/components/resume/Achievement';
@@ -52,7 +51,6 @@ export default function Home() {
         <div className="flex flex-col gap-y-8">
           <ForRecruiter />
           <Achievement />
-          <DownloadResume />
           <Skill />
           <Contact />
           <Hobby />

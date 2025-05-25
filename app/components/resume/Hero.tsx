@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
-import { FaAnglesRight, FaDownload } from 'react-icons/fa6';
-import variants from '@/utils/motionVariants'; // Import our variants
+import variants from '@/utils/motionVariants';
 import { aboutMeData } from '@/data/home/about-me';
+import DownloadResumeDropdown from './DownloadResumeDropdown'; // Import the new component
+import { Button } from '../home/Hero';
 
 const ResumeHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -21,7 +21,7 @@ const ResumeHero = () => {
   ];
 
   return (
-    <section className="overflow-hidden relative">
+    <section className="relative">
       <div className="container px-4 mx-auto">
         <motion.div
           variants={variants.staggerChildren}
@@ -63,7 +63,7 @@ const ResumeHero = () => {
             </motion.p>
           </motion.div>
 
-          {/* Experience Stats - Enhanced with our motion variants */}
+          {/* Experience Stats */}
           <motion.div
             variants={variants.fadeZoom}
             className="overflow-hidden mb-12 w-full max-w-2xl rounded-xl border backdrop-blur-sm border-text-tertiary/10 bg-bg-primary/5"
@@ -96,40 +96,21 @@ const ResumeHero = () => {
             </div>
           </motion.div>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Updated to use the new dropdown */}
           <motion.div
             variants={variants.fadeInUp}
             className="flex flex-wrap gap-4 justify-center mb-12"
           >
-            <motion.a
-              href="#download-resume"
-              whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center px-6 py-2 font-medium text-white rounded-lg transition-colors duration-300 bg-text-tertiary/80 hover:bg-text-tertiary"
-            >
-              <motion.span className="mr-2">
-                <FaDownload />
-              </motion.span>
-              Download Resume
-            </motion.a>
+            {/* Replace the old download button with the new dropdown */}
+            <DownloadResumeDropdown />
 
-            <motion.div whileTap={{ scale: 0.95 }}>
-              <Link
-                href="/contact"
-                className="inline-flex gap-2 items-center px-6 py-2 font-medium rounded-lg transition-all duration-300 bg-text-tertiary/10 text-text-tertiary hover:bg-text-tertiary/20"
-              >
-                Contact Me
-                <motion.span
-                  animate={{ x: [0, 5, 0] }}
-                  transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
-                >
-                  <FaAnglesRight />
-                </motion.span>
-              </Link>
-            </motion.div>
+            <Button primary={false} href="/contact">
+              Contact Me
+            </Button>
           </motion.div>
         </motion.div>
 
-        {/* Scroll indicator - Enhanced with our motion variants */}
+        {/* Scroll indicator */}
         <motion.div
           variants={variants.fadeInUp}
           initial="hidden"

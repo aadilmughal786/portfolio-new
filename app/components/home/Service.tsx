@@ -81,7 +81,7 @@ const Services: React.FC = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="flex justify-center mt-16"
         >
-          <Button href="/portfolio">Discuss Your Project</Button>
+          <Button href="/contact">Discuss Your Project</Button>
         </motion.div>
       </div>
     </section>
