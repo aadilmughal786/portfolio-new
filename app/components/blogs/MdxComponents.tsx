@@ -24,7 +24,7 @@ export const MDXComponents = {
     </p>
   ),
   a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
-    <Link target="_blank" href={href || '#'} className="underline text-text-tertiary">
+    <Link href={href || '#'} className="underline text-text-tertiary">
       {children}
     </Link>
   ),
