@@ -120,7 +120,7 @@ export default async function BlogPostPage({ params }: PageParams) {
                       })}
                     </time>
                     <span className="mx-2">•</span>
-                    <span>{Math.ceil(post.content.length / 1000)} min read</span>
+                    <span>{Math.ceil(post.content.length / 2000)} min read</span>
                   </div>
                 </div>
               </div>
@@ -144,8 +144,8 @@ export default async function BlogPostPage({ params }: PageParams) {
                 components={MDXComponents}
                 options={{
                   mdxOptions: {
-                    rehypePlugins: [rehypeHighlight, rehypeSlug],
                     remarkPlugins: [remarkGfm],
+                    rehypePlugins: [rehypeHighlight, rehypeSlug],
                   },
                 }}
               />

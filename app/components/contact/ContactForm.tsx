@@ -137,7 +137,7 @@ export default function ContactSection() {
   }
 
   return (
-    <section className="overflow-hidden relative px-4 pb-30 sm:px-6 lg:px-8" id="contact-form">
+    <section className="overflow-hidden relative pt-20 pb-30" id="contact-form">
       <div className="container mx-auto">
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold sm:text-4xl lg:text-5xl">

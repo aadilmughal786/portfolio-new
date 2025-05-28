@@ -83,7 +83,7 @@ const BlogCard: React.FC<{
             {blog.readingTime && (
               <div className="flex gap-1 items-center">
                 <FaClock className="w-3 h-3" />
-                <span>{Math.ceil(blog.content.length / 600)} min read</span>
+                <span>{Math.ceil(blog.content.length / 2000)} min read</span>
               </div>
             )}
           </div>

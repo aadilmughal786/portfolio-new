@@ -3,20 +3,28 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export const MDXComponents = {
-  h1: ({ children }: { children: React.ReactNode }) => (
-    <h1 className="mt-8 mb-4 text-3xl font-bold">{children}</h1>
+  h1: ({ children, ...props }: { children: React.ReactNode }) => (
+    <h1 className="mt-8 mb-4 text-3xl font-bold" {...props}>
+      {children}
+    </h1>
   ),
-  h2: ({ children }: { children: React.ReactNode }) => (
-    <h2 className="mt-6 mb-3 text-2xl font-bold">{children}</h2>
+  h2: ({ children, ...props }: { children: React.ReactNode }) => (
+    <h2 className="pt-20 mt-6 mb-3 text-2xl font-bold" {...props}>
+      {children}
+    </h2>
   ),
-  h3: ({ children }: { children: React.ReactNode }) => (
-    <h3 className="mt-4 mb-2 text-xl font-semibold">{children}</h3>
+  h3: ({ children, ...props }: { children: React.ReactNode }) => (
+    <h3 className="mt-4 mb-2 text-xl font-semibold" {...props}>
+      {children}
+    </h3>
   ),
-  p: ({ children }: { children: React.ReactNode }) => (
-    <p className="my-4 leading-relaxed">{children}</p>
+  p: ({ children, ...props }: { children: React.ReactNode }) => (
+    <p className="py-4 leading-relaxed" {...props}>
+      {children}
+    </p>
   ),
   a: ({ href, children }: { href?: string; children: React.ReactNode }) => (
-    <Link href={href || '#'} className="underline text-text-tertiary">
+    <Link target="_blank" href={href || '#'} className="underline text-text-tertiary">
       {children}
     </Link>
   ),
@@ -27,11 +35,13 @@ export const MDXComponents = {
     <ol className="my-4 ml-6 list-decimal">{children}</ol>
   ),
   li: ({ children }: { children: React.ReactNode }) => <li className="mt-2">{children}</li>,
+
   blockquote: ({ children }: { children: React.ReactNode }) => (
-    <blockquote className="pl-4 my-4 italic text-gray-600 border-l-4 border-gray-200">
+    <blockquote className="px-3 italic border-l-4 bg-text-tertiary/20 border-text-tertiary">
       {children}
     </blockquote>
   ),
+
   code: ({ className, children }: { className?: string; children: React.ReactNode }) => {
     // For inline code
     if (!className) {

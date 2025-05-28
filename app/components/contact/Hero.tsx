@@ -68,7 +68,7 @@ const ContactHero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[80vh] py-16 sm:py-24 overflow-hidden">
+    <section className="relative min-h-[80vh] py-16 sm:pt-24 overflow-hidden">
       <div className="container relative z-10 px-4 mx-auto max-w-7xl pb-15">
         <motion.div
           variants={variants.fadeInUp}

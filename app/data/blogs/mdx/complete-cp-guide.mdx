@@ -1,32 +1,98 @@
 ---
 title: The Complete Guide to CP - From Zero to Hero
-excerpt: A comprehensive roadmap to master competitive programming with practical setups, essential topics, and proven strategies.
+excerpt: A comprehensive roadmap to master competitive programming with practical setups, essential topics, proven strategies, and advanced techniques.
 publishedAt: '2025-05-28'
-tags: [competitive-programming, algorithms, data-structures, c++, coding-contests]
+tags:
+  [
+    competitive-programming,
+    algorithms,
+    data-structures,
+    c++,
+    coding-contests,
+    mathematics,
+    team-contests,
+    ai-ethics,
+    community,
+  ]
 coverImageUrl: '/portfolio-new/images/blogs/complete-cp-guide/cover.jpg'
 ---
 
 # The Complete Guide to Competitive Programming - From Zero to Hero
 
-Competitive programming isn't just about solving problems—it's about thinking fast, coding efficiently, and optimizing under pressure. Whether you're preparing for ICPC, Google Code Jam, or technical interviews at FAANG companies, this comprehensive guide will take you from beginner to expert.
+> _"The only way to learn programming is to write programs." — Donald Knuth_
+
+Competitive programming isn't just about solving problems—it's about thinking fast, coding efficiently, and thriving under pressure. Whether you're aiming for ICPC, Google Code Jam, or FAANG interviews, this guide will take you from beginner to expert with a clear roadmap, practical setups, and advanced strategies.
 
 ## Table of Contents
 
+- [A Brief History of Competitive Programming](#a-brief-history-of-competitive-programming)
+- [What Are Online Judges?](#what-are-online-judges)
 - [Which Language Should You Choose?](#which-language-should-you-choose)
 - [My Competitive Programming Setup](#my-competitive-programming-setup)
 - [Essential Programming Topics to Master](#essential-programming-topics-to-master)
 - [20 Must-Know Data Structures](#20-must-know-data-structures)
 - [Popular Algorithmic Approaches](#popular-algorithmic-approaches)
 - [Essential Algorithms Every Competitor Should Know](#essential-algorithms-every-competitor-should-know)
+- [The Role of Mathematics in Competitive Programming](#the-role-of-mathematics-in-competitive-programming)
 - [Playing with Bits - Bitwise Operations](#playing-with-bits---bitwise-operations)
 - [My C++ Template for Contests](#my-c-template-for-contests)
+- [My Python Template for Contests](#my-python-template-for-contests)
+- [Common Mistakes and How to Avoid Them](#common-mistakes-and-how-to-avoid-them)
+- [Handling Contest Pressure and Time Management](#handling-contest-pressure-and-time-management)
 - [Does Typing Speed Really Matter?](#does-typing-speed-really-matter)
 - [Should I Focus on Development or Competitive Programming?](#should-i-focus-on-development-or-competitive-programming)
 - [Getting Started - Your Action Plan](#getting-started---your-action-plan)
+- [Competitive Programming for Team Contests](#competitive-programming-for-team-contests)
+- [Leveraging AI Tools Ethically in Competitive Programming](#leveraging-ai-tools-ethically-in-competitive-programming)
+- [Community Engagement and Networking in CP](#community-engagement-and-networking-in-cp)
+- [Popular Competitive Programming Platforms](#popular-competitive-programming-platforms)
+- [Recent Cheating Scandals in Competitive Programming](#recent-cheating-scandals-in-competitive-programming)
+- [Popular Competitive Programming Resources](#popular-competitive-programming-resources)
+- [Building a Competitive Programming Portfolio](#building-a-competitive-programming-portfolio)
+- [Resources for Advanced Topics](#resources-for-advanced-topics)
+
+## A Brief History of Competitive Programming
+
+Competitive programming (CP) has grown from academic exercises to a global sport. Here's a quick timeline:
+
+| Decade            | Key Events and Milestones                                                                  |
+| ----------------- | ------------------------------------------------------------------------------------------ |
+| **1970s**         | The **ACM ICPC** began in 1977, one of the first organized CP events for university teams. |
+| **1980s**         | The **IOI** started in 1989, focusing on high school students and algorithmic challenges.  |
+| **1990s**         | Early online judges like **UVa Online Judge** (1995) allowed global access to problems.    |
+| **2000s**         | **TopCoder** (2001) and **Codeforces** (2010) brought regular online CP contests.          |
+| **2010s–Present** | Platforms like **LeetCode**, **AtCoder**, and **HackerRank** expanded CP's global impact.  |
+
+Today, CP is a global phenomenon, with communities on platforms like Codeforces and events like Google Code Jam attracting thousands. It’s a blend of sport, science, and art, shaping careers and fostering problem-solving worldwide.
+
+## What Are Online Judges?
+
+Online judges are platforms that host competitive programming problems and automatically evaluate solutions. They provide:
+
+- **Problem Sets**: Diverse challenges across algorithms, data structures, and math.
+- **Automated Judging**: Submit code, and the system tests it against predefined cases.
+- **Contests**: Timed competitions with leaderboards.
+- **Practice Mode**: Solve problems at your own pace.
+
+**How They Work**:
+
+1. You read a problem statement (e.g., "Find the shortest path in a graph").
+2. Write code in a supported language (C++, Python, etc.).
+3. Submit code, which is tested against multiple test cases.
+4. Receive feedback (e.g., _`Accepted`_, _`Wrong Answer`_, _`Time Limit Exceeded`_).
+
+**Popular Judges**: Codeforces, LeetCode, AtCoder, HackerRank, SPOJ. They’re essential for practice, skill-building, and contest participation.
 
 ## Which Language Should You Choose?
 
-Looking at competitive programming history, **C++** dominates the leaderboards. Here's why:
+C++ dominates competitive programming, but other languages like Python and Java have their place. Here's a breakdown:
+
+| Language   | Pros                                                                                               | Cons                                   | Best For                                |
+| ---------- | -------------------------------------------------------------------------------------------------- | -------------------------------------- | --------------------------------------- |
+| **C++**    | Fast execution (10–50× faster than Python), powerful STL, memory control, vast community resources | Steeper learning curve, verbose syntax | Speed-critical problems, most contests  |
+| **Python** | Simple syntax, quick prototyping, strong string/math libraries                                     | Slower execution, higher memory usage  | Prototyping, string/math-heavy problems |
+| **Java**   | Robust standard library, good for large projects                                                   | Slower than C++, verbose               | Contests allowing longer runtimes       |
+| **Rust**   | Safe memory management, fast like C++                                                              | Less community support, newer in CP    | Advanced users, memory-safe code        |
 
 ### Historical Evidence
 
@@ -36,40 +102,57 @@ Looking at competitive programming history, **C++** dominates the leaderboards. 
 
 ### Why C++ Wins
 
-- **Speed**: 10-50x faster execution than Python
-- **STL**: Powerful Standard Template Library with built-in data structures
-- **Memory Control**: Fine-grained memory management
-- **Community**: Vast competitive programming resources
+- **Speed**: Critical for tight time limits
+- **STL**: Built-in data structures like `vector`, `set`, `map`
+- **Memory Control**: Fine-grained allocation
+- **Community**: Extensive competitive programming libraries and tutorials
 
 ### The Two-Language Strategy
 
-However, knowing **two languages is always better**:
+- **C++**: For speed-critical problems
+- **Python**: For quick prototyping and string/math operations
+- **Rust/Go**: Emerging options for advanced users seeking safety or concurrency
 
-- **C++** for speed-critical problems
-- **Python** for quick prototyping and complex string/math operations
-
-> **Note:** For this article, we'll focus on C++ as our primary language, but I'll mention Python alternatives where relevant.
+> **Note**: This guide focuses on C++, with Python alternatives where relevant.
 
 ## My Competitive Programming Setup
 
-After years of competitive programming, here's my battle-tested setup:
+Here's my battle-tested setup for maximum efficiency:
 
 ### VS Code with CPH Extension
 
-**CPH (Competitive Programming Helper)** is a game-changer:
+**Competitive Programming Helper (CPH)** streamlines your workflow:
 
-- Automatically parses test cases from problem statements
+- Parses test cases from problem statements
 - Runs multiple test cases with one click
-- Shows expected vs actual output side-by-side
+- Displays expected vs. actual output
 - Supports custom templates
+
+**Installation**:
+
+1. Install VS Code from [code.visualstudio.com](https://code.visualstudio.com/)
+2. Add CPH extension via VS Code Marketplace
+3. Configure CPH to use your C++ compiler (g++ with C++17)
 
 ### Browser Extension: Competitive Companion
 
-This extension works seamlessly with CPH:
+This extension integrates with CPH:
 
 - One-click problem parsing from Codeforces, AtCoder, etc.
-- Automatically creates files with test cases
-- Supports 25+ competitive programming platforms
+- Auto-creates files with test cases
+- Supports 25+ platforms
+
+**Installation**:
+
+1. Install Competitive Companion for Chrome/Firefox
+2. Enable it in your browser and link to CPH
+3. Test with a Codeforces problem
+
+### Debugging Tools
+
+- **gdb**: Command-line debugger for C++
+- **VS Code Debugger**: Integrated debugging with breakpoints
+- **Custom Scripts**: Log intermediate states for complex problems
 
 ### My Complete Setup Checklist
 
@@ -77,119 +160,200 @@ This extension works seamlessly with CPH:
 2. **Competitive Companion** browser extension
 3. **C++ compiler** (g++ with C++17 support)
 4. **Custom snippets** for common patterns
-5. **Multiple monitors** (optional but highly recommended)
+5. **Multiple monitors** (optional)
+6. **Debugger setup** (gdb or VS Code)
 
 ## Essential Programming Topics to Master
 
-Before diving into advanced algorithms, master these fundamentals:
+Master these fundamentals before advanced algorithms:
 
 ### Core Language Features
 
 - **Data Types**: `int`, `long long`, `double`, `string`, `char`
 - **Control Flow**: loops, conditionals, switch statements
-- **Input/Output**: fast I/O techniques, handling different formats
-- **Functions**: parameter passing, recursion, lambda functions
-- **Memory Management**: pointers, references, dynamic allocation
+- **Input/Output**: Fast I/O, handling edge cases
+- **Functions**: Recursion, lambda functions
+- **Memory Management**: Pointers, references, dynamic allocation
 
 ### Advanced Language Features
 
 - **STL Containers**: `vector`, `set`, `map`, `queue`, `stack`
 - **STL Algorithms**: `sort`, `binary_search`, `lower_bound`, `upper_bound`
-- **Templates**: basic template usage for generic programming
-- **Exception Handling**: try-catch blocks for robust code
+- **Templates**: Generic programming
+- **Exception Handling**: Robust error management
 
 ## 20 Must-Know Data Structures
 
-Master these data structures in order of importance:
+Master these in order of importance:
 
 ### Linear Data Structures
 
-1. **Array/Vector** - Foundation of all data structures
-2. **String** - Character arrays with built-in operations
-3. **Stack** - LIFO structure for parentheses, recursion simulation
-4. **Queue** - FIFO structure for BFS, level-order traversal
-5. **Deque** - Double-ended queue for sliding window problems
-6. **Linked List** - Dynamic memory allocation, insertion/deletion
+1. **Array/Vector**: Foundation for all data structures
+2. **String**: Character arrays with built-in operations
+3. **Stack**: LIFO for parentheses, recursion
+4. **Queue**: FIFO for BFS, level-order traversal
+5. **Deque**: Double-ended queue for sliding windows
+6. **Linked List**: Dynamic insertion/deletion
 
 ### Tree Structures
 
-7. **Binary Tree** - Hierarchical data representation
-8. **Binary Search Tree** - Efficient searching and sorting
-9. **Heap** - Priority queue implementation
-10. **Trie** - Prefix tree for string problems
-11. **Segment Tree** - Range queries and updates
-12. **Fenwick Tree** - Efficient prefix sum queries
+7. **Binary Tree**: Hierarchical representation
+8. **Binary Search Tree**: Efficient searching/sorting
+9. **Heap**: Priority queue implementation
+10. **Trie**: Prefix tree for string problems
+11. **Segment Tree**: Range queries/updates
+12. **Fenwick Tree**: Efficient prefix sums
 
 ### Graph Structures
 
-13. **Adjacency List** - Efficient graph representation
-14. **Adjacency Matrix** - Dense graph representation
-15. **Disjoint Set Union** - Union-find for connectivity problems
+13. **Adjacency List**: Efficient graph representation
+14. **Adjacency Matrix**: Dense graphs
+15. **Disjoint Set Union**: Connectivity problems
 
 ### Advanced Structures
 
-16. **Hash Table/Map** - O(1) average lookup time
-17. **Set** - Unique elements with fast operations
-18. **Multiset** - Allows duplicate elements
-19. **Priority Queue** - Heap-based priority management
-20. **Sparse Table** - Range minimum/maximum queries
+16. **Hash Table/Map**: O(1) average lookup
+17. **Set**: Unique elements with fast operations
+18. **Multiset**: Duplicate elements
+19. **Priority Queue**: Heap-based priority management
+20. **Sparse Table**: Range minimum/maximum queries
 
 ## Popular Algorithmic Approaches
 
-These paradigms solve 80% of competitive programming problems:
+These paradigms solve 80% of problems:
 
 ### Problem-Solving Paradigms
 
-1. **Greedy Algorithm** - Make locally optimal choices
-2. **Dynamic Programming** - Break problems into subproblems
-3. **Divide and Conquer** - Split, solve, combine
-4. **Backtracking** - Systematic trial and error
-5. **Two Pointers** - Efficient array/string traversal
-6. **Sliding Window** - Optimize subarray problems
-7. **Binary Search** - Efficient searching in sorted data
-8. **Recursion** - Self-calling functions for tree/graph problems
+1. **Greedy Algorithm**: Locally optimal choices
+2. **Dynamic Programming**: Subproblem breakdown
+3. **Divide and Conquer**: Split, solve, combine
+4. **Backtracking**: Systematic trial and error
+5. **Two Pointers**: Efficient array/string traversal
+6. **Sliding Window**: Optimize subarray problems
+7. **Binary Search**: Sorted data searching
+8. **Recursion**: Tree/graph problems
 
 ### Graph Algorithms
 
-9. **Breadth-First Search (BFS)** - Level-by-level exploration
-10. **Depth-First Search (DFS)** - Deep exploration before backtracking
-11. **Shortest Path Algorithms** - Dijkstra, Floyd-Warshall, Bellman-Ford
-12. **Minimum Spanning Tree** - Kruskal's and Prim's algorithms
-13. **Topological Sort** - Ordering in directed acyclic graphs
+9. **Breadth-First Search (BFS)**: Level-by-level exploration
+10. **Depth-First Search (DFS)**: Deep exploration
+11. **Shortest Path Algorithms**: Dijkstra, Floyd-Warshall, Bellman-Ford
+12. **Minimum Spanning Tree**: Kruskal’s, Prim’s
+13. **Topological Sort**: Directed acyclic graphs
 
 ## Essential Algorithms Every Competitor Should Know
 
+Here are key algorithms with example applications:
+
 ### Sorting and Searching
 
-- **Quick Sort**: Average O(n log n), worst O(n²)
-- **Merge Sort**: Guaranteed O(n log n)
-- **Binary Search**: O(log n) searching
-- **Ternary Search**: Finding maximum/minimum in unimodal functions
+- **Quick Sort**: O(n log n) average, sorting arrays
+  - _Example_: Sort an array to find k-th largest element
+- **Merge Sort**: O(n log n) guaranteed, stable sorting
+  - _Example_: Merge sorted subarrays for divide-and-conquer
+- **Binary Search**: O(log n), searching sorted arrays
+  - _Example_: Find the first occurrence of a number
+- **Ternary Search**: Finding max/min in unimodal functions
+  - _Example_: Optimize a function with a single peak
 
 ### Mathematical Algorithms
 
-- **Euclidean Algorithm**: Greatest Common Divisor (GCD)
+- **Euclidean Algorithm**: GCD computation
+  - _Example_: Simplify fractions
 - **Sieve of Eratosthenes**: Prime number generation
-- **Fast Exponentiation**: Computing large powers efficiently
+  - _Example_: Find all primes up to 10^7
+- **Fast Exponentiation**: Efficient large powers
+  - _Example_: Compute 2^1000 mod 10^9+7
 - **Modular Arithmetic**: Handling large numbers
+  - _Example_: Avoid overflow in combinatorial problems
 
 ### String Algorithms
 
-- **KMP Algorithm**: Pattern matching in O(n+m)
+- **KMP Algorithm**: O(n+m) pattern matching
+  - _Example_: Find all occurrences of a pattern
 - **Rabin-Karp**: Rolling hash for string matching
-- **Z Algorithm**: Finding pattern occurrences
-- **Manacher's Algorithm**: Finding all palindromes
+  - _Example_: Multiple pattern matching
+- **Z Algorithm**: Pattern occurrence counting
+  - _Example_: Find substrings in a string
+- **Manacher’s Algorithm**: Finding palindromes
+  - _Example_: Longest palindromic substring
 
 ### Graph Algorithms
 
-- **Dijkstra's Algorithm**: Single-source shortest path
+- **Dijkstra’s Algorithm**: Single-source shortest path
+  - _Example_: Find shortest path in a weighted graph
 - **Floyd-Warshall**: All-pairs shortest path
-- **Kruskal's Algorithm**: Minimum spanning tree
-- **Tarjan's Algorithm**: Strongly connected components
+  - _Example_: Compute distances in a small graph
+- **Kruskal’s Algorithm**: Minimum spanning tree
+  - _Example_: Connect cities with minimum cost
+- **Tarjan’s Algorithm**: Strongly connected components
+  - _Example_: Detect cycles in directed graphs
+
+## The Role of Mathematics in Competitive Programming
+
+Mathematics is the backbone of competitive programming, providing the foundation for many algorithms and problem-solving strategies. A strong grasp of mathematical concepts can unlock efficient solutions and give you an edge in contests, especially in platforms like AtCoder, which emphasize math-heavy problems.
+
+### Why Mathematics Matters
+
+- **Problem Modeling**: Many CP problems are disguised mathematical puzzles requiring you to translate real-world scenarios into equations or logical structures.
+- **Algorithm Design**: Algorithms like the Sieve of Eratosthenes or Dijkstra’s rely on mathematical principles (e.g., number theory, graph theory).
+- **Optimization**: Mathematical insights, such as modular arithmetic, prevent overflow and speed up computations.
+- **Pattern Recognition**: Math helps identify patterns in problems, like recurrence relations in dynamic programming or geometric properties in computational geometry.
+
+### Key Mathematical Concepts
+
+Here are essential mathematical topics for CP, with examples of their applications:
+
+1. **Number Theory**:
+   - **Concepts**: Prime numbers, GCD, LCM, modular arithmetic, modular inverse.
+   - **Example**: Compute (a^b mod m) efficiently using fast exponentiation (e.g., Codeforces Problem 913B).
+2. **Combinatorics**:
+   - **Concepts**: Permutations, combinations, binomial coefficients, inclusion-exclusion.
+   - **Example**: Count ways to arrange objects under constraints (e.g., AtCoder ABC problems).
+3. **Probability and Expected Value**:
+   - **Concepts**: Basic probability, expected value, conditional probability.
+   - **Example**: Calculate the expected number of moves in a game (e.g., Codeforces Div. 2C problems).
+4. **Geometry**:
+   - **Concepts**: Points, lines, polygons, distance formulas, cross products.
+   - **Example**: Determine if points form a convex polygon (e.g., SPOJ geometry problems).
+5. **Linear Algebra**:
+   - **Concepts**: Matrices, determinants, Gaussian elimination.
+   - **Example**: Solve systems of linear equations in optimization problems (e.g., advanced Codeforces problems).
+6. **Game Theory**:
+   - **Concepts**: Nim game, Grundy numbers, impartial games.
+   - **Example**: Determine the winner of a game with given rules (e.g., HackerRank game theory problems).
+7. **Graph Theory**:
+   - **Concepts**: Connectivity, shortest paths, minimum spanning trees.
+   - **Example**: Find the shortest path in a weighted graph using Dijkstra’s algorithm.
+
+### Approaching Math-Heavy Problems
+
+1. **Identify the Math Component**: Read the problem carefully to spot mathematical patterns (e.g., modular arithmetic, geometric properties).
+2. **Simplify with Formulas**: Derive or recall relevant formulas, like binomial coefficients for counting problems.
+3. **Use Modular Arithmetic**: For large numbers, apply modulo to avoid overflow (e.g., 10^9 + 7 is common in CP).
+4. **Test Small Cases**: Solve small instances manually to uncover patterns or recurrence relations.
+5. **Leverage Libraries**: Use pre-written functions (e.g., GCD, fast exponentiation) from your template to save time.
+6. **Practice Math-Focused Platforms**: AtCoder and Project Euler are excellent for honing mathematical skills.
+
+### Resources for Improving Mathematical Skills
+
+- **Books**:
+  - "Concrete Mathematics" by Graham, Knuth, and Patashnik
+  - "Introduction to Number Theory" by Ivan Niven
+- **Websites**:
+  - [Project Euler](https://projecteuler.net/): Math-focused programming problems
+  - [CP-Algorithms Number Theory](https://cp-algorithms.com/): Tutorials on GCD, modular arithmetic, etc.
+  - [Brilliant.org](https://brilliant.org/): Interactive math and CP problems
+- **Practice Problems**:
+  - Codeforces: Filter by "math" or "number theory" tags
+  - AtCoder: Beginner and Regular Contests
+  - SPOJ: Problems like "ETF" (Euler Totient Function)
+
+**Tip**: Dedicate 20% of your practice time to math-heavy problems to build intuition and confidence.
 
 ## Playing with Bits - Bitwise Operations
 
-Bitwise operations are crucial for optimization and specific problem types:
+Bitwise operations optimize specific problems:
 
 ### Basic Bitwise Operations
 
@@ -234,13 +398,13 @@ int clearRightmost(int n) {
 
 ```cpp
 // Traveling Salesman Problem using bitmask DP
-int dp[1 << 20][20];  // dp[mask][last_city]
+int dp[1 << n][n];  // dp[mask][last_city]
 
 int tsp(int mask, int pos) {
     if (mask == (1 << n) - 1) return dist[pos][0];
     if (dp[mask][pos] != -1) return dp[mask][pos];
 
-    int result = INF;
+    int result = INT_MAX;
     for (int city = 0; city < n; city++) {
         if (!(mask & (1 << city))) {
             result = min(result,
@@ -253,7 +417,7 @@ int tsp(int mask, int pos) {
 
 ## My C++ Template for Contests
 
-Here's my optimized template that saves precious minutes in contests:
+Here's my optimized C++ template with additional utilities:
 
 ```cpp
 #include <bits/stdc++.h>
@@ -282,10 +446,10 @@ typedef vector<pii> vpii;
 
 // Constants
 const int MOD = 1e9 + 7;
-const int INF = 1e9;
-const ll LINF = 1e18;
+const int INF = INT_MAX;
+const ll LINF = LLONG_MAX;
 const ld EPS = 1e-9;
-const ld PI = acos(-1.0);
+const ld PI = acosl(-1.0L);
 
 // Fast I/O
 void fast_io() {
@@ -306,6 +470,22 @@ ll power(ll a, ll b, ll mod = MOD) {
     }
     return result;
 }
+ll mod_inverse(ll a, ll m = MOD) {
+    return power(a, m-2, m);
+}
+vector<ll> sieve(int n) {
+    vector<bool> is_prime(n + 1);
+    vector<ll> primes;
+    is_prime[0] = is_prime[0] = false;
+    for (int i = 2; i <= n; i++) {
+        if (is_prime[i]) {
+            primes.push_back(i);
+            for (int j = i * 2; j <= n; j += i)
+                is_prime[j] = false;
+        }
+    }
+    return primes;
+}
 
 // Debug template
 #ifdef LOCAL
@@ -322,7 +502,6 @@ int main() {
 
     while (t--) {
         // Your solution here
-
     }
 
     return 0;
@@ -331,155 +510,499 @@ int main() {
 
 ### Template Breakdown
 
-- **Type definitions**: Shorter names for common types
-- **Macros**: Reduce typing for repetitive operations
+- **Type definitions**: Shorter names for commonly used types
+- **Macros**: Reduce typing for common operations
 - **Constants**: Commonly used values
-- **Fast I/O**: Significantly speeds up input/output
-- **Utility functions**: GCD, LCM, modular exponentiation
-- **Debug template**: Conditional debugging for local testing
+- **Fast I/O**: Optimized input/output
+- **Utility functions**: GCD, LCM, modular exponentiation, modular inverse, sieve
+- **Debug template**: Conditional debugging
+
+## My Python Template for Contests
+
+For Python users, here's a lightweight template:
+
+```python
+import sys
+input = sys.stdin.readline
+from collections import defaultdict, deque, Counter
+from heapq import heapify, heappop, heappush
+from math import gcd, ceil, floor
+from bisect import bisect_left, bisect_right
+
+# Constants
+MOD = 10**9 + 7
+INF = float('inf')
+
+# Utility functions
+def lcm(a, b): return a // gcd(a, b) * b
+def power(a, b, mod=MOD):
+    result = 1
+    while b > 0:
+        if b & 1:
+            result = (result * a) % mod
+        a = (a * a) % mod
+        b >>= 1
+    return result
+
+def main():
+    t = 1
+    # t = int(input())  # Uncomment for multiple test cases
+    for _ in range(t):
+        # Your solution here
+        pass
+
+if __name__ == "__main__':
+    main()
+```
+
+## Common Mistakes and How to Avoid Them
+
+Avoid these pitfalls to save time and effort:
+
+1. **Integer Overflow**:
+   - _Problem_: Using `int` for large numbers (e.g., 10^9 \* 10^9).
+   - _Solution_: Use `long long` or modular arithmetic.
+2. **Misreading Constraints**:
+   - _Problem_: Assuming small input sizes when n ≤ 10^5.
+   - _Solution_\*: Always check constraints before coding.
+3. **Inefficient Debugging**:
+   - _Problem_: Relying solely on `cout` for debugging.
+   - _Solution_: Use a debugger or structured logging.
+4. **Ignoring Edge Cases**:
+   - _Problem_: Missing cases like empty input or n = 1.
+   - _Solution_: Test all boundary conditions.
+5. **Overcomplicating Solutions**:
+   - _Problem_: Using complex algorithms for simple problems.
+   - _Solution_\*: Start with brute force, then optimize.
+
+**Tip**: Write a checklist for each problem: constraints, edge cases, time complexity.
+
+## Handling Contest Pressure and Time Management
+
+Contests are high-pressure environments. Here's how to thrive:
+
+### Time Management Strategies
+
+- **Skim All Problems First**: Spend 2-3 minutes reading all problems to prioritize easy ones.
+- **Allocate Time per Problem**: Divide contest time (e.g., 2 hours) by the number of problems.
+- **Move On When Stuck**: If stuck for 10 minutes, switch to another problem.
+- **Submit Early for Easy Problems**: Lock in points quickly to build confidence.
+- **Managing Stress**:
+- **Practice Under Time Constraints**: Simulate contests with a timer.
+- **Take Short Breaks**: 30-second pauses to clear your mind.
+- **Positive Mindset**: Treat wrong submissions as learning opportunities.
+- **Prepare a Checklist**: Pre-contest checklist (template, snacks, water, etc.).
+
+## Example Contest Strategy (2-hour contest, 5 problems)
+
+- **0-5 min**: Read all problems, rank by difficulty.
+- **5-60 min**: Solve 1-2 easy problems.
+- **30-60 min**: Tackle medium problems, debug carefully.
+- **90-120 min**: Attempt hard problems, optimize solutions.
 
 ## Does Typing Speed Really Matter?
 
-**Short answer: Yes, but not as much as you think.**
+**Short answer**: Yes, but not as much as you think.
 
 ### The Reality Check
 
-- Top competitive programmers type 60-80 WPM (not 120+ WPM)
-- Thinking time >> Typing time for most problems
-- Code efficiency matters more than typing speed
+- Top programmers type 60-80 WPM, not 120+ WPM.
+- Thinking time dominates typing time.
+- Code efficiency > typing speed.
 
 ### Why Typing Speed Helps
 
-- **Less context switching**: Keeps you in the flow
-- **Faster implementation**: More time for debugging
-- **Reduced frustration**: Smooth coding experience
-- **Better contest performance**: Every second counts
+- Less context switching
+- Faster implementation
+- Faster frustration
+- Reduced contest performance
+- Better performance
 
 ### My Recommendation
 
-Aim for **60+ WPM** with good accuracy. Use [MonkeyType](https://monkeytype.com/) for practice:
+Aim for **60+ WPM** with high accuracy, and practice on [MonkeyType](https://monkeytype.com/):
 
-1. **Start with 15-minute daily sessions**
-2. **Focus on accuracy over speed**
-3. **Practice programming-specific words**
-4. **Use proper finger positioning**
-5. **Gradually increase difficulty**
+1. 15-minute daily sessions
+2. Focus on accuracy  
+   3- . practice: Practice programming-specific words  
+   4- . Use finger positioning
+3. finger Increase difficulty gradually
 
-> **Tip:** Set MonkeyType to "code" mode to practice programming-specific vocabulary like "vector", "algorithm", "iostream", etc.
+> **Tip**: Use MonkeyType’s "MonkeyType’s" code  
+> mode for keywords like `vector`, `algorithm`, `algorithm` `iostream`.
 
 ## Should I Focus on Development or Competitive Programming?
 
-This is the million-dollar question. Here's my balanced approach:
-
 ### The 70-30 Rule
 
-- **70% Development**: Building real-world projects
-- **30% Competitive Programming**: Sharpening algorithmic skills
+- **70% Development**: Real-world projects
+- **30% Competitive Programming**: Algorithmic skills
 
 ### Why This Balance Works
 
-**Development Benefits:**
+**Development Benefits**:
 
 - Industry-relevant skills
 - Portfolio building
-- Understanding system design
-- Learning frameworks and tools
-- Building complete applications
+- System design
+- design and tools
+- Frameworks applications
 
-**Competitive Programming Benefits:**
+**Competitive Programming Benefits**:
 
-- Strong problem-solving foundation
+- Problem-solving foundation
 - Interview preparation
 - Algorithmic thinking
-- Code optimization skills
-- Handling time pressure
+- Code optimization
+- \*\*Time pressure handling
 
 ### My Recommended Schedule
 
-**Weekly Schedule:**
+**Weekly**:
 
-- **Monday-Friday**: Focus on development projects
-- **Saturday**: Competitive programming contests
-- **Sunday**: Practice problems and algorithm study
+- Monday-Friday: Development projects
+- projects
+- Saturday: Algorithm study,
+- Sunday: Practice problems
 
-**Daily Schedule (2-3 hours coding):**
+**Daily (2-3 hours)**:
 
-- **1.5-2 hours**: Development work
-- **30-60 minutes**: Competitive programming practice
+- 1-2.5-2 hours: Development
+- 30-60 minutes: Competitive programming
 
 ### Career Path Considerations
 
-**If you want to work at:**
-
-- **Big Tech (Google, Meta, Amazon)**: 50-50 split
-- **Startups**: 80% development, 20% competitive programming
-- **Research roles**: 40% development, 60% competitive programming
-- **Competitive programming teams**: 20% development, 80% competitive programming
+- **Big Tech**: 50-50 split
+- **Startups**: 80% development, 20% development
+- **Research**: 40% CP, 60% CP
+- **CP Teams**: 20% development, 80% development
 
 ## Getting Started - Your Action Plan
 
-Ready to begin your competitive programming journey? Follow this chronological roadmap:
+Follow this roadmap to go from beginner to expert:
 
 ### Phase 1: Foundation (Weeks 1-4)
 
-1. **Set up your environment** (VS Code + CPH + Competitive Companion)
-2. **Master basic C++ syntax** and STL containers
-3. **Solve 50 easy problems** on Codeforces (ratings 800-1000)
-4. **Learn time complexity** analysis
-5. **Practice typing** to reach 50+ WPM
+1. Set up VS Code + CPH + Competitive Companion
+2. Master C++ syntax and STL
+3. Solve 50 easy problems (Codeforces 800-1000)
+4. Learn time complexity analysis
+5. Practice typing to 50+ WPM
 
 ### Phase 2: Core Concepts (Weeks 5-12)
 
-1. **Master fundamental algorithms**: sorting, searching, basic math
-2. **Learn essential data structures**: arrays, strings, stacks, queues
-3. **Solve 100 medium problems** (ratings 1000-1300)
-4. **Participate in weekly contests**
-5. **Study solutions** of problems you couldn't solve
+1. Master sorting, searching, basic math
+2. Learn arrays, strings, stacks, queues
+3. Solve 100 medium problems (1000-1300)
+4. Participate in weekly contests
+5. Study solutions for unsolved problems
 
 ### Phase 3: Advanced Topics (Weeks 13-24)
 
-1. **Learn graph algorithms**: DFS, BFS, shortest paths
-2. **Master dynamic programming**: classic problems and patterns
-3. **Study advanced data structures**: segment trees, DSU
-4. **Solve 150 harder problems** (ratings 1300-1600)
-5. **Analyze time/space complexity** of all solutions
+1. Learn DFS, BFS, shortest paths
+2. Master dynamic programming patterns
+3. Study segment trees, DSU
+4. Solve 150 harder problems (1300-1600)
+5. Analyze time/space complexity
 
 ### Phase 4: Specialization (Weeks 25-52)
 
-1. **Choose your strengths**: graph theory, DP, math, strings
-2. **Study advanced algorithms** in your chosen areas
-3. **Participate in major contests**: Google Code Jam, AtCoder
-4. **Solve 200+ challenging problems** (ratings 1600+)
-5. **Mentor beginners** to solidify your understanding
+1. Choose strengths (graphs, DP, math, strings)
+2. Study advanced algorithms in your area
+3. Participate in Google Code Jam, AtCoder
+4. Solve 200+ challenging problems (1600+)
+5. Mentor beginners
+
+### Practice Problem Progression
+
+To make your practice targeted, follow this problem progression for each phase:
+
+**Phase 1: Foundation**
+
+- **Codeforces**:
+  - [4A - Watermelon](https://codeforces.com/problemset/problem/4/A): Basic arithmetic
+  - [71A - Way Too Long Words](https://codeforces.com/problemset/problem/71/A): String manipulation
+  - [231A - Team](https://codeforces.com/problemset/problem/231/A): Simple logic
+  - [158A - Next Round](https://codeforces.com/problemset/problem/158/A): Sorting
+  - [50A - Domino Piling](https://codeforces.com/problemset/problem/50/A): Math and greedy
+- **Focus**: Build intuition for basic I/O, conditionals, and loops.
+
+**Phase 2: Core Concepts**
+
+- **Codeforces**:
+  - [4C - Registration System](https://codeforces.com/problemset/problem/4/C): Hash maps
+  - [263A - Beautiful Matrix](https://codeforces.com/problemset/problem/263/A): 2D arrays
+  - [282A - Bit++](https://codeforces.com/problemset/problem/282/A): String parsing
+  - [339B - Xenia and Ringroad](https://codeforces.com/problemset/problem/339/B): Greedy
+  - [236A - Boy or Girl](https://codeforces.com/problemset/problem/236/A): Sets
+- **LeetCode**:
+  - [Two Sum](https://leetcode.com/problems/two-sum/): Hash tables
+  - [Valid Parentheses](https://leetcode.com/problems/valid-parentheses/): Stack
+- **Focus**: Master arrays, strings, and basic data structures.
+
+**Phase 3: Advanced Topics**
+
+- **Codeforces**:
+  - [230B - T-Primes](https://codeforces.com/problemset/problem/230/B): Prime factorization
+  - [327A - Flipping Game](https://codeforces.com/problemset/problem/327/A): Dynamic programming
+  - [405A - Gravity Flip](https://codeforces.com/problemset/problem/405/A): Sorting
+  - [431C - k-Tree](https://codeforces.com/problemset/problem/431/C): Dynamic programming
+- **Focus**: Tackle graphs, number theory, and DP.
+
+**Phase 4: Specialization**
+
+- **Codeforces**:
+  - [455A - Boredom](https://codeforces.com/problemset/problem/455/A): Dynamic programming
+  - [489C - Given Length and Sum of Digits](https://codeforces.com/problemset/problem/489/C): Greedy
+  - [545D - Queue](https://codeforces.com/problemset/problem/545/D): Greedy
+  - [580C - Kefa and Park](https://codeforces.com/problemset/problem/580/C): DFS
+  - [776B - Sherlock and his girlfriend](https://codeforces.com/problemset/problem/776/B): Number theory
+- **AtCoder**:
+  - [ABC 100 D](https://atcoder.jp/contests/abc100/tasks/abc100_d): Dynamic programming
+- **Focus**: Deepen expertise in chosen areas like graphs or math.
+
+**Tip**: Use platform filters (e.g., Codeforces tags) to select problems by topic and difficulty.
+
+### Analyzing Contest Performance
+
+- **Review Wrong Submissions**: Identify patterns (e.g., overflow, edge cases).
+- **Upsolve**: Solve problems you missed post-contest.
+- **Track Progress**: Use Codeforces ratings or a spreadsheet.
+- **Learn from Editorials**: Understand optimal solutions.
+
+### Beginner-Friendly Contests
+
+- **Codeforces Div. 3**: Ideal for ratings < 1600
+- **LeetCode Biweekly**: Great for interview prep
+- **AtCoder Beginner Contests**: Clear problem statements
+- **HackerRank Week of Code**: Diverse problem types
 
 ### Daily Practice Routine
 
-- **30 minutes**: Review yesterday's unsolved problems
-- **45 minutes**: Solve new problems (aim for 2-3 problems)
-- **15 minutes**: Study editorial solutions and optimize your code
+- **30 min**: Review unsolved problems
+- **45 min**: Solve 2-3 new problems
+- **15 min**: Study editorials, optimize code
 
 ### Weekly Goals
 
-- **Solve 15-20 problems** across different topics
-- **Participate in 2-3 contests** (Codeforces, AtCoder, LeetCode)
-- **Learn 1 new algorithm or data structure**
-- **Review and optimize** 5 previous solutions
+- Solve 15-20 problems
+- Participate in 2-3 contests
+- Learn one new algorithm or data structure
+- Optimize 5 previous solutions
 
-### Resources to Get Started
+## Competitive Programming for Team Contests
 
-- **Practice Platforms**: Codeforces, AtCoder, LeetCode, SPOJ
-- **Learning**: CP-Algorithms, GeeksforGeeks, YouTube (Errichto, SecondThread)
-- **Books**: "Competitive Programming 4" by Steven Halim
-- **Community**: Codeforces forums, Discord servers, Reddit r/CompetitiveProgramming
+Team contests, like the ACM ICPC, require unique strategies beyond individual skills. Here’s how to excel in team-based competitive programming:
+
+### Forming a Team
+
+- **Diverse Skill Sets**: Include members with strengths in different areas (e.g., algorithms, math, debugging).
+- **Compatibility**: Choose teammates who communicate well and handle stress effectively.
+- **Size**: Most contests, like ICPC, allow 3-member teams.
+
+### Role Assignments
+
+- **Coder**: Writes clean, efficient code quickly. Focuses on implementation.
+- **Strategist**: Reads problems, prioritizes tasks, and plans solutions. Strong in math or problem-solving.
+- **Debugger**: Tests code, identifies edge cases, and optimizes solutions. Detail-oriented.
+
+**Tip**: Rotate roles during practice to build versatility.
+
+### Communication Strategies
+
+- **Clear Updates**: Use short, precise updates (e.g., “I’m coding A; it’s BFS”).
+- **Shared Workspace**: Use a single laptop (per ICPC rules) or shared notes for clarity.
+- **Conflict Resolution**: Agree on a decision-maker for disputes to avoid delays.
+
+### Practice as a Team
+
+- **Simulate Contests**: Use Codeforces Gyms or past ICPC problems for timed practice.
+- **Divide and Conquer**: Assign problems based on strengths, but ensure collaboration.
+- **Review Sessions**: Analyze mistakes and refine strategies post-contest.
+
+### Tips for ICPC and Similar Contests
+
+- **Understand Rules**: ICPC uses a penalty for wrong submissions, so test thoroughly.
+- **Prioritize Easy Problems**: Solve straightforward problems first to secure points.
+- **Prepare Resources**: Bring printed templates, algorithm cheatsheets, and snacks.
+- **Regional Preparation**: Solve region-specific past problems (available on ICPC archives).
+
+**Resources**:
+
+- [ICPC Official Site](https://icpc.global/)
+- Codeforces Gym for team practice
+- [USACO Guide Team Contests](https://usaco.guide/adv/team-contests)
+
+## Leveraging AI Tools Ethically in Competitive Programming
+
+AI tools like GitHub Copilot, Cluely, and ChatGPT are powerful for learning but controversial in contests. Here’s how to use them ethically:
+
+### Ethical Use Cases
+
+- **Learning Algorithms**: Use AI to explain concepts (e.g., “Explain Dijkstra’s algorithm”) or generate practice problems.
+- **Debugging Practice**: Ask AI to suggest fixes for bugs in practice code, but understand the corrections.
+- **Code Optimization**: Get AI suggestions for improving time complexity during practice.
+- **Template Building**: Use AI to refine your contest template with utility functions.
+
+### Unethical Use Cases
+
+- **Contest Solutions**: Using AI to solve problems during contests violates rules and is cheating.
+- **Code Copying**: Submitting AI-generated code without understanding it undermines learning.
+- **Real-Time Assistance**: Accessing AI during contests, even for hints, is unfair.
+
+### Guidelines for Ethical Use
+
+- **Practice Only**: Restrict AI use to learning and practice, not live contests.
+- **Understand Outputs**: Always comprehend AI-generated code or explanations before using them.
+- **Follow Platform Rules**: Check contest guidelines (e.g., Codeforces bans external tools).
+- **Transparency**: If sharing AI-assisted code, credit the tool (e.g., in GitHub comments).
+
+### Recommended Tools
+
+- **GitHub Copilot**: Great for code suggestions during practice.
+- **ChatGPT**: Useful for explaining algorithms or generating practice problems.
+- **LeetCode AI Hints**: Built-in hints for learning, not direct solutions.
+
+**Tip**: Treat AI as a tutor, not a crutch. Rely on your skills during contests to build true expertise.
+
+## Community Engagement and Networking in CP
+
+The CP community is vibrant and supportive. Engaging with it can accelerate your learning and open doors.
+
+### Why Engage?
+
+- **Learning**: Gain insights from editorials, blogs, and discussions.
+- **Motivation**: Connect with peers to stay inspired.
+- **Opportunities**: Networking can lead to team formations, mentorship, or job referrals.
+
+### How to Engage
+
+- **Forums**:
+  - Codeforces: Comment on blogs, ask questions in problem discussions.
+  - LeetCode: Participate in discussion boards for problems.
+- **Discord Servers**:
+  - Join CP-focused servers like USACO, Codeforces, or AtCoder communities.
+  - Share solutions, seek help, or mentor beginners.
+- **Local Meetups**:
+  - Attend CP workshops or hackathons at universities or tech hubs.
+  - Check Meetup.com for local coding groups.
+- **Contribute**:
+  - Write blogs on Codeforces or Medium about solved problems.
+  - Create tutorials on YouTube or contribute to CP-Algorithms.
+- **Mentorship**:
+  - Seek mentors via platforms like Codeforces or local clubs.
+  - Mentor beginners to reinforce your knowledge.
+
+### Tips for Effective Networking
+
+- **Be Respectful**: Ask clear, well-researched questions.
+- **Give Back**: Share solutions or explanations to help others.
+- **Stay Active**: Regularly participate in discussions or contests.
+- **Build a Profile**: Maintain visible profiles on Codeforces, LeetCode, and GitHub.
+
+**Resources**:
+
+- [Codeforces Community](https://codeforces.com/community)
+- [USACO Discord](https://usaco.guide/general/discord)
+- [Reddit r/CompetitiveProgramming](https://reddit.com/r/CompetitiveProgramming)
+
+## Popular Competitive Programming Platforms
+
+Different platforms cater to unique needs. Here's a comparison:
+
+| **Platform**   | **Main Benefits**                                                            | **Best For**                                  |
+| -------------- | ---------------------------------------------------------------------------- | --------------------------------------------- |
+| **Codeforces** | Diverse problem sets, frequent contests, rating system, strong community     | All skill levels, contest practice            |
+| **LeetCode**   | Interview-focused problems, company-tagged questions, mock interviews        | Tech interview prep, intermediate learners    |
+| **AtCoder**    | Clear problem statements, beginner-friendly contests, strong math focus      | Beginners, math-heavy problems                |
+| **HackerRank** | Diverse domains (AI, databases, etc.), company challenges, beginner-friendly | Broad skill development, job seekers          |
+| **SPOJ**       | Vast problem archive, supports many languages, classic problems              | Practice, advanced learners                   |
+| **TopCoder**   | Long-running contests, single-round matches, competitive community           | Experienced programmers, long-format contests |
+| **CodeChef**   | Monthly long challenges, beginner-friendly contests, Indian community focus  | Beginners, long-term practice                 |
+
+**Recommendation**: Start with Codeforces for contests and LeetCode for interview prep, then explore AtCoder and SPOJ for variety.
+
+## Recent Cheating Scandals in Competitive Programming
+
+Cheating in competitive programming has become a growing concern, particularly with the rise of AI tools and image recognition technologies. These scandals undermine the integrity of contests and discourage genuine participants.
+
+### The Rise of Cheating
+
+- **Solution Leaks**: Platforms like YouTube and Telegram have been used to share live contest solutions, with some creators posting answers during contests, enabling others to copy them. For example, a Codeforces post highlighted solutions being leaked on YouTube for problems up to E1 during a contest, impacting fair competition.
+- **AI-Assisted Cheating**: Tools like Cluely, developed by Chungin "Roy" Lee, use AI to assist in coding interviews and contests, raising ethical questions. Lee argues that AI use will become standard, but critics see it as undermining merit-based evaluation.
+- **Image Recognition**: Advanced image recognition could theoretically scrape problem statements or solutions from screens, though no major CP scandals have directly implicated this technology yet. However, similar techniques have been used in other fields, like Baidu’s 2015 ImageNet scandal, where rule-breaking led to inflated AI performance claims.
+- **Other Methods**: Common cheating tactics include using alternate accounts, paying high-rated coders to solve problems, or accessing external resources like CP-Algorithms during contests. A Codeforces discussion lists numerous methods, from collaborating with friends to printing out entire problem archives for offline contests.
+
+### The Role of Image Recognition
+
+Image recognition could enable cheaters to extract problem statements or solutions from screenshots or live streams, bypassing manual copying. While not yet a dominant issue in CP, the technology’s potential to automate cheating poses a future threat. Platforms struggle to detect such methods due to their non-code-based nature, unlike plagiarism detection for submitted solutions.
+
+### My Opinion on Cheating
+
+I believe cheating is a betrayal of the CP spirit. It devalues the hard work of genuine coders, distorts ratings, and discourages beginners who see inflated scores from dishonest participants. The pursuit of higher ratings through unethical means, like buying solutions or using AI tools, offers no real skill development and ultimately harms the cheater’s growth. CP is about mastering problem-solving, not gaming the system for short-term gains.
+
+The rise of AI and image recognition tools, while innovative, threatens the fairness of contests if misused. Platforms like Codeforces and CodeChef must invest in robust anti-cheating measures, such as real-time monitoring, stricter plagiarism checks, and banning offenders. As a community, we should promote awareness and foster a culture of integrity, encouraging juniors to value learning over rankings. Cheating may yield temporary success, but true mastery comes from honest effort and persistence.
+
+### Recommendations to Combat Cheating
+
+- **Enhanced Plagiarism Detection**: Platforms should improve algorithms to detect code similarities across submissions, even from alternate accounts.
+- **Real-Time Monitoring**: Use proctoring tools for major contests to detect external resource access.
+- **Community Awareness**: Educate new coders about the ethics of CP through forums and tutorials.
+- **Stricter Penalties**: Ban cheaters and publicly disclose violations to deter others.
+- **AI Detection**: Develop tools to identify AI-generated code, though this remains challenging due to text manipulation.
+
+By addressing cheating head-on, we can preserve the integrity of competitive programming and ensure it remains a rewarding pursuit for all.
+
+## Popular Competitive Programming Resources
+
+Here are key resources to accelerate your learning:
+
+| **Resource**                  | **Description**                                                      | **Link**                                                                              |
+| ----------------------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| **Competitive Programming 4** | Comprehensive book by Steven Halim, covers algorithms and techniques | [Amazon](https://www.amazon.com/Competitive-Programming-4-Steven-Halim/dp/B08FKZLY6W) |
+| **CP-Algorithms**             | Detailed tutorials on algorithms and data structures                 | [cp-algorithms.com](https://cp-algorithms.com/)                                       |
+| **GeeksforGeeks**             | Broad coverage of CP topics, practice problems                       | [geeksforgeeks.org](https://www.geeksforgeeks.org/)                                   |
+| **USACO Guide**               | Structured learning path for beginners to advanced                   | [usaco.guide](https://usaco.guide/)                                                   |
+| **Errichto (YouTube)**        | In-depth problem-solving and algorithm tutorials                     | [youtube.com/errichto](https://www.youtube.com/c/Errichto)                            |
+| **SecondThread (YouTube)**    | Live contest solutions, advanced techniques                          | [youtube.com/secondthread](https://www.youtube.com/c/SecondThread)                    |
+| **Codeforces Blogs**          | Community-driven tutorials, editorials, and discussions              | [codeforces.com](https://codeforces.com/blog)                                         |
+| **HackerRank Blog**           | Tips, tutorials, and contest announcements                           | [hackerrank.com/blog](https://www.hackerrank.com/blog/)                               |
+
+## Building a Competitive Programming Portfolio
+
+Showcase your skills for jobs or teams:
+
+1. **GitHub Repository**:
+   - Organize solutions by platform and problem type
+   - Include clean, commented code
+2. **Profile Links**:
+   - Share Codeforces, LeetCode, AtCoder profiles
+   - Highlight ratings and contest achievements
+3. **Blog/Tutorials**:
+   - Write about solved problems or algorithms
+   - Share on Medium, Dev.to, or personal blog
+4. **Contest Achievements**:
+   - List rankings in Google Code Jam, ICPC, etc.
+   - Include team contest results
+5. **Open-Source Contributions**:
+   - Contribute to CP libraries or tools
+
+**Tip**: Create a portfolio website using HTML/CSS or a static site generator like Hugo.
+
+## Resources for Advanced Topics
+
+Explore niche areas with these resources:
+
+- **Computational Geometry**: "Computational Geometry" by de Berg, CP-Algorithms
+- **Game Theory**: "Game Theory" by Thomas S. Ferguson, Codeforces blogs
+- **Advanced String Algorithms**: "Algorithms on Strings" by Crochemore, CP-Algorithms
+- **Flow Algorithms**: "Network Flows" by Ahuja, USACO Guide
+- **Math for CP**: "Number Theory for Competitive Programming" on Codeforces
 
 ## Final Thoughts
 
-Competitive programming is a marathon, not a sprint. The journey from beginner to expert typically takes 1-2 years of consistent practice. Focus on understanding concepts deeply rather than just solving problems mechanically.
+Competitive programming is a marathon, not a sprint. It takes 1-2 years of consistent practice to reach expert level. Focus on deep understanding, ethical participation, and community engagement, not just solving problems mechanically. Whether you’re coding solo or with a team, let your passion for problem-solving drive you.
 
-Remember: every expert was once a beginner. The key is consistency, patience, and continuous learning. Start today, practice daily, and trust the process.
+**Your First Problem**: Try [Codeforces Problem 4A - Watermelon](https://codeforces.com/problemset/problem/4/A) to kickstart your journey!
 
-**Your competitive programming adventure begins now. What problem will you solve first?**
-
----
-
-_Happy coding, and may your solutions always pass within time limits!_ 🚀
+**Your adventure begins now. Happy coding, and may your solutions always pass within time limits!** 🚀
