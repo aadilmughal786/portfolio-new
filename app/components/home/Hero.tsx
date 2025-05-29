@@ -14,10 +14,12 @@ export const Button = ({
   primary = true,
   children,
   href,
+  noArrows = false,
 }: {
   primary?: boolean;
   children: React.ReactNode;
   href: string;
+  noArrows?: boolean;
 }) => {
   return (
     <motion.div whileTap={{ scale: 0.95 }}>
@@ -34,6 +36,7 @@ export const Button = ({
         <motion.span
           animate={{ x: [0, 5, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
+          className={`${noArrows && 'hidden'}`}
         >
           <FaAnglesRight />
         </motion.span>

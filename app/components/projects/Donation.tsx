@@ -16,7 +16,7 @@ interface DonationButtonProps {
 }
 
 // Optimized Bird component with string and swing animation
-const SwingingBird: React.FC = () => {
+export const SwingingBird: React.FC = () => {
   // Swing animation for the bird
   const swingVariants = {
     swing: {

@@ -4,8 +4,9 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import variants from '@/utils/motionVariants';
 import { aboutMeData } from '@/data/home/about-me';
-import DownloadResumeDropdown from './DownloadResumeDropdown'; // Import the new component
 import { Button } from '../home/Hero';
+import Link from 'next/link';
+import { FaGoogleDrive } from 'react-icons/fa6';
 
 const ResumeHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -101,8 +102,17 @@ const ResumeHero = () => {
             variants={variants.fadeInUp}
             className="flex flex-wrap gap-4 justify-center mb-12"
           >
-            {/* Replace the old download button with the new dropdown */}
-            <DownloadResumeDropdown />
+            <motion.div whileTap={{ scale: 0.95 }}>
+              <Link
+                href={aboutMeData.resumeLink}
+                target="_blank"
+                className={`inline-flex gap-2 items-center px-4 py-1.5 font-medium  rounded-md transition-colors duration-300 text-white bg-text-tertiary/80 hover:bg-text-tertiary'
+        }`}
+              >
+                <FaGoogleDrive />
+                Download Resume
+              </Link>
+            </motion.div>
 
             <Button primary={false} href="/contact">
               Contact Me
