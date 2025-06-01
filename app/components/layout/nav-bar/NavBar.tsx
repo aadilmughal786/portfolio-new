@@ -4,9 +4,8 @@ import Drawer from './Drawer';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { IoHeart } from 'react-icons/io5';
-import { HiMiniBars3 } from 'react-icons/hi2';
-import { GrClose } from 'react-icons/gr';
 import { usePathname } from 'next/navigation';
+import AnimatedHamburger from './AnimatedHamburger';
 
 const NavBar = () => {
   const [showDrawer, setShowDrawer] = useState(false);
@@ -76,11 +75,7 @@ const NavBar = () => {
 
             {/* drawer toggler btn */}
             <div className="flex gap-3 items-center pl-5 border-l md:hidden border-border-primary">
-              {showDrawer ? (
-                <GrClose className="icon" onClick={() => setShowDrawer(false)} />
-              ) : (
-                <HiMiniBars3 className="icon" onClick={() => setShowDrawer(true)} />
-              )}
+              <AnimatedHamburger isOpen={showDrawer} onClick={() => setShowDrawer(!showDrawer)} />
             </div>
           </div>
         </div>
