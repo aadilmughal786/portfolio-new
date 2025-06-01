@@ -5,8 +5,8 @@ import Fuse from 'fuse.js';
 import { BlogPost } from '@/types/blogs/blogs.types';
 import BlogCard from './BlogCard';
 import SearchBar from '../projects/SearchBar';
-import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
 import { Bird } from '../home/EndPage';
+import { RiLoaderFill } from 'react-icons/ri';
 
 interface BlogSearchProps {
   blogs: BlogPost[];
@@ -15,7 +15,8 @@ interface BlogSearchProps {
 
 const BlogSearch: React.FC<BlogSearchProps> = ({ blogs, itemsPerPage = 6 }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [displayedCount, setDisplayedCount] = useState(itemsPerPage);
+  const [isLoading, setIsLoading] = useState(false);
 
   const popularTags = [
     'React',
@@ -27,10 +28,10 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ blogs, itemsPerPage = 6 }) => {
     'Performance',
   ];
 
-  // Reset to first page when search term changes
+  // Reset displayed count when search term changes
   useEffect(() => {
-    setCurrentPage(1);
-  }, [searchTerm]);
+    setDisplayedCount(itemsPerPage);
+  }, [searchTerm, itemsPerPage]);
 
   // Setup Fuse.js for fuzzy search
   const fuse = useMemo(() => {
@@ -57,27 +58,21 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ blogs, itemsPerPage = 6 }) => {
     return results.map(result => result.item);
   }, [fuse, searchTerm, blogs]);
 
-  // Calculate pagination
-  const totalPages = Math.ceil(filteredBlogs.length / itemsPerPage);
-  const paginatedBlogs = useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return filteredBlogs.slice(startIndex, endIndex);
-  }, [filteredBlogs, currentPage, itemsPerPage]);
+  // Get blogs to display (limited by displayedCount)
+  const displayedBlogs = useMemo(() => {
+    return filteredBlogs.slice(0, displayedCount);
+  }, [filteredBlogs, displayedCount]);
 
-  // Navigate to previous page
-  const goToPreviousPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
-  };
+  // Check if there are more blogs to load
+  const hasMoreBlogs = displayedCount < filteredBlogs.length;
 
-  // Navigate to next page
-  const goToNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
-  };
-
-  // Go to specific page
-  const goToPage = (page: number) => {
-    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
+  // Load more blogs with fake delay
+  const loadMoreBlogs = async () => {
+    setIsLoading(true);
+    // Fake 1 second delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    setDisplayedCount(prev => prev + itemsPerPage);
+    setIsLoading(false);
   };
 
   return (
@@ -87,74 +82,50 @@ const BlogSearch: React.FC<BlogSearchProps> = ({ blogs, itemsPerPage = 6 }) => {
 
       {/* Blogs list */}
       <div className="pb-10 min-h-3/4">
-        {paginatedBlogs.length === 0 ? (
+        {displayedBlogs.length === 0 ? (
           <div className="flex flex-col items-center opacity-50">
             <Bird />
-            <div className="p-4 mt-10 text-3xl text-center">No projects found</div>
+            <div className="p-4 mt-10 text-3xl text-center">No blogs found</div>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-8 gap-y-15 lg:grid-cols-3 md:grid-cols-2">
-            {paginatedBlogs.map(blog => (
+            {displayedBlogs.map(blog => (
               <BlogCard blog={blog} key={blog.slug} />
             ))}
           </div>
         )}
       </div>
 
-      {/* Pagination controls */}
-      {totalPages > 1 && (
-        <div className="flex gap-3 justify-between items-center py-8">
+      {/* Load More button */}
+      {hasMoreBlogs && (
+        <div className="flex justify-center py-8">
           <button
-            onClick={goToPreviousPage}
-            disabled={currentPage === 1}
-            className={`flex gap-2 items-center px-3 py-1 font-medium text-white rounded-md bg-text-tertiary/80 ${
-              currentPage === 1 ? 'opacity-50' : 'cursor-pointer hover:bg-text-tertiary'
+            onClick={loadMoreBlogs}
+            disabled={isLoading}
+            className={`px-3 py-1 font-medium text-white rounded transition-all duration-200 ${
+              isLoading
+                ? 'bg-text-tertiary/50'
+                : 'cursor-pointer bg-text-tertiary/80 hover:bg-text-tertiary'
             }`}
           >
-            <FaAnglesLeft />
-            Previous
+            {isLoading ? (
+              <div className="flex gap-2 items-center">
+                <RiLoaderFill size={18} className="animate-spin" />
+                Loading
+              </div>
+            ) : (
+              `Load More`
+            )}
           </button>
+        </div>
+      )}
 
-          {/* Page numbers */}
-          <div className="flex gap-3">
-            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-              // Show pages around current page
-              let pageNum;
-              if (totalPages <= 5) {
-                pageNum = i + 1;
-              } else if (currentPage <= 3) {
-                pageNum = i + 1;
-              } else if (currentPage >= totalPages - 2) {
-                pageNum = totalPages - 4 + i;
-              } else {
-                pageNum = currentPage - 2 + i;
-              }
-
-              return (
-                <button
-                  key={pageNum}
-                  onClick={() => goToPage(pageNum)}
-                  className={`w-8 h-8 flex items-center justify-center rounded-md font-medium cursor-pointer ${
-                    currentPage === pageNum
-                      ? 'text-white bg-text-tertiary/80 hover:bg-text-tertiary'
-                      : 'bg-text-tertiary/20 text-text-tertiary hover:bg-text-tertiary/20'
-                  }`}
-                >
-                  {pageNum}
-                </button>
-              );
-            })}
-          </div>
-
-          <button
-            onClick={goToNextPage}
-            disabled={currentPage === totalPages}
-            className={`flex gap-2 items-center px-3 py-1 font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary ${
-              currentPage === totalPages ? 'opacity-50' : 'cursor-pointer hover:bg-text-tertiary'
-            }`}
-          >
-            Next <FaAnglesRight />
-          </button>
+      {/* Show total count when all items are loaded */}
+      {!hasMoreBlogs && filteredBlogs.length > 0 && (
+        <div className="flex justify-center py-4">
+          <p className="text-text-tertiary/70">
+            Showing all {filteredBlogs.length} blog{filteredBlogs.length !== 1 ? 's' : ''}
+          </p>
         </div>
       )}
     </div>

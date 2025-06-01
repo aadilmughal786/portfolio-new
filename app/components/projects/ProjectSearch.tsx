@@ -7,9 +7,9 @@ import Drawer from './Drawer';
 import ProjectDetails from './ProjectDetails';
 import ProjectCard from '@/components/projects/ProjectCard';
 import SearchBar from './SearchBar';
-import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
 import { Bird } from '../home/EndPage';
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
+import { RiLoaderFill } from 'react-icons/ri';
 
 interface ProjectSearchProps {
   projects: TProject[];
@@ -23,14 +23,15 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
   onSelectProject,
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [currentPage, setCurrentPage] = useState(1);
+  const [displayedCount, setDisplayedCount] = useState(itemsPerPage);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedProject, setSelectedProject] = useState<TProject | null>(null);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
-  // Reset to first page when search term changes
+  // Reset displayed count when search term changes
   useEffect(() => {
-    setCurrentPage(1);
-  }, [searchTerm]);
+    setDisplayedCount(itemsPerPage);
+  }, [searchTerm, itemsPerPage]);
 
   // Setup Fuse.js for fuzzy search
   const fuse = useMemo(() => {
@@ -59,13 +60,22 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
     return results.map(result => result.item);
   }, [fuse, searchTerm, projects]);
 
-  // Calculate pagination
-  const totalPages = Math.ceil(filteredProjects.length / itemsPerPage);
-  const paginatedProjects = useMemo(() => {
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    return filteredProjects.slice(startIndex, endIndex);
-  }, [filteredProjects, currentPage, itemsPerPage]);
+  // Get projects to display (limited by displayedCount)
+  const displayedProjects = useMemo(() => {
+    return filteredProjects.slice(0, displayedCount);
+  }, [filteredProjects, displayedCount]);
+
+  // Check if there are more projects to load
+  const hasMoreProjects = displayedCount < filteredProjects.length;
+
+  // Load more projects with fake delay
+  const loadMoreProjects = async () => {
+    setIsLoading(true);
+    // Fake 1 second delay
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    setDisplayedCount(prev => prev + itemsPerPage);
+    setIsLoading(false);
+  };
 
   // Handle project selection
   const handleSelectProject = (project: TProject) => {
@@ -82,21 +92,6 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
     setIsDrawerOpen(false);
   };
 
-  // Navigate to previous page
-  const goToPreviousPage = () => {
-    setCurrentPage(prev => Math.max(prev - 1, 1));
-  };
-
-  // Navigate to next page
-  const goToNextPage = () => {
-    setCurrentPage(prev => Math.min(prev + 1, totalPages));
-  };
-
-  // Go to specific page
-  const goToPage = (page: number) => {
-    setCurrentPage(Math.min(Math.max(page, 1), totalPages));
-  };
-
   return (
     <div className="flex flex-col px-4 py-10 pt-16 mx-auto max-w-3xl sm:px-8 lg:px-16 md:max-w-4xl lg:max-w-6xl">
       {/* Search input */}
@@ -104,14 +99,14 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
 
       {/* Project list */}
       <div className="container pb-10 mx-auto min-h-3/4">
-        {paginatedProjects.length === 0 ? (
+        {displayedProjects.length === 0 ? (
           <div className="flex flex-col items-center opacity-50">
             <Bird />
             <div className="p-4 mt-10 text-3xl text-center">No projects found</div>
           </div>
         ) : (
           <div className="grid grid-cols-1 gap-8 gap-y-15 lg:grid-cols-3 md:grid-cols-2">
-            {paginatedProjects.map(project => (
+            {displayedProjects.map(project => (
               <ProjectCard
                 key={project.id}
                 project={project}
@@ -122,60 +117,36 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
         )}
       </div>
 
-      {/* Pagination controls */}
-      {totalPages > 1 && (
-        <div className="flex gap-3 justify-between items-center py-8">
+      {/* Load More button */}
+      {hasMoreProjects && (
+        <div className="flex justify-center py-8">
           <button
-            onClick={goToPreviousPage}
-            disabled={currentPage === 1}
-            className={`flex gap-2 items-center px-3 py-1 font-medium text-white rounded-md bg-text-tertiary/80 ${
-              currentPage === 1 ? 'opacity-50' : 'cursor-pointer hover:bg-text-tertiary'
+            onClick={loadMoreProjects}
+            disabled={isLoading}
+            className={`px-3 py-1 font-medium text-white rounded transition-all duration-200 ${
+              isLoading
+                ? 'bg-text-tertiary/50'
+                : 'cursor-pointer bg-text-tertiary/80 hover:bg-text-tertiary'
             }`}
           >
-            <FaAnglesLeft />
-            Previous
+            {isLoading ? (
+              <div className="flex gap-2 items-center">
+                <RiLoaderFill size={18} className="animate-spin" />
+                Loading
+              </div>
+            ) : (
+              `Load More`
+            )}
           </button>
+        </div>
+      )}
 
-          {/* Page numbers */}
-          <div className="flex gap-3">
-            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-              // Show pages around current page
-              let pageNum;
-              if (totalPages <= 5) {
-                pageNum = i + 1;
-              } else if (currentPage <= 3) {
-                pageNum = i + 1;
-              } else if (currentPage >= totalPages - 2) {
-                pageNum = totalPages - 4 + i;
-              } else {
-                pageNum = currentPage - 2 + i;
-              }
-
-              return (
-                <button
-                  key={pageNum}
-                  onClick={() => goToPage(pageNum)}
-                  className={`w-8 h-8 flex items-center justify-center rounded-md font-medium cursor-pointer ${
-                    currentPage === pageNum
-                      ? 'text-white bg-text-tertiary/80 hover:bg-text-tertiary'
-                      : 'bg-text-tertiary/20 text-text-tertiary hover:bg-text-tertiary/20'
-                  }`}
-                >
-                  {pageNum}
-                </button>
-              );
-            })}
-          </div>
-
-          <button
-            onClick={goToNextPage}
-            disabled={currentPage === totalPages}
-            className={`flex gap-2 items-center px-3 py-1 font-medium text-white rounded-md bg-text-tertiary/80 hover:bg-text-tertiary ${
-              currentPage === totalPages ? 'opacity-50' : 'cursor-pointer hover:bg-text-tertiary'
-            }`}
-          >
-            Next <FaAnglesRight />
-          </button>
+      {/* Show total count when all items are loaded */}
+      {!hasMoreProjects && filteredProjects.length > 0 && (
+        <div className="flex justify-center py-4">
+          <p className="text-text-tertiary/70">
+            Showing all {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''}
+          </p>
         </div>
       )}
 
