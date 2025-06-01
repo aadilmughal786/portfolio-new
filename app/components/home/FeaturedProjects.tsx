@@ -7,6 +7,9 @@ import { TProject } from '@/types/projects/projects.types';
 import ProjectCard from '../projects/ProjectCard';
 import SectionHeading from './SectionHeading';
 import { Button } from './Hero';
+import { PiShootingStarFill } from 'react-icons/pi';
+import variants from '@/utils/motionVariants';
+import { BiSolidCoffee } from 'react-icons/bi';
 
 interface FeaturedProjectsProps {
   projects: TProject[];
@@ -44,6 +47,21 @@ const FeaturedProjects: React.FC<FeaturedProjectsProps> = ({ projects }) => {
           <span className="font-semibold text-text-tertiary">user-friendly</span> design and
           reliable performance.
         </SectionHeading>
+
+        <motion.div
+          variants={variants.fadeInUp}
+          transition={{ delay: 0.45 }}
+          className="flex gap-6 justify-center items-center mb-10 text-sm text-text-primary"
+        >
+          <div className="flex gap-1 items-center">
+            <PiShootingStarFill size={18} className="text-text-tertiary" />
+            <span>Quality Projects</span>
+          </div>
+          <div className="flex gap-1 items-center">
+            <BiSolidCoffee size={17} className="text-text-tertiary" />
+            <span>Powered by Coffee</span>
+          </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 gap-6 mx-auto max-w-5xl md:grid-cols-2 lg:grid-cols-3">
           {visibleProjects.map(project => (

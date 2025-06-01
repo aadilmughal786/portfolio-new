@@ -9,6 +9,7 @@ import Image from 'next/image';
 import 'highlight.js/styles/atom-one-dark.css';
 import ScrollProgressBar from '@/components/blogs/ScrollProgressBar';
 import path from 'path';
+import { LiaSlackHash } from 'react-icons/lia';
 
 // Define a proper type that matches only what we need
 interface PageParams {
@@ -65,17 +66,22 @@ export default async function CastStudyPage({ params }: PageParams) {
       <div className="container px-6 py-10 mx-auto max-w-3xl sm:px-16">
         <article>
           <header className="mb-8">
-            <h1 className="text-4xl font-bold">{post.title}</h1>
-            <time className="block mt-2 text-text-tertiary">{post.publishedAt}</time>
-            {post.tags && post.tags.length > 0 && (
-              <div className="flex flex-wrap gap-2 mt-4">
-                {post.tags.map(tag => (
-                  <span key={tag} className="chip">
+            <div className="flex flex-wrap gap-2 mb-4">
+              {post.tags &&
+                post.tags.length > 0 &&
+                post.tags.map(tag => (
+                  <span
+                    key={tag}
+                    className="inline-flex gap-2 items-center px-4 py-1 text-sm font-medium rounded-full bg-text-tertiary/5 text-text-tertiary"
+                  >
+                    <LiaSlackHash size={18} />
                     {tag}
                   </span>
                 ))}
-              </div>
-            )}
+            </div>
+
+            <h1 className="text-4xl font-bold">{post.title}</h1>
+            <time className="block mt-2 text-text-tertiary">{post.publishedAt}</time>
             <div className="overflow-hidden relative mt-4 w-full rounded-lg aspect-video">
               <Image
                 src={post.coverImageUrl}

@@ -11,6 +11,7 @@ import { testimonialsData } from '@/data/home/Testimonials';
 const Testimonials: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef(null);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -30,9 +31,9 @@ const Testimonials: React.FC = () => {
     }
   }, [isInView]);
 
-  // Auto rotate testimonials with improved timing
+  // Auto rotate testimonials with improved timing - now considers hover state
   useEffect(() => {
-    if (isPaused) return;
+    if (isPaused || isHovered) return;
 
     const interval = setInterval(() => {
       setActiveIndex(prevIndex => (prevIndex + 1) % testimonialsData.length);
@@ -40,7 +41,7 @@ const Testimonials: React.FC = () => {
 
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [testimonialsData.length, isPaused]);
+  }, [testimonialsData.length, isPaused, isHovered]);
 
   const goToTestimonial = (index: number) => {
     setActiveIndex(index);
@@ -48,6 +49,16 @@ const Testimonials: React.FC = () => {
 
     // Resume auto-rotation after a delay
     setTimeout(() => setIsPaused(false), 10000);
+  };
+
+  // Handle mouse enter - pause auto rotation
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  // Handle mouse leave - resume auto rotation
+  const handleMouseLeave = () => {
+    setIsHovered(false);
   };
 
   // Handle touch start event
@@ -126,13 +137,15 @@ const Testimonials: React.FC = () => {
         </SectionHeading>
 
         <div className="mx-auto max-w-4xl">
-          {/* Testimonial Slider with touch functionality */}
+          {/* Testimonial Slider with touch and hover functionality */}
           <div
             className="overflow-hidden relative p-1"
             ref={sliderRef}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             <div className="relative w-full cursor-grab active:cursor-grabbing">
               <AnimatePresence initial={false} mode="wait">
@@ -176,7 +189,17 @@ const Testimonials: React.FC = () => {
                       <p className="text-sm sm:text-base text-text-primary/70">
                         {testimonialsData[activeIndex].role} at{' '}
                         <span className="text-text-tertiary">
-                          {testimonialsData[activeIndex].company}
+                          {!testimonialsData[activeIndex].link ? (
+                            testimonialsData[activeIndex].company
+                          ) : (
+                            <a
+                              href={testimonialsData[activeIndex].link}
+                              target="_blank"
+                              className="underline"
+                            >
+                              {testimonialsData[activeIndex].company}
+                            </a>
+                          )}
                         </span>
                       </p>
                     </div>

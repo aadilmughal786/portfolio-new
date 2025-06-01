@@ -91,9 +91,8 @@ const HeroSection = () => {
             transition={{ delay: 0.4, duration: 0.7 }}
             className="mb-6 text-lg text-text-primary"
           >
-            I build high-performance web applications that drive business growth and deliver
-            seamless user experiences. With expertise in the latest technologies and a passion for
-            clean, maintainable code.
+            Engineering web applications that are fast, efficient, and scalable—driving business
+            outcomes and delivering smooth user journeys.
           </motion.p>
 
           {/* Call to action buttons */}
@@ -172,9 +171,13 @@ const HeroSection = () => {
                   className="absolute -left-4 top-1/2 w-8 h-8 -translate-y-1/2"
                   style={{ transformOrigin: 'center right' }}
                 >
-                  <div className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary">
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ repeat: Infinity, duration: 15, ease: 'linear' }}
+                    className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary"
+                  >
                     <span className="text-xs font-bold text-white">JS</span>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -189,9 +192,13 @@ const HeroSection = () => {
                   className="absolute -left-4 top-1/2 w-8 h-8 -translate-y-1/2"
                   style={{ transformOrigin: 'center right' }}
                 >
-                  <div className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ repeat: Infinity, duration: 18, ease: 'linear' }}
+                    className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary"
+                  >
                     <span className="text-xs font-bold text-white">TS</span>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -206,9 +213,13 @@ const HeroSection = () => {
                   className="absolute top-0 left-1/2 w-8 h-8 -translate-x-1/2"
                   style={{ transformOrigin: 'bottom center' }}
                 >
-                  <div className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary">
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ repeat: Infinity, duration: 20, ease: 'linear' }}
+                    className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary"
+                  >
                     <span className="text-xs font-bold text-white">UI</span>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
 
@@ -223,9 +234,13 @@ const HeroSection = () => {
                   className="absolute top-6 left-1/2 w-8 h-8 -translate-x-1/2"
                   style={{ transformOrigin: 'bottom center' }}
                 >
-                  <div className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary">
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ repeat: Infinity, duration: 16, ease: 'linear' }}
+                    className="flex justify-center items-center w-full h-full rounded-full bg-text-tertiary"
+                  >
                     <span className="text-xs font-bold text-white">UX</span>
-                  </div>
+                  </motion.div>
                 </div>
               </motion.div>
 

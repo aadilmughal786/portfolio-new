@@ -65,7 +65,7 @@ const NavBar = () => {
             {/* theme switch btn */}
             <ThemeToggleBtn />
 
-            {/* socail site icons */}
+            {/* social site icons */}
             <div className="hidden gap-4 items-center pl-5 border-l border-border-primary sm:flex">
               {navBarData.socialLinks.map(({ icon: Icon, id, link }) => (
                 <a key={id} href={link} target="_blank" rel="noreferrer">
