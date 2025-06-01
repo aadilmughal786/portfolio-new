@@ -1,6 +1,7 @@
 import { TContactSection } from '@/types/resume/contact.types';
 import { FaStaylinked, FaGithub, FaLinkedin, FaCodepen, FaYoutube } from 'react-icons/fa';
 import { IoIosPaperPlane } from 'react-icons/io';
+import { developerInfo } from '../dev-info';
 
 export const contactData: TContactSection = {
   title: 'Contact',
@@ -10,32 +11,32 @@ export const contactData: TContactSection = {
       id: 1,
       icon: IoIosPaperPlane,
       label: 'aadil.mugal.dev@gmail.com',
-      href: 'mailto:aadil.mugal.dev@gmail.com',
+      href: `mailto:${developerInfo.email}`,
     },
     {
       id: 2,
       icon: FaGithub,
       label: 'GitHub',
-      href: 'https://github.com/aadilmughal786',
+      href: developerInfo.github,
     },
     {
       id: 3,
       icon: FaLinkedin,
       label: 'Linkedin',
-      href: 'https://www.linkedin.com/in/dev-aadil',
+      href: developerInfo.linkedIn,
     },
 
     {
       id: 4,
       icon: FaCodepen,
       label: 'CodePen',
-      href: 'https://codepen.io/nevergiveup786',
+      href: developerInfo.codePen,
     },
     {
       id: 5,
       icon: FaYoutube,
       label: 'YouTube',
-      href: 'https://www.youtube.com/@techfunwithaadil',
+      href: developerInfo.youtube,
     },
   ],
 };

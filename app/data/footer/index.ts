@@ -1,10 +1,11 @@
 import { TFooterData } from '@/types/footer/footer.types';
+import { developerInfo } from '../dev-info';
 
 export const footerData: TFooterData = {
   copyrightYear: `© ${new Date().getFullYear()}`,
   developer: {
     name: 'Aadil Mugal',
-    website: 'https://github.com/aadilmughal786',
+    website: developerInfo.github,
   },
   technology: {
     name: 'NextJS',

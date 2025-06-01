@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { runConfetti } from '@/utils/confetti';
 import SectionHeading from '../home/SectionHeading';
 import { useState } from 'react';
-import { aboutMeData } from '@/data/home/about-me';
+import { developerInfo } from '@/data/dev-info';
 
 const AuthorBio = () => {
   const [isRunning, setIsRunning] = useState(false); // State to lock the button
@@ -90,7 +90,7 @@ const AuthorBio = () => {
                 className="mb-6 text-center text-text-primary md:text-left"
               >
                 {`Coding isn't just a skill—it's a superpower that transforms ideas into reality. With
-                ${aboutMeData.yearsOfExperience}+ years of experience in the MERN stack, I specialize in building scalable,
+                ${developerInfo.yearsOfExperience}+ years of experience in the MERN stack, I specialize in building scalable,
                 user-centric web applications that deliver exceptional digital experiences.`}
               </motion.p>
             </div>

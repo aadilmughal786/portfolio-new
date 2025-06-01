@@ -9,6 +9,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import 'highlight.js/styles/atom-one-dark.css';
 import ScrollProgressBar from '@/components/blogs/ScrollProgressBar';
+import Share from '@/components/blogs/ShareComponent';
 import path from 'path';
 import Link from 'next/link';
 import BlogCard from '@/components/blogs/BlogCard';
@@ -75,6 +76,9 @@ export default async function BlogPostPage({ params }: PageParams) {
       .sort(() => 0.5 - Math.random())
       .slice(0, 2);
 
+    // Construct the full URL for sharing
+    const fullUrl = `https://aadilmughal786.github.io/portfolio-new/blogs/${post.slug}`;
+
     return (
       <>
         <ScrollProgressBar />
@@ -97,32 +101,41 @@ export default async function BlogPostPage({ params }: PageParams) {
 
               <h1 className="mb-4 text-3xl font-bold md:text-4xl lg:text-5xl">{post.title}</h1>
 
-              <p className="mb-6 text-lg text-gray-600 dark:text-gray-400">{post.excerpt}</p>
+              <p className="mb-6 text-text-primary/80">{post.excerpt}</p>
 
-              <div className="flex items-center mb-8">
-                <div className="overflow-hidden relative mr-3 w-10 h-10 rounded-full">
-                  <Image
-                    src={post.authorImage}
-                    alt={post.author}
-                    className="object-cover bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
-                    fill
-                    sizes="40px"
-                  />
-                </div>
-                <div>
-                  <p className="font-medium">{post.author}</p>
-                  <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                    <time>
-                      {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })}
-                    </time>
-                    <span className="mx-2">•</span>
-                    <span>{Math.ceil(post.content.length / 2000)} min read</span>
+              <div className="flex justify-between items-center mb-8">
+                <div className="flex items-center">
+                  <div className="overflow-hidden relative mr-3 w-10 h-10 rounded-full">
+                    <Image
+                      src={post.authorImage}
+                      alt={post.author}
+                      className="object-cover bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
+                      fill
+                      sizes="40px"
+                    />
+                  </div>
+                  <div>
+                    <p className="font-medium">{post.author}</p>
+                    <div className="flex items-center text-sm text-text-primary/80">
+                      <time>
+                        {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric',
+                        })}
+                      </time>
+                      <span className="mx-2">•</span>
+                      <span>{Math.ceil(post.content.length / 2000)} min read</span>
+                    </div>
                   </div>
                 </div>
+
+                <Share
+                  coverImageUrl={post.coverImageUrl}
+                  url={fullUrl}
+                  title={post.title}
+                  description={post.excerpt}
+                />
               </div>
             </div>
 
@@ -151,34 +164,43 @@ export default async function BlogPostPage({ params }: PageParams) {
               />
             </div>
 
-            <div className="pt-6 mt-10 border-t border-gray-200 dark:border-gray-800">
-              <div className="flex items-center">
-                <div className="flex-shrink-0 mr-4">
-                  {/* Author Image - keeping this as circular profile image */}
-                  <div className="relative">
-                    <div className="overflow-hidden relative z-10 rounded-full w-15 h-15">
-                      <Image
-                        src={post.authorImage}
-                        alt={post.author}
-                        height={60}
-                        width={60}
-                        className="object-cover bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
-                        sizes="60px"
-                      />
+            <div className="pt-6 mt-10 border-t border-border-primary">
+              <div className="flex justify-between items-center">
+                <div className="flex items-center">
+                  <div className="flex-shrink-0 mr-4">
+                    {/* Author Image - keeping this as circular profile image */}
+                    <div className="relative">
+                      <div className="overflow-hidden relative z-10 rounded-full w-15 h-15">
+                        <Image
+                          src={post.authorImage}
+                          alt={post.author}
+                          height={60}
+                          width={60}
+                          className="object-cover bg-gradient-to-br from-text-tertiary/80 to-text-primary/80"
+                          sizes="60px"
+                        />
+                      </div>
                     </div>
                   </div>
+                  <div>
+                    <p className="text-lg font-semibold">Written by {post.author}</p>
+                    <p className="text-text-primary/80">
+                      Published on{' '}
+                      {new Date(post.publishedAt).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })}
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-lg font-semibold">Written by {post.author}</p>
-                  <p className="text-gray-600 dark:text-gray-400">
-                    Published on{' '}
-                    {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </p>
-                </div>
+
+                <Share
+                  coverImageUrl={post.coverImageUrl}
+                  url={fullUrl}
+                  title={post.title}
+                  description={post.excerpt}
+                />
               </div>
             </div>
           </article>

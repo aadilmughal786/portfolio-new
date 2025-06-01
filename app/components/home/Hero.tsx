@@ -7,8 +7,8 @@ import Image from 'next/image';
 import { FaAnglesRight } from 'react-icons/fa6';
 import { LiaSlackHash } from 'react-icons/lia';
 import variants from '@/utils/motionVariants';
-import { aboutMeData } from '@/data/home/about-me';
 import ScrollIndicator from '../ui/ScrollIndicator';
+import { developerInfo } from '@/data/dev-info';
 
 export const Button = ({
   primary = true,
@@ -268,7 +268,7 @@ const HeroSection = () => {
             className="hidden absolute -bottom-5 z-30 p-4 rounded-xl border shadow backdrop-blur-md sm:block right-25 bg-white/50 dark:bg-gray-800/50 border-white/30 dark:border-gray-700/30"
           >
             <span className="block text-2xl font-bold text-text-tertiary">
-              {aboutMeData.totalProjectsBuild}+
+              {developerInfo.totalProjectsBuilt}+
             </span>
             <span className="block text-sm font-medium">Projects Build</span>
           </motion.div>
@@ -313,7 +313,7 @@ const HeroSection = () => {
                 />
               </svg>
               <span className="text-sm font-medium text-gray-800 dark:text-gray-200">
-                {aboutMeData.yearsOfExperience}+ Years Experience
+                {developerInfo.yearsOfExperience}+ Years Experience
               </span>
             </div>
           </motion.div>

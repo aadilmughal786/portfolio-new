@@ -4,6 +4,7 @@ import { HiMiniBeaker } from 'react-icons/hi2';
 import { IoIosRocket } from 'react-icons/io';
 import { IoDocument } from 'react-icons/io5';
 import { MdPeopleAlt } from 'react-icons/md';
+import { developerInfo } from '../dev-info';
 
 export const navBarData: TNavBar = {
   navigationItems: [
@@ -43,19 +44,19 @@ export const navBarData: TNavBar = {
     {
       id: 1,
       label: 'GitHub',
-      link: 'https://github.com/aadilmughal786',
+      link: developerInfo.github,
       icon: FaGithub,
     },
     {
       id: 2,
       label: 'CodePen',
-      link: 'https://codepen.io/nevergiveup786',
+      link: developerInfo.codePen,
       icon: FaCodepen,
     },
     {
       id: 3,
       label: 'LinkedIn',
-      link: 'https://www.linkedin.com/in/aadil-mugal-146bb818a',
+      link: developerInfo.linkedIn,
       icon: FaLinkedin,
     },
   ],

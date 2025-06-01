@@ -1,6 +1,7 @@
 import { ContactOptions } from '@/types/contact/contact-options.types';
 import { FaCalendarAlt, FaFileAlt } from 'react-icons/fa';
 import { FaPaperPlane } from 'react-icons/fa6';
+import { developerInfo } from '../dev-info';
 
 export const contactOptionsData: ContactOptions = [
   {
@@ -8,7 +9,7 @@ export const contactOptionsData: ContactOptions = [
     title: 'Email Me',
     description: 'Drop me a line anytime to discuss your project needs',
     linkText: 'Email',
-    linkHref: 'mailto:aadil.mugal.dev@gmail.com',
+    linkHref: `mailto:${developerInfo.email}`,
     linkTarget: '_self',
   },
   {
@@ -24,7 +25,7 @@ export const contactOptionsData: ContactOptions = [
     title: 'Book a Slot',
     description: 'Schedule a meeting at your convenience',
     linkText: 'Book',
-    linkHref: 'https://cal.com/dev-aadil/15min',
+    linkHref: developerInfo.calendarBookingLink,
     linkTarget: '_blank',
   },
 ];

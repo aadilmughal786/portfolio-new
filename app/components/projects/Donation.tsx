@@ -7,6 +7,7 @@ import { FaGithub, FaHeart } from 'react-icons/fa';
 import { MdQrCode2, MdClose } from 'react-icons/md';
 import variants from '@/utils/motionVariants';
 import { Bird } from '../home/EndPage';
+import { developerInfo } from '@/data/dev-info';
 
 // Define types for props
 interface DonationButtonProps {
@@ -170,7 +171,7 @@ const DonationSection: React.FC<DonationSectionProps> = ({ initialAnimationsActi
                 Donate via UPI
               </DonationButton>
               <DonationButton
-                onClick={() => window.open('https://github.com/aadilmughal786', '_blank')}
+                onClick={() => window.open(developerInfo.github, '_blank')}
                 variant="github"
               >
                 <FaGithub size={20} />

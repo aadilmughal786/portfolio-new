@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useEffect, useRef, ReactNode } from 'react';
-import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { IoClose } from 'react-icons/io5';
 
 interface DrawerProps {
@@ -11,6 +10,7 @@ interface DrawerProps {
   children: ReactNode;
   position?: 'right' | 'left';
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'full';
+  icon: ReactNode;
 }
 
 const Drawer: React.FC<DrawerProps> = ({
@@ -20,6 +20,7 @@ const Drawer: React.FC<DrawerProps> = ({
   children,
   position = 'right',
   size = 'md',
+  icon,
 }) => {
   const drawerRef = useRef<HTMLDivElement>(null);
 
@@ -109,8 +110,9 @@ const Drawer: React.FC<DrawerProps> = ({
         {/* Header */}
         <div className="flex sticky top-0 z-10 justify-between items-center px-5 pt-3 pb-[15px] border-b border-border-primary">
           <div className="flex gap-3 items-center font-semibold text-text-tertiary">
-            <AiOutlineFundProjectionScreen size={22} /> {title}
+            {icon} {title}
           </div>
+
           <IoClose
             size={24}
             className="cursor-pointer hover:text-text-tertiary"

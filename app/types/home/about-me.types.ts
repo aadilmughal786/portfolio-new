@@ -13,10 +13,6 @@ export type ExplorationArea = {
 };
 
 export type AboutMeData = {
-  yearsOfExperience: number;
-  totalProjectsBuild: number;
-  technologiesUsed: number;
-  resumeLink: string;
   coreValuePropositions: ValueProposition[];
   currentExplorations: ExplorationArea[];
 };

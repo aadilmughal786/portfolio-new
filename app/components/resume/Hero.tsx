@@ -3,10 +3,10 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import variants from '@/utils/motionVariants';
-import { aboutMeData } from '@/data/home/about-me';
 import { Button } from '../home/Hero';
 import Link from 'next/link';
 import { FaGoogleDrive } from 'react-icons/fa6';
+import { developerInfo } from '@/data/dev-info';
 
 const ResumeHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,9 +16,9 @@ const ResumeHero = () => {
   }, []);
 
   const experienceItems = [
-    { value: `${aboutMeData.yearsOfExperience}+`, label: 'Years Experience' },
-    { value: `${aboutMeData.totalProjectsBuild}+`, label: 'Projects Build' },
-    { value: `${aboutMeData.technologiesUsed}+`, label: 'Tech Stack' },
+    { value: `${developerInfo.yearsOfExperience}+`, label: 'Years Experience' },
+    { value: `${developerInfo.totalProjectsBuilt}+`, label: 'Projects Build' },
+    { value: `${developerInfo.technologiesUsed}+`, label: 'Tech Stack' },
   ];
 
   return (
@@ -104,7 +104,7 @@ const ResumeHero = () => {
           >
             <motion.div whileTap={{ scale: 0.95 }}>
               <Link
-                href={aboutMeData.resumeLink}
+                href={developerInfo.resumeLink}
                 target="_blank"
                 className={`inline-flex gap-2 items-center px-4 py-1.5 font-medium  rounded-md transition-colors duration-300 text-white bg-text-tertiary/80 hover:bg-text-tertiary'
         }`}

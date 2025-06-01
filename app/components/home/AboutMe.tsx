@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion';
 import { aboutMeData } from '@/data/home/about-me';
 import variants from '@/utils/motionVariants';
 import SectionHeading from './SectionHeading';
+import { developerInfo } from '@/data/dev-info';
 
 const AboutMe = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -77,7 +78,7 @@ const AboutMe = () => {
                   <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
                   <span className="inline-flex relative w-2 h-2 rounded-full bg-text-tertiary"></span>
                 </span>
-                {aboutMeData.yearsOfExperience}+ Years Experience
+                {developerInfo.yearsOfExperience}+ Years Experience
               </motion.span>
 
               <motion.span
@@ -91,7 +92,7 @@ const AboutMe = () => {
                   <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
                   <span className="inline-flex relative w-2 h-2 rounded-full bg-text-tertiary"></span>
                 </span>
-                {aboutMeData.totalProjectsBuild}+ Projects Build
+                {developerInfo.totalProjectsBuilt}+ Projects Build
               </motion.span>
             </div>
           </motion.div>

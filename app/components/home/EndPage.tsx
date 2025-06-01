@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { developerInfo } from '@/data/dev-info';
 
 export const Bird = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -199,18 +200,14 @@ export const EndPage = () => {
         <p className="mb-4 text-lg text-text-primary/70">
           Let&apos;s stay connected — follow me on{' '}
           <a
-            href="https://www.linkedin.com/in/aadil-mugal-146bb818a"
+            href={developerInfo.linkedIn}
             className="font-medium text-text-tertiary"
             target="_blank"
           >
             LinkedIn
           </a>{' '}
           and{' '}
-          <a
-            target="_blank"
-            className="font-medium text-text-tertiary"
-            href="https://github.com/aadilmughal786"
-          >
+          <a target="_blank" className="font-medium text-text-tertiary" href={developerInfo.github}>
             GitHub
           </a>{' '}
           for more tech insights and creative projects.

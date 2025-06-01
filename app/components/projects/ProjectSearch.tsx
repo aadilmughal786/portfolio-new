@@ -9,6 +9,7 @@ import ProjectCard from '@/components/projects/ProjectCard';
 import SearchBar from './SearchBar';
 import { FaAnglesLeft, FaAnglesRight } from 'react-icons/fa6';
 import { Bird } from '../home/EndPage';
+import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 
 interface ProjectSearchProps {
   projects: TProject[];
@@ -186,6 +187,7 @@ const ProjectSearch: React.FC<ProjectSearchProps> = ({
           title={selectedProject.title}
           size="md"
           position="right"
+          icon={<AiOutlineFundProjectionScreen size={22} />}
         >
           <ProjectDetails project={selectedProject} />
         </Drawer>
