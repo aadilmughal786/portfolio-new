@@ -13,6 +13,7 @@ export type DeveloperInfo = {
   technologiesUsed: number;
   GitHubContributions: number;
   resumeLink: string;
+  upiId: string;
 };
 
 export const developerInfo: DeveloperInfo = {
@@ -28,4 +29,5 @@ export const developerInfo: DeveloperInfo = {
   technologiesUsed: 29,
   GitHubContributions: 124,
   resumeLink: 'https://drive.google.com/file/d/1X3VSlN6nPIfB8mLjt7e4B0P5Z7dQ_Ei3',
+  upiId: 'aadilshe786@okhdfcbank',
 };

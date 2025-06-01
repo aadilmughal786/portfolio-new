@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import variants from '@/utils/motionVariants';
+import { PiShootingStarFill } from 'react-icons/pi';
 
 const ProjectsHero: React.FC = () => {
   return (
@@ -15,10 +16,7 @@ const ProjectsHero: React.FC = () => {
         >
           <motion.div variants={variants.fadeInUp} className="flex justify-center mb-3">
             <span className="inline-flex gap-2 items-center px-4 py-2 mb-3 text-sm font-medium tracking-wider rounded-full bg-text-tertiary/5 text-text-tertiary">
-              <span className="flex relative w-2 h-2">
-                <span className="inline-flex absolute w-full h-full rounded-full opacity-75 animate-ping bg-text-tertiary"></span>
-                <span className="inline-flex relative w-2 h-2 rounded-full bg-text-tertiary"></span>
-              </span>
+              <PiShootingStarFill size={16} />
               MY WORK
             </span>
           </motion.div>
