@@ -2,9 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { TProject } from '@/types/projects/projects.types';
-import { FaBookOpen, FaGithub, FaStar } from 'react-icons/fa6';
+import { FaBookOpen, FaGithub } from 'react-icons/fa6';
 import { TbExternalLink } from 'react-icons/tb';
-import { navBarData } from '@/data/nav-bar';
 import RepoDetails from './RepoDetails';
 import Link from 'next/link';
 import ProjectStatusBadge from './ProjectStatusBadge';
