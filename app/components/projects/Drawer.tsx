@@ -1,6 +1,8 @@
 'use client';
 
+import { navBarData } from '@/data/nav-bar';
 import React, { useEffect, useRef, ReactNode } from 'react';
+import { FaStar } from 'react-icons/fa6';
 import { IoClose } from 'react-icons/io5';
 
 interface DrawerProps {
@@ -122,7 +124,28 @@ const Drawer: React.FC<DrawerProps> = ({
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto h-[calc(100%-60px)]">{children}</div>
+        <div className="overflow-y-auto h-[calc(100%-60px)]">
+          <div className="min-h-full">{children}</div>
+
+          {/* Footer */}
+          <div className="p-4 pl-6 mt-auto border-t border-border-primary">
+            <div className="flex gap-4 py-4">
+              {navBarData.socialLinks.map(({ icon: Icon, id, link }) => (
+                <a key={id} href={link} target="_blank" rel="noreferrer">
+                  <Icon className="icon" />
+                </a>
+              ))}
+            </div>
+
+            <div>
+              Don’t forget to leave a{' '}
+              <span className="flip">
+                <FaStar className="text-yellow-500" />
+              </span>{' '}
+              on GitHub and follow for more updates!
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

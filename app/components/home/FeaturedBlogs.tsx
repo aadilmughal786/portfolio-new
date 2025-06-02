@@ -56,7 +56,7 @@ const FeaturedBlogs: React.FC<FeaturedBlogsProps> = ({ blogs }) => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="mt-12 text-center"
         >
-          <Button href="/projects" primary={false}>
+          <Button href="/blogs" primary={false}>
             View All Blogs
           </Button>
         </motion.div>

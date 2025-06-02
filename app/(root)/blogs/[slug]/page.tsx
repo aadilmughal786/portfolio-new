@@ -9,7 +9,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import 'highlight.js/styles/atom-one-dark.css';
 import ScrollProgressBar from '@/components/blogs/ScrollProgressBar';
-import Share from '@/components/blogs/ShareComponent';
+import Share from '@/components/blogs/Share';
 import path from 'path';
 import Link from 'next/link';
 import BlogCard from '@/components/blogs/BlogCard';

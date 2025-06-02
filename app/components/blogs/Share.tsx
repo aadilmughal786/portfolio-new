@@ -14,8 +14,7 @@ import {
 } from 'react-icons/fa';
 import { MdCheck, MdContentCopy, MdEmail, MdLink, MdShare } from 'react-icons/md';
 import Drawer from '../projects/Drawer';
-import { FaDiscord, FaStar } from 'react-icons/fa6';
-import { navBarData } from '@/data/nav-bar';
+import { FaDiscord } from 'react-icons/fa6';
 import Image from 'next/image';
 
 const ShareContent = ({ url }: { url: string }) => {
@@ -204,26 +203,6 @@ const Share: React.FC<ShareComponentProps> = ({ coverImageUrl, url, title, descr
           <p className="mt-2 text-text-primary/80">{description}</p>
 
           <ShareContent url={url} />
-        </div>
-
-        {/* Footer with actions */}
-        <div className="p-4 pl-6 mt-auto border-t border-border-primary">
-          {/* socail site icons */}
-          <div className="flex gap-4 py-4">
-            {navBarData.socialLinks.map(({ icon: Icon, id, link }) => (
-              <a key={id} href={link} target="_blank" rel="noreferrer">
-                <Icon className="icon" />
-              </a>
-            ))}
-          </div>
-
-          <div>
-            Don’t forget to leave a{' '}
-            <span className="flip">
-              <FaStar className="text-yellow-500" />
-            </span>{' '}
-            on GitHub and follow for more updates!
-          </div>
         </div>
       </Drawer>
     </>

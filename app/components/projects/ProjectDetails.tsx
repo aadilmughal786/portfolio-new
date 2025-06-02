@@ -22,7 +22,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
   }, [project]);
 
   return (
-    <div className="flex flex-col min-h-full">
+    <div className="flex flex-col">
       {/* Project content */}
       <div className="flex-1 p-6">
         <div className="flex-1">
@@ -104,26 +104,6 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project }) => {
         <div className="pt-4 border-t border-border-primary">
           <h3 className="mb-2 text-lg font-semibold">Live GitHub Repository Details</h3>
           <RepoDetails repoName={repoName ? repoName : 'portfolio-new'} />
-        </div>
-      </div>
-
-      {/* Footer with actions */}
-      <div className="p-4 pl-6 mt-auto border-t border-border-primary">
-        {/* socail site icons */}
-        <div className="flex gap-4 py-4">
-          {navBarData.socialLinks.map(({ icon: Icon, id, link }) => (
-            <a key={id} href={link} target="_blank" rel="noreferrer">
-              <Icon className="icon" />
-            </a>
-          ))}
-        </div>
-
-        <div>
-          Don’t forget to leave a{' '}
-          <span className="flip">
-            <FaStar className="text-yellow-500" />
-          </span>{' '}
-          on GitHub and follow for more updates!
         </div>
       </div>
     </div>
