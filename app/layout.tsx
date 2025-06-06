@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import NextTopLoader from 'nextjs-toploader';
 import BackgroundMask from './components/home/BackgroundMask';
+import Script from 'next/script';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -48,6 +49,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const GA_TRACKING_ID = 'G-HGBLH5EEGC';
+
   return (
     <html lang="en" suppressHydrationWarning className="scroll-smooth">
       <head>
@@ -71,6 +74,20 @@ export default function RootLayout({
             `,
           }}
         />
+        <Script
+          strategy="afterInteractive"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', ${GA_TRACKING_ID}, {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
       </head>
       <body
         className={`${poppins.variable} ${poppins.variable} antialiased font-poppins text-text-primary bg-bg-primary scrollbar-light`}
