@@ -7,6 +7,7 @@ import { Button } from '../home/Hero';
 import Link from 'next/link';
 import { FaGoogleDrive } from 'react-icons/fa6';
 import { developerInfo } from '@/data/dev-info';
+import AudioPlayer from './AudioPlayer';
 
 const ResumeHero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -119,6 +120,12 @@ const ResumeHero = () => {
             </Button>
           </motion.div>
         </motion.div>
+
+        <AudioPlayer
+          audioSrc="/portfolio-new/resume/audio/summary.ogg"
+          title="Page Summary"
+          description="Listen to an AI-generated summary of this page"
+        />
 
         {/* Scroll indicator */}
         <motion.div
